@@ -23,12 +23,13 @@ namespace ProjectDAA1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = db.taikhoan.SingleOrDefault(x=>x.matk == model.UserName);
+                var result = db.taikhoan.SingleOrDefault(x => x.matk == model.UserName);
                 if (result == null)
                 {
                     ViewBag.thunhat = "khong ton tai";
-                }else
-                    if(result.password1 != model.Password)
+                }
+                else
+                    if (result.password1 != model.Password)
                 {
                     ViewBag.thuhai = "sai password";
                 }
@@ -48,7 +49,8 @@ namespace ProjectDAA1.Controllers
                         ViewBag.thunam = "la quan tri vien";
                     }
                 }
-                    
+
+
                 //var reullsult = dao.Login(model.UserName, HashPassword.MD5Hash(model.Password));
                 //var result =
                 //if (result == 1)
