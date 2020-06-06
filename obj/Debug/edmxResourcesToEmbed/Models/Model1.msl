@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="MyDatabaseEntities6">
+    <EntitySetMapping Name="giangday">
+      <EntityTypeMapping TypeName="MyDatabaseModel.giangday">
+        <MappingFragment StoreEntitySet="giangday">
+          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="diemgk" ColumnName="diemgk" />
+          <ScalarProperty Name="diemck" ColumnName="diemck" />
+          <ScalarProperty Name="diemtb" ColumnName="diemtb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giangvien">
+      <EntityTypeMapping TypeName="MyDatabaseModel.giangvien">
+        <MappingFragment StoreEntitySet="giangvien">
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="quequan" ColumnName="quequan" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="capbac" ColumnName="capbac" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lop">
+      <EntityTypeMapping TypeName="MyDatabaseModel.lop">
+        <MappingFragment StoreEntitySet="lop">
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="mamon" ColumnName="mamon" />
+          <ScalarProperty Name="thu" ColumnName="thu" />
+          <ScalarProperty Name="tietbd" ColumnName="tietbd" />
+          <ScalarProperty Name="tietkt" ColumnName="tietkt" />
+          <ScalarProperty Name="hocky" ColumnName="hocky" />
+          <ScalarProperty Name="namhoc" ColumnName="namhoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lopcn">
+      <EntityTypeMapping TypeName="MyDatabaseModel.lopcn">
+        <MappingFragment StoreEntitySet="lopcn">
+          <ScalarProperty Name="malopcn" ColumnName="malopcn" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mon">
+      <EntityTypeMapping TypeName="MyDatabaseModel.mon">
+        <MappingFragment StoreEntitySet="mon">
+          <ScalarProperty Name="mamon" ColumnName="mamon" />
+          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
+          <ScalarProperty Name="hsgk" ColumnName="hsgk" />
+          <ScalarProperty Name="hsck" ColumnName="hsck" />
+          <ScalarProperty Name="sotiet" ColumnName="sotiet" />
+          <ScalarProperty Name="sotc" ColumnName="sotc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sinhvien">
+      <EntityTypeMapping TypeName="MyDatabaseModel.sinhvien">
+        <MappingFragment StoreEntitySet="sinhvien">
+          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+          <ScalarProperty Name="malopcn" ColumnName="malopcn" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="quequan" ColumnName="quequan" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="bachoc" ColumnName="bachoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taikhoan">
+      <EntityTypeMapping TypeName="MyDatabaseModel.taikhoan">
+        <MappingFragment StoreEntitySet="taikhoan">
+          <ScalarProperty Name="matk" ColumnName="matk" />
+          <ScalarProperty Name="password1" ColumnName="password1" />
+          <ScalarProperty Name="password2" ColumnName="password2" />
+          <ScalarProperty Name="nhom" ColumnName="nhom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddGiangDay" FunctionName="MyDatabaseModel.Store.AddGiangDay" />
+    <FunctionImportMapping FunctionImportName="AddGV" FunctionName="MyDatabaseModel.Store.AddGV" />
+    <FunctionImportMapping FunctionImportName="AddLop" FunctionName="MyDatabaseModel.Store.AddLop" />
+    <FunctionImportMapping FunctionImportName="AddLopCN" FunctionName="MyDatabaseModel.Store.AddLopCN" />
+    <FunctionImportMapping FunctionImportName="AddMon" FunctionName="MyDatabaseModel.Store.AddMon" />
+    <FunctionImportMapping FunctionImportName="AddSV" FunctionName="MyDatabaseModel.Store.AddSV" />
+    <FunctionImportMapping FunctionImportName="AddTK" FunctionName="MyDatabaseModel.Store.AddTK" />
+    <FunctionImportMapping FunctionImportName="ChangeLopCNSV" FunctionName="MyDatabaseModel.Store.ChangeLopCNSV" />
+    <FunctionImportMapping FunctionImportName="ChangePassword1" FunctionName="MyDatabaseModel.Store.ChangePassword1" />
+    <FunctionImportMapping FunctionImportName="ChangePassword2" FunctionName="MyDatabaseModel.Store.ChangePassword2" />
+    <FunctionImportMapping FunctionImportName="DeleteGiangDay" FunctionName="MyDatabaseModel.Store.DeleteGiangDay" />
+    <FunctionImportMapping FunctionImportName="DeleteGV" FunctionName="MyDatabaseModel.Store.DeleteGV" />
+    <FunctionImportMapping FunctionImportName="DeleteLop" FunctionName="MyDatabaseModel.Store.DeleteLop" />
+    <FunctionImportMapping FunctionImportName="DeleteLopCN" FunctionName="MyDatabaseModel.Store.DeleteLopCN" />
+    <FunctionImportMapping FunctionImportName="DeleteMon" FunctionName="MyDatabaseModel.Store.DeleteMon" />
+    <FunctionImportMapping FunctionImportName="UpdateDiemCK" FunctionName="MyDatabaseModel.Store.UpdateDiemCK" />
+    <FunctionImportMapping FunctionImportName="UpdateDiemGK" FunctionName="MyDatabaseModel.Store.UpdateDiemGK" />
+    <FunctionImportMapping FunctionImportName="UpdateLopCN" FunctionName="MyDatabaseModel.Store.UpdateLopCN" />
+    <FunctionImportMapping FunctionImportName="UpdateMon" FunctionName="MyDatabaseModel.Store.UpdateMon" />
+    <FunctionImportMapping FunctionImportName="UpdateThongTinGV" FunctionName="MyDatabaseModel.Store.UpdateThongTinGV" />
+    <FunctionImportMapping FunctionImportName="UpdateThongTinSV" FunctionName="MyDatabaseModel.Store.UpdateThongTinSV" />
+  </EntityContainerMapping>
+</Mapping>

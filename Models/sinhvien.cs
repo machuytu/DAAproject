@@ -17,7 +17,7 @@ namespace ProjectDAA1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public sinhvien()
         {
-            this.giangday = new HashSet<giangday>();
+            this.giangdays = new HashSet<giangday>();
         }
     
         public string masv { get; set; }
@@ -31,7 +31,7 @@ namespace ProjectDAA1.Models
         public string bachoc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<giangday> giangday { get; set; }
+        public virtual ICollection<giangday> giangdays { get; set; }
         public virtual lopcn lopcn { get; set; }
     }
 }

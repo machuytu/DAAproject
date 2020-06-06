@@ -17,7 +17,7 @@ namespace ProjectDAA1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public lopcn()
         {
-            this.sinhvien = new HashSet<sinhvien>();
+            this.sinhviens = new HashSet<sinhvien>();
         }
     
         public string malopcn { get; set; }
@@ -26,6 +26,6 @@ namespace ProjectDAA1.Models
     
         public virtual giangvien giangvien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sinhvien> sinhvien { get; set; }
+        public virtual ICollection<sinhvien> sinhviens { get; set; }
     }
 }

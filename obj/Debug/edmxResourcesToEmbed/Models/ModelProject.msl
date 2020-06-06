@@ -1,7 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="MyDatabaseEntities5">
-    <EntitySetMapping Name="giangday">
+  <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="MyDatabaseEntities8">
+    <EntitySetMapping Name="dangkyhocphans">
+      <EntityTypeMapping TypeName="MyDatabaseModel.dangkyhocphan">
+        <MappingFragment StoreEntitySet="dangkyhocphan">
+          <ScalarProperty Name="madkhp" ColumnName="madkhp" />
+          <ScalarProperty Name="hocky" ColumnName="hocky" />
+          <ScalarProperty Name="namhoc" ColumnName="namhoc" />
+          <ScalarProperty Name="thoigianbd" ColumnName="thoigianbd" />
+          <ScalarProperty Name="thoigiankt" ColumnName="thoigiankt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giangdays">
       <EntityTypeMapping TypeName="MyDatabaseModel.giangday">
         <MappingFragment StoreEntitySet="giangday">
           <ScalarProperty Name="masv" ColumnName="masv" />
@@ -12,7 +23,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="giangvien">
+    <EntitySetMapping Name="giangviens">
       <EntityTypeMapping TypeName="MyDatabaseModel.giangvien">
         <MappingFragment StoreEntitySet="giangvien">
           <ScalarProperty Name="magv" ColumnName="magv" />
@@ -28,7 +39,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="lop">
+    <EntitySetMapping Name="lops">
       <EntityTypeMapping TypeName="MyDatabaseModel.lop">
         <MappingFragment StoreEntitySet="lop">
           <ScalarProperty Name="malop" ColumnName="malop" />
@@ -37,12 +48,11 @@
           <ScalarProperty Name="thu" ColumnName="thu" />
           <ScalarProperty Name="tietbd" ColumnName="tietbd" />
           <ScalarProperty Name="tietkt" ColumnName="tietkt" />
-          <ScalarProperty Name="hocky" ColumnName="hocky" />
-          <ScalarProperty Name="namhoc" ColumnName="namhoc" />
+          <ScalarProperty Name="madkhp" ColumnName="madkhp" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="lopcn">
+    <EntitySetMapping Name="lopcns">
       <EntityTypeMapping TypeName="MyDatabaseModel.lopcn">
         <MappingFragment StoreEntitySet="lopcn">
           <ScalarProperty Name="malopcn" ColumnName="malopcn" />
@@ -51,7 +61,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="mon">
+    <EntitySetMapping Name="mons">
       <EntityTypeMapping TypeName="MyDatabaseModel.mon">
         <MappingFragment StoreEntitySet="mon">
           <ScalarProperty Name="mamon" ColumnName="mamon" />
@@ -63,7 +73,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sinhvien">
+    <EntitySetMapping Name="sinhviens">
       <EntityTypeMapping TypeName="MyDatabaseModel.sinhvien">
         <MappingFragment StoreEntitySet="sinhvien">
           <ScalarProperty Name="masv" ColumnName="masv" />
@@ -78,7 +88,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="taikhoan">
+    <EntitySetMapping Name="taikhoans">
       <EntityTypeMapping TypeName="MyDatabaseModel.taikhoan">
         <MappingFragment StoreEntitySet="taikhoan">
           <ScalarProperty Name="matk" ColumnName="matk" />
@@ -88,6 +98,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddDKHP" FunctionName="MyDatabaseModel.Store.AddDKHP" />
     <FunctionImportMapping FunctionImportName="AddGiangDay" FunctionName="MyDatabaseModel.Store.AddGiangDay" />
     <FunctionImportMapping FunctionImportName="AddGV" FunctionName="MyDatabaseModel.Store.AddGV" />
     <FunctionImportMapping FunctionImportName="AddLop" FunctionName="MyDatabaseModel.Store.AddLop" />
@@ -98,6 +109,7 @@
     <FunctionImportMapping FunctionImportName="ChangeLopCNSV" FunctionName="MyDatabaseModel.Store.ChangeLopCNSV" />
     <FunctionImportMapping FunctionImportName="ChangePassword1" FunctionName="MyDatabaseModel.Store.ChangePassword1" />
     <FunctionImportMapping FunctionImportName="ChangePassword2" FunctionName="MyDatabaseModel.Store.ChangePassword2" />
+    <FunctionImportMapping FunctionImportName="DeleteDKHP" FunctionName="MyDatabaseModel.Store.DeleteDKHP" />
     <FunctionImportMapping FunctionImportName="DeleteGiangDay" FunctionName="MyDatabaseModel.Store.DeleteGiangDay" />
     <FunctionImportMapping FunctionImportName="DeleteGV" FunctionName="MyDatabaseModel.Store.DeleteGV" />
     <FunctionImportMapping FunctionImportName="DeleteLop" FunctionName="MyDatabaseModel.Store.DeleteLop" />
@@ -105,6 +117,7 @@
     <FunctionImportMapping FunctionImportName="DeleteMon" FunctionName="MyDatabaseModel.Store.DeleteMon" />
     <FunctionImportMapping FunctionImportName="UpdateDiemCK" FunctionName="MyDatabaseModel.Store.UpdateDiemCK" />
     <FunctionImportMapping FunctionImportName="UpdateDiemGK" FunctionName="MyDatabaseModel.Store.UpdateDiemGK" />
+    <FunctionImportMapping FunctionImportName="UpdateDKHP" FunctionName="MyDatabaseModel.Store.UpdateDKHP" />
     <FunctionImportMapping FunctionImportName="UpdateLopCN" FunctionName="MyDatabaseModel.Store.UpdateLopCN" />
     <FunctionImportMapping FunctionImportName="UpdateMon" FunctionName="MyDatabaseModel.Store.UpdateMon" />
     <FunctionImportMapping FunctionImportName="UpdateThongTinGV" FunctionName="MyDatabaseModel.Store.UpdateThongTinGV" />

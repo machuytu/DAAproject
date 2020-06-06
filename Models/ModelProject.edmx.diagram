@@ -4,20 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aa320eb947924092933c3adf726fec6f" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="MyDatabaseModel.giangday" Width="1.5" PointX="6.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.giangvien" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.lop" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.lopcn" Width="1.5" PointX="6.125" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.mon" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.sinhvien" Width="1.5" PointX="9.125" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.taikhoan" Width="1.5" PointX="4.25" PointY="0.625" IsExpanded="true" />
-        <AssociationConnector Association="MyDatabaseModel.FK__giangday__malop__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__giangday__masv__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lop__magv__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__magv__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lop__mamon__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__sinhvien__malopc__412EB0B6" ManuallyRouted="false" />
+      <Diagram DiagramId="8b40b9d377034246b1475a8eeb6e71d5" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="MyDatabaseModel.dangkyhocphan" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.giangday" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.giangvien" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.lop" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.lopcn" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.mon" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.sinhvien" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.taikhoan" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__madkhp__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__giangday__malop__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__giangday__masv__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__magv__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__magv__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__mamon__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__sinhvien__malopc__2E1BDC42" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

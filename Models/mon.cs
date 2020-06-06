@@ -17,7 +17,7 @@ namespace ProjectDAA1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public mon()
         {
-            this.lop = new HashSet<lop>();
+            this.lops = new HashSet<lop>();
         }
     
         public string mamon { get; set; }
@@ -28,6 +28,6 @@ namespace ProjectDAA1.Models
         public int sotc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<lop> lop { get; set; }
+        public virtual ICollection<lop> lops { get; set; }
     }
 }

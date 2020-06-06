@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MyDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="dangkyhocphan">
+    <Key>
+      <PropertyRef Name="madkhp" />
+    </Key>
+    <Property Name="madkhp" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hocky" Type="Int32" Nullable="false" />
+    <Property Name="namhoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="thoigianbd" Type="DateTime" Precision="0" />
+    <Property Name="thoigiankt" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="lops" Relationship="Self.FK__lop__madkhp__32E0915F" FromRole="dangkyhocphan" ToRole="lop" />
+  </EntityType>
   <EntityType Name="giangday">
     <Key>
       <PropertyRef Name="masv" />
@@ -10,8 +21,8 @@
     <Property Name="diemgk" Type="Double" />
     <Property Name="diemck" Type="Double" />
     <Property Name="diemtb" Type="Double" />
-    <NavigationProperty Name="lop" Relationship="Self.FK__giangday__malop__48CFD27E" FromRole="giangday" ToRole="lop" />
-    <NavigationProperty Name="sinhvien" Relationship="Self.FK__giangday__masv__47DBAE45" FromRole="giangday" ToRole="sinhvien" />
+    <NavigationProperty Name="lop" Relationship="Self.FK__giangday__malop__38996AB5" FromRole="giangday" ToRole="lop" />
+    <NavigationProperty Name="sinhvien" Relationship="Self.FK__giangday__masv__37A5467C" FromRole="giangday" ToRole="sinhvien" />
   </EntityType>
   <EntityType Name="giangvien">
     <Key>
@@ -27,8 +38,8 @@
     <Property Name="capbac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ngayvaolam" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="lop" Relationship="Self.FK__lop__magv__44FF419A" FromRole="giangvien" ToRole="lop" />
-    <NavigationProperty Name="lopcn" Relationship="Self.FK__lopcn__magv__3E52440B" FromRole="giangvien" ToRole="lopcn" />
+    <NavigationProperty Name="lops" Relationship="Self.FK__lop__magv__34C8D9D1" FromRole="giangvien" ToRole="lop" />
+    <NavigationProperty Name="lopcns" Relationship="Self.FK__lopcn__magv__2B3F6F97" FromRole="giangvien" ToRole="lopcn" />
   </EntityType>
   <EntityType Name="lop">
     <Key>
@@ -40,11 +51,11 @@
     <Property Name="thu" Type="Int32" Nullable="false" />
     <Property Name="tietbd" Type="Int32" Nullable="false" />
     <Property Name="tietkt" Type="Int32" Nullable="false" />
-    <Property Name="hocky" Type="Int32" Nullable="false" />
-    <Property Name="namhoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="giangday" Relationship="Self.FK__giangday__malop__48CFD27E" FromRole="lop" ToRole="giangday" />
-    <NavigationProperty Name="giangvien" Relationship="Self.FK__lop__magv__44FF419A" FromRole="lop" ToRole="giangvien" />
-    <NavigationProperty Name="mon" Relationship="Self.FK__lop__mamon__440B1D61" FromRole="lop" ToRole="mon" />
+    <Property Name="madkhp" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="dangkyhocphan" Relationship="Self.FK__lop__madkhp__32E0915F" FromRole="lop" ToRole="dangkyhocphan" />
+    <NavigationProperty Name="giangdays" Relationship="Self.FK__giangday__malop__38996AB5" FromRole="lop" ToRole="giangday" />
+    <NavigationProperty Name="giangvien" Relationship="Self.FK__lop__magv__34C8D9D1" FromRole="lop" ToRole="giangvien" />
+    <NavigationProperty Name="mon" Relationship="Self.FK__lop__mamon__33D4B598" FromRole="lop" ToRole="mon" />
   </EntityType>
   <EntityType Name="lopcn">
     <Key>
@@ -53,8 +64,8 @@
     <Property Name="malopcn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="nienkhoa" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="giangvien" Relationship="Self.FK__lopcn__magv__3E52440B" FromRole="lopcn" ToRole="giangvien" />
-    <NavigationProperty Name="sinhvien" Relationship="Self.FK__sinhvien__malopc__412EB0B6" FromRole="lopcn" ToRole="sinhvien" />
+    <NavigationProperty Name="giangvien" Relationship="Self.FK__lopcn__magv__2B3F6F97" FromRole="lopcn" ToRole="giangvien" />
+    <NavigationProperty Name="sinhviens" Relationship="Self.FK__sinhvien__malopc__2E1BDC42" FromRole="lopcn" ToRole="sinhvien" />
   </EntityType>
   <EntityType Name="mon">
     <Key>
@@ -66,7 +77,7 @@
     <Property Name="hsck" Type="Double" Nullable="false" />
     <Property Name="sotiet" Type="Int32" Nullable="false" />
     <Property Name="sotc" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="lop" Relationship="Self.FK__lop__mamon__440B1D61" FromRole="mon" ToRole="lop" />
+    <NavigationProperty Name="lops" Relationship="Self.FK__lop__mamon__33D4B598" FromRole="mon" ToRole="lop" />
   </EntityType>
   <EntityType Name="sinhvien">
     <Key>
@@ -81,8 +92,8 @@
     <Property Name="quequan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="bachoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="giangday" Relationship="Self.FK__giangday__masv__47DBAE45" FromRole="sinhvien" ToRole="giangday" />
-    <NavigationProperty Name="lopcn" Relationship="Self.FK__sinhvien__malopc__412EB0B6" FromRole="sinhvien" ToRole="lopcn" />
+    <NavigationProperty Name="giangdays" Relationship="Self.FK__giangday__masv__37A5467C" FromRole="sinhvien" ToRole="giangday" />
+    <NavigationProperty Name="lopcn" Relationship="Self.FK__sinhvien__malopc__2E1BDC42" FromRole="sinhvien" ToRole="lopcn" />
   </EntityType>
   <EntityType Name="taikhoan">
     <Key>
@@ -93,7 +104,19 @@
     <Property Name="password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="nhom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <Association Name="FK__giangday__malop__48CFD27E">
+  <Association Name="FK__lop__madkhp__32E0915F">
+    <End Role="dangkyhocphan" Type="Self.dangkyhocphan" Multiplicity="1" />
+    <End Role="lop" Type="Self.lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dangkyhocphan">
+        <PropertyRef Name="madkhp" />
+      </Principal>
+      <Dependent Role="lop">
+        <PropertyRef Name="madkhp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giangday__malop__38996AB5">
     <End Role="lop" Type="Self.lop" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -107,7 +130,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__giangday__masv__47DBAE45">
+  <Association Name="FK__giangday__masv__37A5467C">
     <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="1" />
     <End Role="giangday" Type="Self.giangday" Multiplicity="*" />
     <ReferentialConstraint>
@@ -119,7 +142,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__magv__44FF419A">
+  <Association Name="FK__lop__magv__34C8D9D1">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
@@ -131,7 +154,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lopcn__magv__3E52440B">
+  <Association Name="FK__lopcn__magv__2B3F6F97">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
     <End Role="lopcn" Type="Self.lopcn" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,7 +166,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__mamon__440B1D61">
+  <Association Name="FK__lop__mamon__33D4B598">
     <End Role="mon" Type="Self.mon" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -157,7 +180,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__sinhvien__malopc__412EB0B6">
+  <Association Name="FK__sinhvien__malopc__2E1BDC42">
     <End Role="lopcn" Type="Self.lopcn" Multiplicity="0..1" />
     <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="*" />
     <ReferentialConstraint>
@@ -169,38 +192,49 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MyDatabaseEntities5" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="giangday" EntityType="Self.giangday" />
-    <EntitySet Name="giangvien" EntityType="Self.giangvien" />
-    <EntitySet Name="lop" EntityType="Self.lop" />
-    <EntitySet Name="lopcn" EntityType="Self.lopcn" />
-    <EntitySet Name="mon" EntityType="Self.mon" />
-    <EntitySet Name="sinhvien" EntityType="Self.sinhvien" />
-    <EntitySet Name="taikhoan" EntityType="Self.taikhoan" />
-    <AssociationSet Name="FK__giangday__malop__48CFD27E" Association="Self.FK__giangday__malop__48CFD27E">
-      <End Role="lop" EntitySet="lop" />
-      <End Role="giangday" EntitySet="giangday" />
+  <EntityContainer Name="MyDatabaseEntities8" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dangkyhocphans" EntityType="Self.dangkyhocphan" />
+    <EntitySet Name="giangdays" EntityType="Self.giangday" />
+    <EntitySet Name="giangviens" EntityType="Self.giangvien" />
+    <EntitySet Name="lops" EntityType="Self.lop" />
+    <EntitySet Name="lopcns" EntityType="Self.lopcn" />
+    <EntitySet Name="mons" EntityType="Self.mon" />
+    <EntitySet Name="sinhviens" EntityType="Self.sinhvien" />
+    <EntitySet Name="taikhoans" EntityType="Self.taikhoan" />
+    <AssociationSet Name="FK__lop__madkhp__32E0915F" Association="Self.FK__lop__madkhp__32E0915F">
+      <End Role="dangkyhocphan" EntitySet="dangkyhocphans" />
+      <End Role="lop" EntitySet="lops" />
     </AssociationSet>
-    <AssociationSet Name="FK__giangday__masv__47DBAE45" Association="Self.FK__giangday__masv__47DBAE45">
-      <End Role="sinhvien" EntitySet="sinhvien" />
-      <End Role="giangday" EntitySet="giangday" />
+    <AssociationSet Name="FK__giangday__malop__38996AB5" Association="Self.FK__giangday__malop__38996AB5">
+      <End Role="lop" EntitySet="lops" />
+      <End Role="giangday" EntitySet="giangdays" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__magv__44FF419A" Association="Self.FK__lop__magv__44FF419A">
-      <End Role="giangvien" EntitySet="giangvien" />
-      <End Role="lop" EntitySet="lop" />
+    <AssociationSet Name="FK__giangday__masv__37A5467C" Association="Self.FK__giangday__masv__37A5467C">
+      <End Role="sinhvien" EntitySet="sinhviens" />
+      <End Role="giangday" EntitySet="giangdays" />
     </AssociationSet>
-    <AssociationSet Name="FK__lopcn__magv__3E52440B" Association="Self.FK__lopcn__magv__3E52440B">
-      <End Role="giangvien" EntitySet="giangvien" />
-      <End Role="lopcn" EntitySet="lopcn" />
+    <AssociationSet Name="FK__lop__magv__34C8D9D1" Association="Self.FK__lop__magv__34C8D9D1">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="lop" EntitySet="lops" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__mamon__440B1D61" Association="Self.FK__lop__mamon__440B1D61">
-      <End Role="mon" EntitySet="mon" />
-      <End Role="lop" EntitySet="lop" />
+    <AssociationSet Name="FK__lopcn__magv__2B3F6F97" Association="Self.FK__lopcn__magv__2B3F6F97">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="lopcn" EntitySet="lopcns" />
     </AssociationSet>
-    <AssociationSet Name="FK__sinhvien__malopc__412EB0B6" Association="Self.FK__sinhvien__malopc__412EB0B6">
-      <End Role="lopcn" EntitySet="lopcn" />
-      <End Role="sinhvien" EntitySet="sinhvien" />
+    <AssociationSet Name="FK__lop__mamon__33D4B598" Association="Self.FK__lop__mamon__33D4B598">
+      <End Role="mon" EntitySet="mons" />
+      <End Role="lop" EntitySet="lops" />
     </AssociationSet>
+    <AssociationSet Name="FK__sinhvien__malopc__2E1BDC42" Association="Self.FK__sinhvien__malopc__2E1BDC42">
+      <End Role="lopcn" EntitySet="lopcns" />
+      <End Role="sinhvien" EntitySet="sinhviens" />
+    </AssociationSet>
+    <FunctionImport Name="AddDKHP">
+      <Parameter Name="namhoc" Mode="In" Type="String" />
+      <Parameter Name="hocky" Mode="In" Type="Int32" />
+      <Parameter Name="thoigianbd" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigiankt" Mode="In" Type="DateTime" />
+    </FunctionImport>
     <FunctionImport Name="AddGiangDay">
       <Parameter Name="masv" Mode="In" Type="String" />
       <Parameter Name="malop" Mode="In" Type="String" />
@@ -220,8 +254,7 @@
     <FunctionImport Name="AddLop">
       <Parameter Name="mamon" Mode="In" Type="String" />
       <Parameter Name="magv" Mode="In" Type="String" />
-      <Parameter Name="namhoc" Mode="In" Type="String" />
-      <Parameter Name="hocky" Mode="In" Type="Int32" />
+      <Parameter Name="madkhp" Mode="In" Type="String" />
       <Parameter Name="thu" Mode="In" Type="Int32" />
       <Parameter Name="tietbd" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -266,6 +299,9 @@
       <Parameter Name="matk" Mode="In" Type="String" />
       <Parameter Name="password2" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="DeleteDKHP">
+      <Parameter Name="madkhp" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="DeleteGiangDay">
       <Parameter Name="masv" Mode="In" Type="String" />
       <Parameter Name="malop" Mode="In" Type="String" />
@@ -291,6 +327,11 @@
       <Parameter Name="masv" Mode="In" Type="String" />
       <Parameter Name="malop" Mode="In" Type="String" />
       <Parameter Name="diemgk" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateDKHP">
+      <Parameter Name="madkhp" Mode="In" Type="String" />
+      <Parameter Name="thoigianbd" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigiankt" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="UpdateLopCN">
       <Parameter Name="malopcn" Mode="In" Type="String" />

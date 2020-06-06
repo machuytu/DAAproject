@@ -1,0 +1,98 @@
+﻿@model ProjectDAA1.Models.giangvien
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>giangvien</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.hoten)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hoten)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.gioitinh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.gioitinh)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ngaysinh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ngaysinh)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.diachi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.diachi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.quequan)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.quequan)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sdt)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sdt)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.capbac)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.capbac)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ngayvaolam)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ngayvaolam)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.magv }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

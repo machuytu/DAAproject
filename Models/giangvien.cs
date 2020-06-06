@@ -17,8 +17,8 @@ namespace ProjectDAA1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public giangvien()
         {
-            this.lop = new HashSet<lop>();
-            this.lopcn = new HashSet<lopcn>();
+            this.lops = new HashSet<lop>();
+            this.lopcns = new HashSet<lopcn>();
         }
     
         public string magv { get; set; }
@@ -33,8 +33,8 @@ namespace ProjectDAA1.Models
         public System.DateTime ngayvaolam { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<lop> lop { get; set; }
+        public virtual ICollection<lop> lops { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<lopcn> lopcn { get; set; }
+        public virtual ICollection<lopcn> lopcns { get; set; }
     }
 }

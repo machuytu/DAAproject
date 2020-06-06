@@ -12,12 +12,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
 {
     public class monsController : Controller
     {
-        private MyDatabaseEntities5 db = new MyDatabaseEntities5();
+        private MyDatabaseEntities8 db = new MyDatabaseEntities8();
 
         // GET: Admin/mons
         public ActionResult Index()
         {
-            return View(db.mon.ToList());
+            return View(db.mons.ToList());
         }
 
         // GET: Admin/mons/Details/5
@@ -27,7 +27,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            mon mon = db.mon.Find(id);
+            mon mon = db.mons.Find(id);
             if (mon == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.mon.Add(mon);
+                db.mons.Add(mon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            mon mon = db.mon.Find(id);
+            mon mon = db.mons.Find(id);
             if (mon == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            mon mon = db.mon.Find(id);
+            mon mon = db.mons.Find(id);
             if (mon == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            mon mon = db.mon.Find(id);
-            db.mon.Remove(mon);
+            mon mon = db.mons.Find(id);
+            db.mons.Remove(mon);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

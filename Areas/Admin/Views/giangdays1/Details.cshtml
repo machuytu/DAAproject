@@ -1,0 +1,66 @@
+﻿@model ProjectDAA1.Models.giangday
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>giangday</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.diemgk)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.diemgk)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.diemck)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.diemck)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.diemtb)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.diemtb)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.lop.magv)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.lop.magv)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sinhvien.hoten)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sinhvien.hoten)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

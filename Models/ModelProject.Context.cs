@@ -15,10 +15,10 @@ namespace ProjectDAA1.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class MyDatabaseEntities5 : DbContext
+    public partial class MyDatabaseEntities8 : DbContext
     {
-        public MyDatabaseEntities5()
-            : base("name=MyDatabaseEntities5")
+        public MyDatabaseEntities8()
+            : base("name=MyDatabaseEntities8")
         {
         }
     
@@ -27,13 +27,35 @@ namespace ProjectDAA1.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<giangday> giangday { get; set; }
-        public virtual DbSet<giangvien> giangvien { get; set; }
-        public virtual DbSet<lop> lop { get; set; }
-        public virtual DbSet<lopcn> lopcn { get; set; }
-        public virtual DbSet<mon> mon { get; set; }
-        public virtual DbSet<sinhvien> sinhvien { get; set; }
-        public virtual DbSet<taikhoan> taikhoan { get; set; }
+        public virtual DbSet<dangkyhocphan> dangkyhocphans { get; set; }
+        public virtual DbSet<giangday> giangdays { get; set; }
+        public virtual DbSet<giangvien> giangviens { get; set; }
+        public virtual DbSet<lop> lops { get; set; }
+        public virtual DbSet<lopcn> lopcns { get; set; }
+        public virtual DbSet<mon> mons { get; set; }
+        public virtual DbSet<sinhvien> sinhviens { get; set; }
+        public virtual DbSet<taikhoan> taikhoans { get; set; }
+    
+        public virtual int AddDKHP(string namhoc, Nullable<int> hocky, Nullable<System.DateTime> thoigianbd, Nullable<System.DateTime> thoigiankt)
+        {
+            var namhocParameter = namhoc != null ?
+                new ObjectParameter("namhoc", namhoc) :
+                new ObjectParameter("namhoc", typeof(string));
+    
+            var hockyParameter = hocky.HasValue ?
+                new ObjectParameter("hocky", hocky) :
+                new ObjectParameter("hocky", typeof(int));
+    
+            var thoigianbdParameter = thoigianbd.HasValue ?
+                new ObjectParameter("thoigianbd", thoigianbd) :
+                new ObjectParameter("thoigianbd", typeof(System.DateTime));
+    
+            var thoigianktParameter = thoigiankt.HasValue ?
+                new ObjectParameter("thoigiankt", thoigiankt) :
+                new ObjectParameter("thoigiankt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddDKHP", namhocParameter, hockyParameter, thoigianbdParameter, thoigianktParameter);
+        }
     
         public virtual int AddGiangDay(string masv, string malop)
         {
@@ -93,7 +115,7 @@ namespace ProjectDAA1.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddGV", magvParameter, hotenParameter, gioitinhParameter, ngaysinhParameter, sdtParameter, diachiParameter, quequanParameter, capbacParameter, emailParameter, ngayvaolamParameter);
         }
     
-        public virtual int AddLop(string mamon, string magv, string namhoc, Nullable<int> hocky, Nullable<int> thu, Nullable<int> tietbd)
+        public virtual int AddLop(string mamon, string magv, string madkhp, Nullable<int> thu, Nullable<int> tietbd)
         {
             var mamonParameter = mamon != null ?
                 new ObjectParameter("mamon", mamon) :
@@ -103,13 +125,9 @@ namespace ProjectDAA1.Models
                 new ObjectParameter("magv", magv) :
                 new ObjectParameter("magv", typeof(string));
     
-            var namhocParameter = namhoc != null ?
-                new ObjectParameter("namhoc", namhoc) :
-                new ObjectParameter("namhoc", typeof(string));
-    
-            var hockyParameter = hocky.HasValue ?
-                new ObjectParameter("hocky", hocky) :
-                new ObjectParameter("hocky", typeof(int));
+            var madkhpParameter = madkhp != null ?
+                new ObjectParameter("madkhp", madkhp) :
+                new ObjectParameter("madkhp", typeof(string));
     
             var thuParameter = thu.HasValue ?
                 new ObjectParameter("thu", thu) :
@@ -119,7 +137,7 @@ namespace ProjectDAA1.Models
                 new ObjectParameter("tietbd", tietbd) :
                 new ObjectParameter("tietbd", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddLop", mamonParameter, magvParameter, namhocParameter, hockyParameter, thuParameter, tietbdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddLop", mamonParameter, magvParameter, madkhpParameter, thuParameter, tietbdParameter);
         }
     
         public virtual int AddLopCN(string lop, string magv, Nullable<int> nienkhoa)
@@ -265,6 +283,15 @@ namespace ProjectDAA1.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangePassword2", matkParameter, password2Parameter);
         }
     
+        public virtual int DeleteDKHP(string madkhp)
+        {
+            var madkhpParameter = madkhp != null ?
+                new ObjectParameter("madkhp", madkhp) :
+                new ObjectParameter("madkhp", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteDKHP", madkhpParameter);
+        }
+    
         public virtual int DeleteGiangDay(string masv, string malop)
         {
             var masvParameter = masv != null ?
@@ -346,6 +373,23 @@ namespace ProjectDAA1.Models
                 new ObjectParameter("diemgk", typeof(double));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateDiemGK", masvParameter, malopParameter, diemgkParameter);
+        }
+    
+        public virtual int UpdateDKHP(string madkhp, Nullable<System.DateTime> thoigianbd, Nullable<System.DateTime> thoigiankt)
+        {
+            var madkhpParameter = madkhp != null ?
+                new ObjectParameter("madkhp", madkhp) :
+                new ObjectParameter("madkhp", typeof(string));
+    
+            var thoigianbdParameter = thoigianbd.HasValue ?
+                new ObjectParameter("thoigianbd", thoigianbd) :
+                new ObjectParameter("thoigianbd", typeof(System.DateTime));
+    
+            var thoigianktParameter = thoigiankt.HasValue ?
+                new ObjectParameter("thoigiankt", thoigiankt) :
+                new ObjectParameter("thoigiankt", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateDKHP", madkhpParameter, thoigianbdParameter, thoigianktParameter);
         }
     
         public virtual int UpdateLopCN(string malopcn, string magv)
