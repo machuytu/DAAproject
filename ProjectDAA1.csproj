@@ -486,6 +486,8 @@
     <Compile Include="Areas\Admin\Controllers\monsController.cs" />
     <Compile Include="Areas\Admin\Controllers\sinhviensController.cs" />
     <Compile Include="Areas\Admin\Controllers\taikhoansController.cs" />
+    <Compile Include="Common\HashPassword.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -495,6 +497,7 @@
     <Compile Include="Models\giangvien.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\lop.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
     </Compile>
@@ -537,6 +540,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -547,7 +551,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Views\share\" />
   </ItemGroup>
   <ItemGroup>
