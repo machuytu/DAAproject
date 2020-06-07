@@ -598,6 +598,11 @@
     <Content Include="Models\ModelProject.edmx.diagram">
       <DependentUpon>ModelProject.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\taikhoans\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\taikhoans\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\taikhoans\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\taikhoans\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\taikhoans\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -608,6 +613,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\taikhoansController.cs" />
     <Compile Include="Common\HashPassword.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
