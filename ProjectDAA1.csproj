@@ -590,11 +590,6 @@
     <Content Include="Assets\Home\scss\_site-base.scss" />
     <Content Include="Assets\Home\scss\_site-blocks.scss" />
     <Content Include="Assets\Home\scss\_site-navbar.scss" />
-    <Content Include="Areas\Admin\Views\mons\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\mons\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\mons\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\mons\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\mons\Index.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <EntityDeploy Include="Models\ModelProject.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -603,41 +598,6 @@
     <Content Include="Models\ModelProject.edmx.diagram">
       <DependentUpon>ModelProject.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\dangkyhocphans\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\dangkyhocphans\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\dangkyhocphans\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\dangkyhocphans\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\dangkyhocphans\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\giangdays1\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\giangdays1\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\giangdays1\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\giangdays1\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\giangdays1\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\giangviens1\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\giangviens1\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\giangviens1\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\giangviens1\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\giangviens1\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\lops1\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\lops1\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\lops1\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\lops1\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\lops1\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\lopcns1\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\lopcns1\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\lopcns1\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\lopcns1\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\lopcns1\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\sinhviens1\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\sinhviens1\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\sinhviens1\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\sinhviens1\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\sinhviens1\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\taikhoans1\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\taikhoans1\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\taikhoans1\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\taikhoans1\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\taikhoans1\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -647,15 +607,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\dangkyhocphansController.cs" />
-    <Compile Include="Areas\Admin\Controllers\giangdays1Controller.cs" />
-    <Compile Include="Areas\Admin\Controllers\giangviens1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\lopcns1Controller.cs" />
-    <Compile Include="Areas\Admin\Controllers\lops1Controller.cs" />
-    <Compile Include="Areas\Admin\Controllers\monsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\sinhviens1Controller.cs" />
-    <Compile Include="Areas\Admin\Controllers\taikhoans1Controller.cs" />
+    <Compile Include="Common\HashPassword.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -669,6 +622,7 @@
     <Compile Include="Models\giangvien.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\lop.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
     </Compile>
