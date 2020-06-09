@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectDAA1.Models
+namespace ProjectDAA1
 {
     using System;
     using System.Collections.Generic;
@@ -18,6 +18,7 @@ namespace ProjectDAA1.Models
         public sinhvien()
         {
             this.giangdays = new HashSet<giangday>();
+            this.taikhoans = new HashSet<taikhoan>();
         }
     
         public string masv { get; set; }
@@ -33,5 +34,7 @@ namespace ProjectDAA1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<giangday> giangdays { get; set; }
         public virtual lopcn lopcn { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<taikhoan> taikhoans { get; set; }
     }
 }

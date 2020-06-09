@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectDAA1.Models
+namespace ProjectDAA1
 {
     using System;
     using System.Data.Entity;
@@ -15,10 +15,10 @@ namespace ProjectDAA1.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class MyDatabaseEntities8 : DbContext
+    public partial class MyDatabaseEntities9 : DbContext
     {
-        public MyDatabaseEntities8()
-            : base("name=MyDatabaseEntities8")
+        public MyDatabaseEntities9()
+            : base("name=MyDatabaseEntities9")
         {
         }
     
@@ -30,6 +30,7 @@ namespace ProjectDAA1.Models
         public virtual DbSet<dangkyhocphan> dangkyhocphans { get; set; }
         public virtual DbSet<giangday> giangdays { get; set; }
         public virtual DbSet<giangvien> giangviens { get; set; }
+        public virtual DbSet<khoa> khoas { get; set; }
         public virtual DbSet<lop> lops { get; set; }
         public virtual DbSet<lopcn> lopcns { get; set; }
         public virtual DbSet<mon> mons { get; set; }
@@ -70,51 +71,6 @@ namespace ProjectDAA1.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddGiangDay", masvParameter, malopParameter);
         }
     
-        public virtual int AddGV(string magv, string hoten, string gioitinh, Nullable<System.DateTime> ngaysinh, string sdt, string diachi, string quequan, string capbac, string email, Nullable<System.DateTime> ngayvaolam)
-        {
-            var magvParameter = magv != null ?
-                new ObjectParameter("magv", magv) :
-                new ObjectParameter("magv", typeof(string));
-    
-            var hotenParameter = hoten != null ?
-                new ObjectParameter("hoten", hoten) :
-                new ObjectParameter("hoten", typeof(string));
-    
-            var gioitinhParameter = gioitinh != null ?
-                new ObjectParameter("gioitinh", gioitinh) :
-                new ObjectParameter("gioitinh", typeof(string));
-    
-            var ngaysinhParameter = ngaysinh.HasValue ?
-                new ObjectParameter("ngaysinh", ngaysinh) :
-                new ObjectParameter("ngaysinh", typeof(System.DateTime));
-    
-            var sdtParameter = sdt != null ?
-                new ObjectParameter("sdt", sdt) :
-                new ObjectParameter("sdt", typeof(string));
-    
-            var diachiParameter = diachi != null ?
-                new ObjectParameter("diachi", diachi) :
-                new ObjectParameter("diachi", typeof(string));
-    
-            var quequanParameter = quequan != null ?
-                new ObjectParameter("quequan", quequan) :
-                new ObjectParameter("quequan", typeof(string));
-    
-            var capbacParameter = capbac != null ?
-                new ObjectParameter("capbac", capbac) :
-                new ObjectParameter("capbac", typeof(string));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("email", email) :
-                new ObjectParameter("email", typeof(string));
-    
-            var ngayvaolamParameter = ngayvaolam.HasValue ?
-                new ObjectParameter("ngayvaolam", ngayvaolam) :
-                new ObjectParameter("ngayvaolam", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddGV", magvParameter, hotenParameter, gioitinhParameter, ngaysinhParameter, sdtParameter, diachiParameter, quequanParameter, capbacParameter, emailParameter, ngayvaolamParameter);
-        }
-    
         public virtual int AddLop(string mamon, string magv, string madkhp, Nullable<int> thu, Nullable<int> tietbd)
         {
             var mamonParameter = mamon != null ?
@@ -138,23 +94,6 @@ namespace ProjectDAA1.Models
                 new ObjectParameter("tietbd", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddLop", mamonParameter, magvParameter, madkhpParameter, thuParameter, tietbdParameter);
-        }
-    
-        public virtual int AddLopCN(string lop, string magv, Nullable<int> nienkhoa)
-        {
-            var lopParameter = lop != null ?
-                new ObjectParameter("lop", lop) :
-                new ObjectParameter("lop", typeof(string));
-    
-            var magvParameter = magv != null ?
-                new ObjectParameter("magv", magv) :
-                new ObjectParameter("magv", typeof(string));
-    
-            var nienkhoaParameter = nienkhoa.HasValue ?
-                new ObjectParameter("nienkhoa", nienkhoa) :
-                new ObjectParameter("nienkhoa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddLopCN", lopParameter, magvParameter, nienkhoaParameter);
         }
     
         public virtual int AddMon(string mamon, string tenmon, Nullable<int> sotiet, Nullable<int> sotc, Nullable<double> hsck)
@@ -219,25 +158,29 @@ namespace ProjectDAA1.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddSV", hotenParameter, gioitinhParameter, ngaysinhParameter, malopcnParameter, sdtParameter, diachiParameter, quequanParameter, bachocParameter);
         }
     
-        public virtual int AddTK(string matk, string password1, string password2, string nhom)
+        public virtual int AddTK(string matk, string password, string masv, string magv, string nhom)
         {
             var matkParameter = matk != null ?
                 new ObjectParameter("matk", matk) :
                 new ObjectParameter("matk", typeof(string));
     
-            var password1Parameter = password1 != null ?
-                new ObjectParameter("password1", password1) :
-                new ObjectParameter("password1", typeof(string));
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
     
-            var password2Parameter = password2 != null ?
-                new ObjectParameter("password2", password2) :
-                new ObjectParameter("password2", typeof(string));
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
     
             var nhomParameter = nhom != null ?
                 new ObjectParameter("nhom", nhom) :
                 new ObjectParameter("nhom", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddTK", matkParameter, password1Parameter, password2Parameter, nhomParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddTK", matkParameter, passwordParameter, masvParameter, magvParameter, nhomParameter);
         }
     
         public virtual int ChangeLopCNSV(string masv, string malopcn)
@@ -253,34 +196,17 @@ namespace ProjectDAA1.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeLopCNSV", masvParameter, malopcnParameter);
         }
     
-        public virtual int ChangePassword1(string matk, string password1old, string password1new)
+        public virtual int ChangePassword(string matk, string password)
         {
             var matkParameter = matk != null ?
                 new ObjectParameter("matk", matk) :
                 new ObjectParameter("matk", typeof(string));
     
-            var password1oldParameter = password1old != null ?
-                new ObjectParameter("password1old", password1old) :
-                new ObjectParameter("password1old", typeof(string));
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
     
-            var password1newParameter = password1new != null ?
-                new ObjectParameter("password1new", password1new) :
-                new ObjectParameter("password1new", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangePassword1", matkParameter, password1oldParameter, password1newParameter);
-        }
-    
-        public virtual int ChangePassword2(string matk, string password2)
-        {
-            var matkParameter = matk != null ?
-                new ObjectParameter("matk", matk) :
-                new ObjectParameter("matk", typeof(string));
-    
-            var password2Parameter = password2 != null ?
-                new ObjectParameter("password2", password2) :
-                new ObjectParameter("password2", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangePassword2", matkParameter, password2Parameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangePassword", matkParameter, passwordParameter);
         }
     
         public virtual int DeleteDKHP(string madkhp)

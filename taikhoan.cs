@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectDAA1.Models
+namespace ProjectDAA1
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class giangday
+    public partial class taikhoan
     {
+        public string matk { get; set; }
+        public string password { get; set; }
         public string masv { get; set; }
-        public string malop { get; set; }
-        public Nullable<double> diemgk { get; set; }
-        public Nullable<double> diemck { get; set; }
-        public Nullable<double> diemtb { get; set; }
+        public string magv { get; set; }
+        public string nhom { get; set; }
     
-        public virtual lop lop { get; set; }
+        public virtual giangvien giangvien { get; set; }
         public virtual sinhvien sinhvien { get; set; }
     }
 }

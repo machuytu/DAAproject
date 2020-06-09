@@ -10,7 +10,7 @@ namespace ProjectDAA1.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        private MyDatabaseEntities8 db = new MyDatabaseEntities8();
+        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         public ActionResult Index()
         {
             

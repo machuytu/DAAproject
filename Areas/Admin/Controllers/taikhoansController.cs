@@ -13,7 +13,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
 {
     public class taikhoansController : Controller
     {
-        private MyDatabaseEntities8 db = new MyDatabaseEntities8();
+        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
         // GET: Admin/taikhoans
         public async Task<ActionResult> Index()

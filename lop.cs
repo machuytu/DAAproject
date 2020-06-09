@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectDAA1.Models
+namespace ProjectDAA1
 {
     using System;
     using System.Collections.Generic;
@@ -27,11 +27,13 @@ namespace ProjectDAA1.Models
         public int tietbd { get; set; }
         public int tietkt { get; set; }
         public string madkhp { get; set; }
+        public string makhoa { get; set; }
     
         public virtual dangkyhocphan dangkyhocphan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<giangday> giangdays { get; set; }
         public virtual giangvien giangvien { get; set; }
+        public virtual khoa khoa { get; set; }
         public virtual mon mon { get; set; }
     }
 }

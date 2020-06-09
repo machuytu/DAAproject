@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7c3ac4b7009f41bfb68d6222dec69881" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="MyDatabaseModel.dangkyhocphan" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.giangday" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.giangvien" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.khoa" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.lop" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.lopcn" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.mon" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.sinhvien" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDatabaseModel.taikhoan" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__madkhp__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__giangday__malop__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__giangday__masv__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__giangvien__makho__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__khoa__magv__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__magv__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__magv__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__taikhoan__magv__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__makhoa__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__makhoa__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__mamon__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__sinhvien__malopc__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="MyDatabaseModel.FK__taikhoan__masv__32E0915F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

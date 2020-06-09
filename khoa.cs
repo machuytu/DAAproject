@@ -7,26 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectDAA1.Models
+namespace ProjectDAA1
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class dangkyhocphan
+    public partial class khoa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public dangkyhocphan()
+        public khoa()
         {
+            this.giangviens = new HashSet<giangvien>();
             this.lops = new HashSet<lop>();
+            this.lopcns = new HashSet<lopcn>();
         }
     
-        public string madkhp { get; set; }
-        public int hocky { get; set; }
-        public string namhoc { get; set; }
-        public Nullable<System.DateTime> thoigianbd { get; set; }
-        public Nullable<System.DateTime> thoigiankt { get; set; }
+        public string makhoa { get; set; }
+        public string tenkhoa { get; set; }
+        public string magv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<giangvien> giangviens { get; set; }
+        public virtual giangvien giangvien { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lop> lops { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<lopcn> lopcns { get; set; }
     }
 }

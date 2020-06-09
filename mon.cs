@@ -7,25 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectDAA1.Models
+namespace ProjectDAA1
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class lopcn
+    public partial class mon
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public lopcn()
+        public mon()
         {
-            this.sinhviens = new HashSet<sinhvien>();
+            this.lops = new HashSet<lop>();
         }
     
-        public string malopcn { get; set; }
-        public string magv { get; set; }
-        public int nienkhoa { get; set; }
+        public string mamon { get; set; }
+        public string tenmon { get; set; }
+        public double hsgk { get; set; }
+        public double hsck { get; set; }
+        public int sotiet { get; set; }
+        public int sotc { get; set; }
     
-        public virtual giangvien giangvien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sinhvien> sinhviens { get; set; }
+        public virtual ICollection<lop> lops { get; set; }
     }
 }
