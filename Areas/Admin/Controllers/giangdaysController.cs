@@ -1,0 +1,137 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using ProjectDAA1;
+
+namespace ProjectDAA1.Areas.Admin.Controllers
+{
+    public class giangdaysController : Controller
+    {
+        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
+
+        // GET: Admin/giangdays
+        public async Task<ActionResult> Index()
+        {
+            var giangdays = db.giangdays.Include(g => g.lop).Include(g => g.sinhvien);
+            return View(await giangdays.ToListAsync());
+        }
+
+        // GET: Admin/giangdays/Details/5
+        public async Task<ActionResult> Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            giangday giangday = await db.giangdays.FindAsync(id);
+            if (giangday == null)
+            {
+                return HttpNotFound();
+            }
+            return View(giangday);
+        }
+
+        // GET: Admin/giangdays/Create
+        public ActionResult Create()
+        {
+            ViewBag.malop = new SelectList(db.lops, "malop", "magv");
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
+            return View();
+        }
+
+        // POST: Admin/giangdays/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "masv,malop,diemgk,diemck,diemtb")] giangday giangday)
+        {
+            if (ModelState.IsValid)
+            {
+                db.giangdays.Add(giangday);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.malop = new SelectList(db.lops, "malop", "magv", giangday.malop);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", giangday.masv);
+            return View(giangday);
+        }
+
+        // GET: Admin/giangdays/Edit/5
+        public async Task<ActionResult> Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            giangday giangday = await db.giangdays.FindAsync(id);
+            if (giangday == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.malop = new SelectList(db.lops, "malop", "magv", giangday.malop);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", giangday.masv);
+            return View(giangday);
+        }
+
+        // POST: Admin/giangdays/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "masv,malop,diemgk,diemck,diemtb")] giangday giangday)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(giangday).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.malop = new SelectList(db.lops, "malop", "magv", giangday.malop);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", giangday.masv);
+            return View(giangday);
+        }
+
+        // GET: Admin/giangdays/Delete/5
+        public async Task<ActionResult> Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            giangday giangday = await db.giangdays.FindAsync(id);
+            if (giangday == null)
+            {
+                return HttpNotFound();
+            }
+            return View(giangday);
+        }
+
+        // POST: Admin/giangdays/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(string id)
+        {
+            giangday giangday = await db.giangdays.FindAsync(id);
+            db.giangdays.Remove(giangday);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

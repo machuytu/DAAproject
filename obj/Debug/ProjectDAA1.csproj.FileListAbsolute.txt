@@ -141,6 +141,13 @@ G:\ASP.net\daa\DAAproject\bin\System.Web.Webpages.Razor.xml
 G:\ASP.net\daa\DAAproject\bin\System.Web.Helpers.xml
 G:\ASP.net\daa\DAAproject\bin\System.Web.Mvc.xml
 G:\ASP.net\daa\DAAproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache
 G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csproj.CoreCompileInputs.cache
 G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csproj.CopyComplete
+G:\ASP.net\daa\DAAproject\bin\Antlr3.Runtime.dll
+G:\ASP.net\daa\DAAproject\bin\Newtonsoft.Json.dll
+G:\ASP.net\daa\DAAproject\bin\System.Web.Optimization.dll
+G:\ASP.net\daa\DAAproject\bin\WebGrease.dll
+G:\ASP.net\daa\DAAproject\bin\Antlr3.Runtime.pdb
+G:\ASP.net\daa\DAAproject\bin\Newtonsoft.Json.xml
+G:\ASP.net\daa\DAAproject\bin\System.Web.Optimization.xml
+G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache

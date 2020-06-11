@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ProjectDAA1.dangkyhocphan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<Br/>
+<Br/>
+<Br/>
+<Br/>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.hocky)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.namhoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thoigianbd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thoigiankt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hocky)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.namhoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thoigianbd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thoigiankt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.madkhp }) |
+            @Html.ActionLink("Details", "Details", new { id=item.madkhp }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.madkhp })
+        </td>
+    </tr>
+}
+
+</table>

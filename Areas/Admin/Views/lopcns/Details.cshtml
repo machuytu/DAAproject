@@ -1,0 +1,43 @@
+﻿@model ProjectDAA1.lopcn
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lopcn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nienkhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nienkhoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giangvien.hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giangvien.hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.khoa.tenkhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.khoa.tenkhoa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.malopcn }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

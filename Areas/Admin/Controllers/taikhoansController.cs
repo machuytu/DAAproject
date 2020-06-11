@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProjectDAA1.Models;
+using ProjectDAA1;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
@@ -18,7 +18,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/taikhoans
         public async Task<ActionResult> Index()
         {
-            return View(await db.taikhoans.ToListAsync());
+            var taikhoans = db.taikhoans.Include(t => t.giangvien).Include(t => t.sinhvien);
+            return View(await taikhoans.ToListAsync());
         }
 
         // GET: Admin/taikhoans/Details/5
@@ -39,6 +40,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/taikhoans/Create
         public ActionResult Create()
         {
+            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten");
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
             return View();
         }
 
@@ -47,7 +50,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "matk,password1,password2,nhom")] taikhoan taikhoan)
+        public async Task<ActionResult> Create([Bind(Include = "matk,password,masv,magv,nhom")] taikhoan taikhoan)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +59,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", taikhoan.magv);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", taikhoan.masv);
             return View(taikhoan);
         }
 
@@ -71,6 +76,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", taikhoan.magv);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", taikhoan.masv);
             return View(taikhoan);
         }
 
@@ -79,7 +86,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "matk,password1,password2,nhom")] taikhoan taikhoan)
+        public async Task<ActionResult> Edit([Bind(Include = "matk,password,masv,magv,nhom")] taikhoan taikhoan)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +94,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", taikhoan.magv);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", taikhoan.masv);
             return View(taikhoan);
         }
 
