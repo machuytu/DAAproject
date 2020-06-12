@@ -1,26 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="MyDatabaseEntities4">
-    <EntitySetMapping Name="bangdiem">
-      <EntityTypeMapping TypeName="MyDatabaseModel.bangdiem">
-        <MappingFragment StoreEntitySet="bangdiem">
-          <ScalarProperty Name="masv" ColumnName="masv" />
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-          <ScalarProperty Name="diemhs1" ColumnName="diemhs1" />
-          <ScalarProperty Name="diemhs2" ColumnName="diemhs2" />
-          <ScalarProperty Name="diemhs3" ColumnName="diemhs3" />
-          <ScalarProperty Name="diemtb" ColumnName="diemtb" />
+  <EntityContainerMapping StorageEntityContainer="MyDatabaseModelStoreContainer" CdmEntityContainer="MyDatabaseEntities9">
+    <EntitySetMapping Name="dangkyhocphans">
+      <EntityTypeMapping TypeName="MyDatabaseModel.dangkyhocphan">
+        <MappingFragment StoreEntitySet="dangkyhocphan">
+          <ScalarProperty Name="madkhp" ColumnName="madkhp" />
           <ScalarProperty Name="hocky" ColumnName="hocky" />
           <ScalarProperty Name="namhoc" ColumnName="namhoc" />
+          <ScalarProperty Name="thoigianbd" ColumnName="thoigianbd" />
+          <ScalarProperty Name="thoigiankt" ColumnName="thoigiankt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="giaovien">
-      <EntityTypeMapping TypeName="MyDatabaseModel.giaovien">
-        <MappingFragment StoreEntitySet="giaovien">
-          <ScalarProperty Name="id" ColumnName="id" />
+    <EntitySetMapping Name="giangdays">
+      <EntityTypeMapping TypeName="MyDatabaseModel.giangday">
+        <MappingFragment StoreEntitySet="giangday">
+          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="diemgk" ColumnName="diemgk" />
+          <ScalarProperty Name="diemck" ColumnName="diemck" />
+          <ScalarProperty Name="diemtb" ColumnName="diemtb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giangviens">
+      <EntityTypeMapping TypeName="MyDatabaseModel.giangvien">
+        <MappingFragment StoreEntitySet="giangvien">
           <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="tengv" ColumnName="tengv" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
           <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
           <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
           <ScalarProperty Name="diachi" ColumnName="diachi" />
@@ -29,418 +36,101 @@
           <ScalarProperty Name="capbac" ColumnName="capbac" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Lop">
-      <EntityTypeMapping TypeName="MyDatabaseModel.Lop">
-        <MappingFragment StoreEntitySet="Lop">
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="siso" ColumnName="siso" />
+    <EntitySetMapping Name="khoas">
+      <EntityTypeMapping TypeName="MyDatabaseModel.khoa">
+        <MappingFragment StoreEntitySet="khoa">
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
           <ScalarProperty Name="magv" ColumnName="magv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="mon">
+    <EntitySetMapping Name="lops">
+      <EntityTypeMapping TypeName="MyDatabaseModel.lop">
+        <MappingFragment StoreEntitySet="lop">
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="mamon" ColumnName="mamon" />
+          <ScalarProperty Name="thu" ColumnName="thu" />
+          <ScalarProperty Name="tietbd" ColumnName="tietbd" />
+          <ScalarProperty Name="tietkt" ColumnName="tietkt" />
+          <ScalarProperty Name="madkhp" ColumnName="madkhp" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lopcns">
+      <EntityTypeMapping TypeName="MyDatabaseModel.lopcn">
+        <MappingFragment StoreEntitySet="lopcn">
+          <ScalarProperty Name="malopcn" ColumnName="malopcn" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mons">
       <EntityTypeMapping TypeName="MyDatabaseModel.mon">
         <MappingFragment StoreEntitySet="mon">
           <ScalarProperty Name="mamon" ColumnName="mamon" />
           <ScalarProperty Name="tenmon" ColumnName="tenmon" />
+          <ScalarProperty Name="hsgk" ColumnName="hsgk" />
+          <ScalarProperty Name="hsck" ColumnName="hsck" />
+          <ScalarProperty Name="sotiet" ColumnName="sotiet" />
+          <ScalarProperty Name="sotc" ColumnName="sotc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="phancong">
-      <EntityTypeMapping TypeName="MyDatabaseModel.phancong">
-        <MappingFragment StoreEntitySet="phancong">
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="hocky" ColumnName="hocky" />
-          <ScalarProperty Name="namhoc" ColumnName="namhoc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sinhvien">
+    <EntitySetMapping Name="sinhviens">
       <EntityTypeMapping TypeName="MyDatabaseModel.sinhvien">
         <MappingFragment StoreEntitySet="sinhvien">
-          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="masv" ColumnName="masv" />
           <ScalarProperty Name="hoten" ColumnName="hoten" />
           <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
           <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="malopcn" ColumnName="malopcn" />
           <ScalarProperty Name="diachi" ColumnName="diachi" />
           <ScalarProperty Name="quequan" ColumnName="quequan" />
           <ScalarProperty Name="sdt" ColumnName="sdt" />
           <ScalarProperty Name="bachoc" ColumnName="bachoc" />
-          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="taikhoan">
+    <EntitySetMapping Name="taikhoans">
       <EntityTypeMapping TypeName="MyDatabaseModel.taikhoan">
         <MappingFragment StoreEntitySet="taikhoan">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="matv" ColumnName="matv" />
-          <ScalarProperty Name="password1" ColumnName="password1" />
-          <ScalarProperty Name="password2" ColumnName="password2" />
+          <ScalarProperty Name="matk" ColumnName="matk" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
           <ScalarProperty Name="nhom" ColumnName="nhom" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="st_changepasswordc1" FunctionName="MyDatabaseModel.Store.st_changepasswordc1" />
-    <FunctionImportMapping FunctionImportName="st_changepasswordc2" FunctionName="MyDatabaseModel.Store.st_changepasswordc2" />
-    <FunctionImportMapping FunctionImportName="st_checkAccountGroup" FunctionName="MyDatabaseModel.Store.st_checkAccountGroup" />
-    <FunctionImportMapping FunctionImportName="st_chonlop" FunctionName="MyDatabaseModel.Store.st_chonlop">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_chonlop_Result">
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="siso" ColumnName="siso" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_chonlopfromphancong" FunctionName="MyDatabaseModel.Store.st_chonlopfromphancong" />
-    <FunctionImportMapping FunctionImportName="st_chonmon" FunctionName="MyDatabaseModel.Store.st_chonmon">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_chonmon_Result">
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_ChonSVfromLop" FunctionName="MyDatabaseModel.Store.st_ChonSVfromLop">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_ChonSVfromLop_Result">
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="masv" ColumnName="masv" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_DeleteAdminBangdiem" FunctionName="MyDatabaseModel.Store.st_DeleteAdminBangdiem" />
-    <FunctionImportMapping FunctionImportName="st_DeleteAdminBomon" FunctionName="MyDatabaseModel.Store.st_DeleteAdminBomon" />
-    <FunctionImportMapping FunctionImportName="st_DeleteAdminLop" FunctionName="MyDatabaseModel.Store.st_DeleteAdminLop" />
-    <FunctionImportMapping FunctionImportName="st_DeleteAdminPhanCong" FunctionName="MyDatabaseModel.Store.st_DeleteAdminPhanCong" />
-    <FunctionImportMapping FunctionImportName="st_DeleteAdminthongtingiaovien" FunctionName="MyDatabaseModel.Store.st_DeleteAdminthongtingiaovien" />
-    <FunctionImportMapping FunctionImportName="st_DeleteAdminthongtinsinhvien" FunctionName="MyDatabaseModel.Store.st_DeleteAdminthongtinsinhvien" />
-    <FunctionImportMapping FunctionImportName="st_DeleteTaiKhoan" FunctionName="MyDatabaseModel.Store.st_DeleteTaiKhoan" />
-    <FunctionImportMapping FunctionImportName="st_forgotpassword" FunctionName="MyDatabaseModel.Store.st_forgotpassword" />
-    <FunctionImportMapping FunctionImportName="st_getaccountinfo" FunctionName="MyDatabaseModel.Store.st_getaccountinfo">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_getaccountinfo_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="matv" ColumnName="matv" />
-          <ScalarProperty Name="password1" ColumnName="password1" />
-          <ScalarProperty Name="password2" ColumnName="password2" />
-          <ScalarProperty Name="nhom" ColumnName="nhom" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_getgiaovienid" FunctionName="MyDatabaseModel.Store.st_getgiaovienid" />
-    <FunctionImportMapping FunctionImportName="st_getgiaovieninfo" FunctionName="MyDatabaseModel.Store.st_getgiaovieninfo">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_getgiaovieninfo_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="tengv" ColumnName="tengv" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="capbac" ColumnName="capbac" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_getpointofstudent" FunctionName="MyDatabaseModel.Store.st_getpointofstudent">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_getpointofstudent_Result">
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-          <ScalarProperty Name="diemhs1" ColumnName="diemhs1" />
-          <ScalarProperty Name="diemhs2" ColumnName="diemhs2" />
-          <ScalarProperty Name="diemhs3" ColumnName="diemhs3" />
-          <ScalarProperty Name="diemtb" ColumnName="diemtb" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_getsinhvienid" FunctionName="MyDatabaseModel.Store.st_getsinhvienid" />
-    <FunctionImportMapping FunctionImportName="st_getsinhvieninfo" FunctionName="MyDatabaseModel.Store.st_getsinhvieninfo">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_getsinhvieninfo_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="masv" ColumnName="masv" />
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="bachoc" ColumnName="bachoc" />
-          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_InsertAdminBangdiem" FunctionName="MyDatabaseModel.Store.st_InsertAdminBangdiem" />
-    <FunctionImportMapping FunctionImportName="st_InsertAdminBomon" FunctionName="MyDatabaseModel.Store.st_InsertAdminBomon" />
-    <FunctionImportMapping FunctionImportName="st_InsertAdminLop" FunctionName="MyDatabaseModel.Store.st_InsertAdminLop" />
-    <FunctionImportMapping FunctionImportName="st_InsertAdminPhanCong" FunctionName="MyDatabaseModel.Store.st_InsertAdminPhanCong" />
-    <FunctionImportMapping FunctionImportName="st_InsertAdminthongtingiaovien" FunctionName="MyDatabaseModel.Store.st_InsertAdminthongtingiaovien" />
-    <FunctionImportMapping FunctionImportName="st_InsertAdminthongtinsinhvien" FunctionName="MyDatabaseModel.Store.st_InsertAdminthongtinsinhvien" />
-    <FunctionImportMapping FunctionImportName="st_InsertTaiKhoan" FunctionName="MyDatabaseModel.Store.st_InsertTaiKhoan" />
-    <FunctionImportMapping FunctionImportName="st_LayBangDiemAdmin" FunctionName="MyDatabaseModel.Store.st_LayBangDiemAdmin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayBangDiemAdmin_Result">
-          <ScalarProperty Name="Họ_và_tên" ColumnName="Họ và tên" />
-          <ScalarProperty Name="Mã_Sinh_Viên" ColumnName="Mã Sinh Viên" />
-          <ScalarProperty Name="Mã_Môn" ColumnName="Mã Môn" />
-          <ScalarProperty Name="Điểm_hệ_số_1" ColumnName="Điểm hệ số 1" />
-          <ScalarProperty Name="Điểm_hệ_số_2" ColumnName="Điểm hệ số 2" />
-          <ScalarProperty Name="Điểm_hệ_số_3" ColumnName="Điểm hệ số 3" />
-          <ScalarProperty Name="Điểm_Trung_Bình" ColumnName="Điểm Trung Bình" />
-          <ScalarProperty Name="Học_kỳ" ColumnName="Học kỳ" />
-          <ScalarProperty Name="Năm_học" ColumnName="Năm học" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayBangDiemfromLop" FunctionName="MyDatabaseModel.Store.st_LayBangDiemfromLop">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayBangDiemfromLop_Result">
-          <ScalarProperty Name="Họ_và_tên" ColumnName="Họ và tên" />
-          <ScalarProperty Name="Mã_Sinh_Viên" ColumnName="Mã Sinh Viên" />
-          <ScalarProperty Name="Mã_Môn" ColumnName="Mã Môn" />
-          <ScalarProperty Name="Tên_Môn" ColumnName="Tên Môn" />
-          <ScalarProperty Name="Điểm_hệ_số_1" ColumnName="Điểm hệ số 1" />
-          <ScalarProperty Name="Điểm_hệ_số_2" ColumnName="Điểm hệ số 2" />
-          <ScalarProperty Name="Điểm_hệ_số_3" ColumnName="Điểm hệ số 3" />
-          <ScalarProperty Name="Điểm_Trung_Bình" ColumnName="Điểm Trung Bình" />
-          <ScalarProperty Name="Học_kỳ" ColumnName="Học kỳ" />
-          <ScalarProperty Name="Năm_học" ColumnName="Năm học" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayBangTaiKhoan" FunctionName="MyDatabaseModel.Store.st_LayBangTaiKhoan">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayBangTaiKhoan_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="matv" ColumnName="matv" />
-          <ScalarProperty Name="password1" ColumnName="password1" />
-          <ScalarProperty Name="password2" ColumnName="password2" />
-          <ScalarProperty Name="nhom" ColumnName="nhom" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayBoMonAdmin" FunctionName="MyDatabaseModel.Store.st_LayBoMonAdmin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayBoMonAdmin_Result">
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayBoMonfromPhancong" FunctionName="MyDatabaseModel.Store.st_LayBoMonfromPhancong">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayBoMonfromPhancong_Result">
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayDiemforSinhvien" FunctionName="MyDatabaseModel.Store.st_LayDiemforSinhvien">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayDiemforSinhvien_Result">
-          <ScalarProperty Name="Tên_Môn" ColumnName="Tên Môn" />
-          <ScalarProperty Name="Điểm_hệ_số_1" ColumnName="Điểm hệ số 1" />
-          <ScalarProperty Name="Điểm_hệ_số_2" ColumnName="Điểm hệ số 2" />
-          <ScalarProperty Name="Điểm_hệ_số_3" ColumnName="Điểm hệ số 3" />
-          <ScalarProperty Name="Điểm_Trung_Bình" ColumnName="Điểm Trung Bình" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayGiaoVienforSinhvien" FunctionName="MyDatabaseModel.Store.st_LayGiaoVienforSinhvien">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayGiaoVienforSinhvien_Result">
-          <ScalarProperty Name="Tên_Giáo_Viên" ColumnName="Tên Giáo Viên" />
-          <ScalarProperty Name="Bộ_Môn" ColumnName="Bộ Môn" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayHocKyfromPhancong" FunctionName="MyDatabaseModel.Store.st_LayHocKyfromPhancong" />
-    <FunctionImportMapping FunctionImportName="st_LayLopAdmin" FunctionName="MyDatabaseModel.Store.st_LayLopAdmin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayLopAdmin_Result">
-          <ScalarProperty Name="Mã_lớp" ColumnName="Mã lớp" />
-          <ScalarProperty Name="Sỉ_Số" ColumnName="Sỉ Số" />
-          <ScalarProperty Name="Mã_Giáo_Viên" ColumnName="Mã Giáo Viên" />
-          <ScalarProperty Name="Tên_Giáo_Viên" ColumnName="Tên Giáo Viên" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayLopforBangDiem" FunctionName="MyDatabaseModel.Store.st_LayLopforBangDiem">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayLopforBangDiem_Result">
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="siso" ColumnName="siso" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayPhanCongAdmin" FunctionName="MyDatabaseModel.Store.st_LayPhanCongAdmin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayPhanCongAdmin_Result">
-          <ScalarProperty Name="Mã_Môn" ColumnName="Mã Môn" />
-          <ScalarProperty Name="Tên_Môn" ColumnName="Tên Môn" />
-          <ScalarProperty Name="Mã_Giáo_Viên" ColumnName="Mã Giáo Viên" />
-          <ScalarProperty Name="Tên_Giáo_Viên" ColumnName="Tên Giáo Viên" />
-          <ScalarProperty Name="Mã_Lớp" ColumnName="Mã Lớp" />
-          <ScalarProperty Name="Học_Kỳ" ColumnName="Học Kỳ" />
-          <ScalarProperty Name="Năm_Học" ColumnName="Năm Học" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_laythongtinbandiem" FunctionName="MyDatabaseModel.Store.st_laythongtinbandiem">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_laythongtinbandiem_Result">
-          <ScalarProperty Name="Mã_Sinh_Viên" ColumnName="Mã Sinh Viên" />
-          <ScalarProperty Name="Họ_tên" ColumnName="Họ tên" />
-          <ScalarProperty Name="Điểm_hệ_số_1" ColumnName="Điểm hệ số 1" />
-          <ScalarProperty Name="Điểm_hệ_số_2" ColumnName="Điểm hệ số 2" />
-          <ScalarProperty Name="Điểm_hệ_số_3" ColumnName="Điểm hệ số 3" />
-          <ScalarProperty Name="Điểm_trung_bình" ColumnName="Điểm trung bình" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LayThongTinGiaoVienAdmin" FunctionName="MyDatabaseModel.Store.st_LayThongTinGiaoVienAdmin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LayThongTinGiaoVienAdmin_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="tengv" ColumnName="tengv" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="capbac" ColumnName="capbac" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_LaythongtinsinhvienAdmin" FunctionName="MyDatabaseModel.Store.st_LaythongtinsinhvienAdmin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_LaythongtinsinhvienAdmin_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="masv" ColumnName="masv" />
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="bachoc" ColumnName="bachoc" />
-          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_login" FunctionName="MyDatabaseModel.Store.st_login" />
-    <FunctionImportMapping FunctionImportName="st_rpt_bangdiem" FunctionName="MyDatabaseModel.Store.st_rpt_bangdiem">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_rpt_bangdiem_Result">
-          <ScalarProperty Name="masv" ColumnName="masv" />
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-          <ScalarProperty Name="diemhs1" ColumnName="diemhs1" />
-          <ScalarProperty Name="diemhs2" ColumnName="diemhs2" />
-          <ScalarProperty Name="diemhs3" ColumnName="diemhs3" />
-          <ScalarProperty Name="diemtb" ColumnName="diemtb" />
-          <ScalarProperty Name="hocky" ColumnName="hocky" />
-          <ScalarProperty Name="namhoc" ColumnName="namhoc" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_rpt_giaovien" FunctionName="MyDatabaseModel.Store.st_rpt_giaovien">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_rpt_giaovien_Result">
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="tengv" ColumnName="tengv" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="gioitinh1" ColumnName="gioitinh1" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="capbac" ColumnName="capbac" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_rpt_lop" FunctionName="MyDatabaseModel.Store.st_rpt_lop">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_rpt_lop_Result">
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="siso" ColumnName="siso" />
-          <ScalarProperty Name="tengv" ColumnName="tengv" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_rpt_mon" FunctionName="MyDatabaseModel.Store.st_rpt_mon">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_rpt_mon_Result">
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_rpt_phancong" FunctionName="MyDatabaseModel.Store.st_rpt_phancong">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_rpt_phancong_Result">
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-          <ScalarProperty Name="tengv" ColumnName="tengv" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="hocky" ColumnName="hocky" />
-          <ScalarProperty Name="namhoc" ColumnName="namhoc" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_rpt_sinhvien" FunctionName="MyDatabaseModel.Store.st_rpt_sinhvien">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_rpt_sinhvien_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="masv" ColumnName="masv" />
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="bachoc" ColumnName="bachoc" />
-          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_rpt_taikhoan" FunctionName="MyDatabaseModel.Store.st_rpt_taikhoan">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MyDatabaseModel.st_rpt_taikhoan_Result">
-          <ScalarProperty Name="matv" ColumnName="matv" />
-          <ScalarProperty Name="password1" ColumnName="password1" />
-          <ScalarProperty Name="password2" ColumnName="password2" />
-          <ScalarProperty Name="nhom" ColumnName="nhom" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="st_UpdateAdminBangdiem" FunctionName="MyDatabaseModel.Store.st_UpdateAdminBangdiem" />
-    <FunctionImportMapping FunctionImportName="st_UpdateAdminBomon" FunctionName="MyDatabaseModel.Store.st_UpdateAdminBomon" />
-    <FunctionImportMapping FunctionImportName="st_UpdateAdminLop" FunctionName="MyDatabaseModel.Store.st_UpdateAdminLop" />
-    <FunctionImportMapping FunctionImportName="st_UpdateAdminPhanCong" FunctionName="MyDatabaseModel.Store.st_UpdateAdminPhanCong" />
-    <FunctionImportMapping FunctionImportName="st_UpdateAdminthongtingiaovien" FunctionName="MyDatabaseModel.Store.st_UpdateAdminthongtingiaovien" />
-    <FunctionImportMapping FunctionImportName="st_UpdateAdminthongtinsinhvien" FunctionName="MyDatabaseModel.Store.st_UpdateAdminthongtinsinhvien" />
-    <FunctionImportMapping FunctionImportName="st_UpdateTaiKhoan" FunctionName="MyDatabaseModel.Store.st_UpdateTaiKhoan" />
-    <FunctionImportMapping FunctionImportName="tk" FunctionName="MyDatabaseModel.Store.tk" />
+    <FunctionImportMapping FunctionImportName="AddDKHP" FunctionName="MyDatabaseModel.Store.AddDKHP" />
+    <FunctionImportMapping FunctionImportName="AddGiangDay" FunctionName="MyDatabaseModel.Store.AddGiangDay" />
+    <FunctionImportMapping FunctionImportName="AddLop" FunctionName="MyDatabaseModel.Store.AddLop" />
+    <FunctionImportMapping FunctionImportName="AddMon" FunctionName="MyDatabaseModel.Store.AddMon" />
+    <FunctionImportMapping FunctionImportName="AddSV" FunctionName="MyDatabaseModel.Store.AddSV" />
+    <FunctionImportMapping FunctionImportName="AddTK" FunctionName="MyDatabaseModel.Store.AddTK" />
+    <FunctionImportMapping FunctionImportName="ChangeLopCNSV" FunctionName="MyDatabaseModel.Store.ChangeLopCNSV" />
+    <FunctionImportMapping FunctionImportName="ChangePassword" FunctionName="MyDatabaseModel.Store.ChangePassword" />
+    <FunctionImportMapping FunctionImportName="DeleteDKHP" FunctionName="MyDatabaseModel.Store.DeleteDKHP" />
+    <FunctionImportMapping FunctionImportName="DeleteGiangDay" FunctionName="MyDatabaseModel.Store.DeleteGiangDay" />
+    <FunctionImportMapping FunctionImportName="DeleteGV" FunctionName="MyDatabaseModel.Store.DeleteGV" />
+    <FunctionImportMapping FunctionImportName="DeleteLop" FunctionName="MyDatabaseModel.Store.DeleteLop" />
+    <FunctionImportMapping FunctionImportName="DeleteLopCN" FunctionName="MyDatabaseModel.Store.DeleteLopCN" />
+    <FunctionImportMapping FunctionImportName="DeleteMon" FunctionName="MyDatabaseModel.Store.DeleteMon" />
+    <FunctionImportMapping FunctionImportName="UpdateDiemCK" FunctionName="MyDatabaseModel.Store.UpdateDiemCK" />
+    <FunctionImportMapping FunctionImportName="UpdateDiemGK" FunctionName="MyDatabaseModel.Store.UpdateDiemGK" />
+    <FunctionImportMapping FunctionImportName="UpdateDKHP" FunctionName="MyDatabaseModel.Store.UpdateDKHP" />
+    <FunctionImportMapping FunctionImportName="UpdateLopCN" FunctionName="MyDatabaseModel.Store.UpdateLopCN" />
+    <FunctionImportMapping FunctionImportName="UpdateMon" FunctionName="MyDatabaseModel.Store.UpdateMon" />
+    <FunctionImportMapping FunctionImportName="UpdateThongTinGV" FunctionName="MyDatabaseModel.Store.UpdateThongTinGV" />
+    <FunctionImportMapping FunctionImportName="UpdateThongTinSV" FunctionName="MyDatabaseModel.Store.UpdateThongTinSV" />
   </EntityContainerMapping>
 </Mapping>

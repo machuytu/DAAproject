@@ -1,667 +1,474 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MyDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="bangdiem">
+  <EntityType Name="dangkyhocphan">
+    <Key>
+      <PropertyRef Name="madkhp" />
+    </Key>
+    <Property Name="madkhp" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hocky" Type="Int32" Nullable="false" />
+    <Property Name="namhoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="thoigianbd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="thoigiankt" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="lops" Relationship="Self.FK__lop__madkhp__38996AB5" FromRole="dangkyhocphan" ToRole="lop" />
+  </EntityType>
+  <EntityType Name="giangday">
     <Key>
       <PropertyRef Name="masv" />
-      <PropertyRef Name="mamon" />
+      <PropertyRef Name="malop" />
     </Key>
-    <Property Name="masv" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="mamon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="diemhs1" Type="Int32" />
-    <Property Name="diemhs2" Type="Int32" />
-    <Property Name="diemhs3" Type="Int32" />
+    <Property Name="masv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="malop" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="diemgk" Type="Double" />
+    <Property Name="diemck" Type="Double" />
     <Property Name="diemtb" Type="Double" />
-    <Property Name="hocky" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="namhoc" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="mon" Relationship="Self.FK__bangdiem__mamon__05D8E0BE" FromRole="bangdiem" ToRole="mon" />
-    <NavigationProperty Name="sinhvien" Relationship="Self.FK__bangdiem__masv__04E4BC85" FromRole="bangdiem" ToRole="sinhvien" />
+    <NavigationProperty Name="lop" Relationship="Self.FK__giangday__malop__3F466844" FromRole="giangday" ToRole="lop" />
+    <NavigationProperty Name="sinhvien" Relationship="Self.FK__giangday__masv__3E52440B" FromRole="giangday" ToRole="sinhvien" />
   </EntityType>
-  <EntityType Name="giaovien">
+  <EntityType Name="giangvien">
     <Key>
       <PropertyRef Name="magv" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="magv" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="tengv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="gioitinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysinh" Type="DateTime" Precision="0" />
-    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="quequan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="sdt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="capbac" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="ngayvaolam" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Lop" Relationship="Self.FK__Lop__magv__59C55456" FromRole="giaovien" ToRole="Lop" />
-    <NavigationProperty Name="phancong" Relationship="Self.FK__phancong__magv__7E37BEF6" FromRole="giaovien" ToRole="phancong" />
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="quequan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="capbac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ngayvaolam" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="makhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="khoa" Relationship="Self.FK__giangvien__makho__267ABA7A" FromRole="giangvien" ToRole="khoa" />
+    <NavigationProperty Name="khoas" Relationship="Self.FK__khoa__magv__403A8C7D" FromRole="giangvien" ToRole="khoa" />
+    <NavigationProperty Name="lops" Relationship="Self.FK__lop__magv__3B75D760" FromRole="giangvien" ToRole="lop" />
+    <NavigationProperty Name="lopcns" Relationship="Self.FK__lopcn__magv__2C3393D0" FromRole="giangvien" ToRole="lopcn" />
+    <NavigationProperty Name="taikhoans" Relationship="Self.FK__taikhoan__magv__33D4B598" FromRole="giangvien" ToRole="taikhoan" />
   </EntityType>
-  <EntityType Name="Lop">
+  <EntityType Name="khoa">
+    <Key>
+      <PropertyRef Name="makhoa" />
+    </Key>
+    <Property Name="makhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tenkhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="giangviens" Relationship="Self.FK__giangvien__makho__267ABA7A" FromRole="khoa" ToRole="giangvien" />
+    <NavigationProperty Name="giangvien" Relationship="Self.FK__khoa__magv__403A8C7D" FromRole="khoa" ToRole="giangvien" />
+    <NavigationProperty Name="lops" Relationship="Self.FK__lop__makhoa__398D8EEE" FromRole="khoa" ToRole="lop" />
+    <NavigationProperty Name="lopcns" Relationship="Self.FK__lopcn__makhoa__2D27B809" FromRole="khoa" ToRole="lopcn" />
+  </EntityType>
+  <EntityType Name="lop">
     <Key>
       <PropertyRef Name="malop" />
     </Key>
-    <Property Name="malop" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="siso" Type="Int32" />
-    <Property Name="magv" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="giaovien" Relationship="Self.FK__Lop__magv__59C55456" FromRole="Lop" ToRole="giaovien" />
-    <NavigationProperty Name="sinhvien" Relationship="Self.FK__sinhvien__malop__339FAB6E" FromRole="Lop" ToRole="sinhvien" />
-    <NavigationProperty Name="Lop1" Relationship="Self.FK_Lop_Lop" FromRole="Lop" ToRole="Lop1" />
-    <NavigationProperty Name="Lop2" Relationship="Self.FK_Lop_Lop" FromRole="Lop1" ToRole="Lop" />
+    <Property Name="malop" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="mamon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="thu" Type="Int32" Nullable="false" />
+    <Property Name="tietbd" Type="Int32" Nullable="false" />
+    <Property Name="tietkt" Type="Int32" Nullable="false" />
+    <Property Name="madkhp" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="makhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="dangkyhocphan" Relationship="Self.FK__lop__madkhp__38996AB5" FromRole="lop" ToRole="dangkyhocphan" />
+    <NavigationProperty Name="giangdays" Relationship="Self.FK__giangday__malop__3F466844" FromRole="lop" ToRole="giangday" />
+    <NavigationProperty Name="giangvien" Relationship="Self.FK__lop__magv__3B75D760" FromRole="lop" ToRole="giangvien" />
+    <NavigationProperty Name="khoa" Relationship="Self.FK__lop__makhoa__398D8EEE" FromRole="lop" ToRole="khoa" />
+    <NavigationProperty Name="mon" Relationship="Self.FK__lop__mamon__3A81B327" FromRole="lop" ToRole="mon" />
+  </EntityType>
+  <EntityType Name="lopcn">
+    <Key>
+      <PropertyRef Name="malopcn" />
+    </Key>
+    <Property Name="malopcn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="makhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nienkhoa" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="giangvien" Relationship="Self.FK__lopcn__magv__2C3393D0" FromRole="lopcn" ToRole="giangvien" />
+    <NavigationProperty Name="khoa" Relationship="Self.FK__lopcn__makhoa__2D27B809" FromRole="lopcn" ToRole="khoa" />
+    <NavigationProperty Name="sinhviens" Relationship="Self.FK__sinhvien__malopc__300424B4" FromRole="lopcn" ToRole="sinhvien" />
   </EntityType>
   <EntityType Name="mon">
     <Key>
       <PropertyRef Name="mamon" />
     </Key>
-    <Property Name="mamon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="tenmon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="bangdiem" Relationship="Self.FK__bangdiem__mamon__05D8E0BE" FromRole="mon" ToRole="bangdiem" />
-    <NavigationProperty Name="phancong" Relationship="Self.FK__phancong__mamon__7D439ABD" FromRole="mon" ToRole="phancong" />
-  </EntityType>
-  <EntityType Name="phancong">
-    <Key>
-      <PropertyRef Name="mamon" />
-      <PropertyRef Name="malop" />
-    </Key>
-    <Property Name="mamon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="magv" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="malop" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="hocky" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="namhoc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="giaovien" Relationship="Self.FK__phancong__magv__7E37BEF6" FromRole="phancong" ToRole="giaovien" />
-    <NavigationProperty Name="mon" Relationship="Self.FK__phancong__mamon__7D439ABD" FromRole="phancong" ToRole="mon" />
+    <Property Name="mamon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tenmon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hsgk" Type="Double" Nullable="false" />
+    <Property Name="hsck" Type="Double" Nullable="false" />
+    <Property Name="sotiet" Type="Int32" Nullable="false" />
+    <Property Name="sotc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="lops" Relationship="Self.FK__lop__mamon__3A81B327" FromRole="mon" ToRole="lop" />
   </EntityType>
   <EntityType Name="sinhvien">
     <Key>
       <PropertyRef Name="masv" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="masv" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="gioitinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysinh" Type="DateTime" Precision="0" />
-    <Property Name="malop" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="quequan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="sdt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="masv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gioitinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="malopcn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="quequan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="bachoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="nienkhoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="bangdiem" Relationship="Self.FK__bangdiem__masv__04E4BC85" FromRole="sinhvien" ToRole="bangdiem" />
-    <NavigationProperty Name="Lop" Relationship="Self.FK__sinhvien__malop__339FAB6E" FromRole="sinhvien" ToRole="Lop" />
+    <NavigationProperty Name="giangdays" Relationship="Self.FK__giangday__masv__3E52440B" FromRole="sinhvien" ToRole="giangday" />
+    <NavigationProperty Name="lopcn" Relationship="Self.FK__sinhvien__malopc__300424B4" FromRole="sinhvien" ToRole="lopcn" />
+    <NavigationProperty Name="taikhoans" Relationship="Self.FK__taikhoan__masv__32E0915F" FromRole="sinhvien" ToRole="taikhoan" />
   </EntityType>
   <EntityType Name="taikhoan">
     <Key>
-      <PropertyRef Name="matv" />
+      <PropertyRef Name="matk" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="matv" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="password1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="nhom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="matk" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="masv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nhom" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="giangvien" Relationship="Self.FK__taikhoan__magv__33D4B598" FromRole="taikhoan" ToRole="giangvien" />
+    <NavigationProperty Name="sinhvien" Relationship="Self.FK__taikhoan__masv__32E0915F" FromRole="taikhoan" ToRole="sinhvien" />
   </EntityType>
-  <Association Name="FK__bangdiem__mamon__05D8E0BE">
-    <End Role="mon" Type="Self.mon" Multiplicity="1" />
-    <End Role="bangdiem" Type="Self.bangdiem" Multiplicity="*" />
+  <Association Name="FK__lop__madkhp__38996AB5">
+    <End Role="dangkyhocphan" Type="Self.dangkyhocphan" Multiplicity="1" />
+    <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="mon">
-        <PropertyRef Name="mamon" />
+      <Principal Role="dangkyhocphan">
+        <PropertyRef Name="madkhp" />
       </Principal>
-      <Dependent Role="bangdiem">
-        <PropertyRef Name="mamon" />
+      <Dependent Role="lop">
+        <PropertyRef Name="madkhp" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__bangdiem__masv__04E4BC85">
+  <Association Name="FK__giangday__malop__3F466844">
+    <End Role="lop" Type="Self.lop" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="giangday" Type="Self.giangday" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="giangday">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giangday__masv__3E52440B">
     <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="1" />
-    <End Role="bangdiem" Type="Self.bangdiem" Multiplicity="*" />
+    <End Role="giangday" Type="Self.giangday" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sinhvien">
         <PropertyRef Name="masv" />
       </Principal>
-      <Dependent Role="bangdiem">
+      <Dependent Role="giangday">
         <PropertyRef Name="masv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Lop__magv__59C55456">
-    <End Role="giaovien" Type="Self.giaovien" Multiplicity="0..1" />
-    <End Role="Lop" Type="Self.Lop" Multiplicity="*" />
+  <Association Name="FK__giangvien__makho__267ABA7A">
+    <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="giaovien">
+      <Principal Role="khoa">
+        <PropertyRef Name="makhoa" />
+      </Principal>
+      <Dependent Role="giangvien">
+        <PropertyRef Name="makhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__khoa__magv__403A8C7D">
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
+    <End Role="khoa" Type="Self.khoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giangvien">
         <PropertyRef Name="magv" />
       </Principal>
-      <Dependent Role="Lop">
+      <Dependent Role="khoa">
         <PropertyRef Name="magv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__phancong__magv__7E37BEF6">
-    <End Role="giaovien" Type="Self.giaovien" Multiplicity="1" />
-    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+  <Association Name="FK__lop__magv__3B75D760">
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
+    <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="giaovien">
+      <Principal Role="giangvien">
         <PropertyRef Name="magv" />
       </Principal>
-      <Dependent Role="phancong">
+      <Dependent Role="lop">
         <PropertyRef Name="magv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__sinhvien__malop__339FAB6E">
-    <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
-    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="*" />
+  <Association Name="FK__lopcn__magv__2C3393D0">
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
+    <End Role="lopcn" Type="Self.lopcn" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Lop">
-        <PropertyRef Name="malop" />
+      <Principal Role="giangvien">
+        <PropertyRef Name="magv" />
       </Principal>
-      <Dependent Role="sinhvien">
-        <PropertyRef Name="malop" />
+      <Dependent Role="lopcn">
+        <PropertyRef Name="magv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Lop_Lop">
-    <End Role="Lop" Type="Self.Lop" Multiplicity="1" />
-    <End Role="Lop1" Type="Self.Lop" Multiplicity="0..1" />
+  <Association Name="FK__taikhoan__magv__33D4B598">
+    <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="taikhoan" Type="Self.taikhoan" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Lop">
-        <PropertyRef Name="malop" />
+      <Principal Role="giangvien">
+        <PropertyRef Name="magv" />
       </Principal>
-      <Dependent Role="Lop1">
-        <PropertyRef Name="malop" />
+      <Dependent Role="taikhoan">
+        <PropertyRef Name="magv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__phancong__mamon__7D439ABD">
-    <End Role="mon" Type="Self.mon" Multiplicity="1" />
-    <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+  <Association Name="FK__lop__makhoa__398D8EEE">
+    <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
+    <End Role="lop" Type="Self.lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khoa">
+        <PropertyRef Name="makhoa" />
+      </Principal>
+      <Dependent Role="lop">
+        <PropertyRef Name="makhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lopcn__makhoa__2D27B809">
+    <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
+    <End Role="lopcn" Type="Self.lopcn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khoa">
+        <PropertyRef Name="makhoa" />
+      </Principal>
+      <Dependent Role="lopcn">
+        <PropertyRef Name="makhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lop__mamon__3A81B327">
+    <End Role="mon" Type="Self.mon" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="mon">
         <PropertyRef Name="mamon" />
       </Principal>
-      <Dependent Role="phancong">
+      <Dependent Role="lop">
         <PropertyRef Name="mamon" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MyDatabaseEntities4" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="bangdiem" EntityType="Self.bangdiem" />
-    <EntitySet Name="giaovien" EntityType="Self.giaovien" />
-    <EntitySet Name="Lop" EntityType="Self.Lop" />
-    <EntitySet Name="mon" EntityType="Self.mon" />
-    <EntitySet Name="phancong" EntityType="Self.phancong" />
-    <EntitySet Name="sinhvien" EntityType="Self.sinhvien" />
-    <EntitySet Name="taikhoan" EntityType="Self.taikhoan" />
-    <AssociationSet Name="FK__bangdiem__mamon__05D8E0BE" Association="Self.FK__bangdiem__mamon__05D8E0BE">
-      <End Role="mon" EntitySet="mon" />
-      <End Role="bangdiem" EntitySet="bangdiem" />
+  <Association Name="FK__sinhvien__malopc__300424B4">
+    <End Role="lopcn" Type="Self.lopcn" Multiplicity="0..1" />
+    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lopcn">
+        <PropertyRef Name="malopcn" />
+      </Principal>
+      <Dependent Role="sinhvien">
+        <PropertyRef Name="malopcn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__taikhoan__masv__32E0915F">
+    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="taikhoan" Type="Self.taikhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sinhvien">
+        <PropertyRef Name="masv" />
+      </Principal>
+      <Dependent Role="taikhoan">
+        <PropertyRef Name="masv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyDatabaseEntities9" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dangkyhocphans" EntityType="Self.dangkyhocphan" />
+    <EntitySet Name="giangdays" EntityType="Self.giangday" />
+    <EntitySet Name="giangviens" EntityType="Self.giangvien" />
+    <EntitySet Name="khoas" EntityType="Self.khoa" />
+    <EntitySet Name="lops" EntityType="Self.lop" />
+    <EntitySet Name="lopcns" EntityType="Self.lopcn" />
+    <EntitySet Name="mons" EntityType="Self.mon" />
+    <EntitySet Name="sinhviens" EntityType="Self.sinhvien" />
+    <EntitySet Name="taikhoans" EntityType="Self.taikhoan" />
+    <AssociationSet Name="FK__lop__madkhp__38996AB5" Association="Self.FK__lop__madkhp__38996AB5">
+      <End Role="dangkyhocphan" EntitySet="dangkyhocphans" />
+      <End Role="lop" EntitySet="lops" />
     </AssociationSet>
-    <AssociationSet Name="FK__bangdiem__masv__04E4BC85" Association="Self.FK__bangdiem__masv__04E4BC85">
-      <End Role="sinhvien" EntitySet="sinhvien" />
-      <End Role="bangdiem" EntitySet="bangdiem" />
+    <AssociationSet Name="FK__giangday__malop__3F466844" Association="Self.FK__giangday__malop__3F466844">
+      <End Role="lop" EntitySet="lops" />
+      <End Role="giangday" EntitySet="giangdays" />
     </AssociationSet>
-    <AssociationSet Name="FK__Lop__magv__59C55456" Association="Self.FK__Lop__magv__59C55456">
-      <End Role="giaovien" EntitySet="giaovien" />
-      <End Role="Lop" EntitySet="Lop" />
+    <AssociationSet Name="FK__giangday__masv__3E52440B" Association="Self.FK__giangday__masv__3E52440B">
+      <End Role="sinhvien" EntitySet="sinhviens" />
+      <End Role="giangday" EntitySet="giangdays" />
     </AssociationSet>
-    <AssociationSet Name="FK__phancong__magv__7E37BEF6" Association="Self.FK__phancong__magv__7E37BEF6">
-      <End Role="giaovien" EntitySet="giaovien" />
-      <End Role="phancong" EntitySet="phancong" />
+    <AssociationSet Name="FK__giangvien__makho__267ABA7A" Association="Self.FK__giangvien__makho__267ABA7A">
+      <End Role="khoa" EntitySet="khoas" />
+      <End Role="giangvien" EntitySet="giangviens" />
     </AssociationSet>
-    <AssociationSet Name="FK__sinhvien__malop__339FAB6E" Association="Self.FK__sinhvien__malop__339FAB6E">
-      <End Role="Lop" EntitySet="Lop" />
-      <End Role="sinhvien" EntitySet="sinhvien" />
+    <AssociationSet Name="FK__khoa__magv__403A8C7D" Association="Self.FK__khoa__magv__403A8C7D">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="khoa" EntitySet="khoas" />
     </AssociationSet>
-    <AssociationSet Name="FK_Lop_Lop" Association="Self.FK_Lop_Lop">
-      <End Role="Lop" EntitySet="Lop" />
-      <End Role="Lop1" EntitySet="Lop" />
+    <AssociationSet Name="FK__lop__magv__3B75D760" Association="Self.FK__lop__magv__3B75D760">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="lop" EntitySet="lops" />
     </AssociationSet>
-    <AssociationSet Name="FK__phancong__mamon__7D439ABD" Association="Self.FK__phancong__mamon__7D439ABD">
-      <End Role="mon" EntitySet="mon" />
-      <End Role="phancong" EntitySet="phancong" />
+    <AssociationSet Name="FK__lopcn__magv__2C3393D0" Association="Self.FK__lopcn__magv__2C3393D0">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="lopcn" EntitySet="lopcns" />
     </AssociationSet>
-    <FunctionImport Name="st_changepasswordc1">
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="passcu" Mode="In" Type="String" />
-      <Parameter Name="passmoi" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_changepasswordc2">
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="passc2cu" Mode="In" Type="String" />
-      <Parameter Name="passc2moi" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_checkAccountGroup">
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="passuser" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_chonlop" ReturnType="Collection(MyDatabaseModel.st_chonlop_Result)" />
-    <FunctionImport Name="st_chonlopfromphancong" ReturnType="Collection(String)">
-      <Parameter Name="magv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_chonmon" ReturnType="Collection(MyDatabaseModel.st_chonmon_Result)">
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_ChonSVfromLop" ReturnType="Collection(MyDatabaseModel.st_ChonSVfromLop_Result)">
-      <Parameter Name="malop" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_DeleteAdminBangdiem">
-      <Parameter Name="masv" Mode="In" Type="String" />
-      <Parameter Name="mamon" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_DeleteAdminBomon">
-      <Parameter Name="mamon" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_DeleteAdminLop">
-      <Parameter Name="malop" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_DeleteAdminPhanCong">
-      <Parameter Name="mamon" Mode="In" Type="String" />
-      <Parameter Name="magv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_DeleteAdminthongtingiaovien">
-      <Parameter Name="magv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_DeleteAdminthongtinsinhvien">
-      <Parameter Name="masv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_DeleteTaiKhoan">
-      <Parameter Name="matv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_forgotpassword">
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="passc2" Mode="In" Type="String" />
-      <Parameter Name="passmoi" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_getaccountinfo" ReturnType="Collection(MyDatabaseModel.st_getaccountinfo_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="st_getgiaovienid">
-      <Parameter Name="username" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_getgiaovieninfo" ReturnType="Collection(MyDatabaseModel.st_getgiaovieninfo_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="st_getpointofstudent" ReturnType="Collection(MyDatabaseModel.st_getpointofstudent_Result)">
-      <Parameter Name="hocky" Mode="In" Type="String" />
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="st_getsinhvienid">
-      <Parameter Name="username" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_getsinhvieninfo" ReturnType="Collection(MyDatabaseModel.st_getsinhvieninfo_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="st_InsertAdminBangdiem">
-      <Parameter Name="masv" Mode="In" Type="String" />
-      <Parameter Name="mamon" Mode="In" Type="String" />
-      <Parameter Name="diemhs1" Mode="In" Type="Int32" />
-      <Parameter Name="diemhs2" Mode="In" Type="Int32" />
-      <Parameter Name="diemhs3" Mode="In" Type="Int32" />
-      <Parameter Name="diemtb" Mode="In" Type="Double" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
+    <AssociationSet Name="FK__taikhoan__magv__33D4B598" Association="Self.FK__taikhoan__magv__33D4B598">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="taikhoan" EntitySet="taikhoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lop__makhoa__398D8EEE" Association="Self.FK__lop__makhoa__398D8EEE">
+      <End Role="khoa" EntitySet="khoas" />
+      <End Role="lop" EntitySet="lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lopcn__makhoa__2D27B809" Association="Self.FK__lopcn__makhoa__2D27B809">
+      <End Role="khoa" EntitySet="khoas" />
+      <End Role="lopcn" EntitySet="lopcns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lop__mamon__3A81B327" Association="Self.FK__lop__mamon__3A81B327">
+      <End Role="mon" EntitySet="mons" />
+      <End Role="lop" EntitySet="lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sinhvien__malopc__300424B4" Association="Self.FK__sinhvien__malopc__300424B4">
+      <End Role="lopcn" EntitySet="lopcns" />
+      <End Role="sinhvien" EntitySet="sinhviens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__taikhoan__masv__32E0915F" Association="Self.FK__taikhoan__masv__32E0915F">
+      <End Role="sinhvien" EntitySet="sinhviens" />
+      <End Role="taikhoan" EntitySet="taikhoans" />
+    </AssociationSet>
+    <FunctionImport Name="AddDKHP">
       <Parameter Name="namhoc" Mode="In" Type="String" />
+      <Parameter Name="hocky" Mode="In" Type="Int32" />
+      <Parameter Name="thoigianbd" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigiankt" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="st_InsertAdminBomon">
+    <FunctionImport Name="AddGiangDay">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malop" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddLop">
+      <Parameter Name="mamon" Mode="In" Type="String" />
+      <Parameter Name="magv" Mode="In" Type="String" />
+      <Parameter Name="madkhp" Mode="In" Type="String" />
+      <Parameter Name="thu" Mode="In" Type="Int32" />
+      <Parameter Name="tietbd" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddMon">
       <Parameter Name="mamon" Mode="In" Type="String" />
       <Parameter Name="tenmon" Mode="In" Type="String" />
+      <Parameter Name="sotiet" Mode="In" Type="Int32" />
+      <Parameter Name="sotc" Mode="In" Type="Int32" />
+      <Parameter Name="hsck" Mode="In" Type="Double" />
     </FunctionImport>
-    <FunctionImport Name="st_InsertAdminLop">
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="siso" Mode="In" Type="Int32" />
-      <Parameter Name="magv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_InsertAdminPhanCong">
-      <Parameter Name="mamon" Mode="In" Type="String" />
-      <Parameter Name="magv" Mode="In" Type="String" />
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
-      <Parameter Name="namhoc" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_InsertAdminthongtingiaovien">
-      <Parameter Name="magv" Mode="In" Type="String" />
-      <Parameter Name="tengv" Mode="In" Type="String" />
+    <FunctionImport Name="AddSV">
+      <Parameter Name="hoten" Mode="In" Type="String" />
       <Parameter Name="gioitinh" Mode="In" Type="String" />
       <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+      <Parameter Name="malopcn" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
       <Parameter Name="diachi" Mode="In" Type="String" />
       <Parameter Name="quequan" Mode="In" Type="String" />
+      <Parameter Name="bachoc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddTK">
+      <Parameter Name="matk" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="magv" Mode="In" Type="String" />
+      <Parameter Name="nhom" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ChangeLopCNSV">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malopcn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ChangePassword">
+      <Parameter Name="matk" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteDKHP">
+      <Parameter Name="madkhp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteGiangDay">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malop" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteGV">
+      <Parameter Name="magv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteLop">
+      <Parameter Name="malop" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteLopCN">
+      <Parameter Name="malopcn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteMon">
+      <Parameter Name="mamon" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateDiemCK">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malop" Mode="In" Type="String" />
+      <Parameter Name="diemck" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateDiemGK">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malop" Mode="In" Type="String" />
+      <Parameter Name="diemgk" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateDKHP">
+      <Parameter Name="madkhp" Mode="In" Type="String" />
+      <Parameter Name="thoigianbd" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigiankt" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateLopCN">
+      <Parameter Name="malopcn" Mode="In" Type="String" />
+      <Parameter Name="magv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateMon">
+      <Parameter Name="mamon" Mode="In" Type="String" />
+      <Parameter Name="tenmon" Mode="In" Type="String" />
+      <Parameter Name="sotiet" Mode="In" Type="Int32" />
+      <Parameter Name="sotc" Mode="In" Type="Int32" />
+      <Parameter Name="hsck" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateThongTinGV">
+      <Parameter Name="magv" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="gioitinh" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
       <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="quequan" Mode="In" Type="String" />
       <Parameter Name="capbac" Mode="In" Type="String" />
       <Parameter Name="email" Mode="In" Type="String" />
       <Parameter Name="ngayvaolam" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="st_InsertAdminthongtinsinhvien">
+    <FunctionImport Name="UpdateThongTinSV">
       <Parameter Name="masv" Mode="In" Type="String" />
       <Parameter Name="hoten" Mode="In" Type="String" />
       <Parameter Name="gioitinh" Mode="In" Type="String" />
       <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
-      <Parameter Name="malop" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
       <Parameter Name="diachi" Mode="In" Type="String" />
       <Parameter Name="quequan" Mode="In" Type="String" />
-      <Parameter Name="sdt" Mode="In" Type="String" />
       <Parameter Name="bachoc" Mode="In" Type="String" />
-      <Parameter Name="nienkhoa" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_InsertTaiKhoan">
-      <Parameter Name="matv" Mode="In" Type="String" />
-      <Parameter Name="password1" Mode="In" Type="String" />
-      <Parameter Name="password2" Mode="In" Type="String" />
-      <Parameter Name="nhom" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_LayBangDiemAdmin" ReturnType="Collection(MyDatabaseModel.st_LayBangDiemAdmin_Result)" />
-    <FunctionImport Name="st_LayBangDiemfromLop" ReturnType="Collection(MyDatabaseModel.st_LayBangDiemfromLop_Result)">
-      <Parameter Name="malop" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_LayBangTaiKhoan" ReturnType="Collection(MyDatabaseModel.st_LayBangTaiKhoan_Result)" />
-    <FunctionImport Name="st_LayBoMonAdmin" ReturnType="Collection(MyDatabaseModel.st_LayBoMonAdmin_Result)" />
-    <FunctionImport Name="st_LayBoMonfromPhancong" ReturnType="Collection(MyDatabaseModel.st_LayBoMonfromPhancong_Result)">
-      <Parameter Name="malop" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_LayDiemforSinhvien" ReturnType="Collection(MyDatabaseModel.st_LayDiemforSinhvien_Result)">
-      <Parameter Name="idsinhvien" Mode="In" Type="Int32" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_LayGiaoVienforSinhvien" ReturnType="Collection(MyDatabaseModel.st_LayGiaoVienforSinhvien_Result)">
-      <Parameter Name="idsinhvien" Mode="In" Type="Int32" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_LayHocKyfromPhancong" ReturnType="Collection(String)">
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="mamon" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_LayLopAdmin" ReturnType="Collection(MyDatabaseModel.st_LayLopAdmin_Result)" />
-    <FunctionImport Name="st_LayLopforBangDiem" ReturnType="Collection(MyDatabaseModel.st_LayLopforBangDiem_Result)" />
-    <FunctionImport Name="st_LayPhanCongAdmin" ReturnType="Collection(MyDatabaseModel.st_LayPhanCongAdmin_Result)" />
-    <FunctionImport Name="st_laythongtinbandiem" ReturnType="Collection(MyDatabaseModel.st_laythongtinbandiem_Result)">
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
-      <Parameter Name="mamon" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_LayThongTinGiaoVienAdmin" ReturnType="Collection(MyDatabaseModel.st_LayThongTinGiaoVienAdmin_Result)" />
-    <FunctionImport Name="st_LaythongtinsinhvienAdmin" ReturnType="Collection(MyDatabaseModel.st_LaythongtinsinhvienAdmin_Result)" />
-    <FunctionImport Name="st_login">
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="pass" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_rpt_bangdiem" ReturnType="Collection(MyDatabaseModel.st_rpt_bangdiem_Result)" />
-    <FunctionImport Name="st_rpt_giaovien" ReturnType="Collection(MyDatabaseModel.st_rpt_giaovien_Result)" />
-    <FunctionImport Name="st_rpt_lop" ReturnType="Collection(MyDatabaseModel.st_rpt_lop_Result)" />
-    <FunctionImport Name="st_rpt_mon" ReturnType="Collection(MyDatabaseModel.st_rpt_mon_Result)" />
-    <FunctionImport Name="st_rpt_phancong" ReturnType="Collection(MyDatabaseModel.st_rpt_phancong_Result)" />
-    <FunctionImport Name="st_rpt_sinhvien" ReturnType="Collection(MyDatabaseModel.st_rpt_sinhvien_Result)" />
-    <FunctionImport Name="st_rpt_taikhoan" ReturnType="Collection(MyDatabaseModel.st_rpt_taikhoan_Result)" />
-    <FunctionImport Name="st_UpdateAdminBangdiem">
-      <Parameter Name="masv" Mode="In" Type="String" />
-      <Parameter Name="mamon" Mode="In" Type="String" />
-      <Parameter Name="diemhs1" Mode="In" Type="Int32" />
-      <Parameter Name="diemhs2" Mode="In" Type="Int32" />
-      <Parameter Name="diemhs3" Mode="In" Type="Int32" />
-      <Parameter Name="diemtb" Mode="In" Type="Double" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
-      <Parameter Name="namhoc" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_UpdateAdminBomon">
-      <Parameter Name="mamon" Mode="In" Type="String" />
-      <Parameter Name="tenmon" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_UpdateAdminLop">
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="siso" Mode="In" Type="Int32" />
-      <Parameter Name="magv" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_UpdateAdminPhanCong">
-      <Parameter Name="mamon" Mode="In" Type="String" />
-      <Parameter Name="magv" Mode="In" Type="String" />
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="hocky" Mode="In" Type="String" />
-      <Parameter Name="namhoc" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_UpdateAdminthongtingiaovien">
-      <Parameter Name="magv" Mode="In" Type="String" />
-      <Parameter Name="tengv" Mode="In" Type="String" />
-      <Parameter Name="gioitinh" Mode="In" Type="String" />
-      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
-      <Parameter Name="diachi" Mode="In" Type="String" />
-      <Parameter Name="quequan" Mode="In" Type="String" />
-      <Parameter Name="sdt" Mode="In" Type="String" />
-      <Parameter Name="capbac" Mode="In" Type="String" />
-      <Parameter Name="email" Mode="In" Type="String" />
-      <Parameter Name="ngayvaolam" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="st_UpdateAdminthongtinsinhvien">
-      <Parameter Name="masv" Mode="In" Type="String" />
-      <Parameter Name="hoten" Mode="In" Type="String" />
-      <Parameter Name="gioitinh" Mode="In" Type="String" />
-      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
-      <Parameter Name="malop" Mode="In" Type="String" />
-      <Parameter Name="diachi" Mode="In" Type="String" />
-      <Parameter Name="quequan" Mode="In" Type="String" />
-      <Parameter Name="sdt" Mode="In" Type="String" />
-      <Parameter Name="bachoc" Mode="In" Type="String" />
-      <Parameter Name="nienkhoa" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="st_UpdateTaiKhoan">
-      <Parameter Name="matv" Mode="In" Type="String" />
-      <Parameter Name="password1" Mode="In" Type="String" />
-      <Parameter Name="password2" Mode="In" Type="String" />
-      <Parameter Name="nhom" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="tk">
-      <Parameter Name="matv" Mode="In" Type="String" />
-      <Parameter Name="password1" Mode="In" Type="String" />
-      <Parameter Name="password2" Mode="In" Type="String" />
-      <Parameter Name="nhom" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
-  <ComplexType Name="st_chonlop_Result">
-    <Property Type="String" Name="malop" Nullable="false" MaxLength="10" />
-    <Property Type="Int32" Name="siso" Nullable="true" />
-    <Property Type="String" Name="magv" Nullable="true" MaxLength="10" />
-  </ComplexType>
-  <ComplexType Name="st_chonmon_Result">
-    <Property Type="String" Name="mamon" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="tenmon" Nullable="true" MaxLength="30" />
-  </ComplexType>
-  <ComplexType Name="st_ChonSVfromLop_Result">
-    <Property Type="String" Name="hoten" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="masv" Nullable="false" MaxLength="10" />
-  </ComplexType>
-  <ComplexType Name="st_getaccountinfo_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="matv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="password1" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="password2" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="nhom" Nullable="true" MaxLength="20" />
-  </ComplexType>
-  <ComplexType Name="st_getgiaovieninfo_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="magv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="tengv" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="10" />
-    <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="16" />
-    <Property Type="String" Name="diachi" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="quequan" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="sdt" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="capbac" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
-    <Property Type="DateTime" Name="ngayvaolam" Nullable="true" Precision="16" />
-  </ComplexType>
-  <ComplexType Name="st_getpointofstudent_Result">
-    <Property Type="String" Name="tenmon" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="diemhs1" Nullable="true" />
-    <Property Type="Int32" Name="diemhs2" Nullable="true" />
-    <Property Type="Int32" Name="diemhs3" Nullable="true" />
-    <Property Type="Double" Name="diemtb" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="st_getsinhvieninfo_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="masv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="hoten" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="10" />
-    <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="16" />
-    <Property Type="String" Name="malop" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="diachi" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="quequan" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="sdt" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="bachoc" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="nienkhoa" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="st_LayBangDiemAdmin_Result">
-    <Property Type="String" Name="Họ_và_tên" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Mã_Sinh_Viên" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="Mã_Môn" Nullable="false" MaxLength="10" />
-    <Property Type="Int32" Name="Điểm_hệ_số_1" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_2" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_3" Nullable="true" />
-    <Property Type="Double" Name="Điểm_Trung_Bình" Nullable="true" />
-    <Property Type="String" Name="Học_kỳ" Nullable="true" MaxLength="5" />
-    <Property Type="String" Name="Năm_học" Nullable="true" MaxLength="5" />
-  </ComplexType>
-  <ComplexType Name="st_LayBangDiemfromLop_Result">
-    <Property Type="String" Name="Họ_và_tên" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Mã_Sinh_Viên" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="Mã_Môn" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="Tên_Môn" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="Điểm_hệ_số_1" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_2" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_3" Nullable="true" />
-    <Property Type="Double" Name="Điểm_Trung_Bình" Nullable="true" />
-    <Property Type="String" Name="Học_kỳ" Nullable="true" MaxLength="5" />
-    <Property Type="String" Name="Năm_học" Nullable="true" MaxLength="5" />
-  </ComplexType>
-  <ComplexType Name="st_LayBangTaiKhoan_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="matv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="password1" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="password2" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="nhom" Nullable="true" MaxLength="20" />
-  </ComplexType>
-  <ComplexType Name="st_LayBoMonAdmin_Result">
-    <Property Type="String" Name="mamon" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="tenmon" Nullable="true" MaxLength="30" />
-  </ComplexType>
-  <ComplexType Name="st_LayBoMonfromPhancong_Result">
-    <Property Type="String" Name="tenmon" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="mamon" Nullable="false" MaxLength="10" />
-  </ComplexType>
-  <ComplexType Name="st_LayDiemforSinhvien_Result">
-    <Property Type="String" Name="Tên_Môn" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="Điểm_hệ_số_1" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_2" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_3" Nullable="true" />
-    <Property Type="Double" Name="Điểm_Trung_Bình" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="st_LayGiaoVienforSinhvien_Result">
-    <Property Type="String" Name="Tên_Giáo_Viên" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Bộ_Môn" Nullable="true" MaxLength="30" />
-  </ComplexType>
-  <ComplexType Name="st_LayLopAdmin_Result">
-    <Property Type="String" Name="Mã_lớp" Nullable="false" MaxLength="10" />
-    <Property Type="Int32" Name="Sỉ_Số" Nullable="true" />
-    <Property Type="String" Name="Mã_Giáo_Viên" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="Tên_Giáo_Viên" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="st_LayLopforBangDiem_Result">
-    <Property Type="String" Name="malop" Nullable="false" MaxLength="10" />
-    <Property Type="Int32" Name="siso" Nullable="true" />
-    <Property Type="String" Name="magv" Nullable="true" MaxLength="10" />
-  </ComplexType>
-  <ComplexType Name="st_LayPhanCongAdmin_Result">
-    <Property Type="String" Name="Mã_Môn" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="Tên_Môn" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="Mã_Giáo_Viên" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="Tên_Giáo_Viên" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Mã_Lớp" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="Học_Kỳ" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="Năm_Học" Nullable="true" MaxLength="10" />
-  </ComplexType>
-  <ComplexType Name="st_laythongtinbandiem_Result">
-    <Property Type="String" Name="Mã_Sinh_Viên" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="Họ_tên" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="Điểm_hệ_số_1" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_2" Nullable="true" />
-    <Property Type="Int32" Name="Điểm_hệ_số_3" Nullable="true" />
-    <Property Type="Double" Name="Điểm_trung_bình" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="st_LayThongTinGiaoVienAdmin_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="magv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="tengv" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="10" />
-    <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="16" />
-    <Property Type="String" Name="diachi" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="quequan" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="sdt" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="capbac" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
-    <Property Type="DateTime" Name="ngayvaolam" Nullable="true" Precision="16" />
-  </ComplexType>
-  <ComplexType Name="st_LaythongtinsinhvienAdmin_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="masv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="hoten" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="10" />
-    <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="16" />
-    <Property Type="String" Name="malop" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="diachi" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="quequan" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="sdt" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="bachoc" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="nienkhoa" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="st_rpt_bangdiem_Result">
-    <Property Type="String" Name="masv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="hoten" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="tenmon" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="diemhs1" Nullable="true" />
-    <Property Type="Int32" Name="diemhs2" Nullable="true" />
-    <Property Type="Int32" Name="diemhs3" Nullable="true" />
-    <Property Type="Double" Name="diemtb" Nullable="true" />
-    <Property Type="String" Name="hocky" Nullable="true" MaxLength="5" />
-    <Property Type="String" Name="namhoc" Nullable="true" MaxLength="5" />
-  </ComplexType>
-  <ComplexType Name="st_rpt_giaovien_Result">
-    <Property Type="String" Name="magv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="tengv" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="10" />
-    <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="16" />
-    <Property Type="String" Name="gioitinh1" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="diachi" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="quequan" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="sdt" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="capbac" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="email" Nullable="true" MaxLength="40" />
-    <Property Type="DateTime" Name="ngayvaolam" Nullable="true" Precision="16" />
-  </ComplexType>
-  <ComplexType Name="st_rpt_lop_Result">
-    <Property Type="String" Name="malop" Nullable="false" MaxLength="10" />
-    <Property Type="Int32" Name="siso" Nullable="true" />
-    <Property Type="String" Name="tengv" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="st_rpt_mon_Result">
-    <Property Type="String" Name="mamon" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="tenmon" Nullable="true" MaxLength="30" />
-  </ComplexType>
-  <ComplexType Name="st_rpt_phancong_Result">
-    <Property Type="String" Name="tenmon" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="tengv" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="malop" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="hocky" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="namhoc" Nullable="true" MaxLength="10" />
-  </ComplexType>
-  <ComplexType Name="st_rpt_sinhvien_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="masv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="hoten" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="10" />
-    <Property Type="DateTime" Name="ngaysinh" Nullable="true" Precision="16" />
-    <Property Type="String" Name="malop" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="diachi" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="quequan" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="sdt" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="bachoc" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="nienkhoa" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="st_rpt_taikhoan_Result">
-    <Property Type="String" Name="matv" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="password1" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="password2" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="nhom" Nullable="true" MaxLength="20" />
-  </ComplexType>
 </Schema>
