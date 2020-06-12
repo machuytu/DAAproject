@@ -6,12 +6,13 @@ using System.Web.Mvc;
 using ProjectDAA1.Models;
 using System.Configuration;
 using ProjectDAA1.Common;
+using System.Drawing.Printing;
 
 namespace ProjectDAA1.Controllers
 {
     public class LoginController : Controller
     {
-        private MyDatabaseEntities5 db = new MyDatabaseEntities5();
+        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         // GET: Login
         [HttpGet]
         public ActionResult Login()
@@ -23,33 +24,38 @@ namespace ProjectDAA1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = db.taikhoan.SingleOrDefault(x => x.matk == model.UserName);
+                var result = db.taikhoans.SingleOrDefault(x => x.matk == model.UserName);
+
                 if (result == null)
                 {
-                    ViewBag.thunhat = "khong ton tai";
+                    ViewData["Message"] = "Tài khoản không đúng";
+                    return View();
                 }
-                else
-                    if (result.password1 != model.Password)
+                else if (result.password != model.Password)
                 {
-                    ViewBag.thuhai = "sai password";
+                    ViewData["Message"] = "Mật khẩu không đúng";
+                    return View();
                 }
                 else
                 {
                     if (result.nhom == "Sinh viên")
                     {
-                        ViewBag.thuba = "la sinh vien";
+                        ViewData["Message"] = "Bạn là sinh viên";
+                        return View();
                     }
                     else
                     if (result.nhom == "Giảng viên")
                     {
-                        ViewBag.thutu = "la giang vien";
+                        ViewData["Message"] = "Bạn là giảng viên";
+                        return View();
                     }
                     else
                     {
-                        ViewBag.thunam = "la quan tri vien";
+                        //return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        ViewData["Message"] = "Bạn là quản trị viên";
+                        return View();
                     }
                 }
-
 
                 //var reullsult = dao.Login(model.UserName, HashPassword.MD5Hash(model.Password));
                 //var result =
