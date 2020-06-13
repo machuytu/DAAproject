@@ -15,25 +15,37 @@ namespace ProjectDAA1.Controllers
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         // GET: Login
         [HttpGet]
-        public ActionResult Login()
+        public async System.Threading.Tasks.Task<ActionResult> Login()
         {
-            return View();
+            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            
+            if (session == null)
+                return View();
+            else
+            {
+                taikhoan user = await db.taikhoans.FindAsync(session.UserName);
+
+                if (user.nhom == "Sinh viên" || user.nhom == "Giảng viên")
+                    return RedirectToAction("Index", "Home");
+                else
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+            }
+            
         }
         [HttpPost]
         public async System.Threading.Tasks.Task<ActionResult> Login(LoginModel model)
         {
+            var result = db.taikhoans.SingleOrDefault(x => x.matk == model.UserName);
             if (ModelState.IsValid)
             {
-                var result = db.taikhoans.SingleOrDefault(x => x.matk == model.UserName);
-
                 if (result == null)
                 {
-                    ViewData["Message"] = "Tài khoản không đúng";
+                    ViewData["ErrorMessage"] = "Tài khoản không đúng";
                     return View();
                 }
                 else if (result.password != model.Password)
                 {
-                    ViewData["Message"] = "Mật khẩu không đúng";
+                    ViewData["ErrorMessage"] = "Mật khẩu không đúng";
                     return View();
                 }
                 else
@@ -46,8 +58,6 @@ namespace ProjectDAA1.Controllers
                         userSession.UserName = user.matk;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return Redirect("/");
-                        //ViewData["Message"] = "Bạn là sinh viên";
-                        //return View();
                     }
                     else
                     if (result.nhom == "Giảng viên")
@@ -57,8 +67,6 @@ namespace ProjectDAA1.Controllers
                         userSession.UserName = user.matk;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return Redirect("/");
-                        //ViewData["Message"] = "Bạn là giảng viên";
-                        //return View();
                     }
                     else
                     {
@@ -67,8 +75,6 @@ namespace ProjectDAA1.Controllers
                         userSession.UserName = user.matk;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return RedirectToAction("Index", "Home", new { area = "Admin" });
-                        //ViewData["Message"] = "Bạn là quản trị viên";
-                        //return View();
                     }
                 }
 
