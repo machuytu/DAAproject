@@ -18,10 +18,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
        
         public ActionResult Create()
         {
-            
-
             return View();
         }
-
     }
 }

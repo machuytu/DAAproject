@@ -14,7 +14,6 @@ namespace ProjectDAA1.Controllers
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         // GET: Login
-        [HttpGet]
         public async System.Threading.Tasks.Task<ActionResult> Login()
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
@@ -59,8 +58,7 @@ namespace ProjectDAA1.Controllers
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return Redirect("/");
                     }
-                    else
-                    if (result.nhom == "Giảng viên")
+                    else if (result.nhom == "Giảng viên")
                     {
                         taikhoan user = await db.taikhoans.FindAsync(model.UserName);
                         var userSession = new UserLogin();
@@ -108,5 +106,12 @@ namespace ProjectDAA1.Controllers
             }
             return View(model);
         }
+        [Route("Logout")]
+        public ActionResult Logout()
+        {
+            Session[Common.CommonConstants.USER_SESSION] = null;
+            return Redirect("/");
+        }
+
     }
 }
