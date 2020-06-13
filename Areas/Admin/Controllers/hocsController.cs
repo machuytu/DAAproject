@@ -40,7 +40,10 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/hocs/Create
         public ActionResult Create()
         {
-            ViewBag.malop = new SelectList(db.lops, "malop", "magv");
+            List<lop> dbc = db.lops.Include(h => h.mon).ToList();
+            SelectList ahihi = new SelectList(dbc, "malop","mon.tenmon");
+            
+            ViewBag.malop = ahihi;
             ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
             return View();
         }

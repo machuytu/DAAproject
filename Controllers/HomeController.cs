@@ -22,7 +22,9 @@ namespace ProjectDAA1.Controllers
             }
             else
             {
-                ViewBag.thongBaoRieng = "";
+                var listthongbaochung = db.thongbaos.Where(x => x.tag == "Thông Báo Chung")
+                    .OrderByDescending(x => x.thoigiandang).Take(10).ToList();
+                ViewBag.thongBaoChung = listthongbaochung;
             }
             return View();
         }
