@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var giangvien = ViewBag.giangvien;
 }
 
 <h2>Index</h2>
@@ -25,7 +26,7 @@
             @Html.DisplayNameFor(model => model.thoigiandang)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.taikhoan.password)
+            nguoi dang
         </th>
         <th></th>
     </tr>
@@ -45,7 +46,20 @@
             @Html.DisplayFor(modelItem => item.thoigiandang)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.taikhoan.password)
+            @{
+                var matk = item.taikhoan.matk;
+            }
+            @foreach (var gv in giangvien)
+            {
+                if (matk == gv.magv)
+                {
+                    <div>@gv.hoten</div>
+                }
+                else if(matk == "admin")
+                {
+                    <div>admin</div>
+                }
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.matb }) |

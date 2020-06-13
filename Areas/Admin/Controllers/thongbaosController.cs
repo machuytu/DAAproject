@@ -19,6 +19,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         public async Task<ActionResult> Index()
         {
             var thongbaos = db.thongbaos.Include(t => t.taikhoan);
+            ViewBag.giangvien=  db.giangviens.ToList();
             return View(await thongbaos.ToListAsync());
         }
 
@@ -49,10 +50,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "matb,matk,tag,noidung,tieude,thoigiandang")] thongbao thongbao)
+        public async Task<ActionResult> Create(thongbao thongbao)
         {
             if (ModelState.IsValid)
             {
+                thongbao.matk = "admin";
+                thongbao.thoigiandang = DateTime.Now;
                 db.thongbaos.Add(thongbao);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

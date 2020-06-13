@@ -16,7 +16,9 @@ namespace ProjectDAA1.Controllers
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session == null)
             {
-                ViewBag.thongBaoChung = "";
+                var listthongbaochung = db.thongbaos.Where(x => x.tag == "Thông Báo Chung")
+                    .OrderByDescending(x => x.thoigiandang).Take(10).ToList();
+                ViewBag.thongBaoChung = listthongbaochung;
             }
             else
             {
