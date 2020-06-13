@@ -7,7 +7,7 @@ using ProjectDAA1.Models;
 using System.Configuration;
 using ProjectDAA1.Common;
 using System.Drawing.Printing;
-
+using ProjectDAA1;
 namespace ProjectDAA1.Controllers
 {
     public class LoginController : Controller
@@ -20,7 +20,7 @@ namespace ProjectDAA1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public async System.Threading.Tasks.Task<ActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
@@ -40,20 +40,35 @@ namespace ProjectDAA1.Controllers
                 {
                     if (result.nhom == "Sinh viên")
                     {
-                        ViewData["Message"] = "Bạn là sinh viên";
-                        return View();
+                        //var user = dao.GetById(model.UserName);
+                        taikhoan user = await db.taikhoans.FindAsync(model.UserName);
+                        var userSession = new UserLogin();
+                        userSession.UserName = user.matk;
+                        Session.Add(CommonConstants.USER_SESSION, userSession);
+                        return Redirect("/");
+                        //ViewData["Message"] = "Bạn là sinh viên";
+                        //return View();
                     }
                     else
                     if (result.nhom == "Giảng viên")
                     {
-                        ViewData["Message"] = "Bạn là giảng viên";
-                        return View();
+                        taikhoan user = await db.taikhoans.FindAsync(model.UserName);
+                        var userSession = new UserLogin();
+                        userSession.UserName = user.matk;
+                        Session.Add(CommonConstants.USER_SESSION, userSession);
+                        return Redirect("/");
+                        //ViewData["Message"] = "Bạn là giảng viên";
+                        //return View();
                     }
                     else
                     {
-                        //return RedirectToAction("Index", "Home", new { area = "Admin" });
-                        ViewData["Message"] = "Bạn là quản trị viên";
-                        return View();
+                        taikhoan user = await db.taikhoans.FindAsync(model.UserName);
+                        var userSession = new UserLogin();
+                        userSession.UserName = user.matk;
+                        Session.Add(CommonConstants.USER_SESSION, userSession);
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        //ViewData["Message"] = "Bạn là quản trị viên";
+                        //return View();
                     }
                 }
 

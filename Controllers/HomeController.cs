@@ -13,7 +13,15 @@ namespace ProjectDAA1.Controllers
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         public ActionResult Index()
         {
-            
+            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            if (session == null)
+            {
+                ViewBag.thongBaoChung = "";
+            }
+            else
+            {
+                ViewBag.thongBaoRieng = "";
+            }
             return View();
         }
         [ChildActionOnly]
