@@ -35,7 +35,7 @@ namespace ProjectDAA1
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Trống thời gian kết thúc")]
         public System.DateTime thoigiankt { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lop> lops { get; set; }
     }

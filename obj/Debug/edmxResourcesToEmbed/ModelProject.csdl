@@ -11,19 +11,6 @@
     <Property Name="thoigiankt" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="lops" Relationship="Self.FK__lop__madkhp__38996AB5" FromRole="dangkyhocphan" ToRole="lop" />
   </EntityType>
-  <EntityType Name="giangday">
-    <Key>
-      <PropertyRef Name="masv" />
-      <PropertyRef Name="malop" />
-    </Key>
-    <Property Name="masv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="malop" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="diemgk" Type="Double" />
-    <Property Name="diemck" Type="Double" />
-    <Property Name="diemtb" Type="Double" />
-    <NavigationProperty Name="lop" Relationship="Self.FK__giangday__malop__3F466844" FromRole="giangday" ToRole="lop" />
-    <NavigationProperty Name="sinhvien" Relationship="Self.FK__giangday__masv__3E52440B" FromRole="giangday" ToRole="sinhvien" />
-  </EntityType>
   <EntityType Name="giangvien">
     <Key>
       <PropertyRef Name="magv" />
@@ -70,10 +57,10 @@
     <Property Name="madkhp" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="makhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="dangkyhocphan" Relationship="Self.FK__lop__madkhp__38996AB5" FromRole="lop" ToRole="dangkyhocphan" />
-    <NavigationProperty Name="giangdays" Relationship="Self.FK__giangday__malop__3F466844" FromRole="lop" ToRole="giangday" />
     <NavigationProperty Name="giangvien" Relationship="Self.FK__lop__magv__3B75D760" FromRole="lop" ToRole="giangvien" />
     <NavigationProperty Name="khoa" Relationship="Self.FK__lop__makhoa__398D8EEE" FromRole="lop" ToRole="khoa" />
     <NavigationProperty Name="mon" Relationship="Self.FK__lop__mamon__3A81B327" FromRole="lop" ToRole="mon" />
+    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__malop__48CFD27E" FromRole="lop" ToRole="hoc" />
   </EntityType>
   <EntityType Name="lopcn">
     <Key>
@@ -95,9 +82,15 @@
     <Property Name="tenmon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="hsgk" Type="Double" Nullable="false" />
     <Property Name="hsck" Type="Double" Nullable="false" />
-    <Property Name="sotiet" Type="Int32" Nullable="false" />
     <Property Name="sotc" Type="Int32" Nullable="false" />
     <NavigationProperty Name="lops" Relationship="Self.FK__lop__mamon__3A81B327" FromRole="mon" ToRole="lop" />
+    <Property Name="mamontruoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="hsqt" Type="Double" Nullable="false" />
+    <Property Name="hsth" Type="Double" Nullable="false" />
+    <Property Name="tclt" Type="Int32" Nullable="false" />
+    <Property Name="tcth" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="mon1" Relationship="MyDatabaseModel.FK__mon__mamontruoc__4AB81AF0" FromRole="mon" ToRole="mon1" />
+    <NavigationProperty Name="mon2" Relationship="MyDatabaseModel.FK__mon__mamontruoc__4AB81AF0" FromRole="mon1" ToRole="mon" />
   </EntityType>
   <EntityType Name="sinhvien">
     <Key>
@@ -112,9 +105,9 @@
     <Property Name="quequan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="bachoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="giangdays" Relationship="Self.FK__giangday__masv__3E52440B" FromRole="sinhvien" ToRole="giangday" />
     <NavigationProperty Name="lopcn" Relationship="Self.FK__sinhvien__malopc__300424B4" FromRole="sinhvien" ToRole="lopcn" />
     <NavigationProperty Name="taikhoans" Relationship="Self.FK__taikhoan__masv__32E0915F" FromRole="sinhvien" ToRole="taikhoan" />
+    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__masv__47DBAE45" FromRole="sinhvien" ToRole="hoc" />
   </EntityType>
   <EntityType Name="taikhoan">
     <Key>
@@ -127,6 +120,7 @@
     <Property Name="nhom" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="giangvien" Relationship="Self.FK__taikhoan__magv__33D4B598" FromRole="taikhoan" ToRole="giangvien" />
     <NavigationProperty Name="sinhvien" Relationship="Self.FK__taikhoan__masv__32E0915F" FromRole="taikhoan" ToRole="sinhvien" />
+    <NavigationProperty Name="thongbaos" Relationship="MyDatabaseModel.FK__thongbao__matk__3D5E1FD2" FromRole="taikhoan" ToRole="thongbao" />
   </EntityType>
   <Association Name="FK__lop__madkhp__38996AB5">
     <End Role="dangkyhocphan" Type="Self.dangkyhocphan" Multiplicity="1" />
@@ -137,32 +131,6 @@
       </Principal>
       <Dependent Role="lop">
         <PropertyRef Name="madkhp" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__giangday__malop__3F466844">
-    <End Role="lop" Type="Self.lop" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="giangday" Type="Self.giangday" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="lop">
-        <PropertyRef Name="malop" />
-      </Principal>
-      <Dependent Role="giangday">
-        <PropertyRef Name="malop" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__giangday__masv__3E52440B">
-    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="1" />
-    <End Role="giangday" Type="Self.giangday" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sinhvien">
-        <PropertyRef Name="masv" />
-      </Principal>
-      <Dependent Role="giangday">
-        <PropertyRef Name="masv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -294,7 +262,6 @@
   </Association>
   <EntityContainer Name="MyDatabaseEntities9" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="dangkyhocphans" EntityType="Self.dangkyhocphan" />
-    <EntitySet Name="giangdays" EntityType="Self.giangday" />
     <EntitySet Name="giangviens" EntityType="Self.giangvien" />
     <EntitySet Name="khoas" EntityType="Self.khoa" />
     <EntitySet Name="lops" EntityType="Self.lop" />
@@ -305,14 +272,6 @@
     <AssociationSet Name="FK__lop__madkhp__38996AB5" Association="Self.FK__lop__madkhp__38996AB5">
       <End Role="dangkyhocphan" EntitySet="dangkyhocphans" />
       <End Role="lop" EntitySet="lops" />
-    </AssociationSet>
-    <AssociationSet Name="FK__giangday__malop__3F466844" Association="Self.FK__giangday__malop__3F466844">
-      <End Role="lop" EntitySet="lops" />
-      <End Role="giangday" EntitySet="giangdays" />
-    </AssociationSet>
-    <AssociationSet Name="FK__giangday__masv__3E52440B" Association="Self.FK__giangday__masv__3E52440B">
-      <End Role="sinhvien" EntitySet="sinhviens" />
-      <End Role="giangday" EntitySet="giangdays" />
     </AssociationSet>
     <AssociationSet Name="FK__giangvien__makho__267ABA7A" Association="Self.FK__giangvien__makho__267ABA7A">
       <End Role="khoa" EntitySet="khoas" />
@@ -373,9 +332,12 @@
     </FunctionImport>
     <FunctionImport Name="AddMon">
       <Parameter Name="mamon" Mode="In" Type="String" />
+      <Parameter Name="mamontruoc" Mode="In" Type="String" />
       <Parameter Name="tenmon" Mode="In" Type="String" />
-      <Parameter Name="sotiet" Mode="In" Type="Int32" />
       <Parameter Name="sotc" Mode="In" Type="Int32" />
+      <Parameter Name="hsqt" Mode="In" Type="Double" />
+      <Parameter Name="hsth" Mode="In" Type="Double" />
+      <Parameter Name="hsgk" Mode="In" Type="Double" />
       <Parameter Name="hsck" Mode="In" Type="Double" />
     </FunctionImport>
     <FunctionImport Name="AddSV">
@@ -443,13 +405,17 @@
     </FunctionImport>
     <FunctionImport Name="UpdateMon">
       <Parameter Name="mamon" Mode="In" Type="String" />
+      <Parameter Name="mamontruoc" Mode="In" Type="String" />
       <Parameter Name="tenmon" Mode="In" Type="String" />
-      <Parameter Name="sotiet" Mode="In" Type="Int32" />
       <Parameter Name="sotc" Mode="In" Type="Int32" />
+      <Parameter Name="hsqt" Mode="In" Type="Double" />
+      <Parameter Name="hsth" Mode="In" Type="Double" />
+      <Parameter Name="hsgk" Mode="In" Type="Double" />
       <Parameter Name="hsck" Mode="In" Type="Double" />
     </FunctionImport>
     <FunctionImport Name="UpdateThongTinGV">
       <Parameter Name="magv" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
       <Parameter Name="hoten" Mode="In" Type="String" />
       <Parameter Name="gioitinh" Mode="In" Type="String" />
       <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
@@ -470,5 +436,146 @@
       <Parameter Name="quequan" Mode="In" Type="String" />
       <Parameter Name="bachoc" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="hocs" EntityType="MyDatabaseModel.hoc" />
+    <EntitySet Name="thongbaos" EntityType="MyDatabaseModel.thongbao" />
+    <AssociationSet Name="FK__hoc__malop__48CFD27E" Association="MyDatabaseModel.FK__hoc__malop__48CFD27E">
+      <End Role="lop" EntitySet="lops" />
+      <End Role="hoc" EntitySet="hocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hoc__masv__47DBAE45" Association="MyDatabaseModel.FK__hoc__masv__47DBAE45">
+      <End Role="sinhvien" EntitySet="sinhviens" />
+      <End Role="hoc" EntitySet="hocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mon__mamontruoc__4AB81AF0" Association="MyDatabaseModel.FK__mon__mamontruoc__4AB81AF0">
+      <End Role="mon" EntitySet="mons" />
+      <End Role="mon1" EntitySet="mons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__thongbao__matk__3D5E1FD2" Association="MyDatabaseModel.FK__thongbao__matk__3D5E1FD2">
+      <End Role="taikhoan" EntitySet="taikhoans" />
+      <End Role="thongbao" EntitySet="thongbaos" />
+    </AssociationSet>
+    <FunctionImport Name="AddGV">
+      <Parameter Name="magv" Mode="In" Type="String" />
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="gioitinh" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="quequan" Mode="In" Type="String" />
+      <Parameter Name="capbac" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="ngayvaolam" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="AddHoc">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malop" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddKhoa">
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="tenkhoa" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddLopCN">
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="magv" Mode="In" Type="String" />
+      <Parameter Name="nienkhoa" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddTKadmin">
+      <Parameter Name="matk" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ChangeLopCN">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malopcn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteHoc">
+      <Parameter Name="masv" Mode="In" Type="String" />
+      <Parameter Name="malop" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteKhoa">
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateKhoa">
+      <Parameter Name="makhoa" Mode="In" Type="String" />
+      <Parameter Name="magv" Mode="In" Type="String" />
+      <Parameter Name="tenkhoa" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <EntityType Name="hoc">
+    <Key>
+      <PropertyRef Name="masv" />
+      <PropertyRef Name="malop" />
+    </Key>
+    <Property Name="masv" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="malop" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="diemqt" Type="Double" />
+    <Property Name="diemth" Type="Double" />
+    <Property Name="diemgk" Type="Double" />
+    <Property Name="diemck" Type="Double" />
+    <Property Name="diemtb" Type="Double" />
+    <NavigationProperty Name="lop" Relationship="MyDatabaseModel.FK__hoc__malop__48CFD27E" FromRole="hoc" ToRole="lop" />
+    <NavigationProperty Name="sinhvien" Relationship="MyDatabaseModel.FK__hoc__masv__47DBAE45" FromRole="hoc" ToRole="sinhvien" />
+  </EntityType>
+  <EntityType Name="thongbao">
+    <Key>
+      <PropertyRef Name="matb" />
+    </Key>
+    <Property Name="matb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="matk" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="tag" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tieude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="thoigiandang" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="taikhoan" Relationship="MyDatabaseModel.FK__thongbao__matk__3D5E1FD2" FromRole="thongbao" ToRole="taikhoan" />
+  </EntityType>
+  <Association Name="FK__hoc__malop__48CFD27E">
+    <End Type="MyDatabaseModel.lop" Role="lop" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="hoc">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hoc__masv__47DBAE45">
+    <End Type="MyDatabaseModel.sinhvien" Role="sinhvien" Multiplicity="1" />
+    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sinhvien">
+        <PropertyRef Name="masv" />
+      </Principal>
+      <Dependent Role="hoc">
+        <PropertyRef Name="masv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mon__mamontruoc__4AB81AF0">
+    <End Type="MyDatabaseModel.mon" Role="mon" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.mon" Role="mon1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mon">
+        <PropertyRef Name="mamon" />
+      </Principal>
+      <Dependent Role="mon1">
+        <PropertyRef Name="mamontruoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__thongbao__matk__3D5E1FD2">
+    <End Type="MyDatabaseModel.taikhoan" Role="taikhoan" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.thongbao" Role="thongbao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="taikhoan">
+        <PropertyRef Name="matk" />
+      </Principal>
+      <Dependent Role="thongbao">
+        <PropertyRef Name="matk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

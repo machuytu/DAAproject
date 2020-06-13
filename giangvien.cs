@@ -52,7 +52,7 @@ namespace ProjectDAA1
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Trống mã khoa")]
         public string makhoa { get; set; }
-    
+
         public virtual khoa khoa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<khoa> khoas { get; set; }

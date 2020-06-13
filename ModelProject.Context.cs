@@ -28,7 +28,6 @@ namespace ProjectDAA1
         }
     
         public virtual DbSet<dangkyhocphan> dangkyhocphans { get; set; }
-        public virtual DbSet<giangday> giangdays { get; set; }
         public virtual DbSet<giangvien> giangviens { get; set; }
         public virtual DbSet<khoa> khoas { get; set; }
         public virtual DbSet<lop> lops { get; set; }
@@ -36,6 +35,8 @@ namespace ProjectDAA1
         public virtual DbSet<mon> mons { get; set; }
         public virtual DbSet<sinhvien> sinhviens { get; set; }
         public virtual DbSet<taikhoan> taikhoans { get; set; }
+        public virtual DbSet<hoc> hocs { get; set; }
+        public virtual DbSet<thongbao> thongbaos { get; set; }
     
         public virtual int AddDKHP(string namhoc, Nullable<int> hocky, Nullable<System.DateTime> thoigianbd, Nullable<System.DateTime> thoigiankt)
         {
@@ -96,29 +97,41 @@ namespace ProjectDAA1
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddLop", mamonParameter, magvParameter, madkhpParameter, thuParameter, tietbdParameter);
         }
     
-        public virtual int AddMon(string mamon, string tenmon, Nullable<int> sotiet, Nullable<int> sotc, Nullable<double> hsck)
+        public virtual int AddMon(string mamon, string mamontruoc, string tenmon, Nullable<int> sotc, Nullable<double> hsqt, Nullable<double> hsth, Nullable<double> hsgk, Nullable<double> hsck)
         {
             var mamonParameter = mamon != null ?
                 new ObjectParameter("mamon", mamon) :
                 new ObjectParameter("mamon", typeof(string));
     
+            var mamontruocParameter = mamontruoc != null ?
+                new ObjectParameter("mamontruoc", mamontruoc) :
+                new ObjectParameter("mamontruoc", typeof(string));
+    
             var tenmonParameter = tenmon != null ?
                 new ObjectParameter("tenmon", tenmon) :
                 new ObjectParameter("tenmon", typeof(string));
-    
-            var sotietParameter = sotiet.HasValue ?
-                new ObjectParameter("sotiet", sotiet) :
-                new ObjectParameter("sotiet", typeof(int));
     
             var sotcParameter = sotc.HasValue ?
                 new ObjectParameter("sotc", sotc) :
                 new ObjectParameter("sotc", typeof(int));
     
+            var hsqtParameter = hsqt.HasValue ?
+                new ObjectParameter("hsqt", hsqt) :
+                new ObjectParameter("hsqt", typeof(double));
+    
+            var hsthParameter = hsth.HasValue ?
+                new ObjectParameter("hsth", hsth) :
+                new ObjectParameter("hsth", typeof(double));
+    
+            var hsgkParameter = hsgk.HasValue ?
+                new ObjectParameter("hsgk", hsgk) :
+                new ObjectParameter("hsgk", typeof(double));
+    
             var hsckParameter = hsck.HasValue ?
                 new ObjectParameter("hsck", hsck) :
                 new ObjectParameter("hsck", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddMon", mamonParameter, tenmonParameter, sotietParameter, sotcParameter, hsckParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddMon", mamonParameter, mamontruocParameter, tenmonParameter, sotcParameter, hsqtParameter, hsthParameter, hsgkParameter, hsckParameter);
         }
     
         public virtual int AddSV(string hoten, string gioitinh, Nullable<System.DateTime> ngaysinh, string malopcn, string sdt, string diachi, string quequan, string bachoc)
@@ -331,36 +344,52 @@ namespace ProjectDAA1
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateLopCN", malopcnParameter, magvParameter);
         }
     
-        public virtual int UpdateMon(string mamon, string tenmon, Nullable<int> sotiet, Nullable<int> sotc, Nullable<double> hsck)
+        public virtual int UpdateMon(string mamon, string mamontruoc, string tenmon, Nullable<int> sotc, Nullable<double> hsqt, Nullable<double> hsth, Nullable<double> hsgk, Nullable<double> hsck)
         {
             var mamonParameter = mamon != null ?
                 new ObjectParameter("mamon", mamon) :
                 new ObjectParameter("mamon", typeof(string));
     
+            var mamontruocParameter = mamontruoc != null ?
+                new ObjectParameter("mamontruoc", mamontruoc) :
+                new ObjectParameter("mamontruoc", typeof(string));
+    
             var tenmonParameter = tenmon != null ?
                 new ObjectParameter("tenmon", tenmon) :
                 new ObjectParameter("tenmon", typeof(string));
-    
-            var sotietParameter = sotiet.HasValue ?
-                new ObjectParameter("sotiet", sotiet) :
-                new ObjectParameter("sotiet", typeof(int));
     
             var sotcParameter = sotc.HasValue ?
                 new ObjectParameter("sotc", sotc) :
                 new ObjectParameter("sotc", typeof(int));
     
+            var hsqtParameter = hsqt.HasValue ?
+                new ObjectParameter("hsqt", hsqt) :
+                new ObjectParameter("hsqt", typeof(double));
+    
+            var hsthParameter = hsth.HasValue ?
+                new ObjectParameter("hsth", hsth) :
+                new ObjectParameter("hsth", typeof(double));
+    
+            var hsgkParameter = hsgk.HasValue ?
+                new ObjectParameter("hsgk", hsgk) :
+                new ObjectParameter("hsgk", typeof(double));
+    
             var hsckParameter = hsck.HasValue ?
                 new ObjectParameter("hsck", hsck) :
                 new ObjectParameter("hsck", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateMon", mamonParameter, tenmonParameter, sotietParameter, sotcParameter, hsckParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateMon", mamonParameter, mamontruocParameter, tenmonParameter, sotcParameter, hsqtParameter, hsthParameter, hsgkParameter, hsckParameter);
         }
     
-        public virtual int UpdateThongTinGV(string magv, string hoten, string gioitinh, Nullable<System.DateTime> ngaysinh, string sdt, string diachi, string quequan, string capbac, string email, Nullable<System.DateTime> ngayvaolam)
+        public virtual int UpdateThongTinGV(string magv, string makhoa, string hoten, string gioitinh, Nullable<System.DateTime> ngaysinh, string sdt, string diachi, string quequan, string capbac, string email, Nullable<System.DateTime> ngayvaolam)
         {
             var magvParameter = magv != null ?
                 new ObjectParameter("magv", magv) :
                 new ObjectParameter("magv", typeof(string));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
     
             var hotenParameter = hoten != null ?
                 new ObjectParameter("hoten", hoten) :
@@ -398,7 +427,7 @@ namespace ProjectDAA1
                 new ObjectParameter("ngayvaolam", ngayvaolam) :
                 new ObjectParameter("ngayvaolam", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateThongTinGV", magvParameter, hotenParameter, gioitinhParameter, ngaysinhParameter, sdtParameter, diachiParameter, quequanParameter, capbacParameter, emailParameter, ngayvaolamParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateThongTinGV", magvParameter, makhoaParameter, hotenParameter, gioitinhParameter, ngaysinhParameter, sdtParameter, diachiParameter, quequanParameter, capbacParameter, emailParameter, ngayvaolamParameter);
         }
     
         public virtual int UpdateThongTinSV(string masv, string hoten, string gioitinh, Nullable<System.DateTime> ngaysinh, string sdt, string diachi, string quequan, string bachoc)
@@ -436,6 +465,163 @@ namespace ProjectDAA1
                 new ObjectParameter("bachoc", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateThongTinSV", masvParameter, hotenParameter, gioitinhParameter, ngaysinhParameter, sdtParameter, diachiParameter, quequanParameter, bachocParameter);
+        }
+    
+        public virtual int AddGV(string magv, string makhoa, string hoten, string gioitinh, Nullable<System.DateTime> ngaysinh, string sdt, string diachi, string quequan, string capbac, string email, Nullable<System.DateTime> ngayvaolam)
+        {
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var hotenParameter = hoten != null ?
+                new ObjectParameter("hoten", hoten) :
+                new ObjectParameter("hoten", typeof(string));
+    
+            var gioitinhParameter = gioitinh != null ?
+                new ObjectParameter("gioitinh", gioitinh) :
+                new ObjectParameter("gioitinh", typeof(string));
+    
+            var ngaysinhParameter = ngaysinh.HasValue ?
+                new ObjectParameter("ngaysinh", ngaysinh) :
+                new ObjectParameter("ngaysinh", typeof(System.DateTime));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var quequanParameter = quequan != null ?
+                new ObjectParameter("quequan", quequan) :
+                new ObjectParameter("quequan", typeof(string));
+    
+            var capbacParameter = capbac != null ?
+                new ObjectParameter("capbac", capbac) :
+                new ObjectParameter("capbac", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var ngayvaolamParameter = ngayvaolam.HasValue ?
+                new ObjectParameter("ngayvaolam", ngayvaolam) :
+                new ObjectParameter("ngayvaolam", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddGV", magvParameter, makhoaParameter, hotenParameter, gioitinhParameter, ngaysinhParameter, sdtParameter, diachiParameter, quequanParameter, capbacParameter, emailParameter, ngayvaolamParameter);
+        }
+    
+        public virtual int AddHoc(string masv, string malop)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            var malopParameter = malop != null ?
+                new ObjectParameter("malop", malop) :
+                new ObjectParameter("malop", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddHoc", masvParameter, malopParameter);
+        }
+    
+        public virtual int AddKhoa(string makhoa, string tenkhoa)
+        {
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var tenkhoaParameter = tenkhoa != null ?
+                new ObjectParameter("tenkhoa", tenkhoa) :
+                new ObjectParameter("tenkhoa", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddKhoa", makhoaParameter, tenkhoaParameter);
+        }
+    
+        public virtual int AddLopCN(string makhoa, string magv, Nullable<int> nienkhoa)
+        {
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var nienkhoaParameter = nienkhoa.HasValue ?
+                new ObjectParameter("nienkhoa", nienkhoa) :
+                new ObjectParameter("nienkhoa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddLopCN", makhoaParameter, magvParameter, nienkhoaParameter);
+        }
+    
+        public virtual int AddTKadmin(string matk, string password)
+        {
+            var matkParameter = matk != null ?
+                new ObjectParameter("matk", matk) :
+                new ObjectParameter("matk", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddTKadmin", matkParameter, passwordParameter);
+        }
+    
+        public virtual int ChangeLopCN(string masv, string malopcn)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            var malopcnParameter = malopcn != null ?
+                new ObjectParameter("malopcn", malopcn) :
+                new ObjectParameter("malopcn", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeLopCN", masvParameter, malopcnParameter);
+        }
+    
+        public virtual int DeleteHoc(string masv, string malop)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            var malopParameter = malop != null ?
+                new ObjectParameter("malop", malop) :
+                new ObjectParameter("malop", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteHoc", masvParameter, malopParameter);
+        }
+    
+        public virtual int DeleteKhoa(string makhoa)
+        {
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteKhoa", makhoaParameter);
+        }
+    
+        public virtual int UpdateKhoa(string makhoa, string magv, string tenkhoa)
+        {
+            var makhoaParameter = makhoa != null ?
+                new ObjectParameter("makhoa", makhoa) :
+                new ObjectParameter("makhoa", typeof(string));
+    
+            var magvParameter = magv != null ?
+                new ObjectParameter("magv", magv) :
+                new ObjectParameter("magv", typeof(string));
+    
+            var tenkhoaParameter = tenkhoa != null ?
+                new ObjectParameter("tenkhoa", tenkhoa) :
+                new ObjectParameter("tenkhoa", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateKhoa", makhoaParameter, magvParameter, tenkhoaParameter);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace ProjectDAA1
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Trống mã giáo viên")]
         public string magv { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<giangvien> giangviens { get; set; }
         public virtual giangvien giangvien { get; set; }

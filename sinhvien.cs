@@ -18,7 +18,7 @@ namespace ProjectDAA1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public sinhvien()
         {
-            this.giangdays = new HashSet<giangday>();
+            this.hocs = new HashSet<hoc>();
             this.taikhoans = new HashSet<taikhoan>();
         }
 
@@ -50,7 +50,7 @@ namespace ProjectDAA1
         public string bachoc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<giangday> giangdays { get; set; }
+        public virtual ICollection<hoc> hocs { get; set; }
 
         public virtual lopcn lopcn { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

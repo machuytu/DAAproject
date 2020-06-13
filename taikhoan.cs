@@ -26,7 +26,7 @@ namespace ProjectDAA1
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Trống nhóm")]
         public string nhom { get; set; }
-    
+
         public virtual giangvien giangvien { get; set; }
         public virtual sinhvien sinhvien { get; set; }
     }

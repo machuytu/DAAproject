@@ -5,10 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<Br />
-<Br />
-<Br />
-<Br />
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -39,36 +36,35 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.thu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tietbd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tietkt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dangkyhocphan.namhoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.giangvien.hoten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.khoa.tenkhoa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mon.tenmon)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.malop }) |
-                @Html.ActionLink("Details", "Details", new { id = item.malop }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.malop })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.thu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tietbd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tietkt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dangkyhocphan.namhoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.giangvien.hoten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.khoa.tenkhoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mon.tenmon)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.malop }) |
+            @Html.ActionLink("Details", "Details", new { id=item.malop }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.malop })
+        </td>
+    </tr>
+}
 
 </table>

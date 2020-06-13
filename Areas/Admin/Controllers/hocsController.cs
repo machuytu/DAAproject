@@ -11,33 +11,33 @@ using ProjectDAA1;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class giangdaysController : Controller
+    public class hocsController : Controller
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
-        // GET: Admin/giangdays
+        // GET: Admin/hocs
         public async Task<ActionResult> Index()
         {
-            var giangdays = db.giangdays.Include(g => g.lop).Include(g => g.sinhvien);
-            return View(await giangdays.ToListAsync());
+            var hocs = db.hocs.Include(h => h.lop).Include(h => h.sinhvien);
+            return View(await hocs.ToListAsync());
         }
 
-        // GET: Admin/giangdays/Details/5
+        // GET: Admin/hocs/Details/5
         public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            giangday giangday = await db.giangdays.FindAsync(id);
-            if (giangday == null)
+            hoc hoc = await db.hocs.FindAsync(id);
+            if (hoc == null)
             {
                 return HttpNotFound();
             }
-            return View(giangday);
+            return View(hoc);
         }
 
-        // GET: Admin/giangdays/Create
+        // GET: Admin/hocs/Create
         public ActionResult Create()
         {
             ViewBag.malop = new SelectList(db.lops, "malop", "magv");
@@ -45,82 +45,82 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/giangdays/Create
+        // POST: Admin/hocs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "masv,malop,diemgk,diemck,diemtb")] giangday giangday)
+        public async Task<ActionResult> Create([Bind(Include = "masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
         {
             if (ModelState.IsValid)
             {
-                db.giangdays.Add(giangday);
+                db.hocs.Add(hoc);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.malop = new SelectList(db.lops, "malop", "magv", giangday.malop);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", giangday.masv);
-            return View(giangday);
+            ViewBag.malop = new SelectList(db.lops, "malop", "magv", hoc.malop);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", hoc.masv);
+            return View(hoc);
         }
 
-        // GET: Admin/giangdays/Edit/5
+        // GET: Admin/hocs/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            giangday giangday = await db.giangdays.FindAsync(id);
-            if (giangday == null)
+            hoc hoc = await db.hocs.FindAsync(id);
+            if (hoc == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.malop = new SelectList(db.lops, "malop", "magv", giangday.malop);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", giangday.masv);
-            return View(giangday);
+            ViewBag.malop = new SelectList(db.lops, "malop", "magv", hoc.malop);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", hoc.masv);
+            return View(hoc);
         }
 
-        // POST: Admin/giangdays/Edit/5
+        // POST: Admin/hocs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "masv,malop,diemgk,diemck,diemtb")] giangday giangday)
+        public async Task<ActionResult> Edit([Bind(Include = "masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(giangday).State = EntityState.Modified;
+                db.Entry(hoc).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.malop = new SelectList(db.lops, "malop", "magv", giangday.malop);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", giangday.masv);
-            return View(giangday);
+            ViewBag.malop = new SelectList(db.lops, "malop", "magv", hoc.malop);
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", hoc.masv);
+            return View(hoc);
         }
 
-        // GET: Admin/giangdays/Delete/5
+        // GET: Admin/hocs/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            giangday giangday = await db.giangdays.FindAsync(id);
-            if (giangday == null)
+            hoc hoc = await db.hocs.FindAsync(id);
+            if (hoc == null)
             {
                 return HttpNotFound();
             }
-            return View(giangday);
+            return View(hoc);
         }
 
-        // POST: Admin/giangdays/Delete/5
+        // POST: Admin/hocs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            giangday giangday = await db.giangdays.FindAsync(id);
-            db.giangdays.Remove(giangday);
+            hoc hoc = await db.hocs.FindAsync(id);
+            db.hocs.Remove(hoc);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -11,46 +11,29 @@ namespace ProjectDAA1
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class lop
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public lop()
         {
-            this.giangdays = new HashSet<giangday>();
+            this.hocs = new HashSet<hoc>();
         }
-
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống mã lớp")]
+    
         public string malop { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống mã giảng viên")]
         public string magv { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống mã môn")]
         public string mamon { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống thứ")]
         public int thu { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống tiết bắt đầu")]
         public int tietbd { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống tiết kết thúc")]
         public int tietkt { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống mã đăng ký học phần")]
         public string madkhp { get; set; }
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Trống mã khoa")]
         public string makhoa { get; set; }
     
         public virtual dangkyhocphan dangkyhocphan { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<giangday> giangdays { get; set; }
         public virtual giangvien giangvien { get; set; }
         public virtual khoa khoa { get; set; }
         public virtual mon mon { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hoc> hocs { get; set; }
     }
 }
