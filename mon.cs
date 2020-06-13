@@ -31,6 +31,7 @@ namespace ProjectDAA1
         public double hsth { get; set; }
         public int tclt { get; set; }
         public int tcth { get; set; }
+        public string tenvama { get { return tenmon + " - " + mamon; } }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lop> lops { get; set; }

@@ -9,5 +9,7 @@ namespace ProjectDAA1
     public class UserLogin
     {
         public string UserName { set; get; }
+        public string Nhom { set; get; }
+
     }
 }

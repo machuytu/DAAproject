@@ -40,7 +40,10 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/mons/Create
         public ActionResult Create()
         {
-            ViewBag.mamontruoc = new SelectList(db.mons, "mamon", "tenmon");
+            List<SelectListItem> MyOwnerList = new List<SelectListItem>();
+            MyOwnerList.AddRange(new SelectList(db.mons, "mamon", "tenmon"));
+            MyOwnerList.Insert(0, new SelectListItem { Text = "", Value = "" });
+            ViewBag.mamontruoc = MyOwnerList;
             return View();
         }
 

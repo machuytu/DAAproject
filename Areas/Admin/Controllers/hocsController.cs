@@ -41,7 +41,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         public ActionResult Create()
         {
             List<lop> dbc = db.lops.Include(h => h.mon).ToList();
-            SelectList ahihi = new SelectList(dbc, "malop","mon.tenmon");
+            SelectList ahihi = new SelectList(dbc, "malop", "mon.tenvama");
             
             ViewBag.malop = ahihi;
             ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");

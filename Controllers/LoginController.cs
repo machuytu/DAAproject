@@ -55,6 +55,7 @@ namespace ProjectDAA1.Controllers
                         taikhoan user = await db.taikhoans.FindAsync(model.UserName);
                         var userSession = new UserLogin();
                         userSession.UserName = user.matk;
+                        userSession.Nhom = user.nhom;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return Redirect("/");
                     }
@@ -63,6 +64,7 @@ namespace ProjectDAA1.Controllers
                         taikhoan user = await db.taikhoans.FindAsync(model.UserName);
                         var userSession = new UserLogin();
                         userSession.UserName = user.matk;
+                        userSession.Nhom = user.nhom;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return Redirect("/");
                     }
