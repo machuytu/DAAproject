@@ -51,10 +51,32 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.dangkyhocphans.Add(dangkyhocphan);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (dangkyhocphan.thoigianbd > dangkyhocphan.thoigiankt)
+                {
+                    ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày kết thúc");
+                    return View(dangkyhocphan);
+                }
+
+                if (dangkyhocphan.thoigianbd > DateTime.Now)
+                {
+                    ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày hiện tại");
+                    return View(dangkyhocphan);
+                }
+
+                if (dangkyhocphan.thoigiankt > DateTime.Now)
+                {
+                    ModelState.AddModelError("thoigiankt", "Ngày kết thúc lớn hơn ngày hiện tại");
+                    return View(dangkyhocphan);
+                }
+
+                else
+                {
+                    db.dangkyhocphans.Add(dangkyhocphan);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
+            
 
             return View(dangkyhocphan);
         }
@@ -81,11 +103,19 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "madkhp,hocky,namhoc,thoigianbd,thoigiankt")] dangkyhocphan dangkyhocphan)
         {
-            if (ModelState.IsValid)
+            if (dangkyhocphan.thoigianbd > dangkyhocphan.thoigiankt)
             {
-                db.Entry(dangkyhocphan).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày kết thúc");
+                return View(dangkyhocphan);
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(dangkyhocphan).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
             return View(dangkyhocphan);
         }

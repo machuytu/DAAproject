@@ -53,9 +53,37 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.giangviens.Add(giangvien);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (giangvien.ngaysinh > giangvien.ngayvaolam)
+                {
+                    ModelState.AddModelError("ngaysinh", "ngày sinh lớn hơn ngày vào làm");
+                    return View(giangvien);
+                }
+                int yearvaolam = giangvien.ngayvaolam.Year;
+                int yearngaysinh = giangvien.ngaysinh.Year;
+                if (yearvaolam - yearngaysinh == 18)
+                {
+                    ModelState.AddModelError("ngaysinh", "chưa đủ 18 tuổi");
+                    return View(giangvien);
+                }
+
+                if (giangvien.ngayvaolam > DateTime.Now)
+                {
+                    ModelState.AddModelError("ngayvaolam", "Ngày vào làm lớn hơn ngày hiện tại");
+                    return View(giangvien);
+                }
+
+                if (giangvien.ngaysinh > DateTime.Now)
+                {
+                    ModelState.AddModelError("ngaysinh", "Ngày sinh lớn hơn ngày hiện tại");
+                    return View(giangvien);
+                }
+
+                else
+                {
+                    db.giangviens.Add(giangvien);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", giangvien.makhoa);
@@ -87,9 +115,36 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(giangvien).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (giangvien.ngaysinh > giangvien.ngayvaolam)
+                {
+                    ModelState.AddModelError("ngaysinh", "ngày sinh lớn hơn ngày vào làm");
+                    return View(giangvien);
+                }
+                int yearvaolam = giangvien.ngayvaolam.Year;
+                int yearngaysinh = giangvien.ngaysinh.Year;
+                if (yearvaolam - yearngaysinh == 18)
+                {
+                    ModelState.AddModelError("ngaysinh", "chưa đủ 18 tuổi");
+                    return View(giangvien);
+                }
+
+                if (giangvien.ngayvaolam > DateTime.Now)
+                {
+                    ModelState.AddModelError("ngayvaolam", "Ngày vào làm lớn hơn ngày hiện tại");
+                    return View(giangvien);
+                }
+
+                if (giangvien.ngaysinh > DateTime.Now)
+                {
+                    ModelState.AddModelError("ngaysinh", "Ngày sinh lớn hơn ngày hiện tại");
+                    return View(giangvien);
+                }
+                else
+                {
+                    db.Entry(giangvien).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", giangvien.makhoa);
             return View(giangvien);
