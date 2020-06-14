@@ -626,11 +626,6 @@
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Areas\Admin\Views\hocs\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\hocs\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\hocs\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\hocs\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\hocs\Index.cshtml" />
     <Content Include="Areas\Admin\Views\thongbaos\Create.cshtml" />
     <Content Include="Areas\Admin\Views\thongbaos\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\thongbaos\Details.cshtml" />
@@ -660,6 +655,11 @@
     <Content Include="Assets\Home\fonts\line-awesomeeb4f.ttf" />
     <Content Include="Assets\Home\fonts\line-awesomeeb4f.woff" />
     <Content Include="Assets\Home\fonts\line-awesomeeb4f.woff2" />
+    <Content Include="Areas\Admin\Views\hocs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\hocs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\hocs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\hocs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\hocs\Index.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />

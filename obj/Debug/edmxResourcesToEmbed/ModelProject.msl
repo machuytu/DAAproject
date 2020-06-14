@@ -121,19 +121,6 @@
     <FunctionImportMapping FunctionImportName="UpdateMon" FunctionName="MyDatabaseModel.Store.UpdateMon" />
     <FunctionImportMapping FunctionImportName="UpdateThongTinGV" FunctionName="MyDatabaseModel.Store.UpdateThongTinGV" />
     <FunctionImportMapping FunctionImportName="UpdateThongTinSV" FunctionName="MyDatabaseModel.Store.UpdateThongTinSV" />
-    <EntitySetMapping Name="hocs">
-      <EntityTypeMapping TypeName="MyDatabaseModel.hoc">
-        <MappingFragment StoreEntitySet="hoc">
-          <ScalarProperty Name="diemtb" ColumnName="diemtb" />
-          <ScalarProperty Name="diemck" ColumnName="diemck" />
-          <ScalarProperty Name="diemgk" ColumnName="diemgk" />
-          <ScalarProperty Name="diemth" ColumnName="diemth" />
-          <ScalarProperty Name="diemqt" ColumnName="diemqt" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="masv" ColumnName="masv" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="thongbaos">
       <EntityTypeMapping TypeName="MyDatabaseModel.thongbao">
         <MappingFragment StoreEntitySet="thongbao">
@@ -155,5 +142,19 @@
     <FunctionImportMapping FunctionImportName="DeleteHoc" FunctionName="MyDatabaseModel.Store.DeleteHoc" />
     <FunctionImportMapping FunctionImportName="DeleteKhoa" FunctionName="MyDatabaseModel.Store.DeleteKhoa" />
     <FunctionImportMapping FunctionImportName="UpdateKhoa" FunctionName="MyDatabaseModel.Store.UpdateKhoa" />
+    <EntitySetMapping Name="hocs">
+      <EntityTypeMapping TypeName="MyDatabaseModel.hoc">
+        <MappingFragment StoreEntitySet="hoc">
+          <ScalarProperty Name="diemtb" ColumnName="diemtb" />
+          <ScalarProperty Name="diemck" ColumnName="diemck" />
+          <ScalarProperty Name="diemgk" ColumnName="diemgk" />
+          <ScalarProperty Name="diemth" ColumnName="diemth" />
+          <ScalarProperty Name="diemqt" ColumnName="diemqt" />
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="idhoc" ColumnName="idhoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

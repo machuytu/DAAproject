@@ -60,7 +60,7 @@
     <NavigationProperty Name="giangvien" Relationship="Self.FK__lop__magv__3B75D760" FromRole="lop" ToRole="giangvien" />
     <NavigationProperty Name="khoa" Relationship="Self.FK__lop__makhoa__398D8EEE" FromRole="lop" ToRole="khoa" />
     <NavigationProperty Name="mon" Relationship="Self.FK__lop__mamon__3A81B327" FromRole="lop" ToRole="mon" />
-    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__malop__48CFD27E" FromRole="lop" ToRole="hoc" />
+    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__malop__0B91BA14" FromRole="lop" ToRole="hoc" />
   </EntityType>
   <EntityType Name="lopcn">
     <Key>
@@ -107,7 +107,7 @@
     <Property Name="bachoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="lopcn" Relationship="Self.FK__sinhvien__malopc__300424B4" FromRole="sinhvien" ToRole="lopcn" />
     <NavigationProperty Name="taikhoans" Relationship="Self.FK__taikhoan__masv__32E0915F" FromRole="sinhvien" ToRole="taikhoan" />
-    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__masv__47DBAE45" FromRole="sinhvien" ToRole="hoc" />
+    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__masv__0A9D95DB" FromRole="sinhvien" ToRole="hoc" />
   </EntityType>
   <EntityType Name="taikhoan">
     <Key>
@@ -436,16 +436,7 @@
       <Parameter Name="quequan" Mode="In" Type="String" />
       <Parameter Name="bachoc" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="hocs" EntityType="MyDatabaseModel.hoc" />
     <EntitySet Name="thongbaos" EntityType="MyDatabaseModel.thongbao" />
-    <AssociationSet Name="FK__hoc__malop__48CFD27E" Association="MyDatabaseModel.FK__hoc__malop__48CFD27E">
-      <End Role="lop" EntitySet="lops" />
-      <End Role="hoc" EntitySet="hocs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__hoc__masv__47DBAE45" Association="MyDatabaseModel.FK__hoc__masv__47DBAE45">
-      <End Role="sinhvien" EntitySet="sinhviens" />
-      <End Role="hoc" EntitySet="hocs" />
-    </AssociationSet>
     <AssociationSet Name="FK__mon__mamontruoc__4AB81AF0" Association="MyDatabaseModel.FK__mon__mamontruoc__4AB81AF0">
       <End Role="mon" EntitySet="mons" />
       <End Role="mon1" EntitySet="mons" />
@@ -500,22 +491,16 @@
       <Parameter Name="magv" Mode="In" Type="String" />
       <Parameter Name="tenkhoa" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="hocs" EntityType="MyDatabaseModel.hoc" />
+    <AssociationSet Name="FK__hoc__malop__0B91BA14" Association="MyDatabaseModel.FK__hoc__malop__0B91BA14">
+      <End Role="lop" EntitySet="lops" />
+      <End Role="hoc" EntitySet="hocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hoc__masv__0A9D95DB" Association="MyDatabaseModel.FK__hoc__masv__0A9D95DB">
+      <End Role="sinhvien" EntitySet="sinhviens" />
+      <End Role="hoc" EntitySet="hocs" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="hoc">
-    <Key>
-      <PropertyRef Name="masv" />
-      <PropertyRef Name="malop" />
-    </Key>
-    <Property Name="masv" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="malop" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="diemqt" Type="Double" />
-    <Property Name="diemth" Type="Double" />
-    <Property Name="diemgk" Type="Double" />
-    <Property Name="diemck" Type="Double" />
-    <Property Name="diemtb" Type="Double" />
-    <NavigationProperty Name="lop" Relationship="MyDatabaseModel.FK__hoc__malop__48CFD27E" FromRole="hoc" ToRole="lop" />
-    <NavigationProperty Name="sinhvien" Relationship="MyDatabaseModel.FK__hoc__masv__47DBAE45" FromRole="hoc" ToRole="sinhvien" />
-  </EntityType>
   <EntityType Name="thongbao">
     <Key>
       <PropertyRef Name="matb" />
@@ -525,35 +510,9 @@
     <Property Name="tag" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="tieude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="thoigiandang" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="thoigiandang" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="taikhoan" Relationship="MyDatabaseModel.FK__thongbao__matk__3D5E1FD2" FromRole="thongbao" ToRole="taikhoan" />
   </EntityType>
-  <Association Name="FK__hoc__malop__48CFD27E">
-    <End Type="MyDatabaseModel.lop" Role="lop" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="lop">
-        <PropertyRef Name="malop" />
-      </Principal>
-      <Dependent Role="hoc">
-        <PropertyRef Name="malop" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__hoc__masv__47DBAE45">
-    <End Type="MyDatabaseModel.sinhvien" Role="sinhvien" Multiplicity="1" />
-    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sinhvien">
-        <PropertyRef Name="masv" />
-      </Principal>
-      <Dependent Role="hoc">
-        <PropertyRef Name="masv" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__mon__mamontruoc__4AB81AF0">
     <End Type="MyDatabaseModel.mon" Role="mon" Multiplicity="0..1" />
     <End Type="MyDatabaseModel.mon" Role="mon1" Multiplicity="*" />
@@ -575,6 +534,47 @@
       </Principal>
       <Dependent Role="thongbao">
         <PropertyRef Name="matk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="hoc">
+    <Key>
+      <PropertyRef Name="idhoc" />
+    </Key>
+    <Property Name="idhoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="masv" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="malop" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="diemqt" Type="Double" />
+    <Property Name="diemth" Type="Double" />
+    <Property Name="diemgk" Type="Double" />
+    <Property Name="diemck" Type="Double" />
+    <Property Name="diemtb" Type="Double" />
+    <NavigationProperty Name="lop" Relationship="MyDatabaseModel.FK__hoc__malop__0B91BA14" FromRole="hoc" ToRole="lop" />
+    <NavigationProperty Name="sinhvien" Relationship="MyDatabaseModel.FK__hoc__masv__0A9D95DB" FromRole="hoc" ToRole="sinhvien" />
+  </EntityType>
+  <Association Name="FK__hoc__malop__0B91BA14">
+    <End Type="MyDatabaseModel.lop" Role="lop" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lop">
+        <PropertyRef Name="malop" />
+      </Principal>
+      <Dependent Role="hoc">
+        <PropertyRef Name="malop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hoc__masv__0A9D95DB">
+    <End Type="MyDatabaseModel.sinhvien" Role="sinhvien" Multiplicity="1" />
+    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sinhvien">
+        <PropertyRef Name="masv" />
+      </Principal>
+      <Dependent Role="hoc">
+        <PropertyRef Name="masv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

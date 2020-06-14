@@ -23,7 +23,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/hocs/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -42,7 +42,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             List<lop> dbc = db.lops.Include(h => h.mon).ToList();
             SelectList ahihi = new SelectList(dbc, "malop", "mon.tenvama");
-            
+
             ViewBag.malop = ahihi;
             ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
             return View();
@@ -53,7 +53,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
+        public async Task<ActionResult> Create([Bind(Include = "idhoc,masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/hocs/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -79,8 +79,11 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.malop = new SelectList(db.lops, "malop", "magv", hoc.malop);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", hoc.masv);
+            List<lop> dbc = db.lops.Include(h => h.mon).ToList();
+            SelectList ahihi = new SelectList(dbc, "malop", "mon.tenvama");
+
+            ViewBag.malop = ahihi;
+            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
             return View(hoc);
         }
 
@@ -89,7 +92,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
+        public async Task<ActionResult> Edit([Bind(Include = "idhoc,masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +106,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/hocs/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -120,7 +123,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // POST: Admin/hocs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             hoc hoc = await db.hocs.FindAsync(id);
             db.hocs.Remove(hoc);

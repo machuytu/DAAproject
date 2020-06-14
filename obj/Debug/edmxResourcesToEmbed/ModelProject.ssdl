@@ -28,9 +28,9 @@
   </EntityType>
   <EntityType Name="hoc">
     <Key>
-      <PropertyRef Name="masv" />
-      <PropertyRef Name="malop" />
+      <PropertyRef Name="idhoc" />
     </Key>
+    <Property Name="idhoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="masv" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="malop" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="diemqt" Type="float" />
@@ -117,7 +117,7 @@
     <Property Name="tag" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="noidung" Type="nvarchar(max)" />
     <Property Name="tieude" Type="nvarchar" MaxLength="100" />
-    <Property Name="thoigiandang" Type="smalldatetime" Nullable="false" />
+    <Property Name="thoigiandang" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK__giangvien__makho__267ABA7A">
     <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
@@ -131,7 +131,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__hoc__malop__48CFD27E">
+  <Association Name="FK__hoc__malop__0B91BA14">
     <End Role="lop" Type="Self.lop" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -145,7 +145,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__hoc__masv__47DBAE45">
+  <Association Name="FK__hoc__masv__0A9D95DB">
     <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="1" />
     <End Role="hoc" Type="Self.hoc" Multiplicity="*" />
     <ReferentialConstraint>
@@ -472,11 +472,11 @@
       <End Role="khoa" EntitySet="khoa" />
       <End Role="giangvien" EntitySet="giangvien" />
     </AssociationSet>
-    <AssociationSet Name="FK__hoc__malop__48CFD27E" Association="Self.FK__hoc__malop__48CFD27E">
+    <AssociationSet Name="FK__hoc__malop__0B91BA14" Association="Self.FK__hoc__malop__0B91BA14">
       <End Role="lop" EntitySet="lop" />
       <End Role="hoc" EntitySet="hoc" />
     </AssociationSet>
-    <AssociationSet Name="FK__hoc__masv__47DBAE45" Association="Self.FK__hoc__masv__47DBAE45">
+    <AssociationSet Name="FK__hoc__masv__0A9D95DB" Association="Self.FK__hoc__masv__0A9D95DB">
       <End Role="sinhvien" EntitySet="sinhvien" />
       <End Role="hoc" EntitySet="hoc" />
     </AssociationSet>

@@ -24,12 +24,12 @@
         <AssociationConnector Association="MyDatabaseModel.FK__lop__mamon__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK__sinhvien__malopc__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="MyDatabaseModel.FK__taikhoan__masv__32E0915F" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MyDatabaseModel.hoc" Width="1.5" PointX="5.25" PointY="10" />
         <EntityTypeShape EntityType="MyDatabaseModel.thongbao" Width="1.5" PointX="7.5" PointY="14.5" />
-        <AssociationConnector Association="MyDatabaseModel.FK__hoc__malop__48CFD27E" />
-        <AssociationConnector Association="MyDatabaseModel.FK__hoc__masv__47DBAE45" />
         <AssociationConnector Association="MyDatabaseModel.FK__mon__mamontruoc__4AB81AF0" />
         <AssociationConnector Association="MyDatabaseModel.FK__thongbao__matk__3D5E1FD2" />
+        <EntityTypeShape EntityType="MyDatabaseModel.hoc" Width="1.5" PointX="5.25" PointY="9.75" />
+        <AssociationConnector Association="MyDatabaseModel.FK__hoc__malop__0B91BA14" />
+        <AssociationConnector Association="MyDatabaseModel.FK__hoc__masv__0A9D95DB" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

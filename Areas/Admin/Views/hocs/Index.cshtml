@@ -5,10 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<br/>
-<br/>
-<br/>
-<br/>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -63,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.sinhvien.hoten)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.idhoc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idhoc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idhoc })
         </td>
     </tr>
 }

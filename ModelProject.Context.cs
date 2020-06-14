@@ -35,8 +35,8 @@ namespace ProjectDAA1
         public virtual DbSet<mon> mons { get; set; }
         public virtual DbSet<sinhvien> sinhviens { get; set; }
         public virtual DbSet<taikhoan> taikhoans { get; set; }
-        public virtual DbSet<hoc> hocs { get; set; }
         public virtual DbSet<thongbao> thongbaos { get; set; }
+        public virtual DbSet<hoc> hocs { get; set; }
     
         public virtual int AddDKHP(string namhoc, Nullable<int> hocky, Nullable<System.DateTime> thoigianbd, Nullable<System.DateTime> thoigiankt)
         {
