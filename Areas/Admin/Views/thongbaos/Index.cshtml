@@ -5,10 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<br />
-<br />
-<br />
-<br />
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -25,6 +22,9 @@
             @Html.DisplayNameFor(model => model.tag)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.file)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.thoigiandang)
         </th>
         <th>
@@ -36,33 +36,35 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.tieude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.noidung)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tag)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.thoigiandang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.thoigiancapnhat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.taikhoan.matk)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idtb }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idtb }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idtb })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tieude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.noidung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thoigiandang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thoigiancapnhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.taikhoan.matk)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idtb }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idtb }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idtb })
+        </td>
+    </tr>
+}
 
 </table>

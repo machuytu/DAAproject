@@ -17,9 +17,9 @@ namespace ProjectDAA1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public khoa()
         {
-            this.giangviens = new HashSet<giangvien>();
             this.lops = new HashSet<lop>();
             this.lopcns = new HashSet<lopcn>();
+            this.giangviens = new HashSet<giangvien>();
         }
     
         public int idkhoa { get; set; }
@@ -28,11 +28,11 @@ namespace ProjectDAA1
         public Nullable<int> idgv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<giangvien> giangviens { get; set; }
-        public virtual giangvien giangvien { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lop> lops { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lopcn> lopcns { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<giangvien> giangviens { get; set; }
+        public virtual giangvien giangvien { get; set; }
     }
 }

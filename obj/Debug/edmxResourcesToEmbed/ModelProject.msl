@@ -12,35 +12,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="files">
-      <EntityTypeMapping TypeName="MyDatabaseModel.file">
-        <MappingFragment StoreEntitySet="file">
-          <ScalarProperty Name="idtb" ColumnName="idtb" />
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="extension" ColumnName="extension" />
-          <ScalarProperty Name="filename" ColumnName="filename" />
-          <ScalarProperty Name="idfile" ColumnName="idfile" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="giangviens">
-      <EntityTypeMapping TypeName="MyDatabaseModel.giangvien">
-        <MappingFragment StoreEntitySet="giangvien">
-          <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="capbac" ColumnName="capbac" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="idkhoa" ColumnName="idkhoa" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="idgv" ColumnName="idgv" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="hocs">
       <EntityTypeMapping TypeName="MyDatabaseModel.hoc">
         <MappingFragment StoreEntitySet="hoc">
@@ -108,9 +79,41 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="taikhoans">
+      <EntityTypeMapping TypeName="MyDatabaseModel.taikhoan">
+        <MappingFragment StoreEntitySet="taikhoan">
+          <ScalarProperty Name="idgv" ColumnName="idgv" />
+          <ScalarProperty Name="idsv" ColumnName="idsv" />
+          <ScalarProperty Name="nhom" ColumnName="nhom" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="matk" ColumnName="matk" />
+          <ScalarProperty Name="idtk" ColumnName="idtk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giangviens">
+      <EntityTypeMapping TypeName="MyDatabaseModel.giangvien">
+        <MappingFragment StoreEntitySet="giangvien">
+          <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+          <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
+          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="capbac" ColumnName="capbac" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="quequan" ColumnName="quequan" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="idkhoa" ColumnName="idkhoa" />
+          <ScalarProperty Name="magv" ColumnName="magv" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="idgv" ColumnName="idgv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sinhviens">
       <EntityTypeMapping TypeName="MyDatabaseModel.sinhvien">
         <MappingFragment StoreEntitySet="sinhvien">
+          <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
           <ScalarProperty Name="bachoc" ColumnName="bachoc" />
           <ScalarProperty Name="sdt" ColumnName="sdt" />
           <ScalarProperty Name="quequan" ColumnName="quequan" />
@@ -124,23 +127,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="taikhoans">
-      <EntityTypeMapping TypeName="MyDatabaseModel.taikhoan">
-        <MappingFragment StoreEntitySet="taikhoan">
-          <ScalarProperty Name="idgv" ColumnName="idgv" />
-          <ScalarProperty Name="idsv" ColumnName="idsv" />
-          <ScalarProperty Name="nhom" ColumnName="nhom" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="matk" ColumnName="matk" />
-          <ScalarProperty Name="idtk" ColumnName="idtk" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="thongbaos">
       <EntityTypeMapping TypeName="MyDatabaseModel.thongbao">
         <MappingFragment StoreEntitySet="thongbao">
           <ScalarProperty Name="thoigiancapnhat" ColumnName="thoigiancapnhat" />
           <ScalarProperty Name="thoigiandang" ColumnName="thoigiandang" />
+          <ScalarProperty Name="file" ColumnName="file" />
           <ScalarProperty Name="idtk" ColumnName="idtk" />
           <ScalarProperty Name="tag" ColumnName="tag" />
           <ScalarProperty Name="noidung" ColumnName="noidung" />

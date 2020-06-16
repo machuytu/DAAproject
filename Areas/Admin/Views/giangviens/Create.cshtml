@@ -7,10 +7,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>giangvien</h4>
         <hr />
@@ -42,22 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.gioitinh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @{
-                    List<SelectListItem> listItems = new List<SelectListItem>();
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Nam",
-                        Value = "Nam"
-                    });
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Nữ",
-                        Value = "Nữ",
-                        Selected = true
-                    });
-                }
-
-                @Html.DropDownListFor(model => model.gioitinh, listItems, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.gioitinh, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.gioitinh, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -89,32 +74,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.capbac, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @{
-                    List<SelectListItem> listItems1 = new List<SelectListItem>();
-                    listItems1.Add(new SelectListItem
-                    {
-                        Text = "Đại học",
-                        Value = "Đại học"
-                    });
-                    listItems1.Add(new SelectListItem
-                    {
-                        Text = "Thạc sĩ",
-                        Value = "Thạc sĩ",
-                        Selected = true
-                    });
-                    listItems1.Add(new SelectListItem
-                    {
-                        Text = "Tiến sĩ",
-                        Value = "Tiến sĩ"
-                    });
-                    listItems1.Add(new SelectListItem
-                    {
-                        Text = "Giáo sư",
-                        Value = "Giáo sư"
-                    });
-                }
-
-                @Html.DropDownListFor(model => model.capbac, listItems1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.capbac, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.capbac, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -154,16 +114,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section scripts {
-    <script>
-        $(function () {
-            $("#ngayvaolam").datepicker();
-        });
-    </script>
-    <script>
-        $(function () {
-            $("#ngaysinh").datepicker();
-        });
-    </script>
-}

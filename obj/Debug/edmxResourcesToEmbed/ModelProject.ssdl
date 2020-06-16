@@ -10,16 +10,6 @@
     <Property Name="thoigianbd" Type="smalldatetime" Nullable="false" />
     <Property Name="thoigiankt" Type="smalldatetime" Nullable="false" />
   </EntityType>
-  <EntityType Name="file">
-    <Key>
-      <PropertyRef Name="idfile" />
-    </Key>
-    <Property Name="idfile" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="filename" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="extension" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="note" Type="nvarchar" MaxLength="200" />
-    <Property Name="idtb" Type="int" />
-  </EntityType>
   <EntityType Name="giangvien">
     <Key>
       <PropertyRef Name="idgv" />
@@ -36,6 +26,7 @@
     <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ngaysinh" Type="date" Nullable="false" />
     <Property Name="ngayvaolam" Type="date" Nullable="false" />
+    <Property Name="hinhanh" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="hoc">
     <Key>
@@ -113,6 +104,7 @@
     <Property Name="quequan" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="sdt" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="bachoc" Type="nvarchar" MaxLength="30" />
+    <Property Name="hinhanh" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="taikhoan">
     <Key>
@@ -134,21 +126,10 @@
     <Property Name="noidung" Type="nvarchar(max)" />
     <Property Name="tag" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="idtk" Type="int" />
+    <Property Name="file" Type="nvarchar(max)" />
     <Property Name="thoigiandang" Type="smalldatetime" />
     <Property Name="thoigiancapnhat" Type="smalldatetime" />
   </EntityType>
-  <Association Name="FK__file__idtb__48CFD27E">
-    <End Role="thongbao" Type="Self.thongbao" Multiplicity="0..1" />
-    <End Role="file" Type="Self.file" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="thongbao">
-        <PropertyRef Name="idtb" />
-      </Principal>
-      <Dependent Role="file">
-        <PropertyRef Name="idtb" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__giangvien__idkho__2B3F6F97">
     <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="*" />
@@ -161,7 +142,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__hoc__idlop__5441852A">
+  <Association Name="FK__hoc__idlop__5165187F">
     <End Role="lop" Type="Self.lop" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -175,7 +156,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__hoc__idsv__534D60F1">
+  <Association Name="FK__hoc__idsv__5070F446">
     <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="0..1" />
     <End Role="hoc" Type="Self.hoc" Multiplicity="*" />
     <ReferentialConstraint>
@@ -187,7 +168,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__khoa__idgv__5535A963">
+  <Association Name="FK__khoa__idgv__52593CB8">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
     <End Role="khoa" Type="Self.khoa" Multiplicity="*" />
     <ReferentialConstraint>
@@ -199,7 +180,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__iddkhp__4CA06362">
+  <Association Name="FK__lop__iddkhp__49C3F6B7">
     <End Role="dangkyhocphan" Type="Self.dangkyhocphan" Multiplicity="1" />
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
@@ -211,7 +192,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__idgv__4F7CD00D">
+  <Association Name="FK__lop__idgv__4CA06362">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
@@ -223,7 +204,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__idkhoa__4D94879B">
+  <Association Name="FK__lop__idkhoa__4AB81AF0">
     <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
@@ -235,7 +216,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__idmon__4E88ABD4">
+  <Association Name="FK__lop__idmon__4BAC3F29">
     <End Role="mon" Type="Self.mon" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -273,7 +254,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__mon__idmontruoc__5629CD9C">
+  <Association Name="FK__mon__idmontruoc__534D60F1">
     <End Role="mon" Type="Self.mon" Multiplicity="0..1" />
     <End Role="mon1" Type="Self.mon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -339,7 +320,6 @@
   </Association>
   <EntityContainer Name="MyDatabaseModelStoreContainer">
     <EntitySet Name="dangkyhocphan" EntityType="Self.dangkyhocphan" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="file" EntityType="Self.file" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="giangvien" EntityType="Self.giangvien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="hoc" EntityType="Self.hoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="khoa" EntityType="Self.khoa" Schema="dbo" store:Type="Tables" />
@@ -349,39 +329,35 @@
     <EntitySet Name="sinhvien" EntityType="Self.sinhvien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="taikhoan" EntityType="Self.taikhoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="thongbao" EntityType="Self.thongbao" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__file__idtb__48CFD27E" Association="Self.FK__file__idtb__48CFD27E">
-      <End Role="thongbao" EntitySet="thongbao" />
-      <End Role="file" EntitySet="file" />
-    </AssociationSet>
     <AssociationSet Name="FK__giangvien__idkho__2B3F6F97" Association="Self.FK__giangvien__idkho__2B3F6F97">
       <End Role="khoa" EntitySet="khoa" />
       <End Role="giangvien" EntitySet="giangvien" />
     </AssociationSet>
-    <AssociationSet Name="FK__hoc__idlop__5441852A" Association="Self.FK__hoc__idlop__5441852A">
+    <AssociationSet Name="FK__hoc__idlop__5165187F" Association="Self.FK__hoc__idlop__5165187F">
       <End Role="lop" EntitySet="lop" />
       <End Role="hoc" EntitySet="hoc" />
     </AssociationSet>
-    <AssociationSet Name="FK__hoc__idsv__534D60F1" Association="Self.FK__hoc__idsv__534D60F1">
+    <AssociationSet Name="FK__hoc__idsv__5070F446" Association="Self.FK__hoc__idsv__5070F446">
       <End Role="sinhvien" EntitySet="sinhvien" />
       <End Role="hoc" EntitySet="hoc" />
     </AssociationSet>
-    <AssociationSet Name="FK__khoa__idgv__5535A963" Association="Self.FK__khoa__idgv__5535A963">
+    <AssociationSet Name="FK__khoa__idgv__52593CB8" Association="Self.FK__khoa__idgv__52593CB8">
       <End Role="giangvien" EntitySet="giangvien" />
       <End Role="khoa" EntitySet="khoa" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__iddkhp__4CA06362" Association="Self.FK__lop__iddkhp__4CA06362">
+    <AssociationSet Name="FK__lop__iddkhp__49C3F6B7" Association="Self.FK__lop__iddkhp__49C3F6B7">
       <End Role="dangkyhocphan" EntitySet="dangkyhocphan" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__idgv__4F7CD00D" Association="Self.FK__lop__idgv__4F7CD00D">
+    <AssociationSet Name="FK__lop__idgv__4CA06362" Association="Self.FK__lop__idgv__4CA06362">
       <End Role="giangvien" EntitySet="giangvien" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__idkhoa__4D94879B" Association="Self.FK__lop__idkhoa__4D94879B">
+    <AssociationSet Name="FK__lop__idkhoa__4AB81AF0" Association="Self.FK__lop__idkhoa__4AB81AF0">
       <End Role="khoa" EntitySet="khoa" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__idmon__4E88ABD4" Association="Self.FK__lop__idmon__4E88ABD4">
+    <AssociationSet Name="FK__lop__idmon__4BAC3F29" Association="Self.FK__lop__idmon__4BAC3F29">
       <End Role="mon" EntitySet="mon" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
@@ -393,7 +369,7 @@
       <End Role="khoa" EntitySet="khoa" />
       <End Role="lopcn" EntitySet="lopcn" />
     </AssociationSet>
-    <AssociationSet Name="FK__mon__idmontruoc__5629CD9C" Association="Self.FK__mon__idmontruoc__5629CD9C">
+    <AssociationSet Name="FK__mon__idmontruoc__534D60F1" Association="Self.FK__mon__idmontruoc__534D60F1">
       <End Role="mon" EntitySet="mon" />
       <End Role="mon1" EntitySet="mon" />
     </AssociationSet>

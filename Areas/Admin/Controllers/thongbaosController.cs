@@ -49,7 +49,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idtb,tieude,noidung,tag,idtk,thoigiandang,thoigiancapnhat")] thongbao thongbao)
+        public async Task<ActionResult> Create([Bind(Include = "idtb,tieude,noidung,tag,idtk,file,thoigiandang,thoigiancapnhat")] thongbao thongbao)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idtb,tieude,noidung,tag,idtk,thoigiandang,thoigiancapnhat")] thongbao thongbao)
+        public async Task<ActionResult> Edit([Bind(Include = "idtb,tieude,noidung,tag,idtk,file,thoigiandang,thoigiancapnhat")] thongbao thongbao)
         {
             if (ModelState.IsValid)
             {

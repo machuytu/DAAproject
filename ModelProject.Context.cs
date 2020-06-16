@@ -28,15 +28,14 @@ namespace ProjectDAA1
         }
     
         public virtual DbSet<dangkyhocphan> dangkyhocphans { get; set; }
-        public virtual DbSet<file> files { get; set; }
-        public virtual DbSet<giangvien> giangviens { get; set; }
         public virtual DbSet<hoc> hocs { get; set; }
         public virtual DbSet<khoa> khoas { get; set; }
         public virtual DbSet<lop> lops { get; set; }
         public virtual DbSet<lopcn> lopcns { get; set; }
         public virtual DbSet<mon> mons { get; set; }
-        public virtual DbSet<sinhvien> sinhviens { get; set; }
         public virtual DbSet<taikhoan> taikhoans { get; set; }
+        public virtual DbSet<giangvien> giangviens { get; set; }
+        public virtual DbSet<sinhvien> sinhviens { get; set; }
         public virtual DbSet<thongbao> thongbaos { get; set; }
     
         public virtual int AddDKHP(string namhoc, Nullable<int> hocky, Nullable<System.DateTime> thoigianbd, Nullable<System.DateTime> thoigiankt)

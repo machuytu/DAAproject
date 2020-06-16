@@ -35,6 +35,7 @@ namespace ProjectDAA1
         public string email { get; set; }
         public System.DateTime ngaysinh { get; set; }
         public System.DateTime ngayvaolam { get; set; }
+        public string hinhanh { get; set; }
     
         public virtual khoa khoa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

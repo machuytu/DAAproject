@@ -31,10 +31,10 @@ namespace ProjectDAA1
         public Nullable<int> tietkt { get; set; }
     
         public virtual dangkyhocphan dangkyhocphan { get; set; }
-        public virtual giangvien giangvien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hoc> hocs { get; set; }
         public virtual khoa khoa { get; set; }
         public virtual mon mon { get; set; }
+        public virtual giangvien giangvien { get; set; }
     }
 }

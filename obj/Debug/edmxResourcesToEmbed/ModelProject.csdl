@@ -171,50 +171,18 @@
       <Parameter Name="tenkhoa" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="dangkyhocphans" EntityType="MyDatabaseModel.dangkyhocphan" />
-    <EntitySet Name="files" EntityType="MyDatabaseModel.file" />
-    <EntitySet Name="giangviens" EntityType="MyDatabaseModel.giangvien" />
     <EntitySet Name="hocs" EntityType="MyDatabaseModel.hoc" />
     <EntitySet Name="khoas" EntityType="MyDatabaseModel.khoa" />
     <EntitySet Name="lops" EntityType="MyDatabaseModel.lop" />
     <EntitySet Name="lopcns" EntityType="MyDatabaseModel.lopcn" />
     <EntitySet Name="mons" EntityType="MyDatabaseModel.mon" />
-    <EntitySet Name="sinhviens" EntityType="MyDatabaseModel.sinhvien" />
     <EntitySet Name="taikhoans" EntityType="MyDatabaseModel.taikhoan" />
-    <EntitySet Name="thongbaos" EntityType="MyDatabaseModel.thongbao" />
     <AssociationSet Name="FK__lop__iddkhp__4CA06362" Association="MyDatabaseModel.FK__lop__iddkhp__4CA06362">
       <End Role="dangkyhocphan" EntitySet="dangkyhocphans" />
       <End Role="lop" EntitySet="lops" />
     </AssociationSet>
-    <AssociationSet Name="FK__file__idtb__48CFD27E" Association="MyDatabaseModel.FK__file__idtb__48CFD27E">
-      <End Role="thongbao" EntitySet="thongbaos" />
-      <End Role="file" EntitySet="files" />
-    </AssociationSet>
-    <AssociationSet Name="FK__giangvien__idkho__2B3F6F97" Association="MyDatabaseModel.FK__giangvien__idkho__2B3F6F97">
-      <End Role="khoa" EntitySet="khoas" />
-      <End Role="giangvien" EntitySet="giangviens" />
-    </AssociationSet>
-    <AssociationSet Name="FK__khoa__idgv__5535A963" Association="MyDatabaseModel.FK__khoa__idgv__5535A963">
-      <End Role="giangvien" EntitySet="giangviens" />
-      <End Role="khoa" EntitySet="khoas" />
-    </AssociationSet>
-    <AssociationSet Name="FK__lop__idgv__4F7CD00D" Association="MyDatabaseModel.FK__lop__idgv__4F7CD00D">
-      <End Role="giangvien" EntitySet="giangviens" />
-      <End Role="lop" EntitySet="lops" />
-    </AssociationSet>
-    <AssociationSet Name="FK__lopcn__idgv__37A5467C" Association="MyDatabaseModel.FK__lopcn__idgv__37A5467C">
-      <End Role="giangvien" EntitySet="giangviens" />
-      <End Role="lopcn" EntitySet="lopcns" />
-    </AssociationSet>
-    <AssociationSet Name="FK__taikhoan__idgv__4222D4EF" Association="MyDatabaseModel.FK__taikhoan__idgv__4222D4EF">
-      <End Role="giangvien" EntitySet="giangviens" />
-      <End Role="taikhoan" EntitySet="taikhoans" />
-    </AssociationSet>
     <AssociationSet Name="FK__hoc__idlop__5441852A" Association="MyDatabaseModel.FK__hoc__idlop__5441852A">
       <End Role="lop" EntitySet="lops" />
-      <End Role="hoc" EntitySet="hocs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__hoc__idsv__534D60F1" Association="MyDatabaseModel.FK__hoc__idsv__534D60F1">
-      <End Role="sinhvien" EntitySet="sinhviens" />
       <End Role="hoc" EntitySet="hocs" />
     </AssociationSet>
     <AssociationSet Name="FK__lop__idkhoa__4D94879B" Association="MyDatabaseModel.FK__lop__idkhoa__4D94879B">
@@ -229,13 +197,40 @@
       <End Role="mon" EntitySet="mons" />
       <End Role="lop" EntitySet="lops" />
     </AssociationSet>
-    <AssociationSet Name="FK__sinhvien__idlopc__3C69FB99" Association="MyDatabaseModel.FK__sinhvien__idlopc__3C69FB99">
-      <End Role="lopcn" EntitySet="lopcns" />
-      <End Role="sinhvien" EntitySet="sinhviens" />
-    </AssociationSet>
     <AssociationSet Name="FK__mon__idmontruoc__5629CD9C" Association="MyDatabaseModel.FK__mon__idmontruoc__5629CD9C">
       <End Role="mon" EntitySet="mons" />
       <End Role="mon1" EntitySet="mons" />
+    </AssociationSet>
+    <EntitySet Name="giangviens" EntityType="MyDatabaseModel.giangvien" />
+    <EntitySet Name="sinhviens" EntityType="MyDatabaseModel.sinhvien" />
+    <EntitySet Name="thongbaos" EntityType="MyDatabaseModel.thongbao" />
+    <AssociationSet Name="FK__giangvien__idkho__2B3F6F97" Association="MyDatabaseModel.FK__giangvien__idkho__2B3F6F97">
+      <End Role="khoa" EntitySet="khoas" />
+      <End Role="giangvien" EntitySet="giangviens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__khoa__idgv__52593CB8" Association="MyDatabaseModel.FK__khoa__idgv__52593CB8">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="khoa" EntitySet="khoas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lop__idgv__4CA06362" Association="MyDatabaseModel.FK__lop__idgv__4CA06362">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="lop" EntitySet="lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lopcn__idgv__37A5467C" Association="MyDatabaseModel.FK__lopcn__idgv__37A5467C">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="lopcn" EntitySet="lopcns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__taikhoan__idgv__4222D4EF" Association="MyDatabaseModel.FK__taikhoan__idgv__4222D4EF">
+      <End Role="giangvien" EntitySet="giangviens" />
+      <End Role="taikhoan" EntitySet="taikhoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hoc__idsv__5070F446" Association="MyDatabaseModel.FK__hoc__idsv__5070F446">
+      <End Role="sinhvien" EntitySet="sinhviens" />
+      <End Role="hoc" EntitySet="hocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sinhvien__idlopc__3C69FB99" Association="MyDatabaseModel.FK__sinhvien__idlopc__3C69FB99">
+      <End Role="lopcn" EntitySet="lopcns" />
+      <End Role="sinhvien" EntitySet="sinhviens" />
     </AssociationSet>
     <AssociationSet Name="FK__taikhoan__idsv__412EB0B6" Association="MyDatabaseModel.FK__taikhoan__idsv__412EB0B6">
       <End Role="sinhvien" EntitySet="sinhviens" />
@@ -257,39 +252,6 @@
     <Property Name="thoigiankt" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="lops" Relationship="MyDatabaseModel.FK__lop__iddkhp__4CA06362" FromRole="dangkyhocphan" ToRole="lop" />
   </EntityType>
-  <EntityType Name="file">
-    <Key>
-      <PropertyRef Name="idfile" />
-    </Key>
-    <Property Name="idfile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="filename" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="extension" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="idtb" Type="Int32" />
-    <NavigationProperty Name="thongbao" Relationship="MyDatabaseModel.FK__file__idtb__48CFD27E" FromRole="file" ToRole="thongbao" />
-  </EntityType>
-  <EntityType Name="giangvien">
-    <Key>
-      <PropertyRef Name="idgv" />
-    </Key>
-    <Property Name="idgv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="hoten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="idkhoa" Type="Int32" />
-    <Property Name="gioitinh" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="diachi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="quequan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="sdt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="capbac" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ngayvaolam" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="khoa" Relationship="MyDatabaseModel.FK__giangvien__idkho__2B3F6F97" FromRole="giangvien" ToRole="khoa" />
-    <NavigationProperty Name="khoas" Relationship="MyDatabaseModel.FK__khoa__idgv__5535A963" FromRole="giangvien" ToRole="khoa" />
-    <NavigationProperty Name="lops" Relationship="MyDatabaseModel.FK__lop__idgv__4F7CD00D" FromRole="giangvien" ToRole="lop" />
-    <NavigationProperty Name="lopcns" Relationship="MyDatabaseModel.FK__lopcn__idgv__37A5467C" FromRole="giangvien" ToRole="lopcn" />
-    <NavigationProperty Name="taikhoans" Relationship="MyDatabaseModel.FK__taikhoan__idgv__4222D4EF" FromRole="giangvien" ToRole="taikhoan" />
-  </EntityType>
   <EntityType Name="hoc">
     <Key>
       <PropertyRef Name="idhoc" />
@@ -303,7 +265,7 @@
     <Property Name="diemck" Type="Double" />
     <Property Name="diemtb" Type="Double" />
     <NavigationProperty Name="lop" Relationship="MyDatabaseModel.FK__hoc__idlop__5441852A" FromRole="hoc" ToRole="lop" />
-    <NavigationProperty Name="sinhvien" Relationship="MyDatabaseModel.FK__hoc__idsv__534D60F1" FromRole="hoc" ToRole="sinhvien" />
+    <NavigationProperty Name="sinhvien" Relationship="MyDatabaseModel.FK__hoc__idsv__5070F446" FromRole="hoc" ToRole="sinhvien" />
   </EntityType>
   <EntityType Name="khoa">
     <Key>
@@ -313,10 +275,10 @@
     <Property Name="tenkhoa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="makhoa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="idgv" Type="Int32" />
-    <NavigationProperty Name="giangviens" Relationship="MyDatabaseModel.FK__giangvien__idkho__2B3F6F97" FromRole="khoa" ToRole="giangvien" />
-    <NavigationProperty Name="giangvien" Relationship="MyDatabaseModel.FK__khoa__idgv__5535A963" FromRole="khoa" ToRole="giangvien" />
     <NavigationProperty Name="lops" Relationship="MyDatabaseModel.FK__lop__idkhoa__4D94879B" FromRole="khoa" ToRole="lop" />
     <NavigationProperty Name="lopcns" Relationship="MyDatabaseModel.FK__lopcn__idkhoa__38996AB5" FromRole="khoa" ToRole="lopcn" />
+    <NavigationProperty Name="giangviens" Relationship="MyDatabaseModel.FK__giangvien__idkho__2B3F6F97" FromRole="khoa" ToRole="giangvien" />
+    <NavigationProperty Name="giangvien" Relationship="MyDatabaseModel.FK__khoa__idgv__52593CB8" FromRole="khoa" ToRole="giangvien" />
   </EntityType>
   <EntityType Name="lop">
     <Key>
@@ -332,10 +294,10 @@
     <Property Name="tietbd" Type="Int32" Nullable="false" />
     <Property Name="tietkt" Type="Int32" />
     <NavigationProperty Name="dangkyhocphan" Relationship="MyDatabaseModel.FK__lop__iddkhp__4CA06362" FromRole="lop" ToRole="dangkyhocphan" />
-    <NavigationProperty Name="giangvien" Relationship="MyDatabaseModel.FK__lop__idgv__4F7CD00D" FromRole="lop" ToRole="giangvien" />
     <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__idlop__5441852A" FromRole="lop" ToRole="hoc" />
     <NavigationProperty Name="khoa" Relationship="MyDatabaseModel.FK__lop__idkhoa__4D94879B" FromRole="lop" ToRole="khoa" />
     <NavigationProperty Name="mon" Relationship="MyDatabaseModel.FK__lop__idmon__4E88ABD4" FromRole="lop" ToRole="mon" />
+    <NavigationProperty Name="giangvien" Relationship="MyDatabaseModel.FK__lop__idgv__4CA06362" FromRole="lop" ToRole="giangvien" />
   </EntityType>
   <EntityType Name="lopcn">
     <Key>
@@ -346,8 +308,8 @@
     <Property Name="idgv" Type="Int32" />
     <Property Name="idkhoa" Type="Int32" />
     <Property Name="nienkhoa" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="giangvien" Relationship="MyDatabaseModel.FK__lopcn__idgv__37A5467C" FromRole="lopcn" ToRole="giangvien" />
     <NavigationProperty Name="khoa" Relationship="MyDatabaseModel.FK__lopcn__idkhoa__38996AB5" FromRole="lopcn" ToRole="khoa" />
+    <NavigationProperty Name="giangvien" Relationship="MyDatabaseModel.FK__lopcn__idgv__37A5467C" FromRole="lopcn" ToRole="giangvien" />
     <NavigationProperty Name="sinhviens" Relationship="MyDatabaseModel.FK__sinhvien__idlopc__3C69FB99" FromRole="lopcn" ToRole="sinhvien" />
   </EntityType>
   <EntityType Name="mon">
@@ -369,24 +331,6 @@
     <NavigationProperty Name="mon1" Relationship="MyDatabaseModel.FK__mon__idmontruoc__5629CD9C" FromRole="mon" ToRole="mon1" />
     <NavigationProperty Name="mon2" Relationship="MyDatabaseModel.FK__mon__idmontruoc__5629CD9C" FromRole="mon1" ToRole="mon" />
   </EntityType>
-  <EntityType Name="sinhvien">
-    <Key>
-      <PropertyRef Name="idsv" />
-    </Key>
-    <Property Name="idsv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="hoten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="masv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="gioitinh" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="idlopcn" Type="Int32" />
-    <Property Name="diachi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="quequan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="sdt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="bachoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__idsv__534D60F1" FromRole="sinhvien" ToRole="hoc" />
-    <NavigationProperty Name="lopcn" Relationship="MyDatabaseModel.FK__sinhvien__idlopc__3C69FB99" FromRole="sinhvien" ToRole="lopcn" />
-    <NavigationProperty Name="taikhoans" Relationship="MyDatabaseModel.FK__taikhoan__idsv__412EB0B6" FromRole="sinhvien" ToRole="taikhoan" />
-  </EntityType>
   <EntityType Name="taikhoan">
     <Key>
       <PropertyRef Name="idtk" />
@@ -401,20 +345,6 @@
     <NavigationProperty Name="sinhvien" Relationship="MyDatabaseModel.FK__taikhoan__idsv__412EB0B6" FromRole="taikhoan" ToRole="sinhvien" />
     <NavigationProperty Name="thongbaos" Relationship="MyDatabaseModel.FK__thongbao__idtk__45F365D3" FromRole="taikhoan" ToRole="thongbao" />
   </EntityType>
-  <EntityType Name="thongbao">
-    <Key>
-      <PropertyRef Name="idtb" />
-    </Key>
-    <Property Name="idtb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tieude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="tag" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="idtk" Type="Int32" />
-    <Property Name="thoigiandang" Type="DateTime" Precision="0" />
-    <Property Name="thoigiancapnhat" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="files" Relationship="MyDatabaseModel.FK__file__idtb__48CFD27E" FromRole="thongbao" ToRole="file" />
-    <NavigationProperty Name="taikhoan" Relationship="MyDatabaseModel.FK__thongbao__idtk__45F365D3" FromRole="thongbao" ToRole="taikhoan" />
-  </EntityType>
   <Association Name="FK__lop__iddkhp__4CA06362">
     <End Type="MyDatabaseModel.dangkyhocphan" Role="dangkyhocphan" Multiplicity="1" />
     <End Type="MyDatabaseModel.lop" Role="lop" Multiplicity="*" />
@@ -424,80 +354,6 @@
       </Principal>
       <Dependent Role="lop">
         <PropertyRef Name="iddkhp" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__file__idtb__48CFD27E">
-    <End Type="MyDatabaseModel.thongbao" Role="thongbao" Multiplicity="0..1" />
-    <End Type="MyDatabaseModel.file" Role="file" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="thongbao">
-        <PropertyRef Name="idtb" />
-      </Principal>
-      <Dependent Role="file">
-        <PropertyRef Name="idtb" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__giangvien__idkho__2B3F6F97">
-    <End Type="MyDatabaseModel.khoa" Role="khoa" Multiplicity="0..1" />
-    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="khoa">
-        <PropertyRef Name="idkhoa" />
-      </Principal>
-      <Dependent Role="giangvien">
-        <PropertyRef Name="idkhoa" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__khoa__idgv__5535A963">
-    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1" />
-    <End Type="MyDatabaseModel.khoa" Role="khoa" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="giangvien">
-        <PropertyRef Name="idgv" />
-      </Principal>
-      <Dependent Role="khoa">
-        <PropertyRef Name="idgv" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__lop__idgv__4F7CD00D">
-    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1" />
-    <End Type="MyDatabaseModel.lop" Role="lop" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="giangvien">
-        <PropertyRef Name="idgv" />
-      </Principal>
-      <Dependent Role="lop">
-        <PropertyRef Name="idgv" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__lopcn__idgv__37A5467C">
-    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1" />
-    <End Type="MyDatabaseModel.lopcn" Role="lopcn" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="giangvien">
-        <PropertyRef Name="idgv" />
-      </Principal>
-      <Dependent Role="lopcn">
-        <PropertyRef Name="idgv" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__taikhoan__idgv__4222D4EF">
-    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MyDatabaseModel.taikhoan" Role="taikhoan" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="giangvien">
-        <PropertyRef Name="idgv" />
-      </Principal>
-      <Dependent Role="taikhoan">
-        <PropertyRef Name="idgv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -512,18 +368,6 @@
       </Principal>
       <Dependent Role="hoc">
         <PropertyRef Name="idlop" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__hoc__idsv__534D60F1">
-    <End Type="MyDatabaseModel.sinhvien" Role="sinhvien" Multiplicity="0..1" />
-    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sinhvien">
-        <PropertyRef Name="idsv" />
-      </Principal>
-      <Dependent Role="hoc">
-        <PropertyRef Name="idsv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -565,18 +409,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__sinhvien__idlopc__3C69FB99">
-    <End Type="MyDatabaseModel.lopcn" Role="lopcn" Multiplicity="0..1" />
-    <End Type="MyDatabaseModel.sinhvien" Role="sinhvien" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="lopcn">
-        <PropertyRef Name="idlopcn" />
-      </Principal>
-      <Dependent Role="sinhvien">
-        <PropertyRef Name="idlopcn" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__mon__idmontruoc__5629CD9C">
     <End Type="MyDatabaseModel.mon" Role="mon" Multiplicity="0..1" />
     <End Type="MyDatabaseModel.mon" Role="mon1" Multiplicity="*" />
@@ -586,6 +418,148 @@
       </Principal>
       <Dependent Role="mon1">
         <PropertyRef Name="idmontruoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="giangvien">
+    <Key>
+      <PropertyRef Name="idgv" />
+    </Key>
+    <Property Name="idgv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="magv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="idkhoa" Type="Int32" />
+    <Property Name="gioitinh" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="diachi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="quequan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sdt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="capbac" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ngayvaolam" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="hinhanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="khoa" Relationship="MyDatabaseModel.FK__giangvien__idkho__2B3F6F97" FromRole="giangvien" ToRole="khoa" />
+    <NavigationProperty Name="khoas" Relationship="MyDatabaseModel.FK__khoa__idgv__52593CB8" FromRole="giangvien" ToRole="khoa" />
+    <NavigationProperty Name="lops" Relationship="MyDatabaseModel.FK__lop__idgv__4CA06362" FromRole="giangvien" ToRole="lop" />
+    <NavigationProperty Name="lopcns" Relationship="MyDatabaseModel.FK__lopcn__idgv__37A5467C" FromRole="giangvien" ToRole="lopcn" />
+    <NavigationProperty Name="taikhoans" Relationship="MyDatabaseModel.FK__taikhoan__idgv__4222D4EF" FromRole="giangvien" ToRole="taikhoan" />
+  </EntityType>
+  <EntityType Name="sinhvien">
+    <Key>
+      <PropertyRef Name="idsv" />
+    </Key>
+    <Property Name="idsv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="masv" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="gioitinh" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idlopcn" Type="Int32" />
+    <Property Name="diachi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="quequan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sdt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bachoc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="hinhanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="hocs" Relationship="MyDatabaseModel.FK__hoc__idsv__5070F446" FromRole="sinhvien" ToRole="hoc" />
+    <NavigationProperty Name="lopcn" Relationship="MyDatabaseModel.FK__sinhvien__idlopc__3C69FB99" FromRole="sinhvien" ToRole="lopcn" />
+    <NavigationProperty Name="taikhoans" Relationship="MyDatabaseModel.FK__taikhoan__idsv__412EB0B6" FromRole="sinhvien" ToRole="taikhoan" />
+  </EntityType>
+  <EntityType Name="thongbao">
+    <Key>
+      <PropertyRef Name="idtb" />
+    </Key>
+    <Property Name="idtb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tieude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tag" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="idtk" Type="Int32" />
+    <Property Name="file" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="thoigiandang" Type="DateTime" Precision="0" />
+    <Property Name="thoigiancapnhat" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="taikhoan" Relationship="MyDatabaseModel.FK__thongbao__idtk__45F365D3" FromRole="thongbao" ToRole="taikhoan" />
+  </EntityType>
+  <Association Name="FK__giangvien__idkho__2B3F6F97">
+    <End Type="MyDatabaseModel.khoa" Role="khoa" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khoa">
+        <PropertyRef Name="idkhoa" />
+      </Principal>
+      <Dependent Role="giangvien">
+        <PropertyRef Name="idkhoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__khoa__idgv__52593CB8">
+    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.khoa" Role="khoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giangvien">
+        <PropertyRef Name="idgv" />
+      </Principal>
+      <Dependent Role="khoa">
+        <PropertyRef Name="idgv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lop__idgv__4CA06362">
+    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.lop" Role="lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giangvien">
+        <PropertyRef Name="idgv" />
+      </Principal>
+      <Dependent Role="lop">
+        <PropertyRef Name="idgv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lopcn__idgv__37A5467C">
+    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.lopcn" Role="lopcn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giangvien">
+        <PropertyRef Name="idgv" />
+      </Principal>
+      <Dependent Role="lopcn">
+        <PropertyRef Name="idgv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__taikhoan__idgv__4222D4EF">
+    <End Type="MyDatabaseModel.giangvien" Role="giangvien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MyDatabaseModel.taikhoan" Role="taikhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giangvien">
+        <PropertyRef Name="idgv" />
+      </Principal>
+      <Dependent Role="taikhoan">
+        <PropertyRef Name="idgv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hoc__idsv__5070F446">
+    <End Type="MyDatabaseModel.sinhvien" Role="sinhvien" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.hoc" Role="hoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sinhvien">
+        <PropertyRef Name="idsv" />
+      </Principal>
+      <Dependent Role="hoc">
+        <PropertyRef Name="idsv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sinhvien__idlopc__3C69FB99">
+    <End Type="MyDatabaseModel.lopcn" Role="lopcn" Multiplicity="0..1" />
+    <End Type="MyDatabaseModel.sinhvien" Role="sinhvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lopcn">
+        <PropertyRef Name="idlopcn" />
+      </Principal>
+      <Dependent Role="sinhvien">
+        <PropertyRef Name="idlopcn" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

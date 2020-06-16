@@ -26,8 +26,8 @@ namespace ProjectDAA1
         public Nullable<int> idkhoa { get; set; }
         public int nienkhoa { get; set; }
     
-        public virtual giangvien giangvien { get; set; }
         public virtual khoa khoa { get; set; }
+        public virtual giangvien giangvien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sinhvien> sinhviens { get; set; }
     }

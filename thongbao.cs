@@ -14,22 +14,15 @@ namespace ProjectDAA1
     
     public partial class thongbao
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public thongbao()
-        {
-            this.files = new HashSet<file>();
-        }
-    
         public int idtb { get; set; }
         public string tieude { get; set; }
         public string noidung { get; set; }
         public string tag { get; set; }
         public Nullable<int> idtk { get; set; }
+        public string file { get; set; }
         public Nullable<System.DateTime> thoigiandang { get; set; }
         public Nullable<System.DateTime> thoigiancapnhat { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<file> files { get; set; }
         public virtual taikhoan taikhoan { get; set; }
     }
 }

@@ -5,10 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<br />
-<br />
-<br />
-<br />
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -45,42 +42,41 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.hoten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.masv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.gioitinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngaysinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.diachi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quequan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.sdt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.bachoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lopcn.malopcn)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idsv }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idsv }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idsv })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hoten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.masv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gioitinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaysinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diachi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quequan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sdt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bachoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lopcn.malopcn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idsv }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idsv }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idsv })
+        </td>
+    </tr>
+}
 
 </table>

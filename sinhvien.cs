@@ -31,6 +31,7 @@ namespace ProjectDAA1
         public string quequan { get; set; }
         public string sdt { get; set; }
         public string bachoc { get; set; }
+        public string hinhanh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hoc> hocs { get; set; }
