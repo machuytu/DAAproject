@@ -11,112 +11,112 @@ using ProjectDAA1;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class thongbaosController : Controller
+    public class filesController : Controller
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
-        // GET: Admin/thongbaos
+        // GET: Admin/files
         public async Task<ActionResult> Index()
         {
-            var thongbaos = db.thongbaos.Include(t => t.taikhoan);
-            return View(await thongbaos.ToListAsync());
+            var files = db.files.Include(f => f.thongbao);
+            return View(await files.ToListAsync());
         }
 
-        // GET: Admin/thongbaos/Details/5
+        // GET: Admin/files/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            thongbao thongbao = await db.thongbaos.FindAsync(id);
-            if (thongbao == null)
+            file file = await db.files.FindAsync(id);
+            if (file == null)
             {
                 return HttpNotFound();
             }
-            return View(thongbao);
+            return View(file);
         }
 
-        // GET: Admin/thongbaos/Create
+        // GET: Admin/files/Create
         public ActionResult Create()
         {
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk");
+            ViewBag.idtb = new SelectList(db.thongbaos, "idtb", "tieude");
             return View();
         }
 
-        // POST: Admin/thongbaos/Create
+        // POST: Admin/files/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idtb,tieude,noidung,tag,idtk,thoigiandang,thoigiancapnhat")] thongbao thongbao)
+        public async Task<ActionResult> Create([Bind(Include = "idfile,filename,extension,note,idtb")] file file)
         {
             if (ModelState.IsValid)
             {
-                db.thongbaos.Add(thongbao);
+                db.files.Add(file);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk", thongbao.idtk);
-            return View(thongbao);
+            ViewBag.idtb = new SelectList(db.thongbaos, "idtb", "tieude", file.idtb);
+            return View(file);
         }
 
-        // GET: Admin/thongbaos/Edit/5
+        // GET: Admin/files/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            thongbao thongbao = await db.thongbaos.FindAsync(id);
-            if (thongbao == null)
+            file file = await db.files.FindAsync(id);
+            if (file == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk", thongbao.idtk);
-            return View(thongbao);
+            ViewBag.idtb = new SelectList(db.thongbaos, "idtb", "tieude", file.idtb);
+            return View(file);
         }
 
-        // POST: Admin/thongbaos/Edit/5
+        // POST: Admin/files/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idtb,tieude,noidung,tag,idtk,thoigiandang,thoigiancapnhat")] thongbao thongbao)
+        public async Task<ActionResult> Edit([Bind(Include = "idfile,filename,extension,note,idtb")] file file)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(thongbao).State = EntityState.Modified;
+                db.Entry(file).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk", thongbao.idtk);
-            return View(thongbao);
+            ViewBag.idtb = new SelectList(db.thongbaos, "idtb", "tieude", file.idtb);
+            return View(file);
         }
 
-        // GET: Admin/thongbaos/Delete/5
+        // GET: Admin/files/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            thongbao thongbao = await db.thongbaos.FindAsync(id);
-            if (thongbao == null)
+            file file = await db.files.FindAsync(id);
+            if (file == null)
             {
                 return HttpNotFound();
             }
-            return View(thongbao);
+            return View(file);
         }
 
-        // POST: Admin/thongbaos/Delete/5
+        // POST: Admin/files/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            thongbao thongbao = await db.thongbaos.FindAsync(id);
-            db.thongbaos.Remove(thongbao);
+            file file = await db.files.FindAsync(id);
+            db.files.Remove(file);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

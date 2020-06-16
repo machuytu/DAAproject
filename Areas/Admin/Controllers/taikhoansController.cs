@@ -23,7 +23,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/taikhoans/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -40,8 +40,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/taikhoans/Create
         public ActionResult Create()
         {
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten");
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten");
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "matk,password,masv,magv,nhom")] taikhoan taikhoan)
+        public async Task<ActionResult> Create([Bind(Include = "idtk,matk,password,nhom,idsv,idgv")] taikhoan taikhoan)
         {
             if (ModelState.IsValid)
             {
@@ -59,13 +59,13 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", taikhoan.magv);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", taikhoan.masv);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", taikhoan.idgv);
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", taikhoan.idsv);
             return View(taikhoan);
         }
 
         // GET: Admin/taikhoans/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -76,8 +76,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", taikhoan.magv);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", taikhoan.masv);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", taikhoan.idgv);
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", taikhoan.idsv);
             return View(taikhoan);
         }
 
@@ -86,7 +86,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "matk,password,masv,magv,nhom")] taikhoan taikhoan)
+        public async Task<ActionResult> Edit([Bind(Include = "idtk,matk,password,nhom,idsv,idgv")] taikhoan taikhoan)
         {
             if (ModelState.IsValid)
             {
@@ -94,13 +94,13 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", taikhoan.magv);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", taikhoan.masv);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", taikhoan.idgv);
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", taikhoan.idsv);
             return View(taikhoan);
         }
 
         // GET: Admin/taikhoans/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -117,7 +117,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // POST: Admin/taikhoans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             taikhoan taikhoan = await db.taikhoans.FindAsync(id);
             db.taikhoans.Remove(taikhoan);

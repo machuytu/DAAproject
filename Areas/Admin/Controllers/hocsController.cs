@@ -53,7 +53,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idhoc,masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
+        public async Task<ActionResult> Create([Bind(Include = "idhoc,idlop,idsv,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
         {
             if (ModelState.IsValid)
             {
@@ -62,8 +62,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.malop = new SelectList(db.lops, "malop", "magv", hoc.malop);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", hoc.masv);
+            ViewBag.idlop = new SelectList(db.lops, "idlop", "malop", hoc.idlop);
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", hoc.idsv);
             return View(hoc);
         }
 
@@ -84,6 +84,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
 
             ViewBag.malop = ahihi;
             ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
+
             return View(hoc);
         }
 
@@ -92,7 +93,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idhoc,masv,malop,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
+        public async Task<ActionResult> Edit([Bind(Include = "idhoc,idlop,idsv,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
         {
             if (ModelState.IsValid)
             {
@@ -100,8 +101,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.malop = new SelectList(db.lops, "malop", "magv", hoc.malop);
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten", hoc.masv);
+            ViewBag.idlop = new SelectList(db.lops, "idlop", "malop", hoc.idlop);
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", hoc.idsv);
             return View(hoc);
         }
 

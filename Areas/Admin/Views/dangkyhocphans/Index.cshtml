@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<ProjectDAA1.dangkyhocphan>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<Br/>
-<Br/>
-<Br/>
-<Br/>
+<br />
+<br />
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -16,10 +18,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.hocky)
+            @Html.DisplayNameFor(model => model.namhoc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.namhoc)
+            @Html.DisplayNameFor(model => model.hocky)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.thoigianbd)
@@ -30,26 +32,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.hocky)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.namhoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.thoigianbd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.thoigiankt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.madkhp }) |
-            @Html.ActionLink("Details", "Details", new { id=item.madkhp }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.madkhp })
-        </td>
-    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.namhoc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.hocky)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.thoigianbd)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.thoigiankt)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.iddkhp }) |
+        @Html.ActionLink("Details", "Details", new { id = item.iddkhp }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.iddkhp })
+    </td>
+</tr>
 }
 
 </table>

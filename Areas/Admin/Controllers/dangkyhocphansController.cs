@@ -22,7 +22,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/dangkyhocphans/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -47,7 +47,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "madkhp,hocky,namhoc,thoigianbd,thoigiankt")] dangkyhocphan dangkyhocphan)
+        public async Task<ActionResult> Create([Bind(Include = "iddkhp,namhoc,hocky,thoigianbd,thoigiankt")] dangkyhocphan dangkyhocphan)
         {
             if (ModelState.IsValid)
             {
@@ -76,13 +76,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            
 
             return View(dangkyhocphan);
         }
 
         // GET: Admin/dangkyhocphans/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -101,16 +100,16 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "madkhp,hocky,namhoc,thoigianbd,thoigiankt")] dangkyhocphan dangkyhocphan)
+        public async Task<ActionResult> Edit([Bind(Include = "iddkhp,namhoc,hocky,thoigianbd,thoigiankt")] dangkyhocphan dangkyhocphan)
         {
-            if (dangkyhocphan.thoigianbd > dangkyhocphan.thoigiankt)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày kết thúc");
-                return View(dangkyhocphan);
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                if (dangkyhocphan.thoigianbd > dangkyhocphan.thoigiankt)
+                {
+                    ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày kết thúc");
+                    return View(dangkyhocphan);
+                }
+                else
                 {
                     db.Entry(dangkyhocphan).State = EntityState.Modified;
                     await db.SaveChangesAsync();
@@ -121,7 +120,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/dangkyhocphans/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -138,7 +137,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // POST: Admin/dangkyhocphans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             dangkyhocphan dangkyhocphan = await db.dangkyhocphans.FindAsync(id);
             db.dangkyhocphans.Remove(dangkyhocphan);

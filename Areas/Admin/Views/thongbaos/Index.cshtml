@@ -3,10 +3,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    var giangvien = ViewBag.giangvien;
 }
 
-<h2>Index</h2>
+<br />
+<br />
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -14,59 +16,53 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.tag)
+            @Html.DisplayNameFor(model => model.tieude)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.noidung)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tieude)
+            @Html.DisplayNameFor(model => model.tag)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.thoigiandang)
         </th>
         <th>
-            nguoi dang
+            @Html.DisplayNameFor(model => model.thoigiancapnhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.taikhoan.matk)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tag)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.noidung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tieude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.thoigiandang)
-        </td>
-        <td>
-            @{
-                var matk = item.taikhoan.matk;
-            }
-            @foreach (var gv in giangvien)
-            {
-                if (matk == gv.magv)
-                {
-                    <div>@gv.hoten</div>
-                }
-                else if(matk == "admin")
-                {
-                    <div>admin</div>
-                }
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.matb }) |
-            @Html.ActionLink("Details", "Details", new { id=item.matb }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.matb })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tieude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.noidung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thoigiandang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thoigiancapnhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taikhoan.matk)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idtb }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idtb }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idtb })
+            </td>
+        </tr>
+    }
 
 </table>

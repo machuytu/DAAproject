@@ -23,7 +23,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/lopcns/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -40,8 +40,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/lopcns/Create
         public ActionResult Create()
         {
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten");
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa");
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten");
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "malopcn,magv,makhoa,nienkhoa")] lopcn lopcn)
+        public async Task<ActionResult> Create([Bind(Include = "idlopcn,malopcn,idgv,idkhoa,nienkhoa")] lopcn lopcn)
         {
             if (ModelState.IsValid)
             {
@@ -59,13 +59,13 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", lopcn.magv);
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", lopcn.makhoa);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lopcn.idgv);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", lopcn.idkhoa);
             return View(lopcn);
         }
 
         // GET: Admin/lopcns/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -76,8 +76,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", lopcn.magv);
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", lopcn.makhoa);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lopcn.idgv);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", lopcn.idkhoa);
             return View(lopcn);
         }
 
@@ -86,7 +86,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "malopcn,magv,makhoa,nienkhoa")] lopcn lopcn)
+        public async Task<ActionResult> Edit([Bind(Include = "idlopcn,malopcn,idgv,idkhoa,nienkhoa")] lopcn lopcn)
         {
             if (ModelState.IsValid)
             {
@@ -94,13 +94,13 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", lopcn.magv);
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", lopcn.makhoa);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lopcn.idgv);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", lopcn.idkhoa);
             return View(lopcn);
         }
 
         // GET: Admin/lopcns/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -117,7 +117,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // POST: Admin/lopcns/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             lopcn lopcn = await db.lopcns.FindAsync(id);
             db.lopcns.Remove(lopcn);

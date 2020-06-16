@@ -22,9 +22,10 @@ namespace ProjectDAA1
             this.lopcns = new HashSet<lopcn>();
         }
     
-        public string makhoa { get; set; }
+        public int idkhoa { get; set; }
         public string tenkhoa { get; set; }
-        public string magv { get; set; }
+        public string makhoa { get; set; }
+        public Nullable<int> idgv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<giangvien> giangviens { get; set; }

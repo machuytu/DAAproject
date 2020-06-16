@@ -23,7 +23,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/giangviens/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -40,7 +40,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/giangviens/Create
         public ActionResult Create()
         {
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa");
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "magv,hoten,gioitinh,ngaysinh,diachi,quequan,sdt,capbac,email,ngayvaolam,makhoa")] giangvien giangvien)
+        public async Task<ActionResult> Create([Bind(Include = "idgv,hoten,magv,idkhoa,gioitinh,diachi,quequan,sdt,capbac,email,ngaysinh,ngayvaolam")] giangvien giangvien)
         {
             if (ModelState.IsValid)
             {
@@ -86,12 +86,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 }
             }
 
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", giangvien.makhoa);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
             return View(giangvien);
         }
 
         // GET: Admin/giangviens/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -102,7 +102,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", giangvien.makhoa);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
             return View(giangvien);
         }
 
@@ -111,7 +111,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "magv,hoten,gioitinh,ngaysinh,diachi,quequan,sdt,capbac,email,ngayvaolam,makhoa")] giangvien giangvien)
+        public async Task<ActionResult> Edit([Bind(Include = "idgv,hoten,magv,idkhoa,gioitinh,diachi,quequan,sdt,capbac,email,ngaysinh,ngayvaolam")] giangvien giangvien)
         {
             if (ModelState.IsValid)
             {
@@ -146,12 +146,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", giangvien.makhoa);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
             return View(giangvien);
         }
 
         // GET: Admin/giangviens/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -168,7 +168,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // POST: Admin/giangviens/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             giangvien giangvien = await db.giangviens.FindAsync(id);
             db.giangviens.Remove(giangvien);

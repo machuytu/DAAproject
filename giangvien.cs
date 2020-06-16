@@ -23,17 +23,18 @@ namespace ProjectDAA1
             this.taikhoans = new HashSet<taikhoan>();
         }
     
-        public string magv { get; set; }
+        public int idgv { get; set; }
         public string hoten { get; set; }
+        public string magv { get; set; }
+        public Nullable<int> idkhoa { get; set; }
         public string gioitinh { get; set; }
-        public System.DateTime ngaysinh { get; set; }
         public string diachi { get; set; }
         public string quequan { get; set; }
         public string sdt { get; set; }
         public string capbac { get; set; }
         public string email { get; set; }
+        public System.DateTime ngaysinh { get; set; }
         public System.DateTime ngayvaolam { get; set; }
-        public string makhoa { get; set; }
     
         public virtual khoa khoa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

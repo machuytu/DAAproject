@@ -4,144 +4,43 @@
     <EntitySetMapping Name="dangkyhocphans">
       <EntityTypeMapping TypeName="MyDatabaseModel.dangkyhocphan">
         <MappingFragment StoreEntitySet="dangkyhocphan">
-          <ScalarProperty Name="madkhp" ColumnName="madkhp" />
+          <ScalarProperty Name="thoigiankt" ColumnName="thoigiankt" />
+          <ScalarProperty Name="thoigianbd" ColumnName="thoigianbd" />
           <ScalarProperty Name="hocky" ColumnName="hocky" />
           <ScalarProperty Name="namhoc" ColumnName="namhoc" />
-          <ScalarProperty Name="thoigianbd" ColumnName="thoigianbd" />
-          <ScalarProperty Name="thoigiankt" ColumnName="thoigiankt" />
+          <ScalarProperty Name="iddkhp" ColumnName="iddkhp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="files">
+      <EntityTypeMapping TypeName="MyDatabaseModel.file">
+        <MappingFragment StoreEntitySet="file">
+          <ScalarProperty Name="idtb" ColumnName="idtb" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="extension" ColumnName="extension" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="idfile" ColumnName="idfile" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="giangviens">
       <EntityTypeMapping TypeName="MyDatabaseModel.giangvien">
         <MappingFragment StoreEntitySet="giangvien">
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
-          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="capbac" ColumnName="capbac" />
-          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="khoas">
-      <EntityTypeMapping TypeName="MyDatabaseModel.khoa">
-        <MappingFragment StoreEntitySet="khoa">
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="lops">
-      <EntityTypeMapping TypeName="MyDatabaseModel.lop">
-        <MappingFragment StoreEntitySet="lop">
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-          <ScalarProperty Name="thu" ColumnName="thu" />
-          <ScalarProperty Name="tietbd" ColumnName="tietbd" />
-          <ScalarProperty Name="tietkt" ColumnName="tietkt" />
-          <ScalarProperty Name="madkhp" ColumnName="madkhp" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="lopcns">
-      <EntityTypeMapping TypeName="MyDatabaseModel.lopcn">
-        <MappingFragment StoreEntitySet="lopcn">
-          <ScalarProperty Name="malopcn" ColumnName="malopcn" />
-          <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
-          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="mons">
-      <EntityTypeMapping TypeName="MyDatabaseModel.mon">
-        <MappingFragment StoreEntitySet="mon">
-          <ScalarProperty Name="tcth" ColumnName="tcth" />
-          <ScalarProperty Name="tclt" ColumnName="tclt" />
-          <ScalarProperty Name="hsth" ColumnName="hsth" />
-          <ScalarProperty Name="hsqt" ColumnName="hsqt" />
-          <ScalarProperty Name="mamontruoc" ColumnName="mamontruoc" />
-          <ScalarProperty Name="mamon" ColumnName="mamon" />
-          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
-          <ScalarProperty Name="hsgk" ColumnName="hsgk" />
-          <ScalarProperty Name="hsck" ColumnName="hsck" />
-          <ScalarProperty Name="sotc" ColumnName="sotc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sinhviens">
-      <EntityTypeMapping TypeName="MyDatabaseModel.sinhvien">
-        <MappingFragment StoreEntitySet="sinhvien">
-          <ScalarProperty Name="masv" ColumnName="masv" />
-          <ScalarProperty Name="hoten" ColumnName="hoten" />
-          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
           <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
-          <ScalarProperty Name="malopcn" ColumnName="malopcn" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="quequan" ColumnName="quequan" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="capbac" ColumnName="capbac" />
           <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="bachoc" ColumnName="bachoc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="taikhoans">
-      <EntityTypeMapping TypeName="MyDatabaseModel.taikhoan">
-        <MappingFragment StoreEntitySet="taikhoan">
-          <ScalarProperty Name="matk" ColumnName="matk" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="quequan" ColumnName="quequan" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="idkhoa" ColumnName="idkhoa" />
           <ScalarProperty Name="magv" ColumnName="magv" />
-          <ScalarProperty Name="nhom" ColumnName="nhom" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="idgv" ColumnName="idgv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="AddDKHP" FunctionName="MyDatabaseModel.Store.AddDKHP" />
-    <FunctionImportMapping FunctionImportName="AddLop" FunctionName="MyDatabaseModel.Store.AddLop" />
-    <FunctionImportMapping FunctionImportName="AddMon" FunctionName="MyDatabaseModel.Store.AddMon" />
-    <FunctionImportMapping FunctionImportName="AddSV" FunctionName="MyDatabaseModel.Store.AddSV" />
-    <FunctionImportMapping FunctionImportName="ChangePassword" FunctionName="MyDatabaseModel.Store.ChangePassword" />
-    <FunctionImportMapping FunctionImportName="DeleteDKHP" FunctionName="MyDatabaseModel.Store.DeleteDKHP" />
-    <FunctionImportMapping FunctionImportName="DeleteGV" FunctionName="MyDatabaseModel.Store.DeleteGV" />
-    <FunctionImportMapping FunctionImportName="DeleteLop" FunctionName="MyDatabaseModel.Store.DeleteLop" />
-    <FunctionImportMapping FunctionImportName="DeleteLopCN" FunctionName="MyDatabaseModel.Store.DeleteLopCN" />
-    <FunctionImportMapping FunctionImportName="DeleteMon" FunctionName="MyDatabaseModel.Store.DeleteMon" />
-    <FunctionImportMapping FunctionImportName="UpdateDiemCK" FunctionName="MyDatabaseModel.Store.UpdateDiemCK" />
-    <FunctionImportMapping FunctionImportName="UpdateDiemGK" FunctionName="MyDatabaseModel.Store.UpdateDiemGK" />
-    <FunctionImportMapping FunctionImportName="UpdateDKHP" FunctionName="MyDatabaseModel.Store.UpdateDKHP" />
-    <FunctionImportMapping FunctionImportName="UpdateLopCN" FunctionName="MyDatabaseModel.Store.UpdateLopCN" />
-    <FunctionImportMapping FunctionImportName="UpdateMon" FunctionName="MyDatabaseModel.Store.UpdateMon" />
-    <FunctionImportMapping FunctionImportName="UpdateThongTinGV" FunctionName="MyDatabaseModel.Store.UpdateThongTinGV" />
-    <FunctionImportMapping FunctionImportName="UpdateThongTinSV" FunctionName="MyDatabaseModel.Store.UpdateThongTinSV" />
-    <EntitySetMapping Name="thongbaos">
-      <EntityTypeMapping TypeName="MyDatabaseModel.thongbao">
-        <MappingFragment StoreEntitySet="thongbao">
-          <ScalarProperty Name="thoigiandang" ColumnName="thoigiandang" />
-          <ScalarProperty Name="tieude" ColumnName="tieude" />
-          <ScalarProperty Name="noidung" ColumnName="noidung" />
-          <ScalarProperty Name="tag" ColumnName="tag" />
-          <ScalarProperty Name="matk" ColumnName="matk" />
-          <ScalarProperty Name="matb" ColumnName="matb" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="AddGV" FunctionName="MyDatabaseModel.Store.AddGV" />
-    <FunctionImportMapping FunctionImportName="AddHoc" FunctionName="MyDatabaseModel.Store.AddHoc" />
-    <FunctionImportMapping FunctionImportName="AddKhoa" FunctionName="MyDatabaseModel.Store.AddKhoa" />
-    <FunctionImportMapping FunctionImportName="AddLopCN" FunctionName="MyDatabaseModel.Store.AddLopCN" />
-    <FunctionImportMapping FunctionImportName="AddTKadmin" FunctionName="MyDatabaseModel.Store.AddTKadmin" />
-    <FunctionImportMapping FunctionImportName="ChangeLopCN" FunctionName="MyDatabaseModel.Store.ChangeLopCN" />
-    <FunctionImportMapping FunctionImportName="DeleteHoc" FunctionName="MyDatabaseModel.Store.DeleteHoc" />
-    <FunctionImportMapping FunctionImportName="DeleteKhoa" FunctionName="MyDatabaseModel.Store.DeleteKhoa" />
-    <FunctionImportMapping FunctionImportName="UpdateKhoa" FunctionName="MyDatabaseModel.Store.UpdateKhoa" />
     <EntitySetMapping Name="hocs">
       <EntityTypeMapping TypeName="MyDatabaseModel.hoc">
         <MappingFragment StoreEntitySet="hoc">
@@ -150,9 +49,103 @@
           <ScalarProperty Name="diemgk" ColumnName="diemgk" />
           <ScalarProperty Name="diemth" ColumnName="diemth" />
           <ScalarProperty Name="diemqt" ColumnName="diemqt" />
-          <ScalarProperty Name="malop" ColumnName="malop" />
-          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="idsv" ColumnName="idsv" />
+          <ScalarProperty Name="idlop" ColumnName="idlop" />
           <ScalarProperty Name="idhoc" ColumnName="idhoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="khoas">
+      <EntityTypeMapping TypeName="MyDatabaseModel.khoa">
+        <MappingFragment StoreEntitySet="khoa">
+          <ScalarProperty Name="idgv" ColumnName="idgv" />
+          <ScalarProperty Name="makhoa" ColumnName="makhoa" />
+          <ScalarProperty Name="tenkhoa" ColumnName="tenkhoa" />
+          <ScalarProperty Name="idkhoa" ColumnName="idkhoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lops">
+      <EntityTypeMapping TypeName="MyDatabaseModel.lop">
+        <MappingFragment StoreEntitySet="lop">
+          <ScalarProperty Name="tietkt" ColumnName="tietkt" />
+          <ScalarProperty Name="tietbd" ColumnName="tietbd" />
+          <ScalarProperty Name="thu" ColumnName="thu" />
+          <ScalarProperty Name="iddkhp" ColumnName="iddkhp" />
+          <ScalarProperty Name="idkhoa" ColumnName="idkhoa" />
+          <ScalarProperty Name="idmon" ColumnName="idmon" />
+          <ScalarProperty Name="idgv" ColumnName="idgv" />
+          <ScalarProperty Name="malop" ColumnName="malop" />
+          <ScalarProperty Name="idlop" ColumnName="idlop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lopcns">
+      <EntityTypeMapping TypeName="MyDatabaseModel.lopcn">
+        <MappingFragment StoreEntitySet="lopcn">
+          <ScalarProperty Name="nienkhoa" ColumnName="nienkhoa" />
+          <ScalarProperty Name="idkhoa" ColumnName="idkhoa" />
+          <ScalarProperty Name="idgv" ColumnName="idgv" />
+          <ScalarProperty Name="malopcn" ColumnName="malopcn" />
+          <ScalarProperty Name="idlopcn" ColumnName="idlopcn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mons">
+      <EntityTypeMapping TypeName="MyDatabaseModel.mon">
+        <MappingFragment StoreEntitySet="mon">
+          <ScalarProperty Name="tcth" ColumnName="tcth" />
+          <ScalarProperty Name="tclt" ColumnName="tclt" />
+          <ScalarProperty Name="sotc" ColumnName="sotc" />
+          <ScalarProperty Name="hsck" ColumnName="hsck" />
+          <ScalarProperty Name="hsgk" ColumnName="hsgk" />
+          <ScalarProperty Name="hsth" ColumnName="hsth" />
+          <ScalarProperty Name="hsqt" ColumnName="hsqt" />
+          <ScalarProperty Name="idmontruoc" ColumnName="idmontruoc" />
+          <ScalarProperty Name="mamon" ColumnName="mamon" />
+          <ScalarProperty Name="tenmon" ColumnName="tenmon" />
+          <ScalarProperty Name="idmon" ColumnName="idmon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sinhviens">
+      <EntityTypeMapping TypeName="MyDatabaseModel.sinhvien">
+        <MappingFragment StoreEntitySet="sinhvien">
+          <ScalarProperty Name="bachoc" ColumnName="bachoc" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="quequan" ColumnName="quequan" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="idlopcn" ColumnName="idlopcn" />
+          <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="masv" ColumnName="masv" />
+          <ScalarProperty Name="hoten" ColumnName="hoten" />
+          <ScalarProperty Name="idsv" ColumnName="idsv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taikhoans">
+      <EntityTypeMapping TypeName="MyDatabaseModel.taikhoan">
+        <MappingFragment StoreEntitySet="taikhoan">
+          <ScalarProperty Name="idgv" ColumnName="idgv" />
+          <ScalarProperty Name="idsv" ColumnName="idsv" />
+          <ScalarProperty Name="nhom" ColumnName="nhom" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="matk" ColumnName="matk" />
+          <ScalarProperty Name="idtk" ColumnName="idtk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="thongbaos">
+      <EntityTypeMapping TypeName="MyDatabaseModel.thongbao">
+        <MappingFragment StoreEntitySet="thongbao">
+          <ScalarProperty Name="thoigiancapnhat" ColumnName="thoigiancapnhat" />
+          <ScalarProperty Name="thoigiandang" ColumnName="thoigiandang" />
+          <ScalarProperty Name="idtk" ColumnName="idtk" />
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+          <ScalarProperty Name="tieude" ColumnName="tieude" />
+          <ScalarProperty Name="idtb" ColumnName="idtb" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

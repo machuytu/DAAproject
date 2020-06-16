@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<br/>
-<br/>
-<br/>
-<br/>
+<br />
+<br />
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,6 +19,15 @@
             @Html.DisplayNameFor(model => model.tenmon)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.mamon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hsqt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hsth)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.hsgk)
         </th>
         <th>
@@ -26,12 +35,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.sotc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hsqt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hsth)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.tclt)
@@ -45,41 +48,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tenmon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hsgk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hsck)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sotc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hsqt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hsth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tclt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tcth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mon2.tenmon)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.mamon }) |
-            @Html.ActionLink("Details", "Details", new { id=item.mamon }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.mamon })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenmon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mamon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hsqt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hsth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hsgk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hsck)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sotc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tclt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tcth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mon2.tenmon)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idmon }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idmon }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idmon })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -5,31 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7c3ac4b7009f41bfb68d6222dec69881" Name="Diagram1" ZoomLevel="47">
-        <EntityTypeShape EntityType="MyDatabaseModel.dangkyhocphan" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.giangvien" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.khoa" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.lop" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.lopcn" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.mon" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.sinhvien" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDatabaseModel.taikhoan" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lop__madkhp__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__giangvien__makho__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__khoa__magv__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lop__magv__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__magv__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__taikhoan__magv__33D4B598" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lop__makhoa__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__makhoa__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__lop__mamon__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__sinhvien__malopc__300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="MyDatabaseModel.FK__taikhoan__masv__32E0915F" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MyDatabaseModel.thongbao" Width="1.5" PointX="7.5" PointY="14.5" />
-        <AssociationConnector Association="MyDatabaseModel.FK__mon__mamontruoc__4AB81AF0" />
-        <AssociationConnector Association="MyDatabaseModel.FK__thongbao__matk__3D5E1FD2" />
-        <EntityTypeShape EntityType="MyDatabaseModel.hoc" Width="1.5" PointX="5.25" PointY="9.75" />
-        <AssociationConnector Association="MyDatabaseModel.FK__hoc__malop__0B91BA14" />
-        <AssociationConnector Association="MyDatabaseModel.FK__hoc__masv__0A9D95DB" />
+        <EntityTypeShape EntityType="MyDatabaseModel.dangkyhocphan" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.file" Width="1.5" PointX="9.75" PointY="17.125" />
+        <EntityTypeShape EntityType="MyDatabaseModel.giangvien" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="MyDatabaseModel.hoc" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="MyDatabaseModel.khoa" Width="1.5" PointX="1.5" PointY="17.625" />
+        <EntityTypeShape EntityType="MyDatabaseModel.lop" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="MyDatabaseModel.lopcn" Width="1.5" PointX="0.75" PointY="21.625" />
+        <EntityTypeShape EntityType="MyDatabaseModel.mon" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="MyDatabaseModel.sinhvien" Width="1.5" PointX="3" PointY="21.125" />
+        <EntityTypeShape EntityType="MyDatabaseModel.taikhoan" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="MyDatabaseModel.thongbao" Width="1.5" PointX="7.5" PointY="16.875" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__iddkhp__4CA06362" />
+        <AssociationConnector Association="MyDatabaseModel.FK__file__idtb__48CFD27E" />
+        <AssociationConnector Association="MyDatabaseModel.FK__giangvien__idkho__2B3F6F97" />
+        <AssociationConnector Association="MyDatabaseModel.FK__khoa__idgv__5535A963" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__idgv__4F7CD00D" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__idgv__37A5467C" />
+        <AssociationConnector Association="MyDatabaseModel.FK__taikhoan__idgv__4222D4EF" />
+        <AssociationConnector Association="MyDatabaseModel.FK__hoc__idlop__5441852A" />
+        <AssociationConnector Association="MyDatabaseModel.FK__hoc__idsv__534D60F1" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__idkhoa__4D94879B" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lopcn__idkhoa__38996AB5" />
+        <AssociationConnector Association="MyDatabaseModel.FK__lop__idmon__4E88ABD4" />
+        <AssociationConnector Association="MyDatabaseModel.FK__sinhvien__idlopc__3C69FB99" />
+        <AssociationConnector Association="MyDatabaseModel.FK__mon__idmontruoc__5629CD9C" />
+        <AssociationConnector Association="MyDatabaseModel.FK__taikhoan__idsv__412EB0B6" />
+        <AssociationConnector Association="MyDatabaseModel.FK__thongbao__idtk__45F365D3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

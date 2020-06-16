@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.malop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.malop)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.thu)
         </dt>
 
@@ -70,6 +78,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.malop }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idlop }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -23,7 +23,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/mons/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -40,10 +40,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/mons/Create
         public ActionResult Create()
         {
-            List<SelectListItem> MyOwnerList = new List<SelectListItem>();
-            MyOwnerList.AddRange(new SelectList(db.mons, "mamon", "tenmon"));
-            MyOwnerList.Insert(0, new SelectListItem { Text = "", Value = "" });
-            ViewBag.mamontruoc = MyOwnerList;
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon");
             return View();
         }
 
@@ -52,7 +49,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "mamon,tenmon,hsgk,hsck,sotc,mamontruoc,hsqt,hsth,tclt,tcth")] mon mon)
+        public async Task<ActionResult> Create([Bind(Include = "idmon,tenmon,mamon,idmontruoc,hsqt,hsth,hsgk,hsck,sotc,tclt,tcth")] mon mon)
         {
             if (ModelState.IsValid)
             {
@@ -61,12 +58,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.mamontruoc = new SelectList(db.mons, "mamon", "tenmon", mon.mamontruoc);
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon", mon.idmontruoc);
             return View(mon);
         }
 
         // GET: Admin/mons/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -77,7 +74,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.mamontruoc = new SelectList(db.mons, "mamon", "tenmon", mon.mamontruoc);
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon", mon.idmontruoc);
             return View(mon);
         }
 
@@ -86,7 +83,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "mamon,tenmon,hsgk,hsck,sotc,mamontruoc,hsqt,hsth,tclt,tcth")] mon mon)
+        public async Task<ActionResult> Edit([Bind(Include = "idmon,tenmon,mamon,idmontruoc,hsqt,hsth,hsgk,hsck,sotc,tclt,tcth")] mon mon)
         {
             if (ModelState.IsValid)
             {
@@ -94,12 +91,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.mamontruoc = new SelectList(db.mons, "mamon", "tenmon", mon.mamontruoc);
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon", mon.idmontruoc);
             return View(mon);
         }
 
         // GET: Admin/mons/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -116,7 +113,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // POST: Admin/mons/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             mon mon = await db.mons.FindAsync(id);
             db.mons.Remove(mon);

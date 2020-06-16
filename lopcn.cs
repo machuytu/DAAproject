@@ -20,9 +20,10 @@ namespace ProjectDAA1
             this.sinhviens = new HashSet<sinhvien>();
         }
     
+        public int idlopcn { get; set; }
         public string malopcn { get; set; }
-        public string magv { get; set; }
-        public string makhoa { get; set; }
+        public Nullable<int> idgv { get; set; }
+        public Nullable<int> idkhoa { get; set; }
         public int nienkhoa { get; set; }
     
         public virtual giangvien giangvien { get; set; }

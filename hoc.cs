@@ -15,8 +15,8 @@ namespace ProjectDAA1
     public partial class hoc
     {
         public int idhoc { get; set; }
-        public string masv { get; set; }
-        public string malop { get; set; }
+        public Nullable<int> idlop { get; set; }
+        public Nullable<int> idsv { get; set; }
         public Nullable<double> diemqt { get; set; }
         public Nullable<double> diemth { get; set; }
         public Nullable<double> diemgk { get; set; }

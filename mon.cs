@@ -21,18 +21,20 @@ namespace ProjectDAA1
             this.mon1 = new HashSet<mon>();
         }
     
-        public string mamon { get; set; }
+        public int idmon { get; set; }
         public string tenmon { get; set; }
-        public double hsgk { get; set; }
-        public double hsck { get; set; }
-        public int sotc { get; set; }
-        public string mamontruoc { get; set; }
-        public double hsqt { get; set; }
-        public double hsth { get; set; }
-        public int tclt { get; set; }
-        public int tcth { get; set; }
+        public string mamon { get; set; }
+        public Nullable<int> idmontruoc { get; set; }
+        public Nullable<double> hsqt { get; set; }
+        public Nullable<double> hsth { get; set; }
+        public Nullable<double> hsgk { get; set; }
+        public Nullable<double> hsck { get; set; }
+        public Nullable<int> sotc { get; set; }
+        public Nullable<int> tclt { get; set; }
+        public Nullable<int> tcth { get; set; }
+
         public string tenvama { get { return tenmon + "-" + mamon; } }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lop> lops { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

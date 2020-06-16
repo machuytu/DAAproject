@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<Br />
-<Br />
-<Br />
-<Br />
+<br />
+<br />
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,6 +17,9 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.hoten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.masv)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.gioitinh)
@@ -37,7 +40,7 @@
             @Html.DisplayNameFor(model => model.bachoc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lopcn.magv)
+            @Html.DisplayNameFor(model => model.lopcn.malopcn)
         </th>
         <th></th>
     </tr>
@@ -47,6 +50,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.masv)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.gioitinh)
@@ -67,12 +73,12 @@
                 @Html.DisplayFor(modelItem => item.bachoc)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.lopcn.magv)
+                @Html.DisplayFor(modelItem => item.lopcn.malopcn)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.masv }) |
-                @Html.ActionLink("Details", "Details", new { id = item.masv }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.masv })
+                @Html.ActionLink("Edit", "Edit", new { id = item.idsv }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idsv }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idsv })
             </td>
         </tr>
     }

@@ -5,16 +5,19 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<Br />
-<Br />
-<Br />
-<Br />
+<br />
+<br />
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.malopcn)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.nienkhoa)
         </th>
@@ -31,6 +34,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.malopcn)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.nienkhoa)
             </td>
             <td>
@@ -40,9 +46,9 @@
                 @Html.DisplayFor(modelItem => item.khoa.tenkhoa)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.malopcn }) |
-                @Html.ActionLink("Details", "Details", new { id = item.malopcn }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.malopcn })
+                @Html.ActionLink("Edit", "Edit", new { id = item.idlopcn }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idlopcn }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idlopcn })
             </td>
         </tr>
     }

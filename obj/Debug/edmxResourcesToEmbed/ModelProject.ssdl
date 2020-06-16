@@ -2,37 +2,48 @@
 <Schema Namespace="MyDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="dangkyhocphan">
     <Key>
-      <PropertyRef Name="madkhp" />
+      <PropertyRef Name="iddkhp" />
     </Key>
-    <Property Name="madkhp" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="hocky" Type="int" Nullable="false" />
+    <Property Name="iddkhp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="namhoc" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hocky" Type="int" Nullable="false" />
     <Property Name="thoigianbd" Type="smalldatetime" Nullable="false" />
     <Property Name="thoigiankt" Type="smalldatetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="file">
+    <Key>
+      <PropertyRef Name="idfile" />
+    </Key>
+    <Property Name="idfile" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="filename" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="extension" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="note" Type="nvarchar" MaxLength="200" />
+    <Property Name="idtb" Type="int" />
+  </EntityType>
   <EntityType Name="giangvien">
     <Key>
-      <PropertyRef Name="magv" />
+      <PropertyRef Name="idgv" />
     </Key>
-    <Property Name="magv" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="idgv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="hoten" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="magv" Type="varchar" MaxLength="10" />
+    <Property Name="idkhoa" Type="int" />
     <Property Name="gioitinh" Type="nvarchar" MaxLength="5" Nullable="false" />
-    <Property Name="ngaysinh" Type="smalldatetime" Nullable="false" />
     <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="quequan" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="sdt" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="capbac" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="email" Type="nvarchar" MaxLength="40" Nullable="false" />
-    <Property Name="ngayvaolam" Type="smalldatetime" Nullable="false" />
-    <Property Name="makhoa" Type="varchar" MaxLength="10" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ngaysinh" Type="date" Nullable="false" />
+    <Property Name="ngayvaolam" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="hoc">
     <Key>
       <PropertyRef Name="idhoc" />
     </Key>
     <Property Name="idhoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="masv" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="malop" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="idlop" Type="int" />
+    <Property Name="idsv" Type="int" />
     <Property Name="diemqt" Type="float" />
     <Property Name="diemth" Type="float" />
     <Property Name="diemgk" Type="float" />
@@ -41,58 +52,63 @@
   </EntityType>
   <EntityType Name="khoa">
     <Key>
-      <PropertyRef Name="makhoa" />
+      <PropertyRef Name="idkhoa" />
     </Key>
-    <Property Name="makhoa" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="idkhoa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tenkhoa" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="magv" Type="varchar" MaxLength="10" />
+    <Property Name="makhoa" Type="varchar" MaxLength="10" />
+    <Property Name="idgv" Type="int" />
   </EntityType>
   <EntityType Name="lop">
     <Key>
-      <PropertyRef Name="malop" />
+      <PropertyRef Name="idlop" />
     </Key>
-    <Property Name="malop" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="magv" Type="varchar" MaxLength="10" />
-    <Property Name="mamon" Type="varchar" MaxLength="10" />
+    <Property Name="idlop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="malop" Type="varchar" MaxLength="20" />
+    <Property Name="idgv" Type="int" />
+    <Property Name="idmon" Type="int" />
+    <Property Name="idkhoa" Type="int" />
+    <Property Name="iddkhp" Type="int" Nullable="false" />
     <Property Name="thu" Type="int" Nullable="false" />
     <Property Name="tietbd" Type="int" Nullable="false" />
-    <Property Name="tietkt" Type="int" Nullable="false" />
-    <Property Name="madkhp" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="makhoa" Type="varchar" MaxLength="10" />
+    <Property Name="tietkt" Type="int" />
   </EntityType>
   <EntityType Name="lopcn">
     <Key>
-      <PropertyRef Name="malopcn" />
+      <PropertyRef Name="idlopcn" />
     </Key>
-    <Property Name="malopcn" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="magv" Type="varchar" MaxLength="10" />
-    <Property Name="makhoa" Type="varchar" MaxLength="10" />
+    <Property Name="idlopcn" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="malopcn" Type="varchar" MaxLength="10" />
+    <Property Name="idgv" Type="int" />
+    <Property Name="idkhoa" Type="int" />
     <Property Name="nienkhoa" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="mon">
     <Key>
-      <PropertyRef Name="mamon" />
+      <PropertyRef Name="idmon" />
     </Key>
-    <Property Name="mamon" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="mamontruoc" Type="varchar" MaxLength="10" />
+    <Property Name="idmon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tenmon" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="hsqt" Type="float" Nullable="false" />
-    <Property Name="hsth" Type="float" Nullable="false" />
-    <Property Name="hsgk" Type="float" Nullable="false" />
-    <Property Name="hsck" Type="float" Nullable="false" />
-    <Property Name="sotc" Type="int" Nullable="false" />
-    <Property Name="tclt" Type="int" Nullable="false" />
-    <Property Name="tcth" Type="int" Nullable="false" />
+    <Property Name="mamon" Type="varchar" MaxLength="10" />
+    <Property Name="idmontruoc" Type="int" />
+    <Property Name="hsqt" Type="float" />
+    <Property Name="hsth" Type="float" />
+    <Property Name="hsgk" Type="float" />
+    <Property Name="hsck" Type="float" />
+    <Property Name="sotc" Type="int" />
+    <Property Name="tclt" Type="int" />
+    <Property Name="tcth" Type="int" />
   </EntityType>
   <EntityType Name="sinhvien">
     <Key>
-      <PropertyRef Name="masv" />
+      <PropertyRef Name="idsv" />
     </Key>
-    <Property Name="masv" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="idsv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="hoten" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="masv" Type="varchar" MaxLength="10" />
     <Property Name="gioitinh" Type="nvarchar" MaxLength="5" Nullable="false" />
-    <Property Name="ngaysinh" Type="smalldatetime" Nullable="false" />
-    <Property Name="malopcn" Type="varchar" MaxLength="10" />
+    <Property Name="ngaysinh" Type="date" Nullable="false" />
+    <Property Name="idlopcn" Type="int" />
     <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="quequan" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="sdt" Type="varchar" MaxLength="20" Nullable="false" />
@@ -100,365 +116,230 @@
   </EntityType>
   <EntityType Name="taikhoan">
     <Key>
-      <PropertyRef Name="matk" />
+      <PropertyRef Name="idtk" />
     </Key>
-    <Property Name="matk" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="idtk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="matk" Type="varchar" MaxLength="10" />
     <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="nhom" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="masv" Type="varchar" MaxLength="10" />
-    <Property Name="magv" Type="varchar" MaxLength="10" />
+    <Property Name="nhom" Type="nvarchar" MaxLength="30" />
+    <Property Name="idsv" Type="int" />
+    <Property Name="idgv" Type="int" />
   </EntityType>
   <EntityType Name="thongbao">
     <Key>
-      <PropertyRef Name="matb" />
+      <PropertyRef Name="idtb" />
     </Key>
-    <Property Name="matb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="matk" Type="varchar" MaxLength="10" />
-    <Property Name="tag" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="noidung" Type="nvarchar(max)" />
+    <Property Name="idtb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tieude" Type="nvarchar" MaxLength="100" />
-    <Property Name="thoigiandang" Type="datetime" Nullable="false" />
+    <Property Name="noidung" Type="nvarchar(max)" />
+    <Property Name="tag" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="idtk" Type="int" />
+    <Property Name="thoigiandang" Type="smalldatetime" />
+    <Property Name="thoigiancapnhat" Type="smalldatetime" />
   </EntityType>
-  <Association Name="FK__giangvien__makho__267ABA7A">
+  <Association Name="FK__file__idtb__48CFD27E">
+    <End Role="thongbao" Type="Self.thongbao" Multiplicity="0..1" />
+    <End Role="file" Type="Self.file" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="thongbao">
+        <PropertyRef Name="idtb" />
+      </Principal>
+      <Dependent Role="file">
+        <PropertyRef Name="idtb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giangvien__idkho__2B3F6F97">
     <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="khoa">
-        <PropertyRef Name="makhoa" />
+        <PropertyRef Name="idkhoa" />
       </Principal>
       <Dependent Role="giangvien">
-        <PropertyRef Name="makhoa" />
+        <PropertyRef Name="idkhoa" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__hoc__malop__0B91BA14">
-    <End Role="lop" Type="Self.lop" Multiplicity="1">
+  <Association Name="FK__hoc__idlop__5441852A">
+    <End Role="lop" Type="Self.lop" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="hoc" Type="Self.hoc" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lop">
-        <PropertyRef Name="malop" />
+        <PropertyRef Name="idlop" />
       </Principal>
       <Dependent Role="hoc">
-        <PropertyRef Name="malop" />
+        <PropertyRef Name="idlop" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__hoc__masv__0A9D95DB">
-    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="1" />
+  <Association Name="FK__hoc__idsv__534D60F1">
+    <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="0..1" />
     <End Role="hoc" Type="Self.hoc" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sinhvien">
-        <PropertyRef Name="masv" />
+        <PropertyRef Name="idsv" />
       </Principal>
       <Dependent Role="hoc">
-        <PropertyRef Name="masv" />
+        <PropertyRef Name="idsv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__khoa__magv__49C3F6B7">
+  <Association Name="FK__khoa__idgv__5535A963">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
     <End Role="khoa" Type="Self.khoa" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="giangvien">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Principal>
       <Dependent Role="khoa">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__madkhp__4222D4EF">
+  <Association Name="FK__lop__iddkhp__4CA06362">
     <End Role="dangkyhocphan" Type="Self.dangkyhocphan" Multiplicity="1" />
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="dangkyhocphan">
-        <PropertyRef Name="madkhp" />
+        <PropertyRef Name="iddkhp" />
       </Principal>
       <Dependent Role="lop">
-        <PropertyRef Name="madkhp" />
+        <PropertyRef Name="iddkhp" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__magv__44FF419A">
+  <Association Name="FK__lop__idgv__4F7CD00D">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="giangvien">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Principal>
       <Dependent Role="lop">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__makhoa__4316F928">
+  <Association Name="FK__lop__idkhoa__4D94879B">
     <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="khoa">
-        <PropertyRef Name="makhoa" />
+        <PropertyRef Name="idkhoa" />
       </Principal>
       <Dependent Role="lop">
-        <PropertyRef Name="makhoa" />
+        <PropertyRef Name="idkhoa" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lop__mamon__440B1D61">
+  <Association Name="FK__lop__idmon__4E88ABD4">
     <End Role="mon" Type="Self.mon" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="lop" Type="Self.lop" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="mon">
-        <PropertyRef Name="mamon" />
+        <PropertyRef Name="idmon" />
       </Principal>
       <Dependent Role="lop">
-        <PropertyRef Name="mamon" />
+        <PropertyRef Name="idmon" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lopcn__magv__32E0915F">
+  <Association Name="FK__lopcn__idgv__37A5467C">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1" />
     <End Role="lopcn" Type="Self.lopcn" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="giangvien">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Principal>
       <Dependent Role="lopcn">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__lopcn__makhoa__33D4B598">
+  <Association Name="FK__lopcn__idkhoa__38996AB5">
     <End Role="khoa" Type="Self.khoa" Multiplicity="0..1" />
     <End Role="lopcn" Type="Self.lopcn" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="khoa">
-        <PropertyRef Name="makhoa" />
+        <PropertyRef Name="idkhoa" />
       </Principal>
       <Dependent Role="lopcn">
-        <PropertyRef Name="makhoa" />
+        <PropertyRef Name="idkhoa" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__mon__mamontruoc__4AB81AF0">
+  <Association Name="FK__mon__idmontruoc__5629CD9C">
     <End Role="mon" Type="Self.mon" Multiplicity="0..1" />
     <End Role="mon1" Type="Self.mon" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="mon">
-        <PropertyRef Name="mamon" />
+        <PropertyRef Name="idmon" />
       </Principal>
       <Dependent Role="mon1">
-        <PropertyRef Name="mamontruoc" />
+        <PropertyRef Name="idmontruoc" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__sinhvien__malopc__36B12243">
+  <Association Name="FK__sinhvien__idlopc__3C69FB99">
     <End Role="lopcn" Type="Self.lopcn" Multiplicity="0..1" />
     <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lopcn">
-        <PropertyRef Name="malopcn" />
+        <PropertyRef Name="idlopcn" />
       </Principal>
       <Dependent Role="sinhvien">
-        <PropertyRef Name="malopcn" />
+        <PropertyRef Name="idlopcn" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__taikhoan__magv__3A81B327">
+  <Association Name="FK__taikhoan__idgv__4222D4EF">
     <End Role="giangvien" Type="Self.giangvien" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="taikhoan" Type="Self.taikhoan" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="giangvien">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Principal>
       <Dependent Role="taikhoan">
-        <PropertyRef Name="magv" />
+        <PropertyRef Name="idgv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__taikhoan__masv__398D8EEE">
+  <Association Name="FK__taikhoan__idsv__412EB0B6">
     <End Role="sinhvien" Type="Self.sinhvien" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="taikhoan" Type="Self.taikhoan" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sinhvien">
-        <PropertyRef Name="masv" />
+        <PropertyRef Name="idsv" />
       </Principal>
       <Dependent Role="taikhoan">
-        <PropertyRef Name="masv" />
+        <PropertyRef Name="idsv" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__thongbao__matk__3D5E1FD2">
+  <Association Name="FK__thongbao__idtk__45F365D3">
     <End Role="taikhoan" Type="Self.taikhoan" Multiplicity="0..1" />
     <End Role="thongbao" Type="Self.thongbao" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="taikhoan">
-        <PropertyRef Name="matk" />
+        <PropertyRef Name="idtk" />
       </Principal>
       <Dependent Role="thongbao">
-        <PropertyRef Name="matk" />
+        <PropertyRef Name="idtk" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="AddDKHP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="namhoc" Type="varchar" Mode="In" />
-    <Parameter Name="hocky" Type="int" Mode="In" />
-    <Parameter Name="thoigianbd" Type="smalldatetime" Mode="In" />
-    <Parameter Name="thoigiankt" Type="smalldatetime" Mode="In" />
-  </Function>
-  <Function Name="AddGV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="magv" Type="varchar" Mode="In" />
-    <Parameter Name="makhoa" Type="varchar" Mode="In" />
-    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
-    <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngaysinh" Type="smalldatetime" Mode="In" />
-    <Parameter Name="sdt" Type="varchar" Mode="In" />
-    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
-    <Parameter Name="quequan" Type="nvarchar" Mode="In" />
-    <Parameter Name="capbac" Type="nvarchar" Mode="In" />
-    <Parameter Name="email" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngayvaolam" Type="smalldatetime" Mode="In" />
-  </Function>
-  <Function Name="AddHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="masv" Type="varchar" Mode="In" />
-    <Parameter Name="malop" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="AddKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="makhoa" Type="varchar" Mode="In" />
-    <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="AddLop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="mamon" Type="varchar" Mode="In" />
-    <Parameter Name="magv" Type="varchar" Mode="In" />
-    <Parameter Name="madkhp" Type="varchar" Mode="In" />
-    <Parameter Name="thu" Type="int" Mode="In" />
-    <Parameter Name="tietbd" Type="int" Mode="In" />
-  </Function>
-  <Function Name="AddLopCN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="makhoa" Type="varchar" Mode="In" />
-    <Parameter Name="magv" Type="varchar" Mode="In" />
-    <Parameter Name="nienkhoa" Type="int" Mode="In" />
-  </Function>
-  <Function Name="AddMon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="mamon" Type="varchar" Mode="In" />
-    <Parameter Name="mamontruoc" Type="varchar" Mode="In" />
-    <Parameter Name="tenmon" Type="nvarchar" Mode="In" />
-    <Parameter Name="sotc" Type="int" Mode="In" />
-    <Parameter Name="hsqt" Type="float" Mode="In" />
-    <Parameter Name="hsth" Type="float" Mode="In" />
-    <Parameter Name="hsgk" Type="float" Mode="In" />
-    <Parameter Name="hsck" Type="float" Mode="In" />
-  </Function>
-  <Function Name="AddSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
-    <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngaysinh" Type="smalldatetime" Mode="In" />
-    <Parameter Name="malopcn" Type="varchar" Mode="In" />
-    <Parameter Name="sdt" Type="varchar" Mode="In" />
-    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
-    <Parameter Name="quequan" Type="nvarchar" Mode="In" />
-    <Parameter Name="bachoc" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="AddTKadmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="matk" Type="varchar" Mode="In" />
-    <Parameter Name="password" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="ChangeLopCN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="masv" Type="varchar" Mode="In" />
-    <Parameter Name="malopcn" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="ChangePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="matk" Type="varchar" Mode="In" />
-    <Parameter Name="password" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="DeleteDKHP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="madkhp" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="DeleteGV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="magv" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="DeleteHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="masv" Type="varchar" Mode="In" />
-    <Parameter Name="malop" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="DeleteKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="makhoa" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="DeleteLop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="malop" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="DeleteLopCN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="malopcn" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="DeleteMon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="mamon" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="UpdateDiemCK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="masv" Type="varchar" Mode="In" />
-    <Parameter Name="malop" Type="varchar" Mode="In" />
-    <Parameter Name="diemck" Type="float" Mode="In" />
-  </Function>
-  <Function Name="UpdateDiemGK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="masv" Type="varchar" Mode="In" />
-    <Parameter Name="malop" Type="varchar" Mode="In" />
-    <Parameter Name="diemgk" Type="float" Mode="In" />
-  </Function>
-  <Function Name="UpdateDKHP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="madkhp" Type="varchar" Mode="In" />
-    <Parameter Name="thoigianbd" Type="smalldatetime" Mode="In" />
-    <Parameter Name="thoigiankt" Type="smalldatetime" Mode="In" />
-  </Function>
-  <Function Name="UpdateKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="makhoa" Type="varchar" Mode="In" />
-    <Parameter Name="magv" Type="varchar" Mode="In" />
-    <Parameter Name="tenkhoa" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="UpdateLopCN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="malopcn" Type="varchar" Mode="In" />
-    <Parameter Name="magv" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="UpdateMon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="mamon" Type="varchar" Mode="In" />
-    <Parameter Name="mamontruoc" Type="varchar" Mode="In" />
-    <Parameter Name="tenmon" Type="nvarchar" Mode="In" />
-    <Parameter Name="sotc" Type="int" Mode="In" />
-    <Parameter Name="hsqt" Type="float" Mode="In" />
-    <Parameter Name="hsth" Type="float" Mode="In" />
-    <Parameter Name="hsgk" Type="float" Mode="In" />
-    <Parameter Name="hsck" Type="float" Mode="In" />
-  </Function>
-  <Function Name="UpdateThongTinGV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="magv" Type="varchar" Mode="In" />
-    <Parameter Name="makhoa" Type="varchar" Mode="In" />
-    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
-    <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngaysinh" Type="smalldatetime" Mode="In" />
-    <Parameter Name="sdt" Type="varchar" Mode="In" />
-    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
-    <Parameter Name="quequan" Type="nvarchar" Mode="In" />
-    <Parameter Name="capbac" Type="nvarchar" Mode="In" />
-    <Parameter Name="email" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngayvaolam" Type="smalldatetime" Mode="In" />
-  </Function>
-  <Function Name="UpdateThongTinSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="masv" Type="varchar" Mode="In" />
-    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
-    <Parameter Name="gioitinh" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngaysinh" Type="smalldatetime" Mode="In" />
-    <Parameter Name="sdt" Type="varchar" Mode="In" />
-    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
-    <Parameter Name="quequan" Type="nvarchar" Mode="In" />
-    <Parameter Name="bachoc" Type="nvarchar" Mode="In" />
-  </Function>
   <EntityContainer Name="MyDatabaseModelStoreContainer">
     <EntitySet Name="dangkyhocphan" EntityType="Self.dangkyhocphan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="file" EntityType="Self.file" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="giangvien" EntityType="Self.giangvien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="hoc" EntityType="Self.hoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="khoa" EntityType="Self.khoa" Schema="dbo" store:Type="Tables" />
@@ -468,63 +349,67 @@
     <EntitySet Name="sinhvien" EntityType="Self.sinhvien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="taikhoan" EntityType="Self.taikhoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="thongbao" EntityType="Self.thongbao" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__giangvien__makho__267ABA7A" Association="Self.FK__giangvien__makho__267ABA7A">
+    <AssociationSet Name="FK__file__idtb__48CFD27E" Association="Self.FK__file__idtb__48CFD27E">
+      <End Role="thongbao" EntitySet="thongbao" />
+      <End Role="file" EntitySet="file" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giangvien__idkho__2B3F6F97" Association="Self.FK__giangvien__idkho__2B3F6F97">
       <End Role="khoa" EntitySet="khoa" />
       <End Role="giangvien" EntitySet="giangvien" />
     </AssociationSet>
-    <AssociationSet Name="FK__hoc__malop__0B91BA14" Association="Self.FK__hoc__malop__0B91BA14">
+    <AssociationSet Name="FK__hoc__idlop__5441852A" Association="Self.FK__hoc__idlop__5441852A">
       <End Role="lop" EntitySet="lop" />
       <End Role="hoc" EntitySet="hoc" />
     </AssociationSet>
-    <AssociationSet Name="FK__hoc__masv__0A9D95DB" Association="Self.FK__hoc__masv__0A9D95DB">
+    <AssociationSet Name="FK__hoc__idsv__534D60F1" Association="Self.FK__hoc__idsv__534D60F1">
       <End Role="sinhvien" EntitySet="sinhvien" />
       <End Role="hoc" EntitySet="hoc" />
     </AssociationSet>
-    <AssociationSet Name="FK__khoa__magv__49C3F6B7" Association="Self.FK__khoa__magv__49C3F6B7">
+    <AssociationSet Name="FK__khoa__idgv__5535A963" Association="Self.FK__khoa__idgv__5535A963">
       <End Role="giangvien" EntitySet="giangvien" />
       <End Role="khoa" EntitySet="khoa" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__madkhp__4222D4EF" Association="Self.FK__lop__madkhp__4222D4EF">
+    <AssociationSet Name="FK__lop__iddkhp__4CA06362" Association="Self.FK__lop__iddkhp__4CA06362">
       <End Role="dangkyhocphan" EntitySet="dangkyhocphan" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__magv__44FF419A" Association="Self.FK__lop__magv__44FF419A">
+    <AssociationSet Name="FK__lop__idgv__4F7CD00D" Association="Self.FK__lop__idgv__4F7CD00D">
       <End Role="giangvien" EntitySet="giangvien" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__makhoa__4316F928" Association="Self.FK__lop__makhoa__4316F928">
+    <AssociationSet Name="FK__lop__idkhoa__4D94879B" Association="Self.FK__lop__idkhoa__4D94879B">
       <End Role="khoa" EntitySet="khoa" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
-    <AssociationSet Name="FK__lop__mamon__440B1D61" Association="Self.FK__lop__mamon__440B1D61">
+    <AssociationSet Name="FK__lop__idmon__4E88ABD4" Association="Self.FK__lop__idmon__4E88ABD4">
       <End Role="mon" EntitySet="mon" />
       <End Role="lop" EntitySet="lop" />
     </AssociationSet>
-    <AssociationSet Name="FK__lopcn__magv__32E0915F" Association="Self.FK__lopcn__magv__32E0915F">
+    <AssociationSet Name="FK__lopcn__idgv__37A5467C" Association="Self.FK__lopcn__idgv__37A5467C">
       <End Role="giangvien" EntitySet="giangvien" />
       <End Role="lopcn" EntitySet="lopcn" />
     </AssociationSet>
-    <AssociationSet Name="FK__lopcn__makhoa__33D4B598" Association="Self.FK__lopcn__makhoa__33D4B598">
+    <AssociationSet Name="FK__lopcn__idkhoa__38996AB5" Association="Self.FK__lopcn__idkhoa__38996AB5">
       <End Role="khoa" EntitySet="khoa" />
       <End Role="lopcn" EntitySet="lopcn" />
     </AssociationSet>
-    <AssociationSet Name="FK__mon__mamontruoc__4AB81AF0" Association="Self.FK__mon__mamontruoc__4AB81AF0">
+    <AssociationSet Name="FK__mon__idmontruoc__5629CD9C" Association="Self.FK__mon__idmontruoc__5629CD9C">
       <End Role="mon" EntitySet="mon" />
       <End Role="mon1" EntitySet="mon" />
     </AssociationSet>
-    <AssociationSet Name="FK__sinhvien__malopc__36B12243" Association="Self.FK__sinhvien__malopc__36B12243">
+    <AssociationSet Name="FK__sinhvien__idlopc__3C69FB99" Association="Self.FK__sinhvien__idlopc__3C69FB99">
       <End Role="lopcn" EntitySet="lopcn" />
       <End Role="sinhvien" EntitySet="sinhvien" />
     </AssociationSet>
-    <AssociationSet Name="FK__taikhoan__magv__3A81B327" Association="Self.FK__taikhoan__magv__3A81B327">
+    <AssociationSet Name="FK__taikhoan__idgv__4222D4EF" Association="Self.FK__taikhoan__idgv__4222D4EF">
       <End Role="giangvien" EntitySet="giangvien" />
       <End Role="taikhoan" EntitySet="taikhoan" />
     </AssociationSet>
-    <AssociationSet Name="FK__taikhoan__masv__398D8EEE" Association="Self.FK__taikhoan__masv__398D8EEE">
+    <AssociationSet Name="FK__taikhoan__idsv__412EB0B6" Association="Self.FK__taikhoan__idsv__412EB0B6">
       <End Role="sinhvien" EntitySet="sinhvien" />
       <End Role="taikhoan" EntitySet="taikhoan" />
     </AssociationSet>
-    <AssociationSet Name="FK__thongbao__matk__3D5E1FD2" Association="Self.FK__thongbao__matk__3D5E1FD2">
+    <AssociationSet Name="FK__thongbao__idtk__45F365D3" Association="Self.FK__thongbao__idtk__45F365D3">
       <End Role="taikhoan" EntitySet="taikhoan" />
       <End Role="thongbao" EntitySet="thongbao" />
     </AssociationSet>

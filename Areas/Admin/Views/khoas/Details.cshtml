@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.makhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.makhoa)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.giangvien.hoten)
         </dt>
 
@@ -30,6 +38,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.makhoa }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idkhoa }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

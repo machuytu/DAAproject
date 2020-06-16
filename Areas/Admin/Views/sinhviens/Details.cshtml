@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.masv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.masv)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.gioitinh)
         </dt>
 
@@ -68,16 +76,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.lopcn.magv)
+            @Html.DisplayNameFor(model => model.lopcn.malopcn)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.lopcn.magv)
+            @Html.DisplayFor(model => model.lopcn.malopcn)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.masv }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idsv }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

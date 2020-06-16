@@ -20,11 +20,12 @@ namespace ProjectDAA1
             this.thongbaos = new HashSet<thongbao>();
         }
     
+        public int idtk { get; set; }
         public string matk { get; set; }
         public string password { get; set; }
-        public string masv { get; set; }
-        public string magv { get; set; }
         public string nhom { get; set; }
+        public Nullable<int> idsv { get; set; }
+        public Nullable<int> idgv { get; set; }
     
         public virtual giangvien giangvien { get; set; }
         public virtual sinhvien sinhvien { get; set; }

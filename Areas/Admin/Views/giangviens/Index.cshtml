@@ -5,10 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<Br />
-<Br />
-<Br />
-<Br />
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,10 +16,10 @@
             @Html.DisplayNameFor(model => model.hoten)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.gioitinh)
+            @Html.DisplayNameFor(model => model.magv)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ngaysinh)
+            @Html.DisplayNameFor(model => model.gioitinh)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.diachi)
@@ -40,6 +37,9 @@
             @Html.DisplayNameFor(model => model.email)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ngaysinh)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ngayvaolam)
         </th>
         <th>
@@ -48,45 +48,47 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.hoten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.gioitinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngaysinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.diachi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quequan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.sdt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.capbac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngayvaolam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.khoa.tenkhoa)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.magv }) |
-                @Html.ActionLink("Details", "Details", new { id = item.magv }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.magv })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hoten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.magv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gioitinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diachi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quequan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sdt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capbac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaysinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngayvaolam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.khoa.tenkhoa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idgv }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idgv }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idgv })
+        </td>
+    </tr>
+}
 
 </table>

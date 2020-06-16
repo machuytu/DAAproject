@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<Br />
-<Br />
-<Br />
-<Br />
+<br />
+<br />
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,6 +17,9 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.tenkhoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.makhoa)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.giangvien.hoten)
@@ -31,12 +34,15 @@
                 @Html.DisplayFor(modelItem => item.tenkhoa)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.makhoa)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.giangvien.hoten)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.makhoa }) |
-                @Html.ActionLink("Details", "Details", new { id = item.makhoa }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.makhoa })
+                @Html.ActionLink("Edit", "Edit", new { id = item.idkhoa }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idkhoa }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idkhoa })
             </td>
         </tr>
     }

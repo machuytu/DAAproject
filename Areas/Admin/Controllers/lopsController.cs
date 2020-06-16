@@ -23,7 +23,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         }
 
         // GET: Admin/lops/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -40,10 +40,10 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/lops/Create
         public ActionResult Create()
         {
-            ViewBag.madkhp = new SelectList(db.dangkyhocphans, "madkhp", "namhoc");
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten");
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa");
-            ViewBag.mamon = new SelectList(db.mons, "mamon", "tenmon");
+            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "namhoc");
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten");
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa");
+            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenmon");
             return View();
         }
 
@@ -52,7 +52,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "malop,magv,mamon,thu,tietbd,tietkt,madkhp,makhoa")] lop lop)
+        public async Task<ActionResult> Create([Bind(Include = "idlop,malop,idgv,idmon,idkhoa,iddkhp,thu,tietbd,tietkt")] lop lop)
         {
             if (ModelState.IsValid)
             {
@@ -61,15 +61,15 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.madkhp = new SelectList(db.dangkyhocphans, "madkhp", "namhoc", lop.madkhp);
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", lop.magv);
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", lop.makhoa);
-            ViewBag.mamon = new SelectList(db.mons, "mamon", "tenmon", lop.mamon);
+            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "namhoc", lop.iddkhp);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lop.idgv);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", lop.idkhoa);
+            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenmon", lop.idmon);
             return View(lop);
         }
 
         // GET: Admin/lops/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -80,10 +80,10 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.madkhp = new SelectList(db.dangkyhocphans, "madkhp", "namhoc", lop.madkhp);
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", lop.magv);
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", lop.makhoa);
-            ViewBag.mamon = new SelectList(db.mons, "mamon", "tenmon", lop.mamon);
+            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "namhoc", lop.iddkhp);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lop.idgv);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", lop.idkhoa);
+            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenmon", lop.idmon);
             return View(lop);
         }
 
@@ -92,7 +92,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "malop,magv,mamon,thu,tietbd,tietkt,madkhp,makhoa")] lop lop)
+        public async Task<ActionResult> Edit([Bind(Include = "idlop,malop,idgv,idmon,idkhoa,iddkhp,thu,tietbd,tietkt")] lop lop)
         {
             if (ModelState.IsValid)
             {
@@ -100,15 +100,15 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.madkhp = new SelectList(db.dangkyhocphans, "madkhp", "namhoc", lop.madkhp);
-            ViewBag.magv = new SelectList(db.giangviens, "magv", "hoten", lop.magv);
-            ViewBag.makhoa = new SelectList(db.khoas, "makhoa", "tenkhoa", lop.makhoa);
-            ViewBag.mamon = new SelectList(db.mons, "mamon", "tenmon", lop.mamon);
+            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "namhoc", lop.iddkhp);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lop.idgv);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", lop.idkhoa);
+            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenmon", lop.idmon);
             return View(lop);
         }
 
         // GET: Admin/lops/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -125,7 +125,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // POST: Admin/lops/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             lop lop = await db.lops.FindAsync(id);
             db.lops.Remove(lop);
