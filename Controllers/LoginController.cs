@@ -14,6 +14,7 @@ namespace ProjectDAA1.Controllers
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         // GET: Login
+
         public async System.Threading.Tasks.Task<ActionResult> Login()
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];

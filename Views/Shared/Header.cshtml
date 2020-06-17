@@ -18,10 +18,10 @@
                             if (session.Nhom == "Giảng viên")
                             {
                                 <li class="active">
-                                    <a href="index.html" class="nav-link text-left">Giang vien</a>
+                                    <a href="/lopcn" class="nav-link text-left">Lớp chủ nhiệm</a>
                                 </li>
                                 <li class="active">
-                                    <a href="/lops/@session.idgv" class="nav-link text-left">Giang vien</a>
+                                    <a href="/lop" class="nav-link text-left">Lớp</a>
                                 </li>
                             }
                             else
@@ -45,16 +45,12 @@
                                 <li>
                                     <a href="contact.html" class="nav-link text-left">Contact</a>
                                 </li>
-                                if (ViewBag.Viewdkhp == 0)
+                                
+                                if (ViewBag.Viewdkhp != null)
                                 {
+                                    
                                     <li>
-                                        <a href="contact.html" class="nav-link text-left">dky</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li>
-                                        <a href="contact.html" class="nav-link text-left">deo dky</a>
+                                        <a href="/dkhp/@ViewBag.Viewdkhp.iddkhp" class="nav-link text-left">Đăng ký học phần</a>
                                     </li>
                                 }
                             }
@@ -66,7 +62,7 @@
                                 <a href="contact.html" class="nav-link text-left">Chưa đăng nhập</a>
                             </li>
                         }
-                    </ul>                                                                                                                                                                                                                                                                                          
+                    </ul>
                 </nav>
             </div>
             <div class="ml-auto">

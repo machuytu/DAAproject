@@ -36,7 +36,7 @@ namespace ProjectDAA1.Controllers
             var listkhoahoc = db.dangkyhocphans.Where(x => x.thoigianbd <= datenow && x.thoigiankt >= datenow).ToList();
             if (listkhoahoc.Count() > 0)
             {
-                ViewBag.Viewdkhp = 0;
+                ViewBag.Viewdkhp = listkhoahoc.SingleOrDefault();
             }
             return PartialView();
         }

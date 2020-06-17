@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProjectDAA1.lop>
+
+@{
+    ViewBag.Title = "dsLop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách lớp</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.malop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mon.mamon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mon.tenmon)
+        </th>
+        <th>
+            <p>Thứ/ca</p>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    string str = "";
+    for (int i = item.tietbd; i <= item.tietkt; i++)
+    {
+        str += i.ToString(); 
+    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.malop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mon.tenmon)
+        </td>
+        <td>
+            <div>Thứ @item.thu tiết @str</div>
+        </td>
+        <td>
+            <a href="svlop/@item.idlop">Danh sách sinh viên</a>
+        </td>
+    </tr>
+}
+
+</table>
