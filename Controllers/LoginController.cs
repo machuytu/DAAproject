@@ -14,27 +14,28 @@ namespace ProjectDAA1.Controllers
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         // GET: Login
+
         public async System.Threading.Tasks.Task<ActionResult> Login()
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            
+
             if (session == null)
                 return View();
             else
             {
-                taikhoan user = await db.taikhoans.FindAsync(session.UserName);
+                taikhoan user = await db.taikhoans.FindAsync(session.matk);
 
                 if (user.nhom == "Sinh viên" || user.nhom == "Giảng viên")
                     return RedirectToAction("Index", "Home");
                 else
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
             }
-            
+
         }
         [HttpPost]
         public async System.Threading.Tasks.Task<ActionResult> Login(LoginModel model)
         {
-            var result = db.taikhoans.SingleOrDefault(x => x.matk == model.UserName);
+            var result = db.taikhoans.SingleOrDefault(x => x.matk == model.matk);
             if (ModelState.IsValid)
             {
                 if (result == null)
@@ -51,40 +52,46 @@ namespace ProjectDAA1.Controllers
                 {
                     if (result.nhom == "Sinh viên")
                     {
-                        //var user = dao.GetById(model.UserName);
-                        taikhoan user = await db.taikhoans.FindAsync(model.UserName);
+                        //var user = dao.GetById(model.matk);
+                        taikhoan user = await db.taikhoans.FindAsync(result.idtk);
                         var userSession = new UserLogin();
-                        userSession.UserName = user.matk;
+                        userSession.matk = user.matk;
                         userSession.Nhom = user.nhom;
+                        userSession.idtk = user.idtk;
+                        userSession.idsv = user.idsv;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return Redirect("/");
                     }
                     else if (result.nhom == "Giảng viên")
                     {
-                        taikhoan user = await db.taikhoans.FindAsync(model.UserName);
+                        taikhoan user = await db.taikhoans.FindAsync(result.idtk);
                         var userSession = new UserLogin();
-                        userSession.UserName = user.matk;
+                        userSession.matk = user.matk;
                         userSession.Nhom = user.nhom;
+                        userSession.idtk = user.idtk;
+                        userSession.idgv = user.idgv;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return Redirect("/");
                     }
                     else
                     {
-                        taikhoan user = await db.taikhoans.FindAsync(model.UserName);
+                        taikhoan user = await db.taikhoans.FindAsync(result.idtk);
                         var userSession = new UserLogin();
-                        userSession.UserName = user.matk;
+                        userSession.matk = user.matk;
+                        userSession.Nhom = user.nhom;
+                        userSession.idtk = user.idtk;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         return RedirectToAction("Index", "Home", new { area = "Admin" });
                     }
                 }
 
-                //var reullsult = dao.Login(model.UserName, HashPassword.MD5Hash(model.Password));
+                //var reullsult = dao.Login(model.matk, HashPassword.MD5Hash(model.Password));
                 //var result =
                 //if (result == 1)
                 //{
-                //    var user = dao.GetById(model.UserName);
+                //    var user = dao.GetById(model.matk);
                 //    var userSession = new UserLogin();
-                //    userSession.UserName = user.UserName;
+                //    userSession.matk = user.matk;
                 //    userSession.UserID = user.ID;
                 //    Session.Add(CommonConstants.USER_SESSION, userSession);
                 //    return Redirect("/");

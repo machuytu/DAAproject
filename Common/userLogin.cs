@@ -8,8 +8,10 @@ namespace ProjectDAA1
     [Serializable]
     public class UserLogin
     {
-        public string UserName { set; get; }
+        public int idtk { set; get; }
+        public string matk { set; get; }
         public string Nhom { set; get; }
-
+        public int? idsv { set; get; }
+        public int? idgv { set; get; }
     }
 }
