@@ -280,6 +280,7 @@
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\main.js" />
     <Content Include="Assets\js\moment.js" />
+    <Content Include="Assets\js\xulyadmin.js" />
     <Content Include="Assets\media\9606031aabebde32fa96edeff071a132.jpg" />
     <Content Include="Assets\vendor\animsition\animsition.min.css" />
     <Content Include="Assets\vendor\animsition\animsition.min.js" />
