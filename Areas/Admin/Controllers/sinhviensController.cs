@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectDAA1;
+using System.IO;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
@@ -49,15 +50,29 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idsv,hoten,masv,gioitinh,ngaysinh,idlopcn,diachi,quequan,sdt,bachoc")] sinhvien sinhvien)
+        public async Task<ActionResult> Create(sinhvien sinhvien, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && file.ContentLength >0)
             {
-                db.sinhviens.Add(sinhvien);
+                var sv = new sinhvien();
+                //sv.bachoc = sinhvien.bachoc;
+                //sv.diachi = sinhvien.diachi;
+                //sv.gioitinh = sinhvien.gioitinh;
+                //sv.hoten = sinhvien.hoten;
+                //sv.ngaysinh = sinhvien.ngaysinh;
+                //sv.idlopcn = sinhvien.idlopcn;
+                //sv.sdt = sinhvien.sdt;
+                //sv.quequan = sinhvien.quequan;
+                string _FileName = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                sinhvien.hinhanh = "/Assets/images/" + _FileName;
+                sv = sinhvien;
+                db.sinhviens.Add(sv);
+                file.SaveAs(_path);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Message = "File Uploaded Fail!!";
             ViewBag.idlopcn = new SelectList(db.lopcns, "idlopcn", "malopcn", sinhvien.idlopcn);
             return View(sinhvien);
         }

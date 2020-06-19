@@ -5,87 +5,170 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">User List</a></strong>
+                    <small>> Detail</small>
+                </div>
+                <div class="card-body card-block">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <img src="@Model.hinhanh" class="avatar img-circle p-2" style="height: 200px; width: 200px;" alt="avatar">
 
-<div>
-    <h4>sinhvien</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.hoten)
-        </dt>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="hoten">Họ tên :</label>
+                                        @Html.DisplayFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="masv">MSSV :</label>
+                                        @Html.DisplayFor(model => model.masv, new { htmlAttributes = new { @class = "form-control" } })
 
-        <dd>
-            @Html.DisplayFor(model => model.hoten)
-        </dd>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-4">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.masv)
-        </dt>
+                                    <label class=" form-control-label" for="idlopcn">Mã Lớp :</label>
+                                    @Html.DisplayFor(model => model.lopcn.malopcn, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="gioitinh">Giới tính :</label>
+                                    @Html.DisplayFor(model => model.gioitinh, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="ngaysinh">Ngày sinh :</label>
+                                    @*@Html.DisplayFor(model => model.ngaysinh, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @String.Format("{0:dd/MM/yyyy}", Model.ngaysinh)
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="diachi">Địa Chỉ :</label>
+                                    @Html.DisplayFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="quequan">Quê quán :</label>
+                                    @Html.DisplayFor(model => model.quequan, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="sdt">Số điện thoại :</label>
+                                    @Html.DisplayFor(model => model.sdt, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="bachoc">Bậc Học :</label>
+                                    @Html.DisplayFor(model => model.bachoc, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <a class="btn btn-success" href="/Admin/sinhviens/Edit/@Model.idsv">Edit</a>
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.masv)
-        </dd>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gioitinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.gioitinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ngaysinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ngaysinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.diachi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.diachi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.quequan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.quequan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sdt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sdt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.bachoc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.bachoc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.lopcn.malopcn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lopcn.malopcn)
-        </dd>
-
-    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idsv }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@*<h2>Details</h2>
+
+    <div>
+        <h4>sinhvien</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.hoten)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.hoten)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.masv)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.masv)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.gioitinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.gioitinh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ngaysinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ngaysinh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.diachi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.diachi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.quequan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.quequan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.sdt)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sdt)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.bachoc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.bachoc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.lopcn.malopcn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.lopcn.malopcn)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.idsv }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

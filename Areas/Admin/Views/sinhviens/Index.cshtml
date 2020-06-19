@@ -59,12 +59,6 @@
                                     Ngày sinh
                                 </th>
                                 <th scope="col">
-                                    Địa chỉ
-                                </th>
-                                <th scope="col">
-                                    Quê quán
-                                </th>
-                                <th scope="col">
                                     SĐT
                                 </th>
                                 <th scope="col">
@@ -94,12 +88,6 @@
                                         @*@item.ngaysinh.Value.ToString("dd/MM/yyyy")*@
                                     </td>
                                     <td scope="row">
-                                        @Html.DisplayFor(modelItem => item.diachi)
-                                    </td>
-                                    <td scope="row">
-                                        @Html.DisplayFor(modelItem => item.quequan)
-                                    </td>
-                                    <td scope="row">
                                         @Html.DisplayFor(modelItem => item.sdt)
                                     </td>
                                     <td scope="row">
@@ -118,6 +106,9 @@
                                             </button>
                                             <button class="item" onclick="getid(@item.idsv)" data-toggle="modal" data-target="#exampleModal" data-placement="top" title="Delete">
                                                 <i class="zmdi zmdi-delete"></i>
+                                            </button>
+                                            <button class="item" data-toggle="tooltip" onclick="detailuser(@item.idsv)" data-placement="top" title="More">
+                                                <i class="zmdi zmdi-more"></i>
                                             </button>
                                         </div>
                                     </td>
