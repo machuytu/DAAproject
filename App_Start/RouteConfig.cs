@@ -43,10 +43,11 @@ namespace ProjectDAA1
             
                 routes.MapRoute(
                  name: "Đăng ký học phần",
-                 url: "dkhp/{iddkhp}",
+                 url: "dkhp",
                  defaults: new { controller = "DKHP", action = "GetList", id = UrlParameter.Optional },
                  namespaces: new[] { "ProjectDAA1.Controllers" }
              );
+
             routes.MapRoute(
                  name: "svlop",
                  url: "svlop/{id}",

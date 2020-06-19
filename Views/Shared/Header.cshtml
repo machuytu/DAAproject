@@ -11,7 +11,6 @@
                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                         @{
                             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-
                         }
                         @if (session != null)
                         {
@@ -48,9 +47,8 @@
                                 
                                 if (ViewBag.Viewdkhp != null)
                                 {
-                                    
                                     <li>
-                                        <a href="/dkhp/@ViewBag.Viewdkhp.iddkhp" class="nav-link text-left">Đăng ký học phần</a>
+                                        <a href="/dkhp" class="nav-link text-left">Đăng ký học phần</a>
                                     </li>
                                 }
                             }
