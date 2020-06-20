@@ -116,9 +116,12 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             mon mon = await db.mons.FindAsync(id);
-            db.mons.Remove(mon);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+
+                db.mons.Remove(mon);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+
+
         }
 
         protected override void Dispose(bool disposing)
