@@ -914,7 +914,8 @@
     <Content Include="Views\Teacher\dsLopCN.cshtml" />
     <Content Include="Views\Teacher\dsSVLopCN.cshtml" />
     <Content Include="Views\Teacher\dsSVLop.cshtml" />
-    <Content Include="Views\DKHP\GetList.cshtml" />
+    <Content Include="Views\DKHP\GetDKHP.cshtml" />
+    <Content Include="Views\DKHP\GetHuyDKHP.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

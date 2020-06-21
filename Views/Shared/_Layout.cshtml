@@ -46,15 +46,14 @@
                             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
                             if (session == null)
                             {
-                                <!--<a href="@Url.Action("Login", "Login")" class="small mr-3"><span class="icon-unlock-alt"></span> Login</a>-->
-                                <a href="/login" class="small mr-3"><span class="icon-unlock-alt"></span> Login</a>
+                                <a href="/login" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Login</a>
                             }
                             else
                             {
-                                <a href="@Url.Action("Logout", "Login")" class="small mr-3"><span class="icon-unlock-alt"></span> Logout</a>
+                    <a href="@Url.Action("Logout", "Login")" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-unlock-alt"></span> Logout</a>
                             }
                         }
-                        <a href="register.html" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+
                     </div>
 
                 </div>

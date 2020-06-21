@@ -2,10 +2,19 @@
     //$('#example').DataTable();
 
     var listid = [];
-    
+    var ajaxurl = '';
+
     $('.checkeditem :checkbox').change(function () {
         // this will contain a reference to the checkbox   
         var idlop = $(this).val();
+        var pathname = window.location.pathname;
+        if (pathname == '/dkhp') {
+            ajaxurl = '/DKHP/AddHoc'
+        }
+        else if (pathname == '/huydkhp') {
+            ajaxurl = '/DKHP/DeleteHoc'   
+        }
+        //alert(ajaxurl);
 
         if (this.checked) {
             $('#clear').hide();
@@ -13,8 +22,9 @@
             var malop = $(this).attr("data-malop");
             var giangvien = $(this).attr("data-tengv");
             var tenmon = $(this).attr("data-tenmon");
+            var tc = $(this).attr("data-tc");
             var tkb = $(this).attr("data-tkb");
-            $('#danhsach').append("<tr id='dachon" + idlop + "'><td>" + malop + "</td><td>" + giangvien + "</td><td>" + tenmon + "</td><td>" + tkb + "</td></tr>");
+            $('#danhsach').append("<tr id='dachon" + idlop + "'><td>" + malop + "</td><td>" + giangvien + "</td><td>" + tenmon + "</td><td>" + tc + "</td><td>" + tkb + "</td></tr>");
             // the checkbox is now checked 
             listid.push(idlop);
         } else {
@@ -31,7 +41,7 @@
     $('#submit').click(function () {
         //alert(listid);
         $.ajax({
-            url: '/DKHP/AddHoc',
+            url: ajaxurl,
             data: { listid: JSON.stringify(listid) },
             dataType: 'json',
             type: 'POST',
@@ -41,6 +51,5 @@
                 }
             }
         });
-        
     });
 });

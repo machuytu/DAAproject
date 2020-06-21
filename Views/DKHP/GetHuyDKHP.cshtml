@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<ProjectDAA1.lop>
 @{
-    ViewBag.Title = "GetList";
+    ViewBag.Title = "HuyDKHP";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,12 +17,14 @@
                     <th>Mã lớp</th>
                     <th>Giảng viên</th>
                     <th>Tên môn</th>
+                    <th>Tín chỉ</th>
                     <th>Thứ / ca</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
+
                     var str = "";
                     for (int i = item.tietbd; i <= item.tietkt; i++)
                     {
@@ -42,11 +44,13 @@
                         <td class="checkeditem">
                             <input type="checkbox" class="checked-lop" value="@item.idlop" data-id="@item.idlop" data-malop="@item.malop"
                                    data-tengv="@ten" data-tenmon="@item.mon.tenmon"
+                                   data-tc="lý thuyết: @item.mon.tclt / thực hành: @item.mon.tcth"
                                    data-tkb="thứ @item.thu tiết @str" />
                         </td>
                         <td>@item.malop</td>
                         <td>@ten</td>
                         <td>@item.mon.tenmon</td>
+                        <td>lý thuyết: @item.mon.tclt / thực hành: @item.mon.tcth</td>
                         <td>thứ @item.thu tiết @str</td>
                     </tr>
                 }
@@ -60,16 +64,18 @@
                     <th>Mã lớp</th>
                     <th>Giảng viên</th>
                     <th>Tên môn</th>
+                    <th>Tín chỉ</th>
                     <th>Thứ / ca</th>
                 </tr>
             </thead>
             <tbody id="danhsach">
                 <tr id="clear">
-                    <td colspan="4" class="text-center">Danh sách trống</td>
+                    <td colspan="5" class="text-center">Danh sách trống</td>
                 </tr>
             </tbody>
         </table>
 
-        <button id="submit" class="btn-primary" disabled>Đăng ký</button>
+        <button id="submit" class="btn-primary" disabled>Huỷ đăng ký</button>
     </div>
 </div>
+
