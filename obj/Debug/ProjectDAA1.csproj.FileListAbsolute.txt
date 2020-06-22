@@ -310,6 +310,7 @@ D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framew
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.csproj.CopyComplete
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.dll
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.pdb
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Mvc.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ProjectDAA1.dll.config
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ProjectDAA1.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ProjectDAA1.pdb
@@ -383,7 +384,6 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webp
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webpages.Deployment.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webpages.Razor.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Helpers.xml
-D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Mvc.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csproj.CoreCompileInputs.cache
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csproj.CopyComplete

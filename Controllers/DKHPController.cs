@@ -6,6 +6,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Helpers;
+using System.Data.SqlClient;
+using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
 
 namespace ProjectDAA1.Controllers
 {
@@ -37,11 +41,13 @@ namespace ProjectDAA1.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddHoc(string listid)
+        public async Task<JsonResult> AddHoc(string listid)
         {
             var db = new MyDatabaseEntities9();
-
+            var listerr = new List<string>();
             var list = new JavaScriptSerializer().Deserialize<List<int>>(listid);
+            var listmaloi = new List<string>();
+            var ma = "";
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session != null)
             {
@@ -52,22 +58,50 @@ namespace ProjectDAA1.Controllers
                     {
                         var sinhvien = db.sinhviens.Where(x => x.idsv == idsv).SingleOrDefault();
                         var lop = db.lops.Where(x => x.idlop == idlop).SingleOrDefault();
-
+                        var idmon = db.lops.Where(x => x.idlop == idlop).Select(x => x.idmon);
                         var h = new hoc() { idlop = idlop, idsv = idsv, sinhvien = sinhvien, lop = lop };
+                        //ma = lop.malop;
                         db.hocs.Add(h);
                         await db.SaveChangesAsync();
+
                     }
-                    catch (Exception e)
+                    catch (DbUpdateException e)
                     {
-                        ViewData["error"] = e.ToString();
-                        return RedirectToRoute("dkhp");
+                        //listmaloi.Add(ma);
+                        //ViewData["error"] = e.ToString();
+                        var err = e.InnerException.InnerException.Message.ToString();
+                        string[] loi = err.Split('/');
+                        listerr.Add(loi[0]);
+                       
+                        //throw;
                     }
+                    //finally
+                    //{
+                        
+                    //}
                 }
-                return RedirectToRoute("dkhp");
+                if (listmaloi.Count != 0)
+                {
+                    return Json(new
+                    {
+                        status = listmaloi
+                    });
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        status = true
+                    });
+                }
+                
             }  
             else
             {
-                return RedirectToRoute("/");
+                return Json(new
+                {
+                    status = false
+                });
             }    
         }
 

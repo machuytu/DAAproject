@@ -40,6 +40,7 @@
 
     $('#submit').click(function () {
         //alert(listid);
+        $("#loidkhp").html("");
         $.ajax({
             url: ajaxurl,
             data: { listid: JSON.stringify(listid) },
@@ -48,7 +49,19 @@
             success: function (res) {
                 if (res.status == true) {
                     listid = [];
+                    location.reload();
+                } else {
+                    $.each(res.status, function () {
+                        $("#loidkhp").append(this + "</br>");
+
+                    });
+                    //let list = res.status;
+                    //list.each(
+                    //    $("#loidkhp").append($(this) + "</br>");
+                    //);
+                    //$("#loidkhp").append(res.status);
                 }
+                
             }
         });
     });
