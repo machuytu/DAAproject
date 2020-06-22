@@ -41,10 +41,10 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         public ActionResult Create()
         {
             List<lop> dbc = db.lops.Include(h => h.mon).ToList();
-            SelectList ahihi = new SelectList(dbc, "malop", "mon.tenvama");
+            SelectList ahihi = new SelectList(dbc, "idlop", "mon.tenvama");
 
-            ViewBag.malop = ahihi;
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
+            ViewBag.idlop = ahihi;
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten");
             return View();
         }
 

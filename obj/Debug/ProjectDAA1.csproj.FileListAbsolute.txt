@@ -229,7 +229,6 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DAAproject\DAAproject\bin\WebGrease
 D:\Learning\Projects\ASP_dotnetFramework_Web\DAAproject\DAAproject\bin\Antlr3.Runtime.pdb
 D:\Learning\Projects\ASP_dotnetFramework_Web\DAAproject\DAAproject\bin\Newtonsoft.Json.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DAAproject\DAAproject\bin\System.Web.Optimization.xml
-G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\ProjectDAA1.dll.config
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\ProjectDAA1.dll
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\ProjectDAA1.pdb
@@ -310,3 +309,4 @@ D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framew
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.csproj.CopyComplete
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.dll
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.pdb
+G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache

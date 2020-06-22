@@ -7,101 +7,94 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>giangvien</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.hoten)
-        </dt>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/giangviens">Danh sách giảng viên</a></strong>
+                    <small>> Detail</small>
+                </div>
+                <div class="card-body card-block">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <img src="@Model.hinhanh" class="avatar img-circle p-2" style="height: 200px; width: 200px;" alt="avatar">
 
-        <dd>
-            @Html.DisplayFor(model => model.hoten)
-        </dd>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="hoten">Họ tên :</label>
+                                        @Html.DisplayFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="masv">MSGV :</label>
+                                        @Html.DisplayFor(model => model.magv, new { htmlAttributes = new { @class = "form-control" } })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.magv)
-        </dt>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.magv)
-        </dd>
+                                    <label class=" form-control-label" for="idlopcn">Khoa :</label>
+                                    @Html.DisplayFor(model => model.khoa.tenkhoa, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="gioitinh">Giới tính :</label>
+                                    @Html.DisplayFor(model => model.gioitinh, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="gioitinh">Giới tính :</label>
+                                    @Html.DisplayFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="ngaysinh">Ngày sinh :</label>
+                                    @*@Html.DisplayFor(model => model.ngaysinh, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @String.Format("{0:dd/MM/yyyy}", Model.ngaysinh)
+                                </div>
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="ngaysinh">Ngày vào làm :</label>
+                                    @*@Html.DisplayFor(model => model.ngaysinh, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @String.Format("{0:dd/MM/yyyy}", Model.ngayvaolam)
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="diachi">Địa Chỉ :</label>
+                                    @Html.DisplayFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="quequan">Quê quán :</label>
+                                    @Html.DisplayFor(model => model.quequan, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="sdt">Số điện thoại :</label>
+                                    @Html.DisplayFor(model => model.sdt, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="bachoc">Cấp Bậc :</label>
+                                    @Html.DisplayFor(model => model.capbac, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <a class="btn btn-success" href="/Admin/sinhviens/Edit/@Model.idgv">Edit</a>
+                            </div>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gioitinh)
-        </dt>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.gioitinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.diachi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.diachi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.quequan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.quequan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sdt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sdt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.capbac)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.capbac)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ngaysinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ngaysinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ngayvaolam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ngayvaolam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.khoa.tenkhoa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.khoa.tenkhoa)
-        </dd>
-
-    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idgv }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

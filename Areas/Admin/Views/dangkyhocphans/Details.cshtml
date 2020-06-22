@@ -7,45 +7,49 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>dangkyhocphan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.namhoc)
-        </dt>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">User List</a></strong>
+                    <small>> Detail</small>
+                </div>
+                <div class="card-body card-block">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="hoten">Học kỳ :</label>
+                                        @Html.DisplayFor(model => model.hocky, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="masv">Năm học :</label>
+                                        @Html.DisplayFor(model => model.namhoc, new { htmlAttributes = new { @class = "form-control" } })
 
-        <dd>
-            @Html.DisplayFor(model => model.namhoc)
-        </dd>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="gioitinh">Thời gian bắt đầu :</label>
+                                    @Html.DisplayFor(model => model.thoigianbd, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class=" form-control-label" for="gioitinh">Thời gian bắt kết:</label>
+                                    @Html.DisplayFor(model => model.thoigiankt, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <a class="btn btn-success" href="/Admin/dangkyhocphans/Edit/@Model.iddkhp">Edit</a>
+                            </div>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.hocky)
-        </dt>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.hocky)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.thoigianbd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.thoigianbd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.thoigiankt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.thoigiankt)
-        </dd>
-
-    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.iddkhp }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

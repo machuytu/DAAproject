@@ -7,7 +7,109 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">User List</a></strong>
+                    <small>> Create</small>
+                </div>
+                <div class="card-body card-block">
+                    <form method="post" action="/Admin/sinhviens/Edit" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.idsv)
+                        @Html.HiddenFor(model => model.hinhanh)
+                        @Html.HiddenFor(model => model.idlopcn)
+                        @Html.HiddenFor(model => model.masv)
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="text-center">
+                                            <img src="@Model.hinhanh" class="avatar img-circle" style="height: 200px; width: 200px;" alt="avatar">
+                                            <h6>Upload a different photo...</h6>
+                                            @Html.TextBox("file", "", new { type = "file", @class = "form-control file-upload", @accept = "image/*" })
+                                            @*<input type="file" name="hinhanh" id="hinhanh" accept="image/*" required class="form-control file-upload">*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @ViewBag.Message
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="hoten">Họ tên</label>
+                                            @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                            @Html.ValidationMessageFor(model => model.hoten, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="diachi">Địa chỉ</label>
+                                            @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                            @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="quequan">Quê quán</label>
+                                            @Html.EditorFor(model => model.quequan, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                            @Html.ValidationMessageFor(model => model.quequan, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="sdt">Số điện thoại</label>
+                                        @Html.EditorFor(model => model.sdt, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                        @Html.ValidationMessageFor(model => model.sdt, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="gioitinh">Giới tính</label>
+                                        <select class="form-control" id="gioitinh" style="height:auto;" name="gioitinh">
+                                            <option value="Nam">Nam</option>
+                                            <option value="Nữ">Nữ</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.gioitinh, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="ngaysinh">Ngày sinh</label>
+                                        <input type="date" id="ngaysinh" name="ngaysinh" value="@String.Format("{0:yyyy-MM-dd}", Model.ngaysinh)">
+                                        @Html.ValidationMessageFor(model => model.ngaysinh, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="idlopcn">Mã Lớp</label>
+                                        @Html.DropDownList("idlopcn", null, htmlAttributes: new { @class = "form-control", @style = "height:auto", @disabled = "disabled" })
+                                        @Html.ValidationMessageFor(model => model.idlopcn, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="bachoc">Bậc học</label>
+                                        <select class="form-control" id="bachoc" style="height:auto;" name="bachoc">
+                                            <option value="Cao Đẳng">Cao Đẳng</option>
+                                            <option value="Đại Học">Đại Học</option>
+                                            <option value="Cao Học">Cao Học</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.bachoc, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row p-3">
+                                    <button class="btn btn-success">Submit</button>
+                                  
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -95,7 +197,7 @@
             </div>
         </div>
     </div>
-}
+}*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")

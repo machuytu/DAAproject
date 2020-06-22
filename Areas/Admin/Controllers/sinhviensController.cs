@@ -90,6 +90,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.idlopcn = new SelectList(db.lopcns, "idlopcn", "malopcn", sinhvien.idlopcn);
+
             return View(sinhvien);
         }
 
@@ -98,10 +99,17 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idsv,hoten,masv,gioitinh,ngaysinh,idlopcn,diachi,quequan,sdt,bachoc")] sinhvien sinhvien)
+        public async Task<ActionResult> Edit(sinhvien sinhvien,HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if(file!=null)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                    sinhvien.hinhanh = "/Assets/images/" + _FileName;
+                    file.SaveAs(_path);
+                }
                 db.Entry(sinhvien).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -135,7 +143,21 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-
+        [HttpPost]
+        public async Task<ActionResult> Deleteuser(int id)
+        {
+            try
+            {
+                sinhvien sinhvien = await db.sinhviens.FindAsync(id);
+                db.sinhviens.Remove(sinhvien);
+                await db.SaveChangesAsync();
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

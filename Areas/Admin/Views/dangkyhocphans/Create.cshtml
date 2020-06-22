@@ -6,95 +6,61 @@
 }
 
 <h2>Create</h2>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/dangkyhocphans">User List</a></strong>
+                    <small>> Create</small>
+                </div>
+                <div class="card-body card-block">
+                    <form method="post" action="/Admin/dangkyhocphans/Create" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="namhoc">Năm học</label>
+                                            <input type="number" id="namhoc" name="namhoc" max="9999" min="1999" value="2020">
+                                            @Html.ValidationMessageFor(model => model.namhoc, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="thoigianbd">Ngày bắt đầu</label>
+                                        <input type="date" id="thoigianbd" name="thoigianbd">
+                                        @Html.ValidationMessageFor(model => model.thoigianbd, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="thoigiankt">Ngày kết thúc</label>
+                                        <input type="date" id="thoigiankt" name="thoigiankt">
+                                        @Html.ValidationMessageFor(model => model.thoigiankt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                        <label class=" form-control-label" for="hocky">Học kỳ</label>
+                                        <select class="form-control" id="hocky" style="height:auto;" name="hocky">
+                                            <option value="1">Học kỳ 1</option>
+                                            <option value="2">Học kỳ 2</option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.hocky, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row p-3">
+                                    <button class="btn btn-success">Submit</button>
+                                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                </div>
+                            </div>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>dangkyhocphan</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.namhoc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.namhoc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.namhoc, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        </div>
+                    </form>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.hocky, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    List<SelectListItem> listItems = new List<SelectListItem>();
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Học kỳ 1",
-                        Value = "1"
-                    });
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Học kỳ 2",
-                        Value = "2",
-                        Selected = true
-                    });
-                }
-
-                @Html.DropDownListFor(model => model.hocky, listItems, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.hocky, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.thoigianbd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.thoigianbd, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.thoigianbd, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.thoigiankt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.thoigiankt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.thoigiankt, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section scripts {
-    <script>
-        $(function () {
-            $("#thoigianbd").datepicker();
-        });
-    </script>
-    <script>
-        $(function () {
-            $("#thoigiankt").datepicker();
-        });
-    </script>
-    <script>
-        $(function () {
-            $("#namhoc").datepicker({
-                dateFormat: "yy",
-                changeMonth: false,
-                changeYear: true,
-
-                yearRange: "-60:+0"
-            });
-        });
-    </script>
-
-}

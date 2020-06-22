@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectDAA1;
+using System.IO;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
@@ -49,15 +50,29 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idgv,hoten,magv,idkhoa,gioitinh,diachi,quequan,sdt,capbac,email,ngaysinh,ngayvaolam")] giangvien giangvien)
+        public async Task<ActionResult> Create(HttpPostedFileBase file, giangvien giangvien)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && file.ContentLength > 0)
             {
+                var gv = new giangvien();
+                //sv.bachoc = sinhvien.bachoc;
+                //sv.diachi = sinhvien.diachi;
+                //sv.gioitinh = sinhvien.gioitinh;
+                //sv.hoten = sinhvien.hoten;
+                //sv.ngaysinh = sinhvien.ngaysinh;
+                //sv.idlopcn = sinhvien.idlopcn;
+                //sv.sdt = sinhvien.sdt;
+                //sv.quequan = sinhvien.quequan;
+                string _FileName = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                giangvien.hinhanh = "/Assets/images/" + _FileName;
+                gv = giangvien;
+                db.giangviens.Add(gv);
                 db.giangviens.Add(giangvien);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Message = "File Uploaded Fail!!";
             ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
             return View(giangvien);
         }
@@ -83,10 +98,17 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idgv,hoten,magv,idkhoa,gioitinh,diachi,quequan,sdt,capbac,email,ngaysinh,ngayvaolam")] giangvien giangvien)
+        public async Task<ActionResult> Edit(HttpPostedFileBase file, giangvien giangvien)
         {
             if (ModelState.IsValid)
             {
+                if (file != null)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                    giangvien.hinhanh = "/Assets/images/" + _FileName;
+                    file.SaveAs(_path);
+                }
                 db.Entry(giangvien).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -121,6 +143,21 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Deleteuser(int id)
+        {
+            try
+            {
+                giangvien giangvien = await db.giangviens.FindAsync(id);
+                db.giangviens.Remove(giangvien);
+                await db.SaveChangesAsync();
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

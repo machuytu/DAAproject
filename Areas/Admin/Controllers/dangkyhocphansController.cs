@@ -47,25 +47,13 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "iddkhp,namhoc,hocky,thoigianbd,thoigiankt")] dangkyhocphan dangkyhocphan)
+        public async Task<ActionResult> Create(dangkyhocphan dangkyhocphan)
         {
             if (ModelState.IsValid)
             {
                 if (dangkyhocphan.thoigianbd > dangkyhocphan.thoigiankt)
                 {
                     ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày kết thúc");
-                    return View(dangkyhocphan);
-                }
-
-                if (dangkyhocphan.thoigianbd > DateTime.Now)
-                {
-                    ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày hiện tại");
-                    return View(dangkyhocphan);
-                }
-
-                if (dangkyhocphan.thoigiankt > DateTime.Now)
-                {
-                    ModelState.AddModelError("thoigiankt", "Ngày kết thúc lớn hơn ngày hiện tại");
                     return View(dangkyhocphan);
                 }
 
