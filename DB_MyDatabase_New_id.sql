@@ -315,8 +315,7 @@ begin
 	DECLARE @makhoa varchar(6), @idgv int, @idkhoa int, @nienkhoa int;
 	SELECT @idkhoa = idkhoa, @idgv = idgv, @nienkhoa = nienkhoa FROM inserted;
 	SELECT @makhoa = makhoa FROM khoa WHERE idkhoa = @idkhoa;
-	insert into lopcn (malopcn,idkhoa,idgv,nienkhoa) 
-	values(@makhoa + CONVERT(varchar,@nienkhoa), @idkhoa, @idgv, @nienkhoa);
+	UPDATE lopcn SET malopcn = @makhoa + CONVERT(varchar,@nienkhoa);
 end;
 GO
 
@@ -444,42 +443,6 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER TRIGGER trg_insertHoc ON hoc
-FOR INSERT
-AS 
-BEGIN
-	DECLARE @idmon int, @idmontruoc int, @idsv int, @idlop int, @thu int, @tietbd int, @tietkt int, @iddkhp int;
-
-	SELECT @idsv = idsv, @idlop = idlop FROM inserted;
-
-	SELECT @idmon = idmon, @thu = thu, @tietbd = tietbd, @tietkt = tietkt, @iddkhp = iddkhp
-	FROM lop WHERE idlop = @idlop;
-
-	SELECT @idmontruoc = idmontruoc FROM mon WHERE idmon = @idmon;
-
-	IF EXISTS (select * from hoc join lop on hoc.idlop = lop.idlop
-			where idsv = @idsv and hoc.idlop <> @idlop and iddkhp = @iddkhp and thu = @thu 
-			and not (tietbd > @tietkt or tietkt < @tietbd))
-	BEGIN
-		RAISERROR (N'Đã trùng lịch',16,1);
-		ROLLBACK TRANSACTION;
-	END;
-	ELSE IF EXISTS (select * from hoc join lop on hoc.idlop = lop.idlop
-			where idsv = @idsv and hoc.idlop <> @idlop and idmon = @idmon 
-			and (diemtb is null or diemtb >= 5)) 
-	BEGIN
-		RAISERROR ( N'Môn đã đăng ký',16,2);
-		ROLLBACK TRANSACTION;
-	END;
-	ELSE IF NOT EXISTS (select * from hoc join lop on hoc.idlop = lop.idlop
-			where idsv = @idsv and idmon = @idmontruoc)	AND ( @idmontruoc is not null )
-	BEGIN
-		RAISERROR (N'Chưa học môn học trước',16,3);
-		ROLLBACK TRANSACTION;
-	END;
-END;
-GO
-
 CREATE OR ALTER TRIGGER trg_UpdateHoc ON hoc
 FOR UPDATE
 AS 
@@ -543,6 +506,7 @@ BEGIN
 END;
 GO
 
+/*
 CREATE OR ALTER TRIGGER trg_insertHoc ON hoc
 FOR INSERT
 AS 
@@ -581,6 +545,10 @@ BEGIN
 	END;
 END;
 GO
+
+drop TRIGGER trg_insertHoc;
+go
+*/
 
 CREATE OR ALTER TRIGGER trg_dkhp ON dangkyhocphan
 FOR INSERT, UPDATE
@@ -740,7 +708,7 @@ delete from hoc;
 go
 update hoc set diemtb = null, diemck = null,diemgk = null,diemth = null,diemqt = null;
 go
-insert into hoc (idsv,idlop) values (2,7);
+insert into hoc (idsv,idlop) values (1,7);
 go
-insert into hoc (idsv,idlop) values (2,8);
+insert into hoc (idsv,idlop) values (3,8);
 go

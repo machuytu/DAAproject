@@ -40,6 +40,7 @@
 
     $('#submit').click(function () {
         //alert(listid);
+        
         $("#loidkhp").html("");
         $.ajax({
             url: ajaxurl,
@@ -51,15 +52,9 @@
                     listid = [];
                     location.reload();
                 } else {
-                    $.each(res.status, function () {
-                        $("#loidkhp").append(this + "</br>");
-
+                    $.each(res.status, function (i, val) {
+                        $("#loidkhp").append(val + "</br>");
                     });
-                    //let list = res.status;
-                    //list.each(
-                    //    $("#loidkhp").append($(this) + "</br>");
-                    //);
-                    //$("#loidkhp").append(res.status);
                 }
                 
             }
