@@ -10,6 +10,7 @@ using System.Web.Helpers;
 using System.Data.SqlClient;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
+using ProjectDAA1.Models;
 
 namespace ProjectDAA1.Controllers
 {
@@ -25,14 +26,15 @@ namespace ProjectDAA1.Controllers
             var listkhoahoc = db.dangkyhocphans.Where(x => x.thoigianbd <= datenow && x.thoigiankt >= datenow).SingleOrDefault();
             if (session != null && listkhoahoc != null)
             {
+                var dbcontext = new DBContext();
                 var idsv = session.idsv;
                 var id = listkhoahoc.iddkhp;
-
                 var dslop = db.lops.Where(x => x.iddkhp == id).ToList();
                 var dslopdadk = db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == id).Select(x => x.lop).ToList();
-                var ds = dslop.Except(dslopdadk);
-
-                return View(ds);
+                var ds = dslop.Except(dslopdadk).ToList();
+                dbcontext.dslopchuahoc = ds;
+                dbcontext.dslopdahoc = dslopdadk;
+                return View(dbcontext);
             }
             else
             {
@@ -43,9 +45,11 @@ namespace ProjectDAA1.Controllers
         [HttpPost]
         public async Task<JsonResult> AddHoc(string listid)
         {
-            var list = new JavaScriptSerializer().Deserialize<List<int>>(listid);
             var listerr = new List<string>();
+            var listsuc = new List<string>();
+            var list = new JavaScriptSerializer().Deserialize<List<int>>(listid);
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+
             if (session != null)
             {
                 var idsv = session.idsv;
@@ -53,74 +57,47 @@ namespace ProjectDAA1.Controllers
                 {
                     foreach (var idlop in list)
                     {
-                        var err = "";
-
                         var sinhvien = db.sinhviens.Where(x => x.idsv == idsv).SingleOrDefault();
                         var lop = db.lops.Where(x => x.idlop == idlop).SingleOrDefault();
                         var idmon = lop.idmon;
+                        var idmontrc = db.mons.Where(x => x.idmon == lop.idmon).Select(x => x.idmontruoc).SingleOrDefault();
 
-                        var CountTrungLich = (from h in db.hocs
-                                              join l in db.lops on h.idlop equals l.idlop
-                                              where h.idsv == idsv && l.thu == lop.thu && !(l.tietbd > lop.tietkt || l.tietkt < lop.tietbd)
-                                              select h).Count();
-
-                        if (CountTrungLich != 0)
+                        if ((from h in db.hocs
+                             join l in db.lops on h.idlop equals l.idlop
+                             where h.idsv == idsv && l.thu == lop.thu && !(l.tietbd > lop.tietkt || l.tietkt < lop.tietbd)
+                             select h).Count() != 0)
                         {
-                            err = "Lớp " + lop.malop + ": trùng lịch";
+                            listerr.Add("Lớp " + lop.malop + ": trùng lịch");
+                        }
+                        else if ((from h in db.hocs
+                                  join l in db.lops on h.idlop equals l.idlop
+                                  where h.idsv == idsv && l.idmon == lop.idmon && (h.diemtb >= 5 || h.diemtb == null)
+                                  select h).Count() != 0)
+                        {
+                            listerr.Add("Lớp " + lop.malop + ": môn đã học");
+                        }
+                        else if ((idmontrc != null) &&
+                                ((from h in db.hocs
+                                  join l in db.lops on h.idlop equals l.idlop
+                                  where h.idsv == idsv && l.idmon == idmontrc
+                                  select h).Count() == 0))
+                        {
+                            listerr.Add("Lớp " + lop.malop + ": chưa học môn học trước");
                         }
                         else
                         {
-                            var CountMonDaHoc = (from h in db.hocs
-                                                 join l in db.lops on h.idlop equals l.idlop
-                                                 where h.idsv == idsv && l.idmon == lop.idmon && (h.diemtb >= 5 || h.diemtb == null)
-                                                 select h).Count();
-                            if (CountMonDaHoc != 0)
-                            {
-                                err = "Lớp " + lop.malop + ": môn đã học";
-                            }
-                            else
-                            {
-                                var idmontrc = db.mons.Where(x => x.idmon == lop.idmon).Select(x => x.idmontruoc).SingleOrDefault();
-
-                                if (idmontrc != null)
-                                {
-                                    var CountMonTrc = (from h in db.hocs
-                                                       join l in db.lops on h.idlop equals l.idlop
-                                                       where h.idsv == idsv && l.idmon == idmontrc
-                                                       select h).Count();
-                                    if (CountMonTrc == 0)
-                                    {
-                                        err = "Lớp " + lop.malop + ": chưa học môn học trước";
-                                    }
-                                }
-                            }
-                        }
-                        if (err != "")
-                        {
-                            listerr.Add(err);
-                        }
-                        else
-                        {
+                            listsuc.Add("Lớp " + lop.malop + ": đăng ký thành công");
                             var hoc = new hoc() { idlop = idlop, idsv = idsv, sinhvien = sinhvien, lop = lop };
                             db.hocs.Add(hoc);
                             await db.SaveChangesAsync();
                         }
                     }
-
-                    if (listerr.Count != 0)
+                    return Json(new
                     {
-                        return Json(new
-                        {
-                            status = listerr
-                        });
-                    }
-                    else
-                    {
-                        return Json(new
-                        {
-                            status = true
-                        });
-                    }
+                        status = true,
+                        listerr = listerr,
+                        listsuc = listsuc,
+                    }) ;
                 }
             }
             else
@@ -136,9 +113,12 @@ namespace ProjectDAA1.Controllers
         public async Task<ActionResult> GetHuyDKHP()
         {
             var db = new MyDatabaseEntities9();
+
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             var datenow = DateTime.Now;
+
             var listkhoahoc = db.dangkyhocphans.Where(x => x.thoigianbd <= datenow && x.thoigiankt >= datenow).SingleOrDefault();
+
             if (session != null && listkhoahoc != null)
             {
                 var idsv = session.idsv;
@@ -153,10 +133,11 @@ namespace ProjectDAA1.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> DeleteHoc(string listid)
+        public async Task<JsonResult> DeleteHoc(string listid)
         {
             var db = new MyDatabaseEntities9();
-
+            var listerr = new List<string>();
+            var listsuc = new List<string>();
             var list = new JavaScriptSerializer().Deserialize<List<int>>(listid);
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session != null)
@@ -164,23 +145,37 @@ namespace ProjectDAA1.Controllers
                 var idsv = session.idsv;
                 foreach (var idlop in list)
                 {
-                    try
+                    var lop = db.lops.Where(x => x.idlop == idlop).SingleOrDefault();
+
+                    if ((from h in db.hocs
+                         join l in db.lops on h.idlop equals l.idlop
+                         where h.idsv == idsv && l.mon.idmontruoc != null && l.mon.idmontruoc == lop.mon.idmon
+                         select h).Count() != 0)
                     {
-                        var h = db.hocs.Where(x => x.idlop == idlop && x.idsv == idsv).SingleOrDefault();
-                        db.hocs.Remove(h);
+                        listerr.Add("Lớp " + lop.malop + ": là môn học trước, phải huỷ môn sau");
+                    }
+                    else
+                    {
+                        listsuc.Add("Lớp " + lop.malop + ": huỷ đăng ký thành công");
+                        var hoc = db.hocs.Where(x => x.idlop == idlop && x.idsv == idsv).SingleOrDefault();
+                        db.hocs.Remove(hoc);
                         await db.SaveChangesAsync();
                     }
-                    catch (Exception e)
-                    {
-                        ViewData["error"] = e.ToString();
-                        return View();
-                    }
                 }
-                return RedirectToRoute("huydkhp");
+
+                return Json(new
+                {
+                    status = true,
+                    listerr = listerr,
+                    listsuc = listsuc,
+                });
             }
             else
             {
-                return RedirectToRoute("/");
+                return Json(new
+                {
+                    status = false,
+                });
             }
         }
     }

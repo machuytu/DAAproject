@@ -60,8 +60,8 @@ GO
 
 CREATE TABLE [dbo].[lopcn](
 	[idlopcn] [int] IDENTITY(1,1) PRIMARY KEY,
-	[malopcn] [varchar](10) UNIQUE NULL, --mã khoa + niên khóa
-	[idgv] [int] UNIQUE NULL,
+	[malopcn] [varchar](10) NULL, --mã khoa + niên khóa
+	[idgv] [int] NULL,
 	[idkhoa] [int] NULL,
 	[nienkhoa] [int] NOT NULL,
 	FOREIGN KEY ([idgv]) REFERENCES [dbo].[giangvien]([idgv]) ON DELETE SET NULL,
@@ -253,15 +253,12 @@ CREATE OR ALTER TRIGGER trg_insertSV ON sinhvien
 FOR INSERT
 AS 
 DECLARE
-	@id int, @masv varchar(10), @idlopcn varchar(10), @nienkhoa varchar(4), @count int;
+	@id int, @masv varchar(10), @idlopcn varchar(10), @nienkhoa varchar(4);
 BEGIN
 	SELECT @id = idsv, @idlopcn = idlopcn FROM inserted;
 	SELECT @nienkhoa = CONVERT(varchar,nienkhoa) FROM lopcn WHERE idlopcn = @idlopcn;
-	SELECT @count = COUNT(*) FROM sinhvien JOIN lopcn ON sinhvien.idlopcn = lopcn.idlopcn WHERE RIGHT(malopcn,4) = @nienkhoa;
-	SET @masv = 'SV' + RIGHT(@nienkhoa,2) + RIGHT('0000' + CONVERT(varchar(4),@count), 4);
-
+	SET @masv = 'SV' + RIGHT(@nienkhoa,2) + RIGHT('0000' + CONVERT(varchar(4),@id), 4);
 	UPDATE sinhvien SET masv = @masv WHERE idsv = @id;
-
 	INSERT INTO taikhoan (matk,[password],idsv,nhom) VALUES (@masv,'1',@id,N'Sinh viên');
 END;
 GO
@@ -312,10 +309,10 @@ CREATE OR ALTER TRIGGER trg_insertLopCN ON lopcn
 FOR INSERT
 AS 
 begin
-	DECLARE @makhoa varchar(6), @idgv int, @idkhoa int, @nienkhoa int;
-	SELECT @idkhoa = idkhoa, @idgv = idgv, @nienkhoa = nienkhoa FROM inserted;
+	DECLARE @id int, @makhoa varchar(6), @idgv int, @idkhoa int, @nienkhoa int;
+	SELECT @id = idlopcn, @idkhoa = idkhoa, @idgv = idgv, @nienkhoa = nienkhoa FROM inserted;
 	SELECT @makhoa = makhoa FROM khoa WHERE idkhoa = @idkhoa;
-	UPDATE lopcn SET malopcn = @makhoa + CONVERT(varchar,@nienkhoa);
+	UPDATE lopcn SET malopcn = @makhoa + CONVERT(varchar,@nienkhoa) WHERE idlopcn = @id;
 end;
 GO
 
@@ -324,25 +321,9 @@ FOR UPDATE
 AS 
 begin
 	DECLARE @id int,@makhoa varchar(6),@idgv int,@idkhoa int,@nienkhoa int;
-
 	SELECT @id = idlopcn, @idkhoa = idkhoa, @idgv = idgv, @nienkhoa = nienkhoa FROM inserted;
 	SELECT @makhoa = makhoa FROM khoa WHERE idkhoa = @idkhoa;
 	UPDATE lopcn SET malopcn = @makhoa + CONVERT(varchar,@nienkhoa) WHERE idlopcn = @id;
-end;
-GO
-
-CREATE OR ALTER TRIGGER trg_changeLopCN ON sinhvien
-FOR UPDATE
-AS
-begin
-	DECLARE @id int, @nienkhoainsert int, @nienkhoadelete int;
-	SELECT @id = idsv, @nienkhoainsert = nienkhoa  FROM inserted JOIN lopcn ON inserted.idlopcn = lopcn.idlopcn;
-	SELECT @nienkhoadelete = nienkhoa  FROM deleted JOIN lopcn ON deleted.idlopcn = lopcn.idlopcn WHERE idsv = @id;
-	if (@nienkhoainsert <> @nienkhoadelete)
-	begin
-		RAISERROR (N'niên khóa không phù hợp',10,2);
-		ROLLBACK TRAN;
-	end;
 end;
 GO
 
@@ -358,6 +339,21 @@ BEGIN
 		ROLLBACK TRAN;
 	END;
 END;
+GO
+
+CREATE OR ALTER TRIGGER trg_changeLopCN ON sinhvien
+FOR UPDATE
+AS
+begin
+	DECLARE @id int, @nienkhoainsert int, @nienkhoadelete int;
+	SELECT @id = idsv, @nienkhoainsert = nienkhoa  FROM inserted JOIN lopcn ON inserted.idlopcn = lopcn.idlopcn;
+	SELECT @nienkhoadelete = nienkhoa  FROM deleted JOIN lopcn ON deleted.idlopcn = lopcn.idlopcn WHERE idsv = @id;
+	if (@nienkhoainsert <> @nienkhoadelete)
+	begin
+		RAISERROR (N'niên khóa không phù hợp',10,2);
+		ROLLBACK TRAN;
+	end;
+end;
 GO
 
 CREATE OR ALTER TRIGGER trg_checkMon ON mon
@@ -603,7 +599,11 @@ GO
 insert into lopcn (idkhoa,idgv,nienkhoa) values (1,1,2017);
 go
 
-delete from sinhvien where idsv = 3;
+insert into lopcn (idkhoa,idgv,nienkhoa) values (2,2,2017);
+go
+
+insert into lopcn (idkhoa,idgv,nienkhoa) values (2,2,2018);
+go
 
 insert into sinhvien (hoten,gioitinh,ngaysinh,idlopcn,diachi,quequan,sdt,bachoc) 
 values (N'NVA',N'Nữ','20000101',1,N'abc',N'abc','090',N'xyz');
@@ -632,9 +632,6 @@ insert into lop (idmon,idgv,idkhoa,iddkhp,thu,tietbd)
 values (3,1,1,1,3,1);
 go
 insert into lop (idmon,idgv,idkhoa,iddkhp,thu,tietbd) 
-values (3,1,1,1,4,6);
-go
-insert into lop (idmon,idgv,idkhoa,iddkhp,thu,tietbd) 
 values (2,1,1,1,5,6);
 go
 insert into lop (idmon,idgv,idkhoa,iddkhp,thu,tietbd) 
@@ -655,6 +652,9 @@ go
 insert into lop (idmon,idgv,idkhoa,iddkhp,thu,tietbd) 
 values (1,2,1,2,2,1);
 go
+insert into lop (idmon,idgv,idkhoa,iddkhp,thu,tietbd) 
+values (3,2,1,2,3,1);
+go
 
 insert into hoc (idsv,idlop) values (1,1);
 go
@@ -662,16 +662,9 @@ insert into hoc (idsv,idlop) values (2,5);
 go
 insert into hoc (idsv,idlop) values (2,6);
 go
-insert into hoc (idsv,idlop) values (2,11);
-go
 
 update hoc set diemqt = 10, diemgk = 6 ,diemck = 5 where idhoc = 1;
 go
-update hoc set diemqt = 8, diemth = 8 ,diemgk = 5 ,diemck = 8 where idhoc = 2;
-go
-update hoc set diemqt = 8, diemth = 8 ,diemgk = 5 ,diemck = 8 where idhoc = 3;
-go
-
 
 insert into thongbao (idtk,tag,tieude,noidung)
 values (1,N'THÔNG BÁO CHUNG',N'Test thông báo ...',N'abc...xyz');
@@ -682,8 +675,6 @@ go
 UPDATE thongbao SET noidung = N'CẬP NHẬT' WHERE idtb = 1;
 GO
 
-select * from lop where iddkhp = 2;
-go
 select * from taikhoan; 
 go
 select * from dangkyhocphan; 
@@ -705,10 +696,4 @@ go
 select * from thongbao; 
 go
 delete from hoc;
-go
-update hoc set diemtb = null, diemck = null,diemgk = null,diemth = null,diemqt = null;
-go
-insert into hoc (idsv,idlop) values (1,7);
-go
-insert into hoc (idsv,idlop) values (3,8);
 go

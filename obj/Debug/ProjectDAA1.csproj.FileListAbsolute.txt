@@ -389,4 +389,3 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDA
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csproj.CopyComplete
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.pdb
-D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache

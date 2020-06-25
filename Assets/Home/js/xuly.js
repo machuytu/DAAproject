@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     //$('#example').DataTable();
-
     var listid = [];
     var ajaxurl = '';
 
@@ -12,9 +11,8 @@
             ajaxurl = '/DKHP/AddHoc'
         }
         else if (pathname == '/huydkhp') {
-            ajaxurl = '/DKHP/DeleteHoc'   
+            ajaxurl = '/DKHP/DeleteHoc'
         }
-        //alert(ajaxurl);
 
         if (this.checked) {
             $('#clear').hide();
@@ -39,25 +37,34 @@
     });
 
     $('#submit').click(function () {
-        //alert(listid);
-        
-        $("#loidkhp").html("");
         $.ajax({
             url: ajaxurl,
             data: { listid: JSON.stringify(listid) },
             dataType: 'json',
             type: 'POST',
             success: function (res) {
+                listid = [];
                 if (res.status == true) {
-                    listid = [];
+                    localStorage.setItem("listsuc", JSON.stringify(res.listsuc));
+                    localStorage.setItem("listerr", JSON.stringify(res.listerr));
                     location.reload();
                 } else {
-                    $.each(res.status, function (i, val) {
-                        $("#loidkhp").append(val + "</br>");
-                    });
+                    location.reload();
                 }
-                
             }
         });
     });
+
+    if (localStorage.getItem("listsuc") && localStorage.getItem("listerr")) {
+        let listsuc = JSON.parse(localStorage.getItem("listsuc"));
+        let listerr = JSON.parse(localStorage.getItem("listerr"));
+        localStorage.clear();
+        $.each(listsuc, function (key, val) {
+            $("#thanhcong").append(val + "</br>");
+        });
+        $.each(listerr, function (key, val) {
+            $("#loidkhp").append(val + "</br>");
+        });
+
+    }
 });
