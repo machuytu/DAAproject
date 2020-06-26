@@ -32,9 +32,7 @@ namespace ProjectDAA1
         public Nullable<int> sotc { get; set; }
         public Nullable<int> tclt { get; set; }
         public Nullable<int> tcth { get; set; }
-
-        public string tenvama { get { return tenmon + "-" + mamon; } }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<lop> lops { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

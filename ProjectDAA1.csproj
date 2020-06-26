@@ -208,6 +208,7 @@
     <Content Include="Assets\Home\css\base.css" />
     <Content Include="Assets\Home\css\bootstrap.min.css" />
     <Content Include="Assets\Home\css\color-customize\color-customizer.css" />
+    <Content Include="Assets\Home\css\dataTables.bootstrap4.min.css" />
     <Content Include="Assets\Home\css\fontawesome-all.css" />
     <Content Include="Assets\Home\css\line-awesome.min.css" />
     <Content Include="Assets\Home\css\magnific-popup\magnific-popup.css" />
@@ -216,6 +217,7 @@
     <Content Include="Assets\Home\css\responsive.css" />
     <Content Include="Assets\Home\css\shortcodes.css" />
     <Content Include="Assets\Home\css\style.css" />
+    <Content Include="Assets\Home\css\table1.css" />
     <Content Include="Assets\Home\css\theme-color\color-2.css" />
     <Content Include="Assets\Home\css\theme-color\color-3.css" />
     <Content Include="Assets\Home\css\theme-color\color-4.css" />
@@ -331,6 +333,7 @@
     <Content Include="Assets\Home\js\step.js" />
     <Content Include="Assets\Home\js\theme-script.js" />
     <Content Include="Assets\Home\js\wow.min.js" />
+    <Content Include="Assets\Home\js\xuly.js" />
     <Content Include="Assets\images\bg-title-01.jpg" />
     <Content Include="Assets\images\bg-title-02.jpg" />
     <Content Include="Assets\images\icon\avatar-01.jpg" />
@@ -1315,8 +1318,10 @@
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\HashPassword.cs" />
     <Compile Include="Common\userLogin.cs" />
+    <Compile Include="Controllers\DKHPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="dangkyhocphan.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
     </Compile>
@@ -1353,6 +1358,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelProject.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="mon.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
@@ -1401,6 +1407,12 @@
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Teacher\dsLop.cshtml" />
+    <Content Include="Views\Teacher\dsLopCN.cshtml" />
+    <Content Include="Views\Teacher\dsSVLopCN.cshtml" />
+    <Content Include="Views\Teacher\dsSVLop.cshtml" />
+    <Content Include="Views\DKHP\GetDKHP.cshtml" />
+    <Content Include="Views\DKHP\GetHuyDKHP.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

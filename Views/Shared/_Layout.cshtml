@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="~/Assets/Home/css/aos.css">
     <link href="~/Assets/Home/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="~/Assets/Home/css/style.css">
-
+    <link href="~/Assets/Home/css/table1.css" rel="stylesheet" />
+    <link href="~/Assets/Home/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
     <div class="site-wrap">
@@ -45,14 +46,14 @@
                             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
                             if (session == null)
                             {
-                                <a href="@Url.Action("Login", "Login")" class="small mr-3"><span class="icon-unlock-alt"></span> Login</a>
+                                <a href="/login" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Login</a>
                             }
                             else
                             {
-                                <a href="@Url.Action("Logout", "Login")" class="small mr-3"><span class="icon-unlock-alt"></span> Logout</a>
+                    <a href="@Url.Action("Logout", "Login")" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-unlock-alt"></span> Logout</a>
                             }
                         }
-                        <a href="register.html" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+
                     </div>
 
                 </div>
@@ -154,7 +155,7 @@
     <script src="~/Assets/Home/js/jquery.fancybox.min.js"></script>
     <script src="~/Assets/Home/js/jquery.sticky.js"></script>
     <script src="~/Assets/Home/js/jquery.mb.YTPlayer.min.js"></script>
-
+    <script src="~/Assets/Home/js/xuly.js"></script>
 
     <script src="~/Assets/Home/js/main.js"></script>
 </body>
