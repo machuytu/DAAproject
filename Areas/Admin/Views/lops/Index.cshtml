@@ -10,71 +10,119 @@
 <br />
 <br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.malop)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.thu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tietbd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tietkt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dangkyhocphan.namhoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.giangvien.hoten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.khoa.tenkhoa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mon.tenmon)
-        </th>
-        <th></th>
-    </tr>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="deletelop(@(ViewBag.item))" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+<!-- Modal -->
+<div class="modal fade" id="idThongBaoXoaSV" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Đã tồn tại lớp có khoa hiện tại.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="user-data m-b-30">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 class="title-3 m-b-30">
+                            <i class="zmdi zmdi-account-calendar"></i>Lớp
+                        </h3>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/Admin/lops/Create" class="btn btn-success btn-lg" style="border-radius: 15px;">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.malop)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.thu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tietbd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tietkt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dangkyhocphan.namhoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.giangvien.hoten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.khoa.tenkhoa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mon.tenmon)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idlop }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idlop }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idlop })
-            </td>
-        </tr>
-    }
+                <div class="table-responsive table-data">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    Mã lớp
+                                </th>
+                                <th scope="col">
+                                    Tên và mã giáo viên
+                                </th>
+                                <th scope="col">
+                                    Tên và mã môn
+                                </th>
+                                <th scope="col">
+                                    Tên khoa
+                                </th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.malop)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.giangvien.tenvama)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.mon.tenvama)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.khoa.tenkhoa)
+                                    </td>
+                                    <td scope="row">
+                                        <div class="table-data-feature">
+                                            <button class="item" data-toggle="tooltip" onclick="editlop(@item.idlop)" data-placement="top" title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </button>
+                                            <button class="item" onclick="getid(@item.idlop)" data-toggle="modal" data-target="#exampleModal" data-placement="top" title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </button>
+                                            <button class="item" data-toggle="tooltip" onclick="detaillop(@item.idlop)" data-placement="top" title="More">
+                                                <i class="zmdi zmdi-more"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-</table>

@@ -88,7 +88,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "iddkhp,namhoc,hocky,thoigianbd,thoigiankt")] dangkyhocphan dangkyhocphan)
+        public async Task<ActionResult> Edit(dangkyhocphan dangkyhocphan)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +131,22 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             db.dangkyhocphans.Remove(dangkyhocphan);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Deleteuser(int id)
+        {
+            try
+            {
+                dangkyhocphan dangkyhocphan = await db.dangkyhocphans.FindAsync(id);
+                db.dangkyhocphans.Remove(dangkyhocphan);
+                await db.SaveChangesAsync();
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         protected override void Dispose(bool disposing)

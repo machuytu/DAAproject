@@ -5,6 +5,58 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/lopcns">Lớp chủ nhiệm</a></strong>
+                    <small>> Create</small>
+                </div>
+                <div class="card-body card-block">
+                    <form method="post" action="/Admin/lopcns/Create" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="malopcn">Mã lớp chủ nhiệm</label>
+                                            @Html.EditorFor(model => model.malopcn, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                            @Html.ValidationMessageFor(model => model.malopcn, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="idkhoa">Mã khoa và tên</label>
+                                            @Html.DropDownList("idkhoa", (IEnumerable<SelectListItem>)ViewBag.idkhoa, "", htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.idkhoa, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="idgv">Mã giáo viên trưởng khoa</label>
+                                            @Html.DropDownList("idgv", (IEnumerable<SelectListItem>)ViewBag.idgv, "", htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.idgv, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="nienkhoa">Niên khóa</label>
+                                            @Html.EditorFor(model => model.nienkhoa, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                            @Html.ValidationMessageFor(model => model.nienkhoa, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row p-3">
+                                    <button class="btn btn-success">Submit</button>
+                                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <h2>Create</h2>
 
 @using (Html.BeginForm()) 

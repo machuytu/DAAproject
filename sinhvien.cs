@@ -32,7 +32,9 @@ namespace ProjectDAA1
         public string sdt { get; set; }
         public string bachoc { get; set; }
         public string hinhanh { get; set; }
-    
+
+        public string tenvama { get { return hoten + "-" + masv; } }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hoc> hocs { get; set; }
         public virtual lopcn lopcn { get; set; }

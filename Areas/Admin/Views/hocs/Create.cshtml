@@ -7,78 +7,74 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>hoc</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.idlop, "idlop", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("idlop", (IEnumerable<SelectListItem>)ViewBag.idlop, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idlop, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/hocs">Học</a></strong>
+                    <small>> Create</small>
+                </div>
+                <div class="card-body card-block">
+                    <form method="post" action="/Admin/hocs/Create" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="idlop">Mã lớp</label>
+                                            
+                                            @Html.DropDownList("idlop", (IEnumerable<SelectListItem>)ViewBag.idlop, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.idlop, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="idsv">Mã sinh viên</label>
+                                            
+                                            @Html.DropDownList("idsv", (IEnumerable<SelectListItem>)ViewBag.idsv, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.idsv, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="diemqt">Điểm quá trình</label>
+                                        <input type="number" id="diemqt" name="diemqt">
+                                        @Html.ValidationMessageFor(model => model.diemqt, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="diemth">Điểm thực hành</label>
+                                        <input type="number" id="diemth" name="diemth">
+                                        @Html.ValidationMessageFor(model => model.diemth, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="diemgk">Điểm giữa kỳ</label>
+                                        <input type="number" id="diemgk" name="diemgk">
+                                        @Html.ValidationMessageFor(model => model.diemgk, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="diemck">Điểm cuối kỳ</label>
+                                        <input type="number" id="diemck" name="diemck">
+                                        @Html.ValidationMessageFor(model => model.diemck, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class=" form-control-label" for="diemtb">Điểm trung bình</label>
+                                        <input type="number" id="diemtb" name="diemtb">
+                                        @Html.ValidationMessageFor(model => model.diemtb, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row p-3">
+                                    <button class="btn btn-success">Submit</button>
+                                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.idsv, "idsv", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("idsv", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idsv, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        </div>
+                    </form>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.diemqt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.diemqt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.diemqt, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.diemth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.diemth, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.diemth, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.diemgk, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.diemgk, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.diemgk, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.diemck, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.diemck, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.diemck, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.diemtb, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.diemtb, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.diemtb, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+

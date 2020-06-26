@@ -40,7 +40,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/khoas/Create
         public ActionResult Create()
         {
-            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten");
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "tenvama");
             return View();
         }
 
@@ -57,7 +57,6 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
             ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", khoa.idgv);
             return View(khoa);
         }
@@ -74,7 +73,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", khoa.idgv);
+            ViewBag.idgv = new SelectList(db.giangviens.Where(x => x.idkhoa == khoa.idkhoa), "idgv", "tenvama", khoa.idgv);
             return View(khoa);
         }
 
@@ -120,6 +119,23 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Deleteuser(int id)
+        {
+            try
+            {
+                hoc hoc = await db.hocs.FindAsync(id);
+                db.hocs.Remove(hoc);
+                await db.SaveChangesAsync();
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
         protected override void Dispose(bool disposing)
         {

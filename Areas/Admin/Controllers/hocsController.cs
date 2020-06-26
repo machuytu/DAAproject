@@ -44,7 +44,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             SelectList ahihi = new SelectList(dbc, "idlop", "mon.tenvama");
 
             ViewBag.idlop = ahihi;
-            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten");
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "tenvama");
             return View();
         }
 
@@ -53,7 +53,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idhoc,idlop,idsv,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
+        public async Task<ActionResult> Create(hoc hoc)
         {
             if (ModelState.IsValid)
             {
@@ -62,9 +62,23 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idlop = new SelectList(db.lops, "idlop", "malop", hoc.idlop);
-            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", hoc.idsv);
             return View(hoc);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Deleteuser(int id)
+        {
+            try
+            {
+                hoc hoc = await db.hocs.FindAsync(id);
+                db.hocs.Remove(hoc);
+                await db.SaveChangesAsync();
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // GET: Admin/hocs/Edit/5
