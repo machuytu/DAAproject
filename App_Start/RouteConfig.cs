@@ -12,7 +12,7 @@ namespace ProjectDAA1
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+
             routes.MapRoute(
                  name: "Login",
                  url: "login",
@@ -40,13 +40,13 @@ namespace ProjectDAA1
                  defaults: new { controller = "Teacher", action = "dsSVLopCN", id = UrlParameter.Optional },
                  namespaces: new[] { "ProjectDAA1.Controllers" }
              );
-            
-                routes.MapRoute(
-                 name: "Đăng ký học phần",
-                 url: "dkhp",
-                 defaults: new { controller = "DKHP", action = "GetDKHP", id = UrlParameter.Optional },
-                 namespaces: new[] { "ProjectDAA1.Controllers" }
-             );
+
+            routes.MapRoute(
+             name: "Đăng ký học phần",
+             url: "dkhp",
+             defaults: new { controller = "DKHP", action = "GetDKHP", id = UrlParameter.Optional },
+             namespaces: new[] { "ProjectDAA1.Controllers" }
+         );
 
             routes.MapRoute(
                 name: "Huỷ đăng ký học phần",
@@ -54,6 +54,14 @@ namespace ProjectDAA1
                 defaults: new { controller = "DKHP", action = "GetHuyDKHP", id = UrlParameter.Optional },
                 namespaces: new[] { "ProjectDAA1.Controllers" }
             );
+
+            routes.MapRoute(
+                name: "thời khoá biểu",
+                url: "tkb",
+                defaults: new { controller = "DKHP", action = "GetTKB", id = UrlParameter.Optional },
+                namespaces: new[] { "ProjectDAA1.Controllers" }
+            );
+
             routes.MapRoute(
                  name: "svlop",
                  url: "svlop/{id}",

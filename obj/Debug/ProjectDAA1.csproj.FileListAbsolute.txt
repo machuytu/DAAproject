@@ -310,87 +310,6 @@ D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framew
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.dll
 D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.pdb
 G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\ProjectDAA1.dll.config
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\ProjectDAA1.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\ProjectDAA1.pdb
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\csc.exe
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\csc.exe.config
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\csc.rsp
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\csi.exe
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\csi.exe.config
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\csi.rsp
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.Managed.Core.targets
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.AppContext.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Collections.Immutable.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Console.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.IO.Compression.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.IO.FileSystem.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.IO.Pipes.AccessControl.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.IO.Pipes.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Reflection.Metadata.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Security.AccessControl.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Security.Claims.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Security.Principal.Windows.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.ValueTuple.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Xml.XmlDocument.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Xml.XPath.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\vbc.exe
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\vbc.exe.config
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\vbc.rsp
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\VBCSCompiler.exe
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\roslyn\VBCSCompiler.exe.config
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\Antlr3.Runtime.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\EntityFramework.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\EntityFramework.SqlServer.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\Microsoft.Web.Infrastructure.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\Newtonsoft.Json.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Helpers.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Mvc.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Optimization.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Razor.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Webpages.Deployment.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Webpages.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Webpages.Razor.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\WebGrease.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\Antlr3.Runtime.pdb
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\EntityFramework.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\EntityFramework.SqlServer.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\Newtonsoft.Json.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Optimization.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Razor.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Webpages.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Webpages.Deployment.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Webpages.Razor.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Helpers.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\System.Web.Mvc.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.csproj.CoreCompileInputs.cache
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.csproj.CopyComplete
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.dll
-D:\Tài Liệu Học Tập\Xây dựng Hệ thống thông tin trên các Framework\Huy Tu\DAAproject\obj\Debug\ProjectDAA1.pdb
-D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Mvc.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ProjectDAA1.dll.config
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ProjectDAA1.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ProjectDAA1.pdb
@@ -441,11 +360,16 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\roslyn\vbc.rsp
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\roslyn\VBCSCompiler.exe
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\roslyn\VBCSCompiler.exe.config
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Antlr3.Runtime.dll
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ClosedXML.dll
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\DocumentFormat.OpenXml.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\EntityFramework.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\EntityFramework.SqlServer.dll
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ExcelNumberFormat.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Microsoft.Web.Infrastructure.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Newtonsoft.Json.dll
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.IO.FileSystem.Primitives.dll
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.IO.Packaging.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Helpers.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Mvc.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Optimization.dll
@@ -455,8 +379,12 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webp
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webpages.Razor.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\WebGrease.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Antlr3.Runtime.pdb
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ClosedXML.pdb
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ClosedXML.xml
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\DocumentFormat.OpenXml.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\EntityFramework.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\EntityFramework.SqlServer.xml
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\ExcelNumberFormat.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Newtonsoft.Json.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Optimization.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Razor.xml
@@ -464,7 +392,9 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webp
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webpages.Deployment.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Webpages.Razor.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Helpers.xml
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\System.Web.Mvc.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csproj.CoreCompileInputs.cache
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csproj.CopyComplete
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.dll

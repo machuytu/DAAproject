@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using ProjectDAA1.Models;
+using Newtonsoft.Json;
 
 namespace ProjectDAA1.Controllers
 {
@@ -97,7 +98,7 @@ namespace ProjectDAA1.Controllers
                         status = true,
                         listerr = listerr,
                         listsuc = listsuc,
-                    }) ;
+                    });
                 }
             }
             else
@@ -176,6 +177,43 @@ namespace ProjectDAA1.Controllers
                 {
                     status = false,
                 });
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetTKB()
+        {
+            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                using (var db = new MyDatabaseEntities9())
+                {
+                    var dkhp = db.dangkyhocphans.OrderByDescending(x => x.iddkhp);
+                    return View(await dkhp.ToListAsync());
+                }
+            }
+            else
+            {
+                return RedirectToRoute("login");
+            }
+        }
+
+        [HttpGet]
+        public JsonResult ajaxTKB(int iddkhp, int idsv)
+        {
+            using (var db = new MyDatabaseEntities9())
+            {
+                var tkb = db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
+                                .Select(x => new
+                                {
+                                    malop = x.lop.malop,
+                                    thu = x.lop.thu,
+                                    tietbd = x.lop.tietbd,
+                                    tietkt = x.lop.tietkt,
+                                    tenmon = x.lop.mon.tenmon,
+                                    tengv = x.lop.giangvien.hoten,
+                                }).ToList();
+                return new JsonResult { Data = tkb, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
     }

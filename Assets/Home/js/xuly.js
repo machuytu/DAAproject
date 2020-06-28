@@ -3,8 +3,10 @@
     var listid = [];
     var ajaxurl = '';
 
+    //dkhp
     $('.checkeditem :checkbox').change(function () {
         // this will contain a reference to the checkbox   
+        
         var idlop = $(this).val();
         var pathname = window.location.pathname;
         if (pathname == '/dkhp') {

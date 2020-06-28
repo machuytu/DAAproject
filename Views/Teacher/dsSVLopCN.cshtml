@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjectDAA1.Models.DBContext>
+﻿@model IEnumerable<ProjectDAA1.sinhvien>
 
 @{
     ViewBag.Title = "dsSVLopCN";
@@ -67,9 +67,9 @@
     <td>
         @Html.DisplayFor(modelItem => item.lopcn.malopcn)
     </td>
-    <td>
+    @*<td>
         @Html.ActionLink("", "Edit", new { id = item.idsv })
-    </td>
+    </td>*@
 </tr>
 }
 

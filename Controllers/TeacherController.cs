@@ -16,7 +16,7 @@ namespace ProjectDAA1.Controllers
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             var id = session.idgv;
-            var result = db.lops.Where(x => x.idgv == id).ToList();
+            var result = db.lops.Where(x => x.idgv == id);
             return View(result);
         }
 
@@ -24,21 +24,22 @@ namespace ProjectDAA1.Controllers
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             var id = session.idgv;
-            var result = db.lopcns.Where(x => x.idgv == id).ToList();
+            var result = db.lopcns.Where(x => x.idgv == id);
             return View(result);
         }
 
         public ActionResult dsSVLopCN(int id)
         {
-            var result = db.sinhviens.Where(x => x.idlopcn == id).ToList();
+            var result = db.sinhviens.Where(x => x.idlopcn == id);
             return View(result);
         }
 
         public ActionResult dsSVLop(int id)
         {
             //var result = db.hocs.Where(x => x.idlop == id).ToList();
-            var result = (from h in db.hocs join sv in db.sinhviens on h.idsv equals sv.idsv
-                          where h.idlop == id select sv).ToList();
+            //var result = (from h in db.hocs join sv in db.sinhviens on h.idsv equals sv.idsv
+            //              where h.idlop == id select sv).ToList();
+            var result = db.hocs.Where(x => x.idlop == id).Select(x => x.sinhvien);
             return View(result);
         }
     }
