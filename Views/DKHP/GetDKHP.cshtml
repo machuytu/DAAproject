@@ -9,7 +9,7 @@
         <br />
         <br />
         <div class="d-flex justify-content-center">
-            <h2> DANH SÁCH LỚP </h2>
+            <h2 class="text-uppercase font-weight-bold"> DANH SÁCH LỚP </h2>
         </div>
         <table id="example" class="table table-bordered table-hover" style="width:100%">
             <thead class="thead-light">
@@ -26,7 +26,7 @@
             <tbody>
                 @foreach (var item in Model.dslopchuahoc)
                 {
-                    <tr>
+                    <tr class="tablerow">
                         <td class="checkeditem">
                             <input type="checkbox" class="checked-lop"
                                    value="@item.idlop"
@@ -75,7 +75,7 @@
         <div class="text-success" id="thanhcong"></div>
         <div class="text-danger" id="loidkhp"></div>
         <div class="d-flex justify-content-center">
-            <h2> DANH SÁCH LỚP ĐÃ CHỌN </h2>
+            <h2 class="text-uppercase font-weight-bold"> DANH SÁCH LỚP ĐÃ CHỌN </h2>
         </div>
         <table id="example" class="table table-bordered table-hover" style="width:100%">
             <thead class="thead-light">

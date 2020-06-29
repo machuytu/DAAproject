@@ -3,11 +3,18 @@
     var listid = [];
 
     //dkhp
+    $(".tablerow").click(function (event) {
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).trigger('click');
+        }
+    });
+    
     $('.checkeditem :checkbox').change(function () {
         // this will contain a reference to the checkbox   
         var idlop = $(this).val();
-
         if (this.checked) {
+            // the checkbox is now checked
+            $(this).closest('tr').addClass("table-active");
             listid.push(idlop);
             $('#clear').hide();
             $('#dkhp').prop('disabled', false);
@@ -19,10 +26,10 @@
             var tc = $(this).attr("data-tc");
             var ca = $(this).attr("data-ca");
             $('#danhsach').append("<tr id='dachon" + idlop + "'><td>" + malop + "</td><td>" + mamon + "</td><td>" + tenmon + "</td><td>" + tengv + "</td><td>" + tc + "</td><td>" + ca + "</td></tr>");
-            // the checkbox is now checked 
         } else {
-            listid.splice(listid.indexOf(idlop), 1);
             // the checkbox is now no longer checked
+            $(this).closest('tr').removeClass("table-active");
+            listid.splice(listid.indexOf(idlop), 1);
             $('#dachon' + idlop).remove();
             if (listid.length == 0) {
                 $('#clear').show();
