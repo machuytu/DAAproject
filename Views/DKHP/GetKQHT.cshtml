@@ -6,10 +6,12 @@
 <div class="site-section">
     <div class="container">
         <br />
-        <h2> KẾT QUẢ HỌC TẬP </h2>
         <br />
-        <table class="table table-striped table-bordered">
-            <thead>
+        <div class="d-flex justify-content-center">
+            <h2> KẾT QUẢ HỌC TẬP </h2>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
                 <tr>
                     <th></th>
                     <th>Mã</th>
@@ -25,9 +27,7 @@
             <tbody id="tb">
                 @foreach (var dk in Model.dsdkhp)
                 {
-                    <tr>
-                        <td colspan="9">Học kỳ @dk.hocky năm học @dk.namhoc</td>
-                    </tr>
+                    <tr class="table-active"><td colspan="9">Học kỳ @dk.hocky năm học @dk.namhoc</td></tr>
                     var count = 0;
                     foreach (var bd in Model.dsbd)
                     {
@@ -36,20 +36,20 @@
                             count++;
                             <tr>
                                 <td>@count</td>
-                                <td>@bd.mamon.ToString()</td>
-                                <td>@bd.tenmon.ToString()</td>
+                                <td>@bd.mamon</td>
+                                <td>@bd.tenmon</td>
                                 <td>@bd.sotc.ToString()</td>
                                 <td>@bd.diemqt.ToString()</td>
                                 <td>@bd.diemth.ToString()</td>
                                 <td>@bd.diemgk.ToString()</td>
                                 <td>@bd.diemck.ToString()</td>
                                 <td>@bd.diemtb.ToString()</td>
-                            </tr>
+                                </tr@>
+                            }
                         }
                     }
-                }
-            </tbody>
-        </table>
+        </tbody>
+    </table>
     </div>
 </div>
 

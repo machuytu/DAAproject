@@ -8,8 +8,9 @@
     <div class="container">
         <br />
         <br />
-        <h2> DANH SÁCH LỚP </h2>
-        <br />
+        <div class="d-flex justify-content-center">
+            <h2> DANH SÁCH LỚP </h2>
+        </div>
         <table id="example" class="table table-bordered table-hover" style="width:100%">
             <thead class="thead-light">
                 <tr>
@@ -48,9 +49,9 @@
 
                 @foreach (var item in Model.dslopdahoc)
                 {
-                    <tr>
+                    <tr class="table-success">
                         <td class="checkeditem">
-                            <input type="checkbox" class="checked-lop"
+                            <input type="checkbox" class="checked-lop" checked disabled
                                    value="@item.idlop"
                                    data-id="@item.idlop"
                                    data-malop="@item.malop"
@@ -71,9 +72,11 @@
             </tbody>
         </table>
         <br />
-        <h2> DANH SÁCH LỚP ĐÃ CHỌN </h2>
         <div class="text-success" id="thanhcong"></div>
         <div class="text-danger" id="loidkhp"></div>
+        <div class="d-flex justify-content-center">
+            <h2> DANH SÁCH LỚP ĐÃ CHỌN </h2>
+        </div>
         <table id="example" class="table table-bordered table-hover" style="width:100%">
             <thead class="thead-light">
                 <tr>
@@ -91,7 +94,9 @@
                 </tr>
             </tbody>
         </table>
-
-        <button id="dkhp" class="btn-primary" disabled>Đăng ký</button>
+        <br />
+        <div class="d-flex justify-content-end">
+            <button id="dkhp" type="button" class="btn btn-primary btn-lg" disabled>Đăng ký</button>
+        </div>
     </div>
 </div>

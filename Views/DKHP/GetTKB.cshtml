@@ -6,14 +6,13 @@
 
 <div class="site-section">
     <div class="container">
-        <br />
-        <br />
 
         @{
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             <input id="idsv" value="@session.idsv" hidden />
         }
-
+        <br />
+        <br />
         <select id="cbbtkb" class="form-control" style="width:25%">
             @foreach (var m in Model)
             {
@@ -21,8 +20,9 @@
             }
         </select>
         <br />
-        <h2> THỜI KHOÁ BIỂU </h2>
-        <br />
+        <div class="d-flex justify-content-center">
+            <h2> THỜI KHOÁ BIỂU </h2>
+        </div>
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
@@ -67,8 +67,10 @@
                     success: function (data) {
                         $.each(data, function (index, val) {
                             var sotiet = val.tietkt - val.tietbd + 1;
-                            $("#thu" + val.thu + "tiet" + val.tietbd).append(val.malop + "<br />" + val.tenmon + "<br />" + val.tengv);
-                            $("#thu" + val.thu + "tiet" + val.tietbd).attr('rowspan', sotiet);
+                            var p = $("#thu" + val.thu + "tiet" + val.tietbd);
+                            p.css("background-color", "	#DCDCDC");
+                            p.append(val.malop + "<br />" + val.tenmon + "<br />" + val.tengv);
+                            p.attr('rowspan', sotiet);
                             for (i = val.tietbd + 1; i <= val.tietkt; i++) {
                                 $("#thu" + val.thu + "tiet" + i).remove();
                             }

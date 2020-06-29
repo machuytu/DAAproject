@@ -36,7 +36,7 @@ namespace ProjectDAA1.Models
         }
         public string strtinchi
         {
-            get{ return "lý thuyết: " + tclt.ToString() + "/ thực hành: " + tcth.ToString(); }
+            get{ return "lý thuyết: " + tclt.ToString() + " / thực hành: " + tcth.ToString(); }
         }
 
     }

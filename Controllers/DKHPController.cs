@@ -288,18 +288,6 @@ namespace ProjectDAA1.Controllers
         {
             using (var db = new MyDatabaseEntities9())
             {
-                //var tkb = db.hocs
-                //    .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
-                //    .Select(x => new
-                //    {
-                //        malop = x.lop.malop,
-                //        thu = x.lop.thu,
-                //        tietbd = x.lop.tietbd,
-                //        tietkt = x.lop.tietkt,
-                //        tenmon = x.lop.mon.tenmon,
-                //        tengv = x.lop.giangvien.hoten,
-                //    }).ToList();
-
                 var tkb = db.hocs
                     .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
                     .Select(x => new HocPhan

@@ -9,6 +9,16 @@
             <div class="mr-auto">
                 <nav class="site-navigation position-relative text-right" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                        <li class="active">
+                            <a href="/" class="nav-link text-left">Home</a>
+                        </li>
+                        <li class="has-children">
+                            <a href="about.html" class="nav-link text-left">About Us</a>
+                            <ul class="dropdown">
+                                <li><a href="teachers.html">Our Teachers</a></li>
+                                <li><a href="about.html">Our School</a></li>
+                            </ul>
+                        </li>
                         @{
                             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
                         }
@@ -16,61 +26,37 @@
                         {
                             if (session.Nhom == "Giảng viên")
                             {
-                                <li class="active">
-                                    <a href="/lopcn" class="nav-link text-left">Lớp chủ nhiệm</a>
-                                </li>
-                                <li class="active">
-                                    <a href="/lop" class="nav-link text-left">Lớp</a>
-                                </li>
-                                <li>
-                                    <a href="/giangvien/tkb" class="nav-link text-left">Thời khoá biểu</a>
+                                <li class="has-children">
+                                    <p class="nav-link text-left">Giảng viên</p>
+                                    <ul class="dropdown">
+                                        <li><a href="/lopcn" class="nav-link text-left"> Lớp chủ nhiệm </a></li>
+                                        <li><a href="/lop" class="nav-link text-left"> Lớp </a></li>
+                                        <li><a href="/giangvien/tkb" class="nav-link text-left"> Thời khoá biểu </a></li>
+                                    </ul>
                                 </li>
                             }
                             else
                             {
-                                <li class="active">
-                                    <a href="/" class="nav-link text-left">Home</a>
-                                </li>
                                 <li class="has-children">
-                                    <a href="about.html" class="nav-link text-left">About Us</a>
+                                    <p class="nav-link text-left"> Sinh viên </p>
                                     <ul class="dropdown">
-                                        <li><a href="teachers.html">Our Teachers</a></li>
-                                        <li><a href="about.html">Our School</a></li>
+                                        <li><a href="/sinhvien/kqht" class="nav-link text-left"> Kết quả học tập </a></li>
+                                        <li><a href="/sinhvien/tkb" class="nav-link text-left"> Thời khoá biểu </a></li>
+                                        @if (ViewBag.Viewdkhp != null)
+                                        {
+                                            <li><a href="/dkhp" class="nav-link text-left"> Đăng ký học phần </a></li>
+                                            <li><a href="/huydkhp" class="nav-link text-left"> Huỷ đăng ký học phần </a></li>
+                                        }
+
+
                                     </ul>
                                 </li>
 
-                                if (ViewBag.Viewdkhp != null)
-                                {
-                                    <li>
-                                        <a href="/dkhp" class="nav-link text-left">Đăng ký học phần</a>
-                                    </li>
-                                    <li>
-                                        <a href="/huydkhp" class="nav-link text-left">Huỷ đăng ký học phần</a>
-                                    </li>
-                                }
-                                <li>
-                                    <a href="/sinhvien/tkb" class="nav-link text-left">Thời khoá biểu</a>
-                                </li>
-                                <li>
-                                    <a href="/sinhvien/kqht" class="nav-link text-left">Kết quả học tập</a>
-                                </li>
-                                @*<li>
-                                    <a href="admissions.html" class="nav-link text-left">Admissions</a>
-                                </li>
-                                <li>
-                                    <a href="/Profile" class="nav-link text-left">Courses</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html" class="nav-link text-left">Contact</a>
-                                </li>*@
                             }
-
                         }
                         else
                         {
-                            <li>
-                                <a href="contact.html" class="nav-link text-left">Chưa đăng nhập</a>
-                            </li>
+                            <li><a href="/" class="nav-link text-left">Chưa đăng nhập</a></li>
                         }
                     </ul>
                 </nav>

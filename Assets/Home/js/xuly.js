@@ -69,6 +69,7 @@
         $.each(listerr, function (key, val) {
             $("#loidkhp").append(val + "</br>");
         });
+        $("#loidkhp").append("</br>");
     }
 
 });

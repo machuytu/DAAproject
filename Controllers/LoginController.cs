@@ -52,7 +52,6 @@ namespace ProjectDAA1.Controllers
                 {
                     if (result.nhom == "Sinh viên")
                     {
-                        //var user = dao.GetById(model.matk);
                         taikhoan user = await db.taikhoans.FindAsync(result.idtk);
                         var userSession = new UserLogin();
                         userSession.matk = user.matk;
@@ -84,34 +83,6 @@ namespace ProjectDAA1.Controllers
                         return RedirectToAction("Index", "Home", new { area = "Admin" });
                     }
                 }
-
-                //var reullsult = dao.Login(model.matk, HashPassword.MD5Hash(model.Password));
-                //var result =
-                //if (result == 1)
-                //{
-                //    var user = dao.GetById(model.matk);
-                //    var userSession = new UserLogin();
-                //    userSession.matk = user.matk;
-                //    userSession.UserID = user.ID;
-                //    Session.Add(CommonConstants.USER_SESSION, userSession);
-                //    return Redirect("/");
-                //}
-                //else if (result == 0)
-                //{
-                //    ModelState.AddModelError("", "Tai Khoan Khong Ton Tai");
-                //}
-                //else if (result == -1)
-                //{
-                //    ModelState.AddModelError("", "Tai Khoan Dang Bi Khoa");
-                //}
-                //else if (result == -2)
-                //{
-                //    ModelState.AddModelError("", "Mat Khau Khong Dung");
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError("", "Đăng nhập không đúng");
-                //}
             }
             return View(model);
         }
