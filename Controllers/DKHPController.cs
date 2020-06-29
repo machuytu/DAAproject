@@ -12,6 +12,7 @@ using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using ProjectDAA1.Models;
 using Newtonsoft.Json;
+using DocumentFormat.OpenXml.Drawing.ChartDrawing;
 
 namespace ProjectDAA1.Controllers
 {
@@ -204,16 +205,53 @@ namespace ProjectDAA1.Controllers
             using (var db = new MyDatabaseEntities9())
             {
                 var tkb = db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
-                                .Select(x => new
-                                {
-                                    malop = x.lop.malop,
-                                    thu = x.lop.thu,
-                                    tietbd = x.lop.tietbd,
-                                    tietkt = x.lop.tietkt,
-                                    tenmon = x.lop.mon.tenmon,
-                                    tengv = x.lop.giangvien.hoten,
-                                }).ToList();
+                    .Select(x => new
+                    {
+                        malop = x.lop.malop,
+                        thu = x.lop.thu,
+                        tietbd = x.lop.tietbd,
+                        tietkt = x.lop.tietkt,
+                        tenmon = x.lop.mon.tenmon,
+                        tengv = x.lop.giangvien.hoten,
+                    }).ToList();
                 return new JsonResult { Data = tkb, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetKQHT()
+        {
+            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                var idsv = session.idsv;
+                using (var db = new MyDatabaseEntities9())
+                {
+                    var dsdkhp = (from h in db.hocs
+                                  join dk in db.dangkyhocphans on h.lop.iddkhp equals dk.iddkhp
+                                  where h.idsv == idsv
+                                  select dk).Distinct();
+                    var dsbangdiem = db.hocs.Where(x => x.idsv == idsv).Select(x => new BangDiem()
+                    {
+                        iddkhp = x.lop.iddkhp,
+                        mamon = x.lop.mon.mamon,
+                        tenmon = x.lop.mon.mamon,
+                        sotc = x.lop.mon.sotc,
+                        diemqt = x.diemqt,
+                        diemth = x.diemth,
+                        diemgk = x.diemgk,
+                        diemck = x.diemck,
+                        diemtb = x.diemtb,
+                    });
+                    var dbcontext = new DBContext();
+                    dbcontext.dsdkhp = await dsdkhp.ToListAsync();
+                    dbcontext.dsbd = await dsbangdiem.ToListAsync();
+                    return View(dbcontext);
+                }
+            }
+            else
+            {
+                return RedirectToRoute("login");
             }
         }
     }

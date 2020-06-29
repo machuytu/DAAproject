@@ -6,12 +6,13 @@
 
 <div class="site-section">
     <div class="container">
+
         <br />
         <br />
 
         @{
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            <input id="idsv" value="@session.idsv" hidden />
+            <input id="idgv" value="@session.idgv" hidden />
         }
 
         <select id="cbbtkb" class="form-control" style="width:25%">
@@ -43,32 +44,32 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            var idsv = $("#idsv").val();
+            var idgv = $("#idgv").val();
             var iddkhp = $("#cbbtkb").val();
             FuncTkbTable();
-            FuncTkbAjax(idsv, iddkhp);
+            FuncTkbAjax(idgv, iddkhp);
 
             $("#cbbtkb").change(function () {
                 var selectval = $(this).val();
                 FuncTkbTable();
-                FuncTkbAjax(idsv, selectval);
+                FuncTkbAjax(idgv, selectval);
             });
 
-            function FuncTkbAjax(idsv, iddkhp) {
-                if (idsv === undefined) {
-                    idsv = 0;
+            function FuncTkbAjax(idgv, iddkhp) {
+                if (idgv === undefined) {
+                    idgv = 0;
                 }
                 if (iddkhp === undefined) {
                     iddkhp = 0;
                 }
                 $.ajax({
                     type: "get",
-                    data: { iddkhp: iddkhp, idsv: idsv },
-                    url: "/dkhp/ajaxTKB",
+                    data: { iddkhp: iddkhp, idgv: idgv },
+                    url: "/Teacher/ajaxTKB",
                     success: function (data) {
                         $.each(data, function (index, val) {
                             var sotiet = val.tietkt - val.tietbd + 1;
-                            $("#thu" + val.thu + "tiet" + val.tietbd).append(val.malop + "<br />" + val.tenmon + "<br />" + val.tengv);
+                            $("#thu" + val.thu + "tiet" + val.tietbd).append(val.malop + "<br />" + val.tenmon + "<br />" + "lt: " + val.tclt + " th: " + val.tcth);
                             $("#thu" + val.thu + "tiet" + val.tietbd).attr('rowspan', sotiet);
                             for (i = val.tietbd + 1; i <= val.tietkt; i++) {
                                 $("#thu" + val.thu + "tiet" + i).remove();

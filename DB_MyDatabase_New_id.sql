@@ -223,6 +223,18 @@ ALTER TABLE [dbo].[thongbao]
 ADD CHECK ([tag] in (N'THÔNG BÁO NGHỈ, BÙ', N'THÔNG BÁO CHUNG', N'THÔNG BÁO VỀ PHÒNG HỌC'));
 GO
 
+CREATE OR ALTER TRIGGER trg_insertthongbao ON thongbao
+FOR INSERT
+AS 
+BEGIN
+	DECLARE @id int;
+	SELECT @id = idtb FROM inserted;
+	BEGIN
+		UPDATE thongbao SET thoigiandang = SYSDATETIME() WHERE idtb = @id;
+	END;
+END;
+GO
+
 CREATE OR ALTER TRIGGER trg_updatethongbao ON thongbao
 FOR UPDATE
 AS 
@@ -672,7 +684,16 @@ go
 insert into thongbao (idtk,tag,tieude,noidung)
 values (1,N'THÔNG BÁO CHUNG',N'thông báo 1 ...',N'abc...xyz');
 go
-UPDATE thongbao SET noidung = N'CẬP NHẬT' WHERE idtb = 1;
+insert into thongbao (idtk,tag,tieude,noidung)
+values (2,N'THÔNG BÁO CHUNG',N'thông báo 2 ...',N'abc...xyz');
+go
+insert into thongbao (idtk,tag,tieude,noidung)
+values (2,N'THÔNG BÁO CHUNG',N'thông báo 3 ...',N'abc...xyz');
+go
+insert into thongbao (idtk,tag,tieude,noidung,thoigiandang)
+values (2,N'THÔNG BÁO CHUNG',N'thông báo 4 ...',N'abc...xyz',null);
+go
+UPDATE thongbao SET noidung = N'CẬP NHẬT' WHERE idtb = 1002;
 GO
 
 select * from taikhoan; 
