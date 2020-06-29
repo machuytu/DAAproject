@@ -22,25 +22,68 @@ namespace ProjectDAA1.Controllers
         [HttpGet]
         public ActionResult GetDKHP()
         {
-            var db = new MyDatabaseEntities9();
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            var datenow = DateTime.Now;
-            var listkhoahoc = db.dangkyhocphans.Where(x => x.thoigianbd <= datenow && x.thoigiankt >= datenow).SingleOrDefault();
-            if (session != null && listkhoahoc != null)
+
+            if (session != null)
             {
-                var dbcontext = new DBContext();
                 var idsv = session.idsv;
-                var id = listkhoahoc.iddkhp;
-                var dslop = db.lops.Where(x => x.iddkhp == id).ToList();
-                var dslopdadk = db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == id).Select(x => x.lop).ToList();
-                var ds = dslop.Except(dslopdadk).ToList();
-                dbcontext.dslopchuahoc = ds;
-                dbcontext.dslopdahoc = dslopdadk;
-                return View(dbcontext);
+                using (var db = new MyDatabaseEntities9())
+                {
+                    var iddkhp = db.dangkyhocphans
+                        .Where(x => x.thoigianbd <= DateTime.Now && x.thoigiankt >= DateTime.Now)
+                        .Select(x => x.iddkhp)
+                        .FirstOrDefault();
+
+                    if (iddkhp != 0)
+                    {
+                        var dslop = db.lops
+                            .Where(x => x.iddkhp == iddkhp)
+                            .Select(x => new HocPhan
+                            {
+                                idlop = x.idlop,
+                                malop = x.malop,
+                                tenmon = x.mon.tenmon,
+                                mamon = x.mon.mamon,
+                                tengv = x.giangvien.hoten,
+                                tclt = x.mon.tclt,
+                                tcth = x.mon.tcth,
+                                thu = x.thu,
+                                tietbd = x.tietbd,
+                                tietkt = x.tietkt,
+                            });
+
+                        var dslopdadk = db.hocs
+                            .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
+                            .Select(x => new HocPhan
+                            {
+                                idlop = x.lop.idlop,
+                                malop = x.lop.malop,
+                                tenmon = x.lop.mon.tenmon,
+                                mamon = x.lop.mon.mamon,
+                                tengv = x.lop.giangvien.hoten,
+                                tclt = x.lop.mon.tclt,
+                                tcth = x.lop.mon.tcth,
+                                thu = x.lop.thu,
+                                tietbd = x.lop.tietbd,
+                                tietkt = x.lop.tietkt,
+                            });
+
+                        return View(new DBContext()
+                        {
+                            dslopchuahoc = dslop.Except(dslopdadk).ToList(),
+                            dslopdahoc = dslopdadk.ToList(),
+                        });
+                    }
+
+                    else
+                    {
+                        return Redirect("/");
+                    }
+                }
             }
             else
             {
-                return RedirectToRoute("/");
+                return RedirectToRoute("login");
             }
         }
 
@@ -59,14 +102,22 @@ namespace ProjectDAA1.Controllers
                 {
                     foreach (var idlop in list)
                     {
-                        var sinhvien = db.sinhviens.Where(x => x.idsv == idsv).SingleOrDefault();
-                        var lop = db.lops.Where(x => x.idlop == idlop).SingleOrDefault();
-                        var idmon = lop.idmon;
-                        var idmontrc = db.mons.Where(x => x.idmon == lop.idmon).Select(x => x.idmontruoc).SingleOrDefault();
+                        var sinhvien = db.sinhviens
+                            .Where(x => x.idsv == idsv)
+                            .FirstOrDefault();
+
+                        var lop = db.lops
+                            .Where(x => x.idlop == idlop)
+                            .FirstOrDefault();
+
+                        var idmontrc = db.mons
+                            .Where(x => x.idmon == lop.idmon)
+                            .Select(x => x.idmontruoc)
+                            .FirstOrDefault();
 
                         if ((from h in db.hocs
                              join l in db.lops on h.idlop equals l.idlop
-                             where h.idsv == idsv && l.thu == lop.thu && !(l.tietbd > lop.tietkt || l.tietkt < lop.tietbd)
+                             where h.idsv == idsv && l.iddkhp == lop.iddkhp && l.thu == lop.thu && !(l.tietbd > lop.tietkt || l.tietkt < lop.tietbd)
                              select h).Count() != 0)
                         {
                             listerr.Add("Lớp " + lop.malop + ": trùng lịch");
@@ -94,13 +145,13 @@ namespace ProjectDAA1.Controllers
                             await db.SaveChangesAsync();
                         }
                     }
-                    return Json(new
-                    {
-                        status = true,
-                        listerr = listerr,
-                        listsuc = listsuc,
-                    });
                 }
+                return Json(new
+                {
+                    status = true,
+                    listerr = listerr,
+                    listsuc = listsuc,
+                });
             }
             else
             {
@@ -112,32 +163,58 @@ namespace ProjectDAA1.Controllers
         }
 
         // GET: HuyDKHP
-        public async Task<ActionResult> GetHuyDKHP()
+        public ActionResult GetHuyDKHP()
         {
-            var db = new MyDatabaseEntities9();
-
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            var datenow = DateTime.Now;
 
-            var listkhoahoc = db.dangkyhocphans.Where(x => x.thoigianbd <= datenow && x.thoigiankt >= datenow).SingleOrDefault();
-
-            if (session != null && listkhoahoc != null)
+            if (session != null)
             {
                 var idsv = session.idsv;
-                var id = listkhoahoc.iddkhp;
-                var dslopdadk = db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == id).Select(x => x.lop);
-                return View(await dslopdadk.ToListAsync());
+                using (var db = new MyDatabaseEntities9())
+                {
+                    var iddkhp = db.dangkyhocphans
+                        .Where(x => x.thoigianbd <= DateTime.Now && x.thoigiankt >= DateTime.Now)
+                        .Select(x => x.iddkhp)
+                        .FirstOrDefault();
+
+                    if (iddkhp != 0)
+                    {
+                        var dslopdadk = db.hocs
+                            .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
+                            .Select(x => new HocPhan
+                            {
+                                idlop = x.lop.idlop,
+                                malop = x.lop.malop,
+                                tenmon = x.lop.mon.tenmon,
+                                mamon = x.lop.mon.mamon,
+                                tengv = x.lop.giangvien.hoten,
+                                tclt = x.lop.mon.tclt,
+                                tcth = x.lop.mon.tcth,
+                                thu = x.lop.thu,
+                                tietbd = x.lop.tietbd,
+                                tietkt = x.lop.tietkt,
+                            });
+
+                        return View(new DBContext()
+                        {
+                            dslopdahoc = dslopdadk.ToList(),
+                        });
+                    }
+                    else
+                    {
+                        return Redirect("/");
+                    }
+                }
             }
             else
             {
-                return RedirectToRoute("/");
+                return RedirectToRoute("login");
             }
         }
 
         [HttpPost]
         public async Task<JsonResult> DeleteHoc(string listid)
         {
-            var db = new MyDatabaseEntities9();
             var listerr = new List<string>();
             var listsuc = new List<string>();
             var list = new JavaScriptSerializer().Deserialize<List<int>>(listid);
@@ -145,23 +222,30 @@ namespace ProjectDAA1.Controllers
             if (session != null)
             {
                 var idsv = session.idsv;
-                foreach (var idlop in list)
+                using (var db = new MyDatabaseEntities9())
                 {
-                    var lop = db.lops.Where(x => x.idlop == idlop).SingleOrDefault();
+                    foreach (var idlop in list)
+                    {
+                        var lop = db.lops
+                            .Where(x => x.idlop == idlop)
+                            .FirstOrDefault();
 
-                    if ((from h in db.hocs
-                         join l in db.lops on h.idlop equals l.idlop
-                         where h.idsv == idsv && l.mon.idmontruoc != null && l.mon.idmontruoc == lop.mon.idmon
-                         select h).Count() != 0)
-                    {
-                        listerr.Add("Lớp " + lop.malop + ": là môn học trước, phải huỷ môn sau");
-                    }
-                    else
-                    {
-                        listsuc.Add("Lớp " + lop.malop + ": huỷ đăng ký thành công");
-                        var hoc = db.hocs.Where(x => x.idlop == idlop && x.idsv == idsv).SingleOrDefault();
-                        db.hocs.Remove(hoc);
-                        await db.SaveChangesAsync();
+                        if ((from h in db.hocs
+                             join l in db.lops on h.idlop equals l.idlop
+                             where h.idsv == idsv && l.mon.idmontruoc != null && l.mon.idmontruoc == lop.mon.idmon
+                             select h).Count() != 0)
+                        {
+                            listerr.Add("Lớp " + lop.malop + ": là môn học trước, phải huỷ môn sau");
+                        }
+                        else
+                        {
+                            listsuc.Add("Lớp " + lop.malop + ": huỷ đăng ký thành công");
+                            var hoc = db.hocs
+                                .Where(x => x.idlop == idlop && x.idsv == idsv)
+                                .FirstOrDefault();
+                            db.hocs.Remove(hoc);
+                            await db.SaveChangesAsync();
+                        }
                     }
                 }
 
@@ -204,22 +288,44 @@ namespace ProjectDAA1.Controllers
         {
             using (var db = new MyDatabaseEntities9())
             {
-                var tkb = db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
-                    .Select(x => new
+                //var tkb = db.hocs
+                //    .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
+                //    .Select(x => new
+                //    {
+                //        malop = x.lop.malop,
+                //        thu = x.lop.thu,
+                //        tietbd = x.lop.tietbd,
+                //        tietkt = x.lop.tietkt,
+                //        tenmon = x.lop.mon.tenmon,
+                //        tengv = x.lop.giangvien.hoten,
+                //    }).ToList();
+
+                var tkb = db.hocs
+                    .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
+                    .Select(x => new HocPhan
                     {
+                        idlop = x.lop.idlop,
                         malop = x.lop.malop,
+                        tenmon = x.lop.mon.tenmon,
+                        mamon = x.lop.mon.mamon,
+                        tengv = x.lop.giangvien.hoten,
+                        tclt = x.lop.mon.tclt,
+                        tcth = x.lop.mon.tcth,
                         thu = x.lop.thu,
                         tietbd = x.lop.tietbd,
                         tietkt = x.lop.tietkt,
-                        tenmon = x.lop.mon.tenmon,
-                        tengv = x.lop.giangvien.hoten,
                     }).ToList();
-                return new JsonResult { Data = tkb, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+                return new JsonResult
+                {
+                    Data = tkb,
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                };
             }
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetKQHT()
+        public ActionResult GetKQHT()
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session != null)
@@ -231,22 +337,27 @@ namespace ProjectDAA1.Controllers
                                   join dk in db.dangkyhocphans on h.lop.iddkhp equals dk.iddkhp
                                   where h.idsv == idsv
                                   select dk).Distinct();
-                    var dsbangdiem = db.hocs.Where(x => x.idsv == idsv).Select(x => new BangDiem()
+
+                    var dsbangdiem = db.hocs
+                        .Where(x => x.idsv == idsv)
+                        .Select(x => new BangDiem()
+                        {
+                            iddkhp = x.lop.iddkhp,
+                            mamon = x.lop.mon.mamon,
+                            tenmon = x.lop.mon.tenmon,
+                            sotc = x.lop.mon.sotc,
+                            diemqt = x.diemqt,
+                            diemth = x.diemth,
+                            diemgk = x.diemgk,
+                            diemck = x.diemck,
+                            diemtb = x.diemtb,
+                        });
+
+                    return View(new DBContext()
                     {
-                        iddkhp = x.lop.iddkhp,
-                        mamon = x.lop.mon.mamon,
-                        tenmon = x.lop.mon.mamon,
-                        sotc = x.lop.mon.sotc,
-                        diemqt = x.diemqt,
-                        diemth = x.diemth,
-                        diemgk = x.diemgk,
-                        diemck = x.diemck,
-                        diemtb = x.diemtb,
+                        dsdkhp = dsdkhp.ToList(),
+                        dsbd = dsbangdiem.ToList(),
                     });
-                    var dbcontext = new DBContext();
-                    dbcontext.dsdkhp = await dsdkhp.ToListAsync();
-                    dbcontext.dsbd = await dsbangdiem.ToListAsync();
-                    return View(dbcontext);
                 }
             }
             else

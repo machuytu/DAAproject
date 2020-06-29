@@ -56,6 +56,13 @@ namespace ProjectDAA1
             );
 
             routes.MapRoute(
+                name: "kết quả học tập sinh viên",
+                url: "sinhvien/kqht",
+                defaults: new { controller = "DKHP", action = "GetKQHT", id = UrlParameter.Optional },
+                namespaces: new[] { "ProjectDAA1.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "thời khoá biểu sinh viên",
                 url: "sinhvien/tkb",
                 defaults: new { controller = "DKHP", action = "GetTKB", id = UrlParameter.Optional },
@@ -66,13 +73,6 @@ namespace ProjectDAA1
                 name: "thời khoá biểu giảng viên",
                 url: "giangvien/tkb",
                 defaults: new { controller = "Teacher", action = "GetTKB", id = UrlParameter.Optional },
-                namespaces: new[] { "ProjectDAA1.Controllers" }
-            );
-
-            routes.MapRoute(
-                name: "kết quả học tập sinh viên",
-                url: "sinhvien/kqht",
-                defaults: new { controller = "DKHP", action = "GetKQHT", id = UrlParameter.Optional },
                 namespaces: new[] { "ProjectDAA1.Controllers" }
             );
 

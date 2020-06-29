@@ -3,12 +3,8 @@
     ViewBag.Title = "GetKQHT";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>GetKQHT</h2>
-
 <div class="site-section">
     <div class="container">
-        <br />
         <br />
         <h2> KẾT QUẢ HỌC TẬP </h2>
         <br />
@@ -38,88 +34,19 @@
                         if (bd.iddkhp == dk.iddkhp)
                         {
                             count++;
-                            var mamon = "";
-                            var tenmon = "";
-                            var sotc = "";
-                            var diemqt = "";
-                            var diemth = "";
-                            var diemgk = "";
-                            var diemck = "";
-                            var diemtb = "";
-
-                            mamon = bd.mamon;
-                            tenmon = bd.tenmon;
-                            sotc = bd.sotc.ToString();
-                            diemqt = bd.diemqt.ToString();
-                            diemth = bd.diemth.ToString();
-                            diemgk = bd.diemgk.ToString();
-                            diemck = bd.diemck.ToString();
-                            diemtb = bd.diemtb.ToString();
-
                             <tr>
                                 <td>@count</td>
-                                <td>@mamon</td>
-                                <td>@tenmon</td>
-                                <td>@sotc</td>
-                                <td>@diemqt</td>
-                                <td>@diemth</td>
-                                <td>@diemgk</td>
-                                <td>@diemck</td>
-                                <td>@diemtb</td>
+                                <td>@bd.mamon.ToString()</td>
+                                <td>@bd.tenmon.ToString()</td>
+                                <td>@bd.sotc.ToString()</td>
+                                <td>@bd.diemqt.ToString()</td>
+                                <td>@bd.diemth.ToString()</td>
+                                <td>@bd.diemgk.ToString()</td>
+                                <td>@bd.diemck.ToString()</td>
+                                <td>@bd.diemtb.ToString()</td>
                             </tr>
                         }
                     }
-                    @*foreach (var n in Model.dslopdahoc)
-            {
-
-                if (n.iddkhp == m.iddkhp)
-                {
-                    count++;
-                    var mamon = "";
-                    var tenmon = "";
-                    var sotc = "";
-                    var diemqt = "";
-                    var diemth = "";
-                    var diemgk = "";
-                    var diemck = "";
-                    var diemtb = "";
-
-                    foreach (var v in Model.dsmon)
-                    {
-
-                        if (v.idmon == n.idmon)
-                        {
-                            mamon = v.mamon;
-                            tenmon = v.tenmon;
-                            sotc = v.sotc.ToString();
-                        }
-                    }
-                    foreach (var k in Model.dshoc)
-                    {
-
-                        if (k.idlop == n.idlop)
-                        {
-                            diemqt = k.diemqt.ToString();
-                            diemth = k.diemth.ToString();
-                            diemgk = k.diemgk.ToString();
-                            diemck = k.diemck.ToString();
-                            diemtb = k.diemtb.ToString();
-                        }
-                    }
-
-                    <tr>
-                        <td>@count</td>
-                        <td>@mamon</td>
-                        <td>@tenmon</td>
-                        <td>@sotc</td>
-                        <td>@diemqt</td>
-                        <td>@diemth</td>
-                        <td>@diemgk</td>
-                        <td>@diemck</td>
-                        <td>@diemtb</td>
-                    </tr>
-                }
-            }*@
                 }
             </tbody>
         </table>

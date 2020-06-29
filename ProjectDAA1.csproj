@@ -1376,6 +1376,7 @@
     </Compile>
     <Compile Include="Models\BangDiem.cs" />
     <Compile Include="Models\DBContext.cs" />
+    <Compile Include="Models\HocPhan.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="mon.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>

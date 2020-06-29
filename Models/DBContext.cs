@@ -10,9 +10,7 @@ namespace ProjectDAA1.Models
     {
         public List<BangDiem> dsbd { set; get; }
         public List<dangkyhocphan> dsdkhp { set; get; }
-        public List<hoc> dshoc { set; get; }
-        public List<mon> dsmon { set; get; }
-        public List<lop> dslopdahoc { set; get; }
-        public List<lop> dslopchuahoc { set; get; }
+        public List<HocPhan> dslopdahoc { set; get; }
+        public List<HocPhan> dslopchuahoc { set; get; }
     }
 }
