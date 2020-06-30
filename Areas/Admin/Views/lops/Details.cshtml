@@ -7,77 +7,64 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>lop</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.malop)
-        </dt>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/khoas">Khoa</a></strong>
+                    <small>> Detail</small>
+                </div>
+                <div class="card-body card-block">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="malop">Mã lớp :</label>
+                                    @Html.DisplayFor(model => model.malop, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenvama">Tên và mã giảng viên :</label>
+                                    @Html.DisplayFor(model => model.giangvien.tenvama, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenvama">Tên và mã môn :</label>
+                                    @Html.DisplayFor(model => model.mon.tenvama, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenvama">Tên và mã khoa :</label>
+                                    @Html.DisplayFor(model => model.khoa.tenvama, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenvama">Tên và mã đăng ký học phần :</label>
+                                    @Html.DisplayFor(model => model.dangkyhocphan.tenvama, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="thu">Thứ :</label>
+                                    @Html.DisplayFor(model => model.thu, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tietbd">Tiết bắt đầu :</label>
+                                    @Html.DisplayFor(model => model.tietbd, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tietkt">Tiết kết thúc :</label>
+                                    @Html.DisplayFor(model => model.tietkt, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <a class="btn btn-success" href="/Admin/lops/Edit/@Model.idlop">Edit</a>
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.malop)
-        </dd>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.thu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.thu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tietbd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tietbd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tietkt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tietkt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dangkyhocphan.namhoc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dangkyhocphan.namhoc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.giangvien.hoten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.giangvien.hoten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.khoa.tenkhoa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.khoa.tenkhoa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.mon.tenmon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.mon.tenmon)
-        </dd>
-
-    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idlop }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+

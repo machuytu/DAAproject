@@ -20,7 +20,6 @@
                         @Html.AntiForgeryToken()
                         @Html.HiddenFor(model => model.idsv)
                         @Html.HiddenFor(model => model.hinhanh)
-                        @Html.HiddenFor(model => model.idlopcn)
                         @Html.HiddenFor(model => model.masv)
                         <div class="row">
                             <div class="col-md-3">
@@ -82,7 +81,7 @@
                                 <div class="row form-group">
                                     <div class="col-md-6">
                                         <label class=" form-control-label" for="idlopcn">Mã Lớp</label>
-                                        @Html.DropDownList("idlopcn", null, htmlAttributes: new { @class = "form-control", @style = "height:auto", @disabled = "disabled" })
+                                        @Html.DropDownList("idlopcn", null, htmlAttributes: new { @class = "form-control", @style = "height:auto;" })
                                         @Html.ValidationMessageFor(model => model.idlopcn, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-6">

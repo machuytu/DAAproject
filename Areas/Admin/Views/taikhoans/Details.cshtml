@@ -7,53 +7,52 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>taikhoan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.matk)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.matk)
-        </dd>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/mons">Môn</a></strong>
+                    <small>> Detail</small>
+                </div>
+                <div class="card-body card-block">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="matk">Mã tài khoản :</label>
+                                    @Html.DisplayFor(model => model.matk, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="nhom">Mật khẩu :</label>
+                                    @Html.DisplayFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="nhom">Loại tài khoản :</label>
+                                    @Html.DisplayFor(model => model.nhom, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tclt">Tên và mã giảng viên :</label>
+                                    @Html.DisplayFor(model => model.giangvien.tenvama, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenvama">Tên và mã sinh viên :</label>
+                                    @Html.DisplayFor(model => model.sinhvien.tenvama, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <a class="btn btn-success" href="/Admin/taikhoans/Edit/@Model.idtk">Edit</a>
+                            </div>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.password)
-        </dt>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.nhom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nhom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.giangvien.hoten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.giangvien.hoten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sinhvien.hoten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sinhvien.hoten)
-        </dd>
-
-    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idtk }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

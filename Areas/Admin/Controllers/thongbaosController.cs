@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectDAA1;
+using System.IO;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
@@ -40,7 +41,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/thongbaos/Create
         public ActionResult Create()
         {
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk");
+            ViewBag.idtk = new SelectList(db.taikhoans.Where(x => x.idsv == null), "idtk", "matk");
             return View();
         }
 
@@ -49,16 +50,24 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idtb,tieude,noidung,tag,idtk,file,thoigiandang,thoigiancapnhat")] thongbao thongbao)
+        public async Task<ActionResult> Create(thongbao thongbao, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            
+            if (ModelState.IsValid && file.ContentLength > 0)
             {
+                var tb = new thongbao();
+                string _FileName = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/Uploadfile/"), _FileName);
+                thongbao.file = "~/Uploadfile/" + _FileName;
+                tb = thongbao;
                 db.thongbaos.Add(thongbao);
+                file.SaveAs(_path);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.Message = "File Uploaded Fail!!";
 
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk", thongbao.idtk);
+            ViewBag.idtk = new SelectList(db.taikhoans.Where(x => x.idsv == null), "idtk", "matk", thongbao.idtk);
             return View(thongbao);
         }
 
@@ -74,7 +83,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk", thongbao.idtk);
+            ViewBag.idtk = new SelectList(db.taikhoans.Where(x => x.idsv == null), "idtk", "matk", thongbao.idtk);
             return View(thongbao);
         }
 
@@ -83,15 +92,23 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idtb,tieude,noidung,tag,idtk,file,thoigiandang,thoigiancapnhat")] thongbao thongbao)
+        public async Task<ActionResult> Edit(thongbao thongbao, HttpPostedFileBase file)
         {
+
             if (ModelState.IsValid)
             {
+                if (file != null)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Uploadfile/"), _FileName);
+                    thongbao.file = "~/Uploadfile/" + _FileName;
+                    file.SaveAs(_path);
+                }
                 db.Entry(thongbao).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk", thongbao.idtk);
+            ViewBag.idtk = new SelectList(db.taikhoans.Where(x => x.idsv == null), "idtk", "matk", thongbao.idtk);
             return View(thongbao);
         }
 
@@ -108,6 +125,22 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(thongbao);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Deleteuser(int id)
+        {
+            try
+            {
+                thongbao thongbao = await db.thongbaos.FindAsync(id);
+                db.thongbaos.Remove(thongbao);
+                await db.SaveChangesAsync();
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // POST: Admin/thongbaos/Delete/5

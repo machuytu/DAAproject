@@ -408,3 +408,21 @@ $(document).ready(function () {
         readURL(this);
     });
 });
+
+$(document).ready(function () {
+    
+    $("#selectkhoa").change(function () {
+        $.get(
+            "/Admin/lopcns/GetGVList",
+            { idkhoa: $(this).val() },
+            function (data) {
+                $("#selectgv").empty();
+                $.each(data, function (index, row) {
+                    $("#selectgv").append("<option value='" + row.idgv + "'>" + row.hoten +"</option>");
+                });
+            }
+        );
+    });
+});
+
+

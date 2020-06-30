@@ -40,7 +40,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/mons/Create
         public ActionResult Create()
         {
-            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon");
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenvama");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon", mon.idmontruoc);
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenvama", mon.idmontruoc);
             return View(mon);
         }
 
@@ -74,7 +74,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon", mon.idmontruoc);
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenvama", mon.idmontruoc);
             return View(mon);
         }
 
@@ -91,7 +91,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenmon", mon.idmontruoc);
+            ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenvama", mon.idmontruoc);
             return View(mon);
         }
 

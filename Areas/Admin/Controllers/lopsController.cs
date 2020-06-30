@@ -40,10 +40,10 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/lops/Create
         public ActionResult Create()
         {
-            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "namhoc");
-            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten");
-            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa");
-            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenmon");
+            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "tenvama");
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "tenvama");
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenvama");
+            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenvama");
             return View();
         }
 
@@ -56,15 +56,30 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.lops.Add(lop);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                mon mon = db.mons.Where(x => x.idmon == lop.idmon).SingleOrDefault();
+                var tietkt = lop.tietbd + mon.sotc - 1;
+                var c = db.lops.Where(x => x.idgv == lop.idgv && x.thu == lop.thu && x.iddkhp == lop.iddkhp && !(lop.tietbd > x.tietkt || tietkt < x.tietbd)).Count();
+                if (lop.tietbd <= 5 && lop.tietkt > 5)
+                {
+                    ViewBag.err = "Lịch không hợp lý";
+                }
+                else if (c != 0)
+                {
+                    ViewBag.err = "Giảng viên trùng lịch";
+                }
+                else
+                {
+                    db.lops.Add(lop);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
 
-            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "namhoc", lop.iddkhp);
-            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lop.idgv);
-            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", lop.idkhoa);
-            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenmon", lop.idmon);
+            ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "tenvama", lop.iddkhp);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "tenvama", lop.idgv);
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenvama", lop.idkhoa);
+            ViewBag.idmon = new SelectList(db.mons, "idmon", "tenvama", lop.idmon);
+
             return View(lop);
         }
 
@@ -96,9 +111,23 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(lop).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                mon mon = db.mons.Where(x => x.idmon == lop.idmon).SingleOrDefault();
+                var tietkt = lop.tietbd + mon.sotc - 1;
+                var c = db.lops.Where(x => x.idgv == lop.idgv && x.thu == lop.thu && x.iddkhp == lop.iddkhp && !(lop.tietbd > x.tietkt || tietkt < x.tietbd)).Count();
+                if (lop.tietbd <= 5 && lop.tietkt > 5)
+                {
+                    ViewBag.err = "Lịch không hợp lý";
+                }
+                else if (c != 0)
+                {
+                    ViewBag.err = "Giảng viên trùng lịch";
+                }
+                else
+                {
+                    db.Entry(lop).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.iddkhp = new SelectList(db.dangkyhocphans, "iddkhp", "namhoc", lop.iddkhp);
             ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", lop.idgv);
@@ -120,6 +149,22 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(lop);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Deleteuser(int id)
+        {
+            try
+            {
+                lop lop = await db.lops.FindAsync(id);
+                db.lops.Remove(lop);
+                await db.SaveChangesAsync();
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // POST: Admin/lops/Delete/5

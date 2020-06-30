@@ -7,6 +7,58 @@
 
 <h2>Details</h2>
 
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/mons">Môn</a></strong>
+                    <small>> Detail</small>
+                </div>
+                <div class="card-body card-block">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tieude">Tiêu đề :</label>
+                                    @Html.DisplayFor(model => model.tieude, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="noidung">Nội dung :</label>
+                                    @Html.DisplayFor(model => model.noidung, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tag">Tag :</label>
+                                    @Html.DisplayFor(model => model.tag, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="thoigiandang">Mã tài khoản :</label>
+                                    @Html.DisplayFor(model => model.taikhoan.matk, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="thoigiancapnhat">Thời gian cập nhật:</label>
+                                    @Html.DisplayFor(model => model.thoigiancapnhat, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenvama">File :</label>
+                                    @Html.DisplayFor(model => model.file, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <a class="btn btn-success" href="/Admin/taikhoans/Edit/@Model.idtk">Edit</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div>
     <h4>thongbao</h4>
     <hr />
