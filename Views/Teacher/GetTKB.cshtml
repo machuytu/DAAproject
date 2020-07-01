@@ -67,7 +67,7 @@
                         $.each(data, function (index, val) {
                             var sotiet = val.tietkt - val.tietbd + 1;
                             var p = $("#thu" + val.thu + "tiet" + val.tietbd);
-                            p.css("background-color", "	#DCDCDC");
+                            p.css("background-color", "	#ededed");
                             p.append(val.malop + "<br />" + val.tenmon + "<br />" + val.tengv);
                             p.attr('rowspan', sotiet);
                             for (i = val.tietbd + 1; i <= val.tietkt; i++) {
