@@ -3,49 +3,78 @@
 @{
     ViewBag.Title = "Login";
 }
+    <head>
+        <title>Đăng nhập</title>
+        <link rel="stylesheet" href="~/Assets/Home/css/main.css">
+        <link rel="stylesheet" href="~/Assets/Home/css/util.css">
+    </head>
 
 
-<div class="hero-wrap hero-bread" style="background-image: url('/Assets/Client/images/bg_6.jpg');">
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <div class="breadcrumbs">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "mr-2" })</div>
-                <h1 class="mb-0 bread">Login</h1>
-            </div>
-        </div>
-    </div>
-</div>
 
-<section class="ftco-section contact-section bg-light">
-    <div class="container">
-        <div class="login-wrap">
-            <div class="login-content">
-                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.matk, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-6">
-                            @Html.EditorFor(model => model.matk, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.matk, "", new { @class = "text-danger" })
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <body>
+                        <div class="hero-wrap hero-bread" style="background-image: url('/Assets/Client/images/bg_6.jpg');">
+                            <div class="container">
+                                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                    <div class="col-md-9 ftco-animate text-center">
+                                        <div class="breadcrumbs">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "mr-2" })</div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <span class="login100-form-title p-b-26">
+                            Đăng nhập hệ thống
+                        </span>
+                        <section class="ftco-section contact-section bg-light">
+                            <div class="container">
+                                <div class="login-wrap">
+                                    <div class="login-content">
+                                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.matk, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                                                    @Html.EditorFor(model => model.matk, new { htmlAttributes = new { @class = "input100" } })
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-6">
-                            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                                                </div>
+                                            </div>
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Login" class="btn btn-primary py-3 px-5" />
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-</section>
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                                                    @Html.PasswordFor(model => model.Password, new { @class = "input100" })
+                                                </div>
+                                            </div>
+                                            <div>
+                                                @Html.ValidationMessageFor(model => model.matk, "", new { @class = "text-danger" })
+                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="container-login100-form-btn">
+                                                <div class="wrap-login100-form-btn">
+                                                    <div class="login100-form-bgbtn"></div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-offset-2 col-md-10">
+                                                            <button type="submit" value="Login" class="login100-form-btn" background="transparent">
+                                                                Đăng nhập
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+                    </body>
+
