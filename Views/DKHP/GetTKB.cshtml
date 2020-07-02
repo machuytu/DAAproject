@@ -13,26 +13,26 @@
         }
         <br />
         <br />
-        <select id="cbbtkb" class="form-control" style="width:25%">
+        <select id="cbbtkb" class="nhutmargin form-control " style="width:25%">
             @foreach (var m in Model)
             {
-                <option value="@m.iddkhp">học kỳ @m.hocky năm học @m.namhoc</option>
+                <option value="@m.iddkhp">Học kỳ @m.hocky - Năm học @m.namhoc</option>
             }
         </select>
         <br />
         <div class="d-flex justify-content-center">
-            <h2 class="text-uppercase font-weight-bold"> THỜI KHOÁ BIỂU </h2>
+            <h2 class="text-uppercase font-weight-bold"> THỜI KHOÁ BIỂU</h2>
         </div>
-        <table class="table table-bordered">
-            <thead class="thead-light">
-                <tr>
-                    <th>Thứ / tiết</th>
-                    <th>Thứ 2</th>
-                    <th>Thứ 3</th>
-                    <th>Thứ 4</th>
-                    <th>Thứ 5</th>
-                    <th>Thứ 6</th>
-                    <th>Thứ 7</th>
+        <table class="table nhutborder">
+            <thead class="thead-light nhutborder">
+                <tr class="table nhutborder">
+                    <th style="text-align:center" class="nhutborder">Thứ / tiết</th>
+                    <th style="text-align:center" class="nhutborder">Thứ 2</th>
+                    <th style="text-align:center" class="nhutborder">Thứ 3</th>
+                    <th style="text-align:center" class="nhutborder">Thứ 4</th>
+                    <th style="text-align:center" class="nhutborder">Thứ 5</th>
+                    <th style="text-align:center" class="nhutborder">Thứ 6</th>
+                    <th style="text-align:center" class="nhutborder">Thứ 7</th>
                 </tr>
             </thead>
             <tbody id="tb"></tbody>
@@ -68,8 +68,11 @@
                         $.each(data, function (index, val) {
                             var sotiet = val.tietkt - val.tietbd + 1;
                             var p = $("#thu" + val.thu + "tiet" + val.tietbd);
-                            p.css("background-color", "	#DCDCDC");
-                            p.append(val.malop + "<br />" + val.tenmon + "<br />" + val.tengv);
+                            p.css("background-color", "#ebebeb");
+                            p.css("padding-top", "100px");
+                            p.css("padding-bottom", "100px");
+                            p.addClass("nhutborder");
+                            p.append("<p class='nhuttenmon'><b>" + val.malop + "</b> </p>" + "<p class='nhuttenmon'>" + val.tenmon + "</p>" + "<p class='nhuttenmon'>"+  val.tengv + "</p>");
                             p.attr('rowspan', sotiet);
                             for (i = val.tietbd + 1; i <= val.tietkt; i++) {
                                 $("#thu" + val.thu + "tiet" + i).remove();
@@ -84,16 +87,16 @@
 
             function FuncTkbTable() {
                 var str = '';
-                str += '<tr><td>Tiết 1</td><td id="thu2tiet1"></td><td id="thu3tiet1"></td><td id="thu4tiet1"></td><td id="thu5tiet1"></td><td id="thu6tiet1"></td><td id="thu7tiet1"></td></tr>';
-                str += '<tr><td>Tiết 2</td><td id="thu2tiet2"></td><td id="thu3tiet2"></td><td id="thu4tiet2"></td><td id="thu5tiet2"></td><td id="thu6tiet2"></td><td id="thu7tiet2"></td></tr>';
-                str += '<tr><td>Tiết 3</td><td id="thu2tiet3"></td><td id="thu3tiet3"></td><td id="thu4tiet3"></td><td id="thu5tiet3"></td><td id="thu6tiet3"></td><td id="thu7tiet3"></td></tr>';
-                str += '<tr><td>Tiết 4</td><td id="thu2tiet4"></td><td id="thu3tiet4"></td><td id="thu4tiet4"></td><td id="thu5tiet4"></td><td id="thu6tiet4"></td><td id="thu7tiet4"></td></tr>';
-                str += '<tr><td>Tiết 5</td><td id="thu2tiet5"></td><td id="thu3tiet5"></td><td id="thu4tiet5"></td><td id="thu5tiet5"></td><td id="thu6tiet5"></td><td id="thu7tiet5"></td></tr>';
-                str += '<tr><td>Tiết 6</td><td id="thu2tiet6"></td><td id="thu3tiet6"></td><td id="thu4tiet6"></td><td id="thu5tiet6"></td><td id="thu6tiet6"></td><td id="thu7tiet6"></td></tr>';
-                str += '<tr><td>Tiết 7</td><td id="thu2tiet7"></td><td id="thu3tiet7"></td><td id="thu4tiet7"></td><td id="thu5tiet7"></td><td id="thu6tiet7"></td><td id="thu7tiet7"></td></tr>';
-                str += '<tr><td>Tiết 8</td><td id="thu2tiet8"></td><td id="thu3tiet8"></td><td id="thu4tiet8"></td><td id="thu5tiet8"></td><td id="thu6tiet8"></td><td id="thu7tiet8"></td></tr>';
-                str += '<tr><td>Tiết 9</td><td id="thu2tiet9"></td><td id="thu3tiet9"></td><td id="thu4tiet9"></td><td id="thu5tiet9"></td><td id="thu6tiet9"></td><td id="thu7tiet9"></td></tr>';
-                str += '<tr><td>Tiết 10</td><td id="thu2tiet10"></td><td id="thu3tiet10"></td><td id="thu4tiet10"></td><td id="thu5tiet10"></td><td id="thu6tiet10"></td><td id="thu7tiet10"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 1 <br> (7:30 - 8:15) </td><td id="thu2tiet1"></td><td id="thu3tiet1"></td><td id="thu4tiet1"></td><td id="thu5tiet1"></td><td id="thu6tiet1"></td><td id="thu7tiet1"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 2 <br> (8:15 - 9:00) </td><td id="thu2tiet2"></td><td id="thu3tiet2"></td><td id="thu4tiet2"></td><td id="thu5tiet2"></td><td id="thu6tiet2"></td><td id="thu7tiet2"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 3 <br> (9:00 - 9:45) </td><td id="thu2tiet3"></td><td id="thu3tiet3"></td><td id="thu4tiet3"></td><td id="thu5tiet3"></td><td id="thu6tiet3"></td><td id="thu7tiet3"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 4 <br> (10:00 - 10:45) </td><td id="thu2tiet4"></td><td id="thu3tiet4"></td><td id="thu4tiet4"></td><td id="thu5tiet4"></td><td id="thu6tiet4"></td><td id="thu7tiet4"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 5 <br> (10:45 - 11:30) </td><td id="thu2tiet5"></td><td id="thu3tiet5"></td><td id="thu4tiet5"></td><td id="thu5tiet5"></td><td id="thu6tiet5"></td><td id="thu7tiet5"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 6 <br> (13:00 - 13:45) </td><td id="thu2tiet6"></td><td id="thu3tiet6"></td><td id="thu4tiet6"></td><td id="thu5tiet6"></td><td id="thu6tiet6"></td><td id="thu7tiet6"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 7 <br> (13:45 - 14:30) </td><td id="thu2tiet7"></td><td id="thu3tiet7"></td><td id="thu4tiet7"></td><td id="thu5tiet7"></td><td id="thu6tiet7"></td><td id="thu7tiet7"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 8 <br> (14:3 - 15:15) </td><td id="thu2tiet8"></td><td id="thu3tiet8"></td><td id="thu4tiet8"></td><td id="thu5tiet8"></td><td id="thu6tiet8"></td><td id="thu7tiet8"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 9 <br> (15:30 - 6:15) </td><td id="thu2tiet9"></td><td id="thu3tiet9"></td><td id="thu4tiet9"></td><td id="thu5tiet9"></td><td id="thu6tiet9"></td><td id="thu7tiet9"></td></tr>';
+                str += '<tr><td style="text-align:center" class="nhutborder">Tiết 10<br> (16:15 - 17:00) </td><td id="thu2tiet10"></td><td id="thu3tiet10"></td><td id="thu4tiet10"></td><td id="thu5tiet10"></td><td id="thu6tiet10"></td><td id="thu7tiet10"></td></tr>';
                 $("#tb").html(str);
             }
         });
