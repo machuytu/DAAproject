@@ -20,5 +20,33 @@ namespace ProjectDAA1.Models
         public Nullable<double> diemgk { get; set; }
         public Nullable<double> diemck { get; set; }
         public Nullable<double> diemtb { get; set; }
+        public string trongsoqt
+        {
+            get
+            {
+                return (hsqt * 100).ToString();
+            }
+        }
+        public string trongsoth
+        {
+            get
+            {
+                return (hsth * 100).ToString();
+            }
+        }
+        public string trongsogk
+        {
+            get
+            {
+                return (hsgk * 100).ToString();
+            }
+        }
+        public string trongsock
+        {
+            get
+            {
+                return (hsck * 100).ToString();
+            }
+        }
     }
 }

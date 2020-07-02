@@ -38,9 +38,6 @@ namespace ProjectDAA1.Controllers
 
         public ActionResult dsSVLop(int id)
         {
-            //var result = db.hocs.Where(x => x.idlop == id).ToList();
-            //var result = (from h in db.hocs join sv in db.sinhviens on h.idsv equals sv.idsv
-            //              where h.idlop == id select sv).ToList();
             var result = db.hocs.Where(x => x.idlop == id).Select(x => x.sinhvien);
             return View(result);
         }
