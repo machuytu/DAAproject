@@ -21,14 +21,21 @@ namespace ProjectDAA1
              );
 
             routes.MapRoute(
-                 name: "lop",
+                 name: "bảng điểm lớp",
+                 url: "bangdiem/lop/{id}",
+                 defaults: new { controller = "Teacher", action = "GetBangDiem", id = UrlParameter.Optional },
+                 namespaces: new[] { "ProjectDAA1.Controllers" }
+             );
+
+            routes.MapRoute(
+                 name: "dslop",
                  url: "lop",
                  defaults: new { controller = "Teacher", action = "dsLop", id = UrlParameter.Optional },
                  namespaces: new[] { "ProjectDAA1.Controllers" }
              );
 
             routes.MapRoute(
-                 name: "lopcn",
+                 name: "dslopcn",
                  url: "lopcn",
                  defaults: new { controller = "Teacher", action = "dsLopCN", id = UrlParameter.Optional },
                  namespaces: new[] { "ProjectDAA1.Controllers" }

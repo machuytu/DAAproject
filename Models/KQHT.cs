@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace ProjectDAA1.Models
+{
+    public class KQHT
+    {
+        public int iddkhp { get; set; }
+        public string tenmon { get; set; }
+        public string mamon { get; set; }
+        public Nullable<int> sotc { get; set; }
+        public Nullable<double> hsqt { get; set; }
+        public Nullable<double> hsth { get; set; }
+        public Nullable<double> hsgk { get; set; }
+        public Nullable<double> hsck { get; set; }
+        public Nullable<double> diemqt { get; set; }
+        public Nullable<double> diemth { get; set; }
+        public Nullable<double> diemgk { get; set; }
+        public Nullable<double> diemck { get; set; }
+        public Nullable<double> diemtb { get; set; }
+        public string trongsoqt
+        {
+            get
+            {
+                return (hsqt * 100).ToString();
+            }
+        }
+        public string trongsoth
+        {
+            get
+            {
+                return (hsth * 100).ToString();
+            }
+        }
+        public string trongsogk
+        {
+            get
+            {
+                return (hsgk * 100).ToString();
+            }
+        }
+        public string trongsock
+        {
+            get
+            {
+                return (hsck * 100).ToString();
+            }
+        }
+    }
+}

@@ -326,9 +326,9 @@ namespace ProjectDAA1.Controllers
                                   where h.idsv == idsv
                                   select dk).Distinct();
 
-                    var dsbangdiem = db.hocs
+                    var dskqht = db.hocs
                         .Where(x => x.idsv == idsv)
-                        .Select(x => new BangDiem()
+                        .Select(x => new KQHT()
                         {
                             iddkhp = x.lop.iddkhp,
                             mamon = x.lop.mon.mamon,
@@ -348,7 +348,7 @@ namespace ProjectDAA1.Controllers
                     return View(new DBContext()
                     {
                         dsdkhp = dsdkhp.ToList(),
-                        dsbd = dsbangdiem.ToList(),
+                        dskqht = dskqht.ToList(),
                     });
                 }
             }

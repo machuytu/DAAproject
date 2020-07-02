@@ -1380,6 +1380,7 @@
       <DependentUpon>ModelProject.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\BangDiem.cs" />
+    <Compile Include="Models\KQHT.cs" />
     <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\HocPhan.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -1439,6 +1440,7 @@
     <Content Include="Views\DKHP\GetTKB.cshtml" />
     <Content Include="Views\Teacher\GetTKB.cshtml" />
     <Content Include="Views\DKHP\GetKQHT.cshtml" />
+    <Content Include="Views\Teacher\GetBangDiem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

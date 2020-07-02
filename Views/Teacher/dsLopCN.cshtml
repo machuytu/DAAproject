@@ -5,31 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Danh sách lớp chủ nhiệm</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.malopcn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nienkhoa)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.malopcn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nienkhoa)
-        </td>
-        <td>
-            <a href="svlopcn/@item.idlopcn">Danh sách sinh viên</a>
-        </td>
-    </tr>
-}
-
-</table>
+<div class="site-section">
+    <div class="container">
+        <br />
+        <br />
+        <div class="d-flex justify-content-center">
+            <h2 class="text-uppercase font-weight-bold"> Danh sách lớp chủ nhiệm </h2>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Mã lớp chủ nhiệm</th>
+                    <th>Niên khoá</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.malopcn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nienkhoa)
+                        </td>
+                        <td>
+                            <a href="svlopcn/@item.idlopcn">Danh sách sinh viên</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

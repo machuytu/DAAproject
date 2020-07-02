@@ -1,0 +1,53 @@
+﻿@model ProjectDAA1.Models.DBContext
+@{
+    ViewBag.Title = "GetBangDiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="site-section">
+    <div class="container">
+        <br />
+        <br />
+        <div class="d-flex justify-content-center">
+            <h2 class="text-uppercase font-weight-bold"> Bảng điểm </h2>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>STT</th>
+                    <th>MSSV</th>
+                    <th>Họ tên</th>
+                    <th>Điểm QT</th>
+                    <th>Điểm TH</th>
+                    <th>Điểm GK</th>
+                    <th>Điểm CK</th>
+                    <th>Điểm TB</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var count = 0;
+                    foreach (var item in Model.dsbd)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.masv</td>
+                            <td>@item.hoten</td>
+                            <td>@item.diemqt</td>
+                            <td>@item.diemth</td>
+                            <td>@item.diemgk</td>
+                            <td>@item.diemck</td>
+                            <td>@item.diemtb</td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -5,44 +5,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Danh sách lớp</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.malop)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mon.mamon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mon.tenmon)
-        </th>
-        <th>
-            <p>Thứ/ca</p>
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    string str = "";
-    for (int i = item.tietbd; i <= item.tietkt; i++)
-    {
-        str += i.ToString(); 
-    }
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.malop)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mon.tenmon)
-        </td>
-        <td>
-            <div>Thứ @item.thu tiết @str</div>
-        </td>
-        <td>
-            <a href="svlop/@item.idlop">Danh sách sinh viên</a>
-        </td>
-    </tr>
-}
-
-</table>
+<div class="site-section">
+    <div class="container">
+        <br />
+        <br />
+        <div class="d-flex justify-content-center">
+            <h2 class="text-uppercase font-weight-bold"> Danh sách lớp </h2>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Mã lớp</th>
+                    <th>Mã môn</th>
+                    <th>Tên môn</th>
+                    <th>Thứ/ca</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.malop)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.mon.mamon)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.mon.tenmon)
+                        </td>
+                        <td>
+                            <div>Thứ @item.thu tiết @item.strca</div>
+                        </td>
+                        <td>
+                            <a href="bangdiem/lop/@item.idlop">Bảng điểm</a>
+                        </td>
+                        <td>
+                            <a href="svlop/@item.idlop">Danh sách sinh viên</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

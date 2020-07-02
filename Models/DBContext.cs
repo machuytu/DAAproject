@@ -8,6 +8,7 @@ namespace ProjectDAA1.Models
 {
     public class DBContext
     {
+        public List<KQHT> dskqht { set; get; }
         public List<BangDiem> dsbd { set; get; }
         public List<dangkyhocphan> dsdkhp { set; get; }
         public List<HocPhan> dslopdahoc { set; get; }
