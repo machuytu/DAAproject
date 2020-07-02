@@ -51,12 +51,20 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var dangkytrung = db.dangkyhocphans.Where(x => x.namhoc == dangkyhocphan.namhoc && x.hocky == dangkyhocphan.hocky).Count();
+                var checknamtrong = db.dangkyhocphans.Where(x => x.namhoc == dangkyhocphan.namhoc && x.thoigiankt <= dangkyhocphan.thoigiankt).Count();
                 if (dangkyhocphan.thoigianbd > dangkyhocphan.thoigiankt)
                 {
                     ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày kết thúc");
                     return View(dangkyhocphan);
                 }
-
+                else if (dangkytrung != 0)
+                {
+                    ViewBag.err = "Trùng lịch học phần";
+                } else if (checknamtrong != 0)
+                {
+                    ViewBag.err = "Lịch đã có ngày kết thúc vượt qua lịch hiện tại";
+                }
                 else
                 {
                     db.dangkyhocphans.Add(dangkyhocphan);

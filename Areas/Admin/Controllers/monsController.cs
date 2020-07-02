@@ -53,9 +53,20 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.mons.Add(mon);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (mon.hsck + mon.hsgk + mon.hsqt + mon.hsth != 1)
+                {
+                    ViewBag.err = "Tổng hệ số điểm phải bằng 1";
+                }
+                else if (mon.hsck < mon.hsgk || mon.hsck < mon.hsqt || mon.hsck < mon.hsth)
+                {
+                    ViewBag.err = "Hệ số cuối kỳ không thể bé hơn các hệ số khác";
+                }
+                else
+                {
+                    db.mons.Add(mon);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenvama", mon.idmontruoc);
@@ -87,9 +98,20 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mon).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (mon.hsck + mon.hsgk + mon.hsqt + mon.hsth != 1)
+                {
+                    ViewBag.err = "Tổng hệ số điểm phải bằng 1";
+                }
+                else if (mon.hsck < mon.hsgk || mon.hsck < mon.hsqt || mon.hsck < mon.hsth)
+                {
+                    ViewBag.err = "Hệ số cuối kỳ không thể bé hơn các hệ số khác";
+                }
+                else
+                {
+                    db.Entry(mon).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.idmontruoc = new SelectList(db.mons, "idmon", "tenvama", mon.idmontruoc);
             return View(mon);

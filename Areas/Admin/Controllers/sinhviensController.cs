@@ -85,6 +85,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             sinhvien sinhvien = await db.sinhviens.FindAsync(id);
+           
             if (sinhvien == null)
             {
                 return HttpNotFound();
@@ -101,18 +102,28 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(sinhvien sinhvien,HttpPostedFileBase file)
         {
+            
             if (ModelState.IsValid)
             {
-                if(file!=null)
+               
+                    if (file != null)
+                    {
+                        string _FileName = Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                        sinhvien.hinhanh = "/Assets/images/" + _FileName;
+                        file.SaveAs(_path);
+                    }
+                  try
                 {
-                    string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
-                    sinhvien.hinhanh = "/Assets/images/" + _FileName;
-                    file.SaveAs(_path);
+                    db.Entry(sinhvien).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
                 }
-                db.Entry(sinhvien).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                    catch (Exception)
+                {
+                    ViewBag.err = "niên khóa không phù hợp";
+                }
+                            
             }
             ViewBag.idlopcn = new SelectList(db.lopcns, "idlopcn", "malopcn", sinhvien.idlopcn);
             return View(sinhvien);

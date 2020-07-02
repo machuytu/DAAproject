@@ -54,23 +54,23 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid && file.ContentLength > 0)
             {
-                var gv = new giangvien();
-                //sv.bachoc = sinhvien.bachoc;
-                //sv.diachi = sinhvien.diachi;
-                //sv.gioitinh = sinhvien.gioitinh;
-                //sv.hoten = sinhvien.hoten;
-                //sv.ngaysinh = sinhvien.ngaysinh;
-                //sv.idlopcn = sinhvien.idlopcn;
-                //sv.sdt = sinhvien.sdt;
-                //sv.quequan = sinhvien.quequan;
-                string _FileName = Path.GetFileName(file.FileName);
-                string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
-                giangvien.hinhanh = "/Assets/images/" + _FileName;
-                gv = giangvien;
-                db.giangviens.Add(gv);
-                db.giangviens.Add(giangvien);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (giangvien.ngayvaolam > giangvien.ngaysinh)
+                {
+                    ModelState.AddModelError("ngayvaolam", "Ngày sinh phải nhỏ hơn ngày vào làm");
+                    return View(giangvien);
+                }
+                else
+                {
+                    var gv = new giangvien();
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                    giangvien.hinhanh = "/Assets/images/" + _FileName;
+                    gv = giangvien;
+                    db.giangviens.Add(gv);
+                    db.giangviens.Add(giangvien);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.Message = "File Uploaded Fail!!";
             ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
@@ -102,16 +102,24 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (file != null)
+                if (giangvien.ngayvaolam > giangvien.ngaysinh)
                 {
-                    string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
-                    giangvien.hinhanh = "/Assets/images/" + _FileName;
-                    file.SaveAs(_path);
+                    ModelState.AddModelError("ngayvaolam", "Ngày sinh phải nhỏ hơn ngày vào làm");
+                    return View(giangvien);
                 }
-                db.Entry(giangvien).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                else
+                {
+                    if (file != null)
+                    {
+                        string _FileName = Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                        giangvien.hinhanh = "/Assets/images/" + _FileName;
+                        file.SaveAs(_path);
+                    }
+                    db.Entry(giangvien).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
             return View(giangvien);
