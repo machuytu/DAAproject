@@ -40,8 +40,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/taikhoans/Create
         public ActionResult Create()
         {
-            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten");
-            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten");
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "tenvama");
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "tenvama");
             return View();
         }
 
@@ -59,8 +59,8 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", taikhoan.idgv);
-            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", taikhoan.idsv);
+            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "tenvama", taikhoan.idgv);
+            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "tenvama", taikhoan.idsv);
             return View(taikhoan);
         }
 

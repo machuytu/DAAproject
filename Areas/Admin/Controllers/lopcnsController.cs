@@ -141,6 +141,13 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             }
         }
 
+        public JsonResult GetGVList (int idkhoa)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<giangvien> rs = db.giangviens.Where(x => x.idkhoa == idkhoa).ToList();
+            return Json(rs,JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

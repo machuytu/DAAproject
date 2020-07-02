@@ -7,93 +7,73 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>mon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tenmon)
-        </dt>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/mons">Môn</a></strong>
+                    <small>> Detail</small>
+                </div>
+                <div class="card-body card-block">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="mamon">Mã môn :</label>
+                                    @Html.DisplayFor(model => model.mamon, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenmon">Tên môn :</label>
+                                    @Html.DisplayFor(model => model.tenmon, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tenvama">Tên và mã môn học trước :</label>
+                                    @Html.DisplayFor(model => model.mon2.tenvama, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="hsqt">Hệ số quá trình :</label>
+                                    @Html.DisplayFor(model => model.hsqt, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="hsth">Hệ số thực hành :</label>
+                                    @Html.DisplayFor(model => model.hsth, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="hsgk">Hệ số giữa kỳ :</label>
+                                    @Html.DisplayFor(model => model.hsgk, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="hsck">Hệ số cuối kỳ :</label>
+                                    @Html.DisplayFor(model => model.hsck, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="sotc">Số tính chỉ :</label>
+                                    @Html.DisplayFor(model => model.sotc, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tclt">Tínhc chỉ lý thuyết :</label>
+                                    @Html.DisplayFor(model => model.tclt, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class=" form-control-label" for="tcth">Tính chỉ thực hành :</label>
+                                    @Html.DisplayFor(model => model.tcth, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <a class="btn btn-success" href="/Admin/lops/Edit/@Model.idmon">Edit</a>
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.tenmon)
-        </dd>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.mamon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.mamon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hsqt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hsqt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hsth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hsth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hsgk)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hsgk)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hsck)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hsck)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sotc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sotc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tclt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tclt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tcth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tcth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.mon2.tenmon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.mon2.tenmon)
-        </dd>
-
-    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idmon }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
