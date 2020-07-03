@@ -8,6 +8,41 @@
     <div class="container">
         <br />
         <br />
+        <br />
+        <form method="post" action="#">
+            <button id="btnNhapDiem" type="reset" class="btn btn-primary mb-2"> Nhập điểm </button>
+            <br />
+            <div id="NhapDiem">
+                <br />
+                <select id="cbbNhapDiem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
+                    <option hidden disabled selected value="">Điểm cần nhập</option>
+                    @{
+                        if (Model.mon.hsqt != 0)
+                        {
+                            <option value="diemqt"> Điểm QT </option>
+                        }
+                        if (Model.mon.hsth != 0)
+                        {
+                            <option value="diemth"> Điểm TH </option>
+                        }
+                        if (Model.mon.hsgk != 0)
+                        {
+                            <option value="diemgk"> Điểm GK </option>
+                        }
+                        if (Model.mon.hsck != 0)
+                        {
+                            <option value="diemck"> Điểm CK </option>
+                        }
+                    }
+                </select>
+                <br />
+                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn file')"/>
+                <br />
+                <button type="submit" class="btn btn-secondary mb-2">Xác nhận</button>
+                <br />
+            </div>
+        </form>
+
         <div class="d-flex justify-content-center">
             <h2 class="text-uppercase font-weight-bold"> Bảng điểm </h2>
         </div>
@@ -41,7 +76,6 @@
                             <td>@item.diemck</td>
                             <td>@item.diemtb</td>
                             <td>
-
                             </td>
                         </tr>
                     }

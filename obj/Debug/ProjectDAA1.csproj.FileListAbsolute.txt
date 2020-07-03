@@ -398,3 +398,4 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDA
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.dll
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.pdb
 G:\ASP.net\daa\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache
+D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache

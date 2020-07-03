@@ -79,4 +79,11 @@
         $("#loidkhp").append("</br>");
     }
 
+    var divNhapDiem = $("#NhapDiem");
+    divNhapDiem.hide();
+    $("#btnNhapDiem").click(function () {
+        //alert();
+        divNhapDiem.toggle();
+    });
+
 });

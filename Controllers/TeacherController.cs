@@ -112,9 +112,8 @@ namespace ProjectDAA1.Controllers
         [HttpGet]
         public ActionResult GetBangDiem(int id)
         {
-
-            var result = db.hocs
-                .Where(x => x.idlop == id)
+            var query = db.lops.Where(x => x.idlop == id).Select(x => x.mon).FirstOrDefault();
+            var result = db.hocs.Where(x => x.idlop == id)
                 .Select(x => new BangDiem
                 {
                     idsv = x.idsv,
@@ -128,8 +127,9 @@ namespace ProjectDAA1.Controllers
                 });
             return View( new DBContext()
             {
+                mon = query,
                 dsbd = result.ToList()
-            });
+            });;
         }
     }
 }
