@@ -15,37 +15,41 @@
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th>Mã lớp</th>
-                    <th>Mã môn</th>
-                    <th>Tên môn</th>
-                    <th>Thứ/ca</th>
-                    <th></th>
-                    <th></th>
+                    <th class="nhutcenter">Mã lớp</th>
+                    <th class="nhutcenter">Mã môn</th>
+                    <th class="nhutcenter">Tên môn</th>
+                    <th class="nhutcenter">Thứ/ca</th>
+                    <th class="nhutcenter">Xem bảng điểm</th>
+                    <th class="nhutcenter">Danh sách lớp</th>
+                    <th class="nhutcenter">Xuất danh sách</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.malop)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.mon.mamon)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.mon.tenmon)
-                        </td>
-                        <td>
-                            <div>Thứ @item.thu tiết @item.strca</div>
-                        </td>
-                        <td>
-                            <a href="bangdiem/lop/@item.idlop">Bảng điểm</a>
-                        </td>
-                        <td>
-                            <a href="svlop/@item.idlop">Danh sách sinh viên</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.malop)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mon.mamon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mon.tenmon)
+                    </td>
+                    <td>
+                        <div>Thứ @item.thu tiết @item.strca</div>
+                    </td>
+                    <td>
+                        <a href="bangdiem/lop/@item.idlop">Bảng điểm</a>
+                    </td>
+                    <td>
+                        <a href="svlop/@item.idlop">Danh sách sinh viên</a>
+                    </td>
+                    <td>
+                        <a href="Excel/Export/@item.idlop">Xuất danh sách</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
