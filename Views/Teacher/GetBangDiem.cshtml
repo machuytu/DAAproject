@@ -19,9 +19,7 @@
                 <br />
                 <input hidden name="id" value="@ViewBag.id" />
                 @*<select name="diem" class="form-control col-sm-2">*@
-                <select name="diem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
-                <select name="diem" id="cbbNhapDiem" class="form-control col-sm-2 nhutmarginleft" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
-
+                <select name="diem" class="form-control col-sm-2 nhutmarginleft" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
                     <option hidden disabled selected value="">Điểm cần nhập</option>
                     @{
                         if (ViewBag.mon.hsqt != 0)

@@ -26,7 +26,6 @@ namespace ProjectDAA1.Controllers
                 var dsdkhp = db.lops
                     .Where(x => x.idgv == id)
                     .Select(x => x.dangkyhocphan)
-                    //.OrderBy(x=>x.iddkhp)
                     .Distinct()
                     .OrderByDescending(x => x.iddkhp);
                 var result = db.lops.Where(x => x.idgv == id);
@@ -197,11 +196,11 @@ namespace ProjectDAA1.Controllers
             var mon = await db.lops.Where(x => x.idlop == id).Select(x => x.mon).FirstOrDefaultAsync();
             var result = db.hocs.Where(x => x.idlop == id);
             ViewBag.id = id;
+            ViewBag.mon = mon;
             if (TempData["Temp"] != null)
             {
                 ViewBag.thanhphan = TempData["Temp"].ToString();
             };
-            ViewBag.mon = mon;
             return View(await result.ToListAsync());
         }
     }
