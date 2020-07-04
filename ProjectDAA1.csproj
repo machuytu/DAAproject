@@ -1308,6 +1308,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\Home\Details.cshtml" />
     <None Include="Views\Login\index.chtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <EntityDeploy Include="ModelProject.edmx">
