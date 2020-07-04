@@ -127,6 +127,7 @@ namespace ProjectDAA1.Controllers
                 });
             return View( new DBContext()
             {
+                id = id,
                 mon = query,
                 dsbd = result.ToList()
             });;
