@@ -15,7 +15,7 @@ namespace ProjectDAA1.Controllers
     {
         // GET: Teacher
         MyDatabaseEntities9 db = new MyDatabaseEntities9();
-
+       
         [HttpGet]
         public async Task<ActionResult> dsLop()
         {
@@ -206,6 +206,10 @@ namespace ProjectDAA1.Controllers
                     diemtb = x.diemtb,
                 });
             ViewBag.id = id;
+            if (TempData["Temp"] != null)
+            {
+                ViewBag.thanhphan = TempData["Temp"].ToString();
+            };
             return View( new DBContext()
             {
                 id = id,

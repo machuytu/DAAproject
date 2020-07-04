@@ -117,7 +117,7 @@ namespace ProjectDAA1.Controllers
                 count = query.Count();
                 if(count < 1)
                 {
-                    return new EmptyResult();
+                    return Content("Không có sinh viên trong danh sách") ;
                 }
                 int i = 1;
                 int j = 10;
@@ -161,7 +161,9 @@ namespace ProjectDAA1.Controllers
             stream.Position = 0;
             
             var tenfile = $"{malop_temp}_{DateTime.Now}.xlsx";
-            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",tenfile);
+
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", tenfile);
+
         }
         // GET: Excel
         public ActionResult Index()
