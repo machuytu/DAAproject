@@ -1,0 +1,78 @@
+﻿@model ProjectDAA1.thongbao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<h2>Details</h2>
+
+<div>
+    <h4>thongbao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tieude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noidung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noidung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.file)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.file)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thoigiandang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thoigiandang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thoigiancapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thoigiancapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taikhoan.matk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taikhoan.matk)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idtb }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

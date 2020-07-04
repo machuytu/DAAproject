@@ -1344,6 +1344,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\thongbaosController.cs" />
     <Compile Include="dangkyhocphan.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
     </Compile>
@@ -1446,6 +1447,11 @@
     <Content Include="Views\Student\suathongtin.cshtml" />
     <Content Include="Views\Teacher\doimatkhau.cshtml" />
     <Content Include="Views\Student\doimatkhau.cshtml" />
+    <Content Include="Views\thongbaos\Create.cshtml" />
+    <Content Include="Views\thongbaos\Delete.cshtml" />
+    <Content Include="Views\thongbaos\Details.cshtml" />
+    <Content Include="Views\thongbaos\Edit.cshtml" />
+    <Content Include="Views\thongbaos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
