@@ -1342,6 +1342,7 @@
     <Compile Include="Controllers\DKHPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="dangkyhocphan.cs">
       <DependentUpon>ModelProject.tt</DependentUpon>
@@ -1439,6 +1440,12 @@
     <Content Include="Views\DKHP\GetTKB.cshtml" />
     <Content Include="Views\Teacher\GetTKB.cshtml" />
     <Content Include="Views\DKHP\GetKQHT.cshtml" />
+    <Content Include="Views\Teacher\thongtincanhan.cshtml" />
+    <Content Include="Views\Teacher\suathongtin.cshtml" />
+    <Content Include="Views\Student\thongtincanhan.cshtml" />
+    <Content Include="Views\Student\suathongtin.cshtml" />
+    <Content Include="Views\Teacher\doimatkhau.cshtml" />
+    <Content Include="Views\Student\doimatkhau.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

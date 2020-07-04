@@ -1,0 +1,53 @@
+﻿@model ProjectDAA1.taikhoan
+
+@{
+    ViewBag.Title = "doimatkhau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<h2>doimatkhau</h2>
+
+
+<form method="post" action="/Student/doimatkhau" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.idtk)
+    @Html.HiddenFor(model => model.idgv)
+    @Html.HiddenFor(model => model.idsv)
+    @Html.HiddenFor(model => model.nhom)
+    @Html.HiddenFor(model => model.matk)
+
+    <div class="form-horizontal">
+        <h4>Đổi mật khẩu</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.idtk)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.matk, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.matk, new { htmlAttributes = new { @class = "form-control", @disabled = "@disabled" } })
+                @Html.ValidationMessageFor(model => model.matk, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>
+
