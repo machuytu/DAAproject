@@ -5,42 +5,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="site-section">
     <div class="container">
         <br />
         <br />
+        
         <div class="d-flex justify-content-center">
             <h2 class="text-uppercase font-weight-bold"> Danh sách sinh viên </h2>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered nhutcenter" id="table">
             <thead class="thead-light">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.hoten)
+                        Họ và tên SV
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.masv)
+                        MSSV
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.gioitinh)
+                        Giới tính
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ngaysinh)
+                        Ngày sinh
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.diachi)
+                        Địa chỉ
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.quequan)
+                        Quê quán
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.sdt)
+                        Số điện thoại
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.bachoc)
+                        Bậc học
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.lopcn.malopcn)
+                        Mã lớp
                     </th>
                     <th></th>
                 </tr>
@@ -85,3 +87,4 @@
         </table>
     </div>
 </div>
+

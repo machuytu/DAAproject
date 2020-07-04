@@ -11,6 +11,7 @@ namespace ProjectDAA1.Models
     {
         public int id { get; set; }
         public mon mon { set; get; }
+        public List<sinhvien> dssv { set; get; }
         public List<KQHT> dskqht { set; get; }
         public List<BangDiem> dsbd { set; get; }
         public List<dangkyhocphan> dsdkhp { set; get; }

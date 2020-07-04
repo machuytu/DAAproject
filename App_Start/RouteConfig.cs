@@ -96,7 +96,14 @@ namespace ProjectDAA1
                  defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                  namespaces: new[] { "ProjectDAA1.Controllers" }
              );
-
+            
+            routes.MapRoute(
+              name: "Xuất file",
+              url: "Excel/Export/{id}",
+              defaults: new { controller = "Excel", action = "Export", id = UrlParameter.Optional },
+              namespaces: new[] { "ProjectDAA1.Controllers" }
+            );
+            
         }
     }
 }
