@@ -9,13 +9,16 @@
         <br />
         <br />
         <br />
-        <form method="post" action="#">
+        <form method="post" action="/NhapDiem/UploadFile" enctype="multipart/form-data">
             <button id="btnNhapDiem" type="reset" class="btn btn-primary mb-2"> Nhập điểm </button>
             <br />
+            @Html.AntiForgeryToken()
             <div id="NhapDiem">
                 <br />
-                <input hidden name="id" value="@Model.id"/>
-                <select id="cbbNhapDiem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
+                <input hidden name="id" value="@Model.id" />
+                <select name="diem" id="cbbNhapDiem" class="form-control col-sm-2">
+                    @*<select name="diem" id="cbbNhapDiem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">*@
+
                     <option hidden disabled selected value="">Điểm cần nhập</option>
                     @{
                         if (Model.mon.hsqt != 0)
@@ -37,7 +40,7 @@
                     }
                 </select>
                 <br />
-                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn file')"/>
+                <input name="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn file')" />
                 <br />
                 <button type="submit" class="btn btn-secondary mb-2">Xác nhận</button>
                 <br />
@@ -58,7 +61,7 @@
                     <th>Điểm GK</th>
                     <th>Điểm CK</th>
                     <th>Điểm TB</th>
-                    <th></th>
+
                 </tr>
             </thead>
             <tbody>
@@ -76,13 +79,28 @@
                             <td>@item.diemgk</td>
                             <td>@item.diemck</td>
                             <td>@item.diemtb</td>
-                            <td>
-                            </td>
                         </tr>
                     }
                 }
             </tbody>
         </table>
+        @{
+
+
+            var ViewDataTest = (ViewData["Trangthai"] as ProjectDAA1.Models.DBContext);
+
+           
+            <div>
+
+
+
+                <h2>@ViewDataTest</h2>
+
+               
+
+            </div>
+
+        }
     </div>
-</div>
+    </div>
 
