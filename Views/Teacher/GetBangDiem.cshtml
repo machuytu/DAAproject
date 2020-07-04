@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <div class="site-section">
     <div class="container">
         <br />
@@ -13,11 +15,10 @@
             <button id="btnNhapDiem" type="reset" class="btn btn-primary mb-2"> Nhập điểm </button>
             <br />
             @Html.AntiForgeryToken()
-            <div id="NhapDiem">
+            <div id="NhapDiem" class="row">
                 <br />
                 <input hidden name="id" value="@Model.id" />
-                <select name="diem" id="cbbNhapDiem" class="form-control col-sm-2">
-                    @*<select name="diem" id="cbbNhapDiem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">*@
+                    <select name="diem" id="cbbNhapDiem" class="form-control col-sm-2 nhutmarginleft" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
 
                     <option hidden disabled selected value="">Điểm cần nhập</option>
                     @{
@@ -38,17 +39,17 @@
                             <option value="diemck"> Điểm CK (@Model.mon.trongsock%)</option>
                         }
                     }
-                </select>
+                    </select>
+                <input name="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-5 nhutmarginleft " required oninvalid="this.setCustomValidity('Chọn file')" />
                 <br />
-                <input name="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn file')" />
-                <br />
-                <button type="submit" class="btn btn-secondary mb-2">Xác nhận</button>
+                <button type="submit" class="btn btn-secondary mb-2 nhutmarginleft ">Xác nhận</button>
                 <br />
             </div>
         </form>
 
         <div class="d-flex justify-content-center">
-            <h2 class="text-uppercase font-weight-bold"> Bảng điểm </h2>
+        
+            <h2 class="text-uppercase font-weight-bold">BẢNG ĐIỂM</h2>
         </div>
         <table class="table table-bordered">
             <thead class="thead-light">
@@ -61,7 +62,6 @@
                     <th>Điểm GK</th>
                     <th>Điểm CK</th>
                     <th>Điểm TB</th>
-
                 </tr>
             </thead>
             <tbody>
