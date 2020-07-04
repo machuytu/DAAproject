@@ -48,9 +48,10 @@
     });
 
     function FuncTkbAjax(ajaxurl) {
+        var idsv = $("#id").val();
         $.ajax({
             url: ajaxurl,
-            data: { listid: JSON.stringify(listid) },
+            data: { listid: JSON.stringify(listid), idsv: idsv },
             dataType: 'json',
             type: 'POST',
             success: function (res) {

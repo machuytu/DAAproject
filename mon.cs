@@ -32,7 +32,7 @@ namespace ProjectDAA1
         public Nullable<int> sotc { get; set; }
         public Nullable<int> tclt { get; set; }
         public Nullable<int> tcth { get; set; }
-                public string trongsoqt
+        public string trongsoqt
         {
             get
             {
@@ -59,6 +59,10 @@ namespace ProjectDAA1
             {
                 return (hsck * 100).ToString();
             }
+        }
+        public string strtinchi
+        {
+            get{ return "lý thuyết: " + tclt.ToString() + " / thực hành: " + tcth.ToString(); }
         }
         public string tenvama { get { return tenmon + "-" + mamon; } }
 

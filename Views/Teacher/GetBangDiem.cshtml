@@ -1,4 +1,4 @@
-﻿@model ProjectDAA1.Models.DBContext
+﻿@model IEnumerable<ProjectDAA1.hoc>
 @{
     ViewBag.Title = "GetBangDiem";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,65 +15,62 @@
             @Html.AntiForgeryToken()
             <div id="NhapDiem">
                 <br />
-                <input hidden name="id" value="@Model.id" />
-                <select name="diem" id="cbbNhapDiem" class="form-control col-sm-2">
-                    @*<select name="diem" id="cbbNhapDiem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">*@
+                <input hidden name="id" value="@ViewBag.id" />
+                @*<select name="diem" class="form-control col-sm-2">*@
+                <select name="diem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
 
                     <option hidden disabled selected value="">Điểm cần nhập</option>
                     @{
-                        if (Model.mon.hsqt != 0)
+                        if (ViewBag.mon.hsqt != 0)
                         {
-                            <option value="diemqt"> Điểm QT (@Model.mon.trongsoqt%)</option>
+                            <option value="diemqt"> Điểm QT (@ViewBag.mon.trongsoqt%)</option>
                         }
-                        if (Model.mon.hsth != 0)
+                        if (ViewBag.mon.hsth != 0)
                         {
-                            <option value="diemth"> Điểm TH (@Model.mon.trongsoth%)</option>
+                            <option value="diemth"> Điểm TH (@ViewBag.mon.trongsoth%)</option>
                         }
-                        if (Model.mon.hsgk != 0)
+                        if (ViewBag.mon.hsgk != 0)
                         {
-                            <option value="diemgk"> Điểm GK (@Model.mon.trongsogk%)</option>
+                            <option value="diemgk"> Điểm GK (@ViewBag.mon.trongsogk%)</option>
                         }
-                        if (Model.mon.hsck != 0)
+                        if (ViewBag.mon.hsck != 0)
                         {
-                            <option value="diemck"> Điểm CK (@Model.mon.trongsock%)</option>
+                            <option value="diemck"> Điểm CK (@ViewBag.mon.trongsock%)</option>
                         }
                     }
                 </select>
                 <br />
-                <input name="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn file')" />
+                <input name="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-4" required oninvalid="this.setCustomValidity('Chọn file')" />
                 <br />
                 <button type="submit" class="btn btn-secondary mb-2">Xác nhận</button>
                 <br />
             </div>
         </form>
 
-        <div class="d-flex justify-content-center">
-            <h2 class="text-uppercase font-weight-bold"> Bảng điểm </h2>
-        </div>
+        <h2 class="text-uppercase text-center font-weight-bold"> Bảng điểm </h2>
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th>STT</th>
-                    <th>MSSV</th>
+                    <th></th>
+                    <th>Mã SV</th>
                     <th>Họ tên</th>
                     <th>Điểm QT</th>
                     <th>Điểm TH</th>
                     <th>Điểm GK</th>
                     <th>Điểm CK</th>
                     <th>Điểm TB</th>
-
                 </tr>
             </thead>
             <tbody>
                 @{
                     var count = 0;
-                    foreach (var item in Model.dsbd)
+                    foreach (var item in Model)
                     {
                         count++;
                         <tr>
                             <td>@count</td>
-                            <td>@item.masv</td>
-                            <td>@item.hoten</td>
+                            <td>@item.sinhvien.masv</td>
+                            <td>@item.sinhvien.hoten</td>
                             <td>@item.diemqt</td>
                             <td>@item.diemth</td>
                             <td>@item.diemgk</td>
@@ -89,18 +86,18 @@
 
             var ViewDataTest = (ViewData["Trangthai"] as ProjectDAA1.Models.DBContext);
 
-           
+
             <div>
 
 
 
                 <h2>@ViewDataTest</h2>
 
-               
+
 
             </div>
 
         }
     </div>
-    </div>
+</div>
 

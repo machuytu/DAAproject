@@ -22,10 +22,18 @@ namespace ProjectDAA1.Controllers
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session != null)
             {
-
                 var id = session.idgv;
+                var dsdkhp = db.lops
+                    .Where(x => x.idgv == id)
+                    .Select(x => x.dangkyhocphan)
+                    //.OrderBy(x=>x.iddkhp)
+                    .Distinct()
+                    .OrderByDescending(x => x.iddkhp);
                 var result = db.lops.Where(x => x.idgv == id);
-                return View(await result.ToListAsync());
+                return View(new DBContext() {
+                    dsdkhp = await dsdkhp.ToListAsync(),
+                    dslop = await result.ToListAsync(),
+                });
 
             }
             else
@@ -55,12 +63,8 @@ namespace ProjectDAA1.Controllers
         [HttpGet]
         public async Task<ActionResult> dsSVLop(int id)
         {
-
-            //using (var db = new MyDatabaseEntities9())
-            //{
             var result = db.hocs.Where(x => x.idlop == id).Select(x => x.sinhvien);
             return View(await result.ToListAsync());
-            //}
         }
 
         [HttpGet]
@@ -129,7 +133,7 @@ namespace ProjectDAA1.Controllers
                 return RedirectToRoute("login");
             }
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> suathongtin(HttpPostedFileBase file, giangvien giangvien)
@@ -157,11 +161,9 @@ namespace ProjectDAA1.Controllers
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session != null)
             {
-                using (var db = new MyDatabaseEntities9())
-                {
-                    var dkhp = db.dangkyhocphans.OrderByDescending(x => x.iddkhp);
-                    return View(await dkhp.ToListAsync());
-                }
+                ViewBag.gv = db.giangviens.Where(x => x.idgv == session.idgv).FirstOrDefault();
+                var dkhp = db.dangkyhocphans.OrderByDescending(x => x.iddkhp);
+                return View(await dkhp.ToListAsync());
             }
             else
             {
@@ -190,28 +192,13 @@ namespace ProjectDAA1.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetBangDiem(int id)
+        public async Task<ActionResult> GetBangDiem(int id)
         {
-            var query = db.lops.Where(x => x.idlop == id).Select(x => x.mon).FirstOrDefault();
-            var result = db.hocs.Where(x => x.idlop == id)
-                .Select(x => new BangDiem
-                {
-                    idsv = x.idsv,
-                    masv = x.sinhvien.masv,
-                    hoten = x.sinhvien.hoten,
-                    diemqt = x.diemqt,
-                    diemth = x.diemth,
-                    diemgk = x.diemgk,
-                    diemck = x.diemck,
-                    diemtb = x.diemtb,
-                });
+            var mon = await db.lops.Where(x => x.idlop == id).Select(x => x.mon).FirstOrDefaultAsync();
+            var result = db.hocs.Where(x => x.idlop == id);
             ViewBag.id = id;
-            return View( new DBContext()
-            {
-                id = id,
-                mon = query,
-                dsbd = result.ToList()
-            });;
+            ViewBag.mon = mon;
+            return View(await result.ToListAsync());
         }
     }
 }

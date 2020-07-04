@@ -9,15 +9,13 @@ namespace ProjectDAA1.Models
 {
     public class DBContext
     {
-        public int id { get; set; }
-        public mon mon { set; get; }
-        public List<sinhvien> dssv { set; get; }
-        public List<KQHT> dskqht { set; get; }
-        public List<BangDiem> dsbd { set; get; }
+        //public List<KQHT> dskqht { set; get; }
+        public List<hoc> dskqht { set; get; }
         public List<dangkyhocphan> dsdkhp { set; get; }
-        public List<HocPhan> dslopdadk { set; get; }
-        public List<HocPhan> dslopchuadk { set; get; }
-        public List<HocPhan> dslopdadkfull { set; get; }
-        public List<HocPhan> dslopchuadkfull { set; get; }
+        public List<lop> dslop { set; get; }
+        public List<lop> dslopdadk { set; get; }
+        public List<lop> dslopchuadk { set; get; }
+        public List<lop> dslopdadkfull { set; get; }
+        public List<lop> dslopchuadkfull { set; get; }
     }
 }
