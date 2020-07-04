@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -70,6 +71,85 @@ namespace ProjectDAA1.Controllers
             return View(await result.ToListAsync());
         }
 
+        public async Task<ActionResult> doimatkhau()
+        {
+            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                var idgv = session.idgv;
+                taikhoan taikhoan = db.taikhoans.Where(x => x.idgv == idgv).SingleOrDefault();
+                return View(taikhoan);
+            }
+            else
+            {
+                return RedirectToRoute("login");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> doimatkhau(taikhoan taikhoan)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(taikhoan).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return Redirect("/giangvien/thongtincanhan");
+            }
+            return View(taikhoan);
+        }
+
+        public async Task<ActionResult> thongtincanhan()
+        {
+            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                var idgv = session.idgv;
+                giangvien giangvien = await db.giangviens.FindAsync(idgv);
+                return View(giangvien);
+            }
+            else
+            {
+                return RedirectToRoute("login");
+            }
+        }
+        public async Task<ActionResult> suathongtin(int id)
+        {
+            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            if (session != null)
+            {
+                var idgv = session.idgv;
+                var result = db.giangviens.Where(x => x.idgv == idgv).SingleOrDefault();
+                giangvien giangvien = await db.giangviens.FindAsync(idgv);
+                ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
+                return View(giangvien);
+            }
+            else
+            {
+                return RedirectToRoute("login");
+            }
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> suathongtin(HttpPostedFileBase file, giangvien giangvien)
+        {
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("/Assets/images"), _FileName);
+                    giangvien.hinhanh = "/Assets/images/" + _FileName;
+                    file.SaveAs(_path);
+                }
+                db.Entry(giangvien).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return Redirect("/giangvien/thongtincanhan");
+            }
+            ViewBag.idkhoa = new SelectList(db.khoas, "idkhoa", "tenkhoa", giangvien.idkhoa);
+            return View(giangvien);
+        }
 
         [HttpGet]
         public async Task<ActionResult> GetTKB()
