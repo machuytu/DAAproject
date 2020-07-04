@@ -15,7 +15,9 @@ namespace ProjectDAA1.Models
         public List<KQHT> dskqht { set; get; }
         public List<BangDiem> dsbd { set; get; }
         public List<dangkyhocphan> dsdkhp { set; get; }
-        public List<HocPhan> dslopdahoc { set; get; }
-        public List<HocPhan> dslopchuahoc { set; get; }
+        public List<HocPhan> dslopdadk { set; get; }
+        public List<HocPhan> dslopchuadk { set; get; }
+        public List<HocPhan> dslopdadkfull { set; get; }
+        public List<HocPhan> dslopchuadkfull { set; get; }
     }
 }

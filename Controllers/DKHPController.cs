@@ -50,7 +50,7 @@ namespace ProjectDAA1.Controllers
                                 thu = x.thu,
                                 tietbd = x.tietbd,
                                 tietkt = x.tietkt,
-                            });
+                            }).ToList();
 
                         var dslopdadk = db.hocs
                             .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
@@ -66,22 +66,36 @@ namespace ProjectDAA1.Controllers
                                 thu = x.lop.thu,
                                 tietbd = x.lop.tietbd,
                                 tietkt = x.lop.tietkt,
-                            });
+                            }).ToList();
 
-                        foreach (var item in dslop)
-                        {
-                            var rs = db.hocs.Where(x => x.idlop == item.idlop).Count();
-                        }
+                        var dslopchuadk = dslop.Except(dslopdadk).ToList();
 
-                        foreach (var item in dslop)
+                        var dslopdadkfull = new List<HocPhan>();
+                        foreach (var item in dslopdadk)
                         {
-                            var rs = db.hocs.Where(x => x.idlop == item.idlop).Count();
+                            if (db.hocs.Where(x => x.idlop == item.idlop).Count() >= 30)
+                            {
+                                dslopdadkfull.Add(item);
+                            }
                         }
+                        dslopdadk = dslopdadk.Except(dslopdadkfull).ToList();
+                        
+                        var dslopchuadkfull = new List<HocPhan>();
+                        foreach (var item in dslopchuadk)
+                        {
+                            if (db.hocs.Where(x => x.idlop == item.idlop).Count() >= 30)
+                            {
+                                dslopchuadkfull.Add(item);
+                            }
+                        }
+                        dslopchuadk = dslopchuadk.Except(dslopchuadkfull).ToList();
 
                         return View(new DBContext()
                         {
-                            dslopchuahoc = dslop.Except(dslopdadk).ToList(),
-                            dslopdahoc = dslopdadk.ToList(),
+                            dslopchuadk = dslopchuadk,
+                            dslopdadk = dslopdadk,
+                            dslopdadkfull = dslopdadkfull,
+                            dslopchuadkfull = dslopchuadkfull,
                         });
                     }
 
@@ -207,7 +221,7 @@ namespace ProjectDAA1.Controllers
 
                         return View(new DBContext()
                         {
-                            dslopdahoc = dslopdadk.ToList(),
+                            dslopdadk = dslopdadk.ToList(),
                         });
                     }
                     else
