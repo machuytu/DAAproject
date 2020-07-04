@@ -68,6 +68,16 @@ namespace ProjectDAA1.Controllers
                                 tietkt = x.lop.tietkt,
                             });
 
+                        foreach (var item in dslop)
+                        {
+                            var rs = db.hocs.Where(x => x.idlop == item.idlop).Count();
+                        }
+
+                        foreach (var item in dslop)
+                        {
+                            var rs = db.hocs.Where(x => x.idlop == item.idlop).Count();
+                        }
+
                         return View(new DBContext()
                         {
                             dslopchuahoc = dslop.Except(dslopdadk).ToList(),

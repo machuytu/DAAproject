@@ -15,25 +15,29 @@
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th>Mã lớp chủ nhiệm</th>
-                    <th>Niên khoá</th>
-                    <th></th>
+                    <th class="nhutcenter">Mã lớp chủ nhiệm</th>
+                    <th class="nhutcenter">Niên khoá</th>
+                    <th class="nhutcenter">Danh sách lớp</th>
+                    <th class="nhutcenter">Xuất danh sách</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.malopcn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.nienkhoa)
-                        </td>
-                        <td>
-                            <a href="svlopcn/@item.idlopcn">Danh sách sinh viên</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.malopcn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nienkhoa)
+                    </td>
+                    <td>
+                        <a href="svlopcn/@item.idlopcn">Danh sách sinh viên</a>
+                    </td>
+                    <td>
+                        @*<a href="Excel/Export/@item.idlopcn">Xuất danh sách</a>*@
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
