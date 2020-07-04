@@ -15,7 +15,7 @@ namespace ProjectDAA1.Controllers
     {
         // GET: Teacher
         MyDatabaseEntities9 db = new MyDatabaseEntities9();
-
+       
         [HttpGet]
         public async Task<ActionResult> dsLop()
         {
@@ -197,6 +197,10 @@ namespace ProjectDAA1.Controllers
             var mon = await db.lops.Where(x => x.idlop == id).Select(x => x.mon).FirstOrDefaultAsync();
             var result = db.hocs.Where(x => x.idlop == id);
             ViewBag.id = id;
+            if (TempData["Temp"] != null)
+            {
+                ViewBag.thanhphan = TempData["Temp"].ToString();
+            };
             ViewBag.mon = mon;
             return View(await result.ToListAsync());
         }

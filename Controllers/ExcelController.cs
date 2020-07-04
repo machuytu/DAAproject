@@ -115,12 +115,17 @@ namespace ProjectDAA1.Controllers
                             };
                 
                 count = query.Count();
+                if(count < 1)
+                {
+                    return Content("Không có sinh viên trong danh sách") ;
+                }
                 int i = 1;
                 int j = 10;
                 count = count + 10 - 1;
                 string chuoi = $"A10:D{count}";
                 var query2 = query.ToList();
-                malop_temp = query2[0].Lop;
+
+               malop_temp = query2[0].Lop;
                if(count >= 10)
                 {
                     sheet.Cells[chuoi].Style.Border.Left.Style = ExcelBorderStyle.Thin;
@@ -156,7 +161,9 @@ namespace ProjectDAA1.Controllers
             stream.Position = 0;
             
             var tenfile = $"{malop_temp}_{DateTime.Now}.xlsx";
-            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",tenfile);
+
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", tenfile);
+
         }
         // GET: Excel
         public ActionResult Index()

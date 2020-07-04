@@ -33,6 +33,7 @@ namespace ProjectDAA1.Controllers
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ViewBag.Message = "Thành công:";
             ViewData["Trangthai"] = ViewBag.Message;
+            TempData["Temp"] = "Những sinh viên nhập điểm thành công:";
             try
             {
                 if (file.ContentLength > 0)
@@ -48,7 +49,16 @@ namespace ProjectDAA1.Controllers
                     for(count = 10;workSheet.Cells[$"A{count},A{count}"].Value!=null; count++)
                     {
                         var masinhvien = (string)(workSheet.Cells[$"B{count},B{count}"].Value);
-                        var diemexcel = (double)(workSheet.Cells[$"D{count},D{count}"].Value);
+                        var diemexcel=0.0;
+                        if (workSheet.Cells[$"D{count},D{count}"].Value==null)
+                        {
+                            diemexcel = 0;
+                        }
+                        else
+                        {
+                             diemexcel = (double)(workSheet.Cells[$"D{count},D{count}"].Value);
+                        }
+                        
                         var query = (from c in db.sinhviens where c.masv == masinhvien select c.idsv).FirstOrDefault();
                         var hoc = (from a in db.hocs
                                    where a.idlop == id && a.idsv == query
@@ -71,6 +81,7 @@ namespace ProjectDAA1.Controllers
                             {
                                 hoc.diemck = diemexcel;
                             }
+                            TempData["Temp"] += masinhvien + " ";
                             db.SaveChanges();
                         }
                     }
@@ -80,8 +91,8 @@ namespace ProjectDAA1.Controllers
             }
             catch
             {
-                ViewBag.Message = "Thất bại!!!";
-                return new EmptyResult();
+                
+                return Content("Có 1 sinh viên có điểm bị sai");
             }
         }
     }
