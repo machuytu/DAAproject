@@ -125,6 +125,7 @@ namespace ProjectDAA1.Controllers
                     diemck = x.diemck,
                     diemtb = x.diemtb,
                 });
+            ViewBag.id = id;
             return View( new DBContext()
             {
                 id = id,

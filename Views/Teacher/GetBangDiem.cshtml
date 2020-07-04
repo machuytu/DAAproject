@@ -8,36 +8,35 @@
     <div class="container">
         <br />
         <br />
-        <br />
         <form method="post" action="#">
             <button id="btnNhapDiem" type="reset" class="btn btn-primary mb-2"> Nhập điểm </button>
             <br />
             <div id="NhapDiem">
                 <br />
-                <input hidden name="id" value="@Model.id"/>
+                <input hidden name="id" value="@ViewBag.id" />
                 <select id="cbbNhapDiem" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
                     <option hidden disabled selected value="">Điểm cần nhập</option>
                     @{
                         if (Model.mon.hsqt != 0)
                         {
-                            <option value="diemqt"> Điểm QT </option>
+                            <option value="diemqt"> Điểm QT (@Model.mon.trongsoqt%)</option>
                         }
                         if (Model.mon.hsth != 0)
                         {
-                            <option value="diemth"> Điểm TH </option>
+                            <option value="diemth"> Điểm TH (@Model.mon.trongsoth%)</option>
                         }
                         if (Model.mon.hsgk != 0)
                         {
-                            <option value="diemgk"> Điểm GK </option>
+                            <option value="diemgk"> Điểm GK (@Model.mon.trongsogk%)</option>
                         }
                         if (Model.mon.hsck != 0)
                         {
-                            <option value="diemck"> Điểm CK </option>
+                            <option value="diemck"> Điểm CK (@Model.mon.trongsock%)</option>
                         }
                     }
                 </select>
                 <br />
-                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-2" required oninvalid="this.setCustomValidity('Chọn file')"/>
+                <input type="file" class="form-control col-sm-4" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required oninvalid="this.setCustomValidity('Chọn file')" />
                 <br />
                 <button type="submit" class="btn btn-secondary mb-2">Xác nhận</button>
                 <br />
@@ -58,7 +57,6 @@
                     <th>Điểm GK</th>
                     <th>Điểm CK</th>
                     <th>Điểm TB</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -76,8 +74,6 @@
                             <td>@item.diemgk</td>
                             <td>@item.diemck</td>
                             <td>@item.diemtb</td>
-                            <td>
-                            </td>
                         </tr>
                     }
                 }
