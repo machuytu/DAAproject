@@ -36,9 +36,11 @@ namespace ProjectDAA1.Controllers
 
         public FileResult Download(string fileName)
         {
-            var name = fileName.Split('/');
-            byte[] fileBytes = System.IO.File.ReadAllBytes(fileName);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name[0]);
+            string file1 = fileName.Replace("/Uploadfile/", "");
+            string file = file1.Replace("~", "");
+            string path = Path.Combine(Server.MapPath("~/Uploadfile/"), file);
+
+            return File(path, System.Net.Mime.MediaTypeNames.Application.Octet, file);
         }
 
         public async Task<ActionResult> Details(int? id)
