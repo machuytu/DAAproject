@@ -23,6 +23,7 @@
                 <div class="card-body card-block">
                     <form method="post" action="/thongbaos/Create" enctype="multipart/form-data">
                         @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.idtk)
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="text-danger">@ViewBag.err</div>
