@@ -22,7 +22,6 @@ namespace ProjectDAA1
         public Nullable<double> diemgk { get; set; }
         public Nullable<double> diemck { get; set; }
         public Nullable<double> diemtb { get; set; }
-    
         public virtual lop lop { get; set; }
         public virtual sinhvien sinhvien { get; set; }
     }

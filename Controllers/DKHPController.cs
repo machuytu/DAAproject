@@ -46,7 +46,7 @@ namespace ProjectDAA1.Controllers
                     var dslopdadkfull = new List<lop>();
                     foreach (var item in dslopdadk)
                     {
-                        if (db.hocs.Where(x => x.idlop == item.idlop).Count() >= 1)
+                        if (item.siso >= item.sisomax)
                         {
                             dslopdadkfull.Add(item);
                         }
@@ -56,7 +56,7 @@ namespace ProjectDAA1.Controllers
                     var dslopchuadkfull = new List<lop>();
                     foreach (var item in dslopchuadk)
                     {
-                        if (db.hocs.Where(x => x.idlop == item.idlop).Count() >= 1)
+                        if (item.siso >= item.sisomax)
                         {
                             dslopchuadkfull.Add(item);
                         }

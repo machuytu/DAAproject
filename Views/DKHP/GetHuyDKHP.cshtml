@@ -19,6 +19,7 @@
                     <th>Mã môn</th>
                     <th>Tên môn</th>
                     <th>Giảng viên</th>
+                    <th>Sĩ số</th>
                     <th>Tín chỉ</th>
                     <th>Thứ / ca</th>
                 </tr>
@@ -26,25 +27,27 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr class="tablerow">
-                        <td class="checkeditem">
-                            <input type="checkbox" class="checked-lop"
-                                   value="@item.idlop"
-                                   data-id="@item.idlop"
-                                   data-malop="@item.malop.ToString()"
-                                   data-mamon="@item.mon.mamon.ToString()"
-                                   data-tenmon="@item.mon.tenmon.ToString()"
-                                   data-tengv="@item.giangvien.hoten.ToString()"
-                                   data-tc="@item.mon.strtinchi.ToString()"
-                                   data-ca="@item.strca.ToString()" />
-                        </td>
-                        <td>@item.malop.ToString()</td>
-                        <td>@item.mon.mamon.ToString()</td>
-                        <td>@item.mon.tenmon.ToString()</td>
-                        <td>@item.giangvien.hoten.ToString()</td>
-                        <td>@item.mon.strtinchi.ToString()</td>
-                        <td>@item.strca.ToString()</td>
-                    </tr>
+                <tr class="tablerow">
+                    <td class="checkeditem">
+                        <input type="checkbox" class="checked-lop"
+                               value="@item.idlop"
+                               data-id="@item.idlop"
+                               data-malop="@item.malop.ToString()"
+                               data-mamon="@item.mon.mamon.ToString()"
+                               data-tenmon="@item.mon.tenmon.ToString()"
+                               data-tengv="@item.giangvien.hoten.ToString()"
+                               data-siso="@item.siso/@item.sisomax"
+                               data-tc="@item.mon.strtinchi.ToString()"
+                               data-ca="@item.strca.ToString()" />
+                    </td>
+                    <td>@item.malop.ToString()</td>
+                    <td>@item.mon.mamon.ToString()</td>
+                    <td>@item.mon.tenmon.ToString()</td>
+                    <td>@item.giangvien.hoten.ToString()</td>
+                    <td>@item.siso/@item.sisomax</td>
+                    <td>@item.mon.strtinchi.ToString()</td>
+                    <td>@item.strca.ToString()</td>
+                </tr>
                 }
             </tbody>
         </table>
@@ -59,13 +62,14 @@
                     <th>Mã môn</th>
                     <th>Tên môn</th>
                     <th>Giảng viên</th>
+                    <th>Sĩ số</th>
                     <th>Tín chỉ</th>
                     <th>Thứ / ca</th>
                 </tr>
             </thead>
             <tbody id="danhsach">
                 <tr id="clear">
-                    <td colspan="6" class="text-center">Danh sách trống</td>
+                    <td colspan="7" class="text-center">Danh sách trống</td>
                 </tr>
             </tbody>
         </table>

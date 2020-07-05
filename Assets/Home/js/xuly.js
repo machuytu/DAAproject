@@ -21,11 +21,12 @@
             $('#huydkhp').prop('disabled', false);
             var malop = $(this).attr("data-malop");
             var tengv = $(this).attr("data-tengv");
+            var siso = $(this).attr("data-siso");
             var mamon = $(this).attr("data-mamon");
             var tenmon = $(this).attr("data-tenmon");
             var tc = $(this).attr("data-tc");
             var ca = $(this).attr("data-ca");
-            $('#danhsach').append("<tr id='dachon" + idlop + "'><td>" + malop + "</td><td>" + mamon + "</td><td>" + tenmon + "</td><td>" + tengv + "</td><td>" + tc + "</td><td>" + ca + "</td></tr>");
+            $('#danhsach').append("<tr id='dachon" + idlop + "'><td>" + malop + "</td><td>" + mamon + "</td><td>" + tenmon + "</td><td>" + tengv + "</td><td>" + siso + "</td><td>" + tc + "</td><td>" + ca + "</td></tr>");
         } else {
             // the checkbox is now no longer checked
             $(this).closest('tr').removeClass("table-active");
