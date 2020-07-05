@@ -505,3 +505,7 @@ D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\GemBox.Spreadsh
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\EPPlus.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\bin\GemBox.Spreadsheet.xml
 D:\Learning\Projects\ASP_dotnetFramework_Web\DoAn\DAAproject\obj\Debug\ProjectDAA1.csprojAssemblyReference.cache
+G:\ASP.net\daa\DAAproject\bin\EPPlus.dll
+G:\ASP.net\daa\DAAproject\bin\GemBox.Spreadsheet.dll
+G:\ASP.net\daa\DAAproject\bin\EPPlus.xml
+G:\ASP.net\daa\DAAproject\bin\GemBox.Spreadsheet.xml
