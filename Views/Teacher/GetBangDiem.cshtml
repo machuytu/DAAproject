@@ -1,0 +1,90 @@
+﻿@model IEnumerable<ProjectDAA1.hoc>
+@{
+    ViewBag.Title = "GetBangDiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="site-section">
+    <div class="container">
+        <br />
+        <br />
+        <br />
+        <form method="post" action="/NhapDiem/UploadFile" enctype="multipart/form-data">
+            <button id="btnNhapDiem" type="reset" class="btn btn-primary mb-2"> Nhập điểm </button>
+            <br />
+            @Html.AntiForgeryToken()
+            <div id="NhapDiem" class="row">
+                <br />
+                <input hidden name="id" value="@ViewBag.id" />
+                @*<select name="diem" class="form-control col-sm-2">*@
+                <select name="diem" class="form-control col-sm-2 nhutmarginleft" required oninvalid="this.setCustomValidity('Chọn điểm cần nhập')">
+                    <option hidden disabled selected value="">Điểm cần nhập</option>
+                    @{
+                        if (ViewBag.mon.hsqt != 0)
+                        {
+                            <option value="diemqt"> Điểm QT (@ViewBag.mon.trongsoqt%)</option>
+                        }
+                        if (ViewBag.mon.hsth != 0)
+                        {
+                            <option value="diemth"> Điểm TH (@ViewBag.mon.trongsoth%)</option>
+                        }
+                        if (ViewBag.mon.hsgk != 0)
+                        {
+                            <option value="diemgk"> Điểm GK (@ViewBag.mon.trongsogk%)</option>
+                        }
+                        if (ViewBag.mon.hsck != 0)
+                        {
+                            <option value="diemck"> Điểm CK (@ViewBag.mon.trongsock%)</option>
+                        }
+                    }
+                </select>
+                <input name="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control col-sm-5 nhutmarginleft " required oninvalid="this.setCustomValidity('Chọn file')" />
+                <br />
+                <button type="submit" class="btn btn-secondary mb-2 nhutmarginleft ">Xác nhận</button>
+                <br />
+            </div>
+        </form>
+
+        <h2 class="text-uppercase text-center font-weight-bold"> Bảng điểm </h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th>Mã SV</th>
+                    <th>Họ tên</th>
+                    <th>Điểm QT</th>
+                    <th>Điểm TH</th>
+                    <th>Điểm GK</th>
+                    <th>Điểm CK</th>
+                    <th>Điểm TB</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.sinhvien.masv</td>
+                            <td>@item.sinhvien.hoten</td>
+                            <td>@item.diemqt</td>
+                            <td>@item.diemth</td>
+                            <td>@item.diemgk</td>
+                            <td>@item.diemck</td>
+                            <td>@item.diemtb</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="alert alert-success">
+            @ViewBag.thanhphan
+        </div>
+        
+    </div>
+</div>
+

@@ -48,9 +48,10 @@
     });
 
     function FuncTkbAjax(ajaxurl) {
+        var idsv = $("#id").val();
         $.ajax({
             url: ajaxurl,
-            data: { listid: JSON.stringify(listid) },
+            data: { listid: JSON.stringify(listid), idsv: idsv },
             dataType: 'json',
             type: 'POST',
             success: function (res) {
@@ -78,5 +79,12 @@
         });
         $("#loidkhp").append("</br>");
     }
+
+    var divNhapDiem = $("#NhapDiem");
+    divNhapDiem.hide();
+    $("#btnNhapDiem").click(function () {
+        //alert();
+        divNhapDiem.toggle();
+    });
 
 });

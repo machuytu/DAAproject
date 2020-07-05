@@ -32,6 +32,38 @@ namespace ProjectDAA1
         public Nullable<int> sotc { get; set; }
         public Nullable<int> tclt { get; set; }
         public Nullable<int> tcth { get; set; }
+        public string trongsoqt
+        {
+            get
+            {
+                return (hsqt * 100).ToString();
+            }
+        }
+        public string trongsoth
+        {
+            get
+            {
+                return (hsth * 100).ToString();
+            }
+        }
+        public string trongsogk
+        {
+            get
+            {
+                return (hsgk * 100).ToString();
+            }
+        }
+        public string trongsock
+        {
+            get
+            {
+                return (hsck * 100).ToString();
+            }
+        }
+        public string strtinchi
+        {
+            get{ return "lý thuyết: " + tclt.ToString() + " / thực hành: " + tcth.ToString(); }
+        }
         public string tenvama { get { return tenmon + "-" + mamon; } }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

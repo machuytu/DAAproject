@@ -29,6 +29,17 @@ namespace ProjectDAA1
         public int thu { get; set; }
         public int tietbd { get; set; }
         public Nullable<int> tietkt { get; set; }
+        public string strca { get {
+            var str = "";
+            for (int i = tietbd; i <= tietkt; i++){
+                var x = i;
+                if(i == 10){
+                    x = 0;
+                }
+                str += x.ToString();
+            }
+            return str;
+        }}
     
         public virtual dangkyhocphan dangkyhocphan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

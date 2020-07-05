@@ -11,3 +11,10 @@
 .nhutborder{
     border:1.5px solid !important
 }
+.nhutcenter{
+    text-align:center
+}
+.nhutmarginleft{
+    margin-left:10px;
+    margin-right:10px
+}

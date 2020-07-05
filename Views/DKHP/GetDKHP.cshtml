@@ -8,10 +8,9 @@
     <div class="container">
         <br />
         <br />
-        <div class="d-flex justify-content-center">
-            <h2 class="text-uppercase font-weight-bold"> DANH SÁCH LỚP </h2>
-        </div>
-        <table id="example" class="table table-bordered table-hover" style="width:100%">
+        <input hidden id="id" name="id" value="@ViewBag.id" />
+        <h2 class="text-uppercase text-center font-weight-bold"> DANH SÁCH LỚP </h2>
+        <table id="example" class="table table-bordered table-hover">
             <thead class="thead-light">
                 <tr>
                     <th></th>
@@ -24,59 +23,80 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.dslopchuahoc)
+                @foreach (var item in Model.dslopchuadk)
                 {
                     <tr class="tablerow">
                         <td class="checkeditem">
                             <input type="checkbox" class="checked-lop"
                                    value="@item.idlop"
                                    data-id="@item.idlop"
-                                   data-malop="@item.malop"
-                                   data-tengv="@item.tengv"
-                                   data-mamon="@item.mamon"
-                                   data-tenmon="@item.tenmon"
-                                   data-tc="@item.strtinchi"
-                                   data-ca="@item.strca" />
+                                   data-malop="@item.malop.ToString()"
+                                   data-mamon="@item.mon.mamon.ToString()"
+                                   data-tenmon="@item.mon.tenmon.ToString()"
+                                   data-tengv="@item.giangvien.hoten.ToString()"
+                                   data-tc="@item.mon.strtinchi.ToString()"
+                                   data-ca="@item.strca.ToString()" />
                         </td>
-                        <td>@item.malop</td>
-                        <td>@item.mamon</td>
-                        <td>@item.tenmon</td>
-                        <td>@item.tengv</td>
-                        <td>@item.strtinchi</td>
-                        <td>@item.strca</td>
+                        <td>@item.malop.ToString()</td>
+                        <td>@item.mon.mamon.ToString()</td>
+                        <td>@item.mon.tenmon.ToString()</td>
+                        <td>@item.giangvien.hoten.ToString()</td>
+                        <td>@item.mon.strtinchi.ToString()</td>
+                        <td>@item.strca.ToString()</td>
                     </tr>
                 }
 
-                @foreach (var item in Model.dslopdahoc)
+                @foreach (var item in Model.dslopchuadkfull)
                 {
-                    <tr class="table-success">
+                    <tr class="tablerow table-danger">
                         <td class="checkeditem">
-                            <input type="checkbox" class="checked-lop" checked disabled
-                                   value="@item.idlop"
-                                   data-id="@item.idlop"
-                                   data-malop="@item.malop"
-                                   data-tengv="@item.tengv"
-                                   data-mamon="@item.mamon"
-                                   data-tenmon="@item.tenmon"
-                                   data-tc="@item.strtinchi"
-                                   data-ca="@item.strca" />
+                            <input type="checkbox" disabled />
                         </td>
-                        <td>@item.malop</td>
-                        <td>@item.mamon</td>
-                        <td>@item.tenmon</td>
-                        <td>@item.tengv</td>
-                        <td>@item.strtinchi</td>
-                        <td>@item.strca</td>
+                        <td>@item.malop.ToString()</td>
+                        <td>@item.mon.mamon.ToString()</td>
+                        <td>@item.mon.tenmon.ToString()</td>
+                        <td>@item.giangvien.hoten.ToString()</td>
+                        <td>@item.mon.strtinchi.ToString()</td>
+                        <td>@item.strca.ToString()</td>
                     </tr>
                 }
+
+                @foreach (var item in Model.dslopdadk)
+                {
+                    <tr class="tablerow table-success">
+                        <td class="checkeditem">
+                            <input type="checkbox" checked disabled />
+                        </td>
+                        <td>@item.malop.ToString()</td>
+                        <td>@item.mon.mamon.ToString()</td>
+                        <td>@item.mon.tenmon.ToString()</td>
+                        <td>@item.giangvien.hoten.ToString()</td>
+                        <td>@item.mon.strtinchi.ToString()</td>
+                        <td>@item.strca.ToString()</td>
+                    </tr>
+                }
+
+                @foreach (var item in Model.dslopdadkfull)
+                {
+                    <tr class="tablerow bg-success">
+                        <td class="checkeditem">
+                            <input type="checkbox" checked disabled />
+                        </td>
+                        <td>@item.malop.ToString()</td>
+                        <td>@item.mon.mamon.ToString()</td>
+                        <td>@item.mon.tenmon.ToString()</td>
+                        <td>@item.giangvien.hoten.ToString()</td>
+                        <td>@item.mon.strtinchi.ToString()</td>
+                        <td>@item.strca.ToString()</td>
+                    </tr>
+                }
+
             </tbody>
         </table>
         <br />
         <div class="text-success" id="thanhcong"></div>
         <div class="text-danger" id="loidkhp"></div>
-        <div class="d-flex justify-content-center">
-            <h2 class="text-uppercase font-weight-bold"> DANH SÁCH LỚP ĐÃ CHỌN </h2>
-        </div>
+        <h2 class="text-uppercase font-weight-bold"> DANH SÁCH LỚP ĐÃ CHỌN </h2>
         <table id="example" class="table table-bordered table-hover" style="width:100%">
             <thead class="thead-light">
                 <tr>

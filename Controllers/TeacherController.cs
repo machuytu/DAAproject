@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectDAA1.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
@@ -12,35 +13,65 @@ namespace ProjectDAA1.Controllers
 {
     public class TeacherController : Controller
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         // GET: Teacher
-
-        public ActionResult dsLop()
+        MyDatabaseEntities9 db = new MyDatabaseEntities9();
+       
+        [HttpGet]
+        public async Task<ActionResult> dsLop()
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            var id = session.idgv;
-            var result = db.lops.Where(x => x.idgv == id);
-            return View(result);
+            if (session != null)
+            {
+                var id = session.idgv;
+                var dsdkhp = db.lops
+                    .Where(x => x.idgv == id)
+                    .Select(x => x.dangkyhocphan)
+                    .Distinct()
+                    .OrderByDescending(x => x.iddkhp);
+                var result = db.lops.Where(x => x.idgv == id);
+                return View(new DBContext() {
+                    dsdkhp = await dsdkhp.ToListAsync(),
+                    dslop = await result.ToListAsync(),
+                });
+
+            }
+            else
+            {
+                return RedirectToRoute("login");
+            }
         }
 
-        public ActionResult dsLopCN()
+        [HttpGet]
+        public async Task<ActionResult> dsLopCN()
         {
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            var id = session.idgv;
-            var result = db.lopcns.Where(x => x.idgv == id);
-            return View(result);
+            if (session != null)
+            {
+                var id = session.idgv;
+
+                var result = db.lopcns.Where(x => x.idgv == id);
+                return View(await result.ToListAsync());
+
+            }
+            else
+            {
+                return RedirectToRoute("login");
+            }
         }
 
-        public ActionResult dsSVLopCN(int id)
-        {
-            var result = db.sinhviens.Where(x => x.idlopcn == id);
-            return View(result);
-        }
-
-        public ActionResult dsSVLop(int id)
+        [HttpGet]
+        public async Task<ActionResult> dsSVLop(int id)
         {
             var result = db.hocs.Where(x => x.idlop == id).Select(x => x.sinhvien);
-            return View(result);
+            return View(await result.ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> dsSVLopCN(int id)
+        {
+
+            var result = db.sinhviens.Where(x => x.idlopcn == id);
+            return View(await result.ToListAsync());
         }
 
         public async Task<ActionResult> doimatkhau()
@@ -101,7 +132,7 @@ namespace ProjectDAA1.Controllers
                 return RedirectToRoute("login");
             }
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> suathongtin(HttpPostedFileBase file, giangvien giangvien)
@@ -129,11 +160,9 @@ namespace ProjectDAA1.Controllers
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session != null)
             {
-                using (var db = new MyDatabaseEntities9())
-                {
-                    var dkhp = db.dangkyhocphans.OrderByDescending(x => x.iddkhp);
-                    return View(await dkhp.ToListAsync());
-                }
+                ViewBag.gv = db.giangviens.Where(x => x.idgv == session.idgv).FirstOrDefault();
+                var dkhp = db.dangkyhocphans.OrderByDescending(x => x.iddkhp);
+                return View(await dkhp.ToListAsync());
             }
             else
             {
@@ -159,6 +188,20 @@ namespace ProjectDAA1.Controllers
                     }).ToList();
                 return new JsonResult { Data = tkb, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetBangDiem(int id)
+        {
+            var mon = await db.lops.Where(x => x.idlop == id).Select(x => x.mon).FirstOrDefaultAsync();
+            var result = db.hocs.Where(x => x.idlop == id);
+            ViewBag.id = id;
+            ViewBag.mon = mon;
+            if (TempData["Temp"] != null)
+            {
+                ViewBag.thanhphan = TempData["Temp"].ToString();
+            };
+            return View(await result.ToListAsync());
         }
     }
 }

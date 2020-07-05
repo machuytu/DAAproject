@@ -1,48 +1,67 @@
-﻿@model IEnumerable<ProjectDAA1.lop>
-
+﻿@model ProjectDAA1.Models.DBContext
 @{
     ViewBag.Title = "dsLop";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Danh sách lớp</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.malop)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mon.mamon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mon.tenmon)
-        </th>
-        <th>
-            <p>Thứ/ca</p>
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    string str = "";
-    for (int i = item.tietbd; i <= item.tietkt; i++)
-    {
-        str += i.ToString(); 
-    }
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.malop)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mon.tenmon)
-        </td>
-        <td>
-            <div>Thứ @item.thu tiết @str</div>
-        </td>
-        <td>
-            <a href="svlop/@item.idlop">Danh sách sinh viên</a>
-        </td>
-    </tr>
-}
-
-</table>
+<div class="site-section">
+    <div class="container">
+        <br />
+        <br />
+        <h2 class="text-uppercase text-center font-weight-bold"> Danh sách lớp </h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th class="nhutcenter">Mã lớp</th>
+                    <th class="nhutcenter">Mã môn</th>
+                    <th class="nhutcenter">Tên môn</th>
+                    <th class="nhutcenter">Thứ / ca</th>
+                    <th class="nhutcenter">Xem bảng điểm</th>
+                    <th class="nhutcenter">Danh sách lớp</th>
+                    <th class="nhutcenter">Xuất danh sách</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var dkhp in Model.dsdkhp)
+                    {
+                        <tr><td colspan="8">Học kỳ @dkhp.hocky năm học @dkhp.namhoc</td></tr>
+                        var count = 0;
+                        foreach (var item in Model.dslop)
+                        {
+                            if (dkhp.iddkhp == item.iddkhp)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.malop)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.mon.mamon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.mon.tenmon)
+                                    </td>
+                                    <td>
+                                        <div>Thứ @item.thu tiết @item.strca</div>
+                                    </td>
+                                    <td>
+                                        <a href="bangdiem/lop/@item.idlop">Bảng điểm</a>
+                                    </td>
+                                    <td>
+                                        <a href="svlop/@item.idlop">Danh sách sinh viên</a>
+                                    </td>
+                                    <td>
+                                        <a href="Excel/Export/@item.idlop">Xuất danh sách</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

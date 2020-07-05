@@ -5,73 +5,83 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Danh sách sinh viên lớp</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.hoten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.masv)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gioitinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngaysinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.diachi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.quequan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sdt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bachoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lopcn.malopcn)
-        </th>
-        <th></th>
-    </tr>
+<div class="site-section">
+    <div class="container">
+        <br />
+        <br />
+        <h2 class="text-uppercase text-center font-weight-bold"> Danh sách sinh viên </h2>
+        <table class="table table-bordered nhutcenter" id="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        Họ và tên SV
+                    </th>
+                    <th>
+                        MSSV
+                    </th>
+                    <th>
+                        Giới tính
+                    </th>
+                    <th>
+                        Ngày sinh
+                    </th>
+                    <th>
+                        Địa chỉ
+                    </th>
+                    <th>
+                        Quê quán
+                    </th>
+                    <th>
+                        Số điện thoại
+                    </th>
+                    <th>
+                        Bậc học
+                    </th>
+                    <th>
+                        Mã lớp
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hoten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.masv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.gioitinh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ngaysinh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.diachi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.quequan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sdt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.bachoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.lopcn.malopcn)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.idsv })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.hoten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.masv)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gioitinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngaysinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.diachi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quequan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sdt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bachoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lopcn.malopcn)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.idsv })
-        </td>
-    </tr>
-}
-
-</table>
