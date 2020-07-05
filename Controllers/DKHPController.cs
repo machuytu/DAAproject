@@ -103,25 +103,25 @@ namespace ProjectDAA1.Controllers
                     .Select(x => x.idmontruoc)
                     .FirstOrDefault();
 
-                if (await (from h in db.hocs
-                           join l in db.lops on h.idlop equals l.idlop
-                           where h.idsv == idsv && l.iddkhp == lop.iddkhp && l.thu == lop.thu && !(l.tietbd > lop.tietkt || l.tietkt < lop.tietbd)
-                           select h).CountAsync() != 0)
+                if ((from h in db.hocs
+                     join l in db.lops on h.idlop equals l.idlop
+                     where h.idsv == idsv && l.iddkhp == lop.iddkhp && l.thu == lop.thu && !(l.tietbd > lop.tietkt || l.tietkt < lop.tietbd)
+                     select h).Count() != 0)
                 {
                     listerr.Add("Lớp " + lop.malop + ": trùng lịch");
                 }
-                else if (await (from h in db.hocs
-                                join l in db.lops on h.idlop equals l.idlop
-                                where h.idsv == idsv && l.idmon == lop.idmon && (h.diemtb >= 5 || h.diemtb == null)
-                                select h).CountAsync() != 0)
+                else if ((from h in db.hocs
+                          join l in db.lops on h.idlop equals l.idlop
+                          where h.idsv == idsv && l.idmon == lop.idmon && (h.diemtb >= 5 || h.diemtb == null)
+                          select h).Count() != 0)
                 {
                     listerr.Add("Lớp " + lop.malop + ": môn đã học");
                 }
                 else if ((idmontrc != null) &&
-                        (await (from h in db.hocs
-                                join l in db.lops on h.idlop equals l.idlop
-                                where h.idsv == idsv && l.idmon == idmontrc
-                                select h).CountAsync() == 0))
+                        ((from h in db.hocs
+                          join l in db.lops on h.idlop equals l.idlop
+                          where h.idsv == idsv && l.idmon == idmontrc
+                          select h).Count() == 0))
                 {
                     listerr.Add("Lớp " + lop.malop + ": chưa học môn học trước");
                 }
@@ -187,10 +187,10 @@ namespace ProjectDAA1.Controllers
                     .Where(x => x.idlop == idlop)
                     .FirstOrDefaultAsync();
 
-                if (await (from h in db.hocs
-                           join l in db.lops on h.idlop equals l.idlop
-                           where h.idsv == idsv && l.mon.idmontruoc != null && l.mon.idmontruoc == lop.mon.idmon
-                           select h).CountAsync() != 0)
+                if ((from h in db.hocs
+                     join l in db.lops on h.idlop equals l.idlop
+                     where h.idsv == idsv && l.mon.idmontruoc != null && l.mon.idmontruoc == lop.mon.idmon
+                     select h).Count() != 0)
                 {
                     listerr.Add("Lớp " + lop.malop + ": là môn học trước, phải huỷ môn sau");
                 }
@@ -234,7 +234,7 @@ namespace ProjectDAA1.Controllers
         {
             var tkb = await db.hocs
                 .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
-                .Select(x => new 
+                .Select(x => new
                 {
                     malop = x.lop.malop,
                     tenmon = x.lop.mon.tenmon,
