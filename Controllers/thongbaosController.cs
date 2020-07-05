@@ -54,7 +54,8 @@ namespace ProjectDAA1.Controllers
             var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
             if (session != null)
             {
-                ViewBag.idtk = new SelectList(db.taikhoans, "idtk", "matk");
+                var id = session.idgv;
+                var thongbaos = db.thongbaos.Where(x => x.taikhoan.idgv == id).Include(t => t.taikhoan);
                 return View();
             }
             else
