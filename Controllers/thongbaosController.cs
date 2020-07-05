@@ -77,7 +77,7 @@ namespace ProjectDAA1.Controllers
                 {
                     var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
                     var idgv = session.idgv;
-                    thongbao.idtk = db.thongbaos.Where(x => x.taikhoan.idgv == idgv).Select(x => x.idtk).FirstOrDefault();
+                    thongbao.idtk = db.taikhoans.Where(x => x.idgv == idgv).Select(x => x.idtk).FirstOrDefault();
                     var tb = new thongbao();
                     string _FileName = Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("/Uploadfile/"), _FileName);
@@ -91,7 +91,7 @@ namespace ProjectDAA1.Controllers
                 {
                     var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
                     var idgv = session.idgv;
-                    thongbao.idtk = db.thongbaos.Where(x => x.taikhoan.idgv == idgv).Select(x => x.idtk).FirstOrDefault();
+                    thongbao.idtk = db.taikhoans.Where(x => x.idgv == idgv).Select(x => x.idtk).FirstOrDefault();
                     db.thongbaos.Add(thongbao);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
@@ -188,5 +188,6 @@ namespace ProjectDAA1.Controllers
             }
             base.Dispose(disposing);
         }
+        
     }
 }
