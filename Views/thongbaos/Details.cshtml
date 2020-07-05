@@ -10,12 +10,12 @@
 <br />
 <h2>Details</h2>
 
-<div>
-    <h4>thongbao</h4>
+<div class="nhutnewcontent">
+    <h4>CHI TIẾT THÔNG BÁO</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.tieude)
+            TIÊU ĐỀ THÔNG BÁO
         </dt>
 
         <dd>
@@ -23,23 +23,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.noidung)
+            NỘI DUNG THÔNG BÁO
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.noidung)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tag)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tag)
-        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.file)
+           FILE
         </dt>
 
         <dd>
@@ -47,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.thoigiandang)
+            THỜI GIAN ĐĂNG
         </dt>
 
         <dd>
@@ -55,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.thoigiancapnhat)
+            THỜI GIAN CẬP NHẬT
         </dt>
 
         <dd>
@@ -63,16 +56,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.taikhoan.matk)
+            MÃ TÀI KHOẢN ĐĂNG
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.taikhoan.matk)
         </dd>
-
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.idtb }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idtb }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

@@ -10,34 +10,31 @@
 <br />
 <br />
 <h2>Index</h2>
+<div class="nhuttable">
+
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo thông báo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.tieude)
+            TIÊU ĐỀ
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.noidung)
+            NỘI DUNG
+        </th>
+       
+        <th>
+            File
+        </th>
+        
+        <th>
+            Tài khoản đăng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tag)
+            Chức năng
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.file)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.thoigiandang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.thoigiancapnhat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.taikhoan.matk)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,18 +45,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.noidung)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tag)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.file)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.thoigiandang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.thoigiancapnhat)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.taikhoan.matk)
         </td>
@@ -72,3 +62,4 @@
 }
 
 </table>
+</div>

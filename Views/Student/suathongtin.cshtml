@@ -8,15 +8,16 @@
 <br/>
 <br/>
 <br/>
-<h2>suathongtin</h2>
 
-<div class="main-content">
+
+<div class="nhutnewcontent">
+    <h2 class="nhutmargin nhuttieude" style="text-align:center">SỬA THÔNG TIN SINH VIÊN</h2>
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">User List</a></strong>
-                    <small>> Create</small>
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">Chỉnh sửa thông tin</a></strong>
+                    <small>> Sửa thông tin</small>
                 </div>
                 <div class="card-body card-block">
                     <form method="post" action="/Student/suathongtin" enctype="multipart/form-data">
@@ -46,7 +47,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="hoten">Họ tên</label>
-                                            @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                            @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control", @required = true, @readonly= "readonly"} })
                                             @Html.ValidationMessageFor(model => model.hoten, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
@@ -69,7 +70,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class=" form-control-label" for="gioitinh">Giới tính</label>
-                                        <select class="form-control" id="gioitinh" style="height:auto;" name="gioitinh">
+                                        <select class="form-control" id="gioitinh" style="height:auto;" name="gioitinh" >
                                             <option value="Nam">Nam</option>
                                             <option value="Nữ">Nữ</option>
                                         </select>
@@ -77,19 +78,19 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class=" form-control-label" for="ngaysinh">Ngày sinh</label>
-                                        <input type="date" id="ngaysinh" name="ngaysinh" value="@String.Format("{0:yyyy-MM-dd}", Model.ngaysinh)">
+                                        <input type="date" id="ngaysinh" name="ngaysinh" class="form-control" value="@String.Format("{0:yyyy-MM-dd}", Model.ngaysinh)" readonly>
                                         @Html.ValidationMessageFor(model => model.ngaysinh, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-md-6">
                                         <label class=" form-control-label" for="idlopcn">Mã Lớp</label>
-                                        @Html.DropDownList("idlopcn", null, htmlAttributes: new { @class = "form-control", @style = "height:auto;" })
+                                        @Html.DropDownList("idlopcn", null, htmlAttributes: new { @class = "form-control", @style = "height:auto;", @readonly = "readonly" })
                                         @Html.ValidationMessageFor(model => model.idlopcn, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-6">
-                                        <label class=" form-control-label" for="bachoc">Bậc học</label>
-                                        <select class="form-control" id="bachoc" style="height:auto;" name="bachoc">
+                                       
+                                        <select class="form-control" id="bachoc" style="height:auto;" name="bachoc" hidden>
                                             <option value="Cao Đẳng">Cao Đẳng</option>
                                             <option value="Đại Học">Đại Học</option>
                                             <option value="Cao Học">Cao Học</option>
@@ -97,8 +98,8 @@
                                         @Html.ValidationMessageFor(model => model.bachoc, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="row p-3">
-                                    <button class="btn btn-success">Submit</button>
+                                <div class="row justify-content-md-center">
+                                    <button class="btn btn-success">Chỉnh sửa thông tin</button>
 
                                 </div>
                             </div>

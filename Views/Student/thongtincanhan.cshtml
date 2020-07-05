@@ -9,15 +9,16 @@
 <br/>
 <br/>
 
-<h2>thongtincanhan</h2>
 
-<div class="main-content">
+
+<div class="nhutcontainer">
+    <h2 class="nhutmargin nhuttieude" style="text-align:center">THÔNG TIN CÁ NHÂN</h2>
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">User List</a></strong>
-                    <small>> Detail</small>
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a >Thông tin sinh viên</a></strong>
+                    <small>> Chi tiết</small>
                 </div>
                 <div class="card-body card-block">
                     <div class="row">
@@ -25,8 +26,15 @@
                             <div class="row">
                                 <div class="form-group">
                                     <div class="text-center">
-                                        <img src="@Model.hinhanh" class="avatar img-circle p-2" style="height: 200px; width: 200px;" alt="avatar">
-
+                                        @{
+                                            if (@Model.hinhanh == null)
+                                            {
+                                                <img src="https://st.quantrimang.com/photos/image/2017/04/08/anh-dai-dien-FB-200.jpg" class="avatar img-circle p-2" style="height:100px; width: 100px;" alt="avatar">
+                                            }
+                                            else
+                                            { @:<img src="@Model.hinhanh" class="avatar img-circle p-2" style="height: 100px; width: 100px;" alt="avatar">
+                                            }
+                                            }
                                     </div>
                                 </div>
                             </div>
@@ -35,54 +43,54 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label class=" form-control-label" for="hoten">Họ tên :</label>
+                                        <label class=" form-control-label" for="hoten"><b>Họ và tên :</b></label>
                                         @Html.DisplayFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control", @required = true } })
                                     </div>
                                     <div class="col-md-6">
-                                        <label class=" form-control-label" for="masv">MSSV :</label>
+                                        <label class=" form-control-label" for="masv"><b>MSSV: </b></label>
                                         @Html.DisplayFor(model => model.masv, new { htmlAttributes = new { @class = "form-control" } })
 
                                     </div>
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <div class="col-md-4">
+                                <div class="col-md-5">
 
-                                    <label class=" form-control-label" for="idlopcn">Mã Lớp :</label>
+                                    <label class=" form-control-label" for="idlopcn"><b>Lớp: </b></label>
                                     @Html.DisplayFor(model => model.lopcn.malopcn, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                <div class="col-md-4">
-                                    <label class=" form-control-label" for="gioitinh">Giới tính :</label>
+                                <div class="col-md-5">
+                                    <label class=" form-control-label" for="gioitinh"><b>Giới tính:</b></label>
                                     @Html.DisplayFor(model => model.gioitinh, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                <div class="col-md-4">
-                                    <label class=" form-control-label" for="ngaysinh">Ngày sinh :</label>
+                                <div class="col-md-5">
+                                    <label class=" form-control-label" for="ngaysinh"><b>Ngày sinh:</b></label>
                                     @*@Html.DisplayFor(model => model.ngaysinh, new { htmlAttributes = new { @class = "form-control" } })*@
                                     @String.Format("{0:dd/MM/yyyy}", Model.ngaysinh)
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-6">
-                                    <label class=" form-control-label" for="diachi">Địa Chỉ :</label>
+                                    <label class=" form-control-label" for="diachi"><b>Địa Chỉ:</b></label>
                                     @Html.DisplayFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                                 <div class="col-md-6">
-                                    <label class=" form-control-label" for="quequan">Quê quán :</label>
+                                    <label class=" form-control-label" for="quequan"><b>Quê quán:</b></label>
                                     @Html.DisplayFor(model => model.quequan, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-6">
-                                    <label class=" form-control-label" for="sdt">Số điện thoại :</label>
+                                    <label class=" form-control-label" for="sdt"><b>Số điện thoại:</b></label>
                                     @Html.DisplayFor(model => model.sdt, new { htmlAttributes = new { @class = "form-control", @required = true } })
                                 </div>
                                 <div class="col-md-6">
-                                    <label class=" form-control-label" for="bachoc">Bậc Học :</label>
+                                    <label class=" form-control-label" for="bachoc"><b>Bậc Học:</b></label>
                                     @Html.DisplayFor(model => model.bachoc, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                             </div>
-                            <div class="row p-3">
-                                <a class="btn btn-success" href="/sinhvien/thongtincanhan/Edit/@Model.idsv">Edit</a>
+                            <div class="row justify-content-md-center">
+                                <a class="btn btn-success" href="/sinhvien/thongtincanhan/Edit/@Model.idsv">Chỉnh sửa thông tin</a>
                             </div>
                         </div>
 

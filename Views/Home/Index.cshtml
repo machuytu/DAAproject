@@ -21,10 +21,12 @@
         <span class="current">Thông báo</span>
     </div>
 </div>
-<div class="site-section">
+<div class="nhutsection">
+    
     <div class="container">
         @if (ViewBag.thongBaoChung != null)
         {
+        <h1 class="nhutlabel"> Thông báo chung</h1>
             <div class="row">
 
                 @foreach (var item in ViewBag.thongBaoChung)
@@ -45,36 +47,36 @@
                 }
             </div>
         }
-        </div>
+    </div>
 </div>
-
-<div class="site-section">
+<div class="nhutsection">
+    
     <div class="container">
         @if (ViewBag.listthongnghibu != null)
         {
-            <label>Thông báo nghỉ bù</label>
+        <h1 class="nhutlabel"> Thông báo nghỉ bù</h1>
             <div class="row">
 
                 @foreach (var item in ViewBag.listthongnghibu)
                 {
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                            <div class="price">@item.taikhoan.matk</div>
-                            <div class="category"><h3>@item.tag</h3></div>
-                        </figure>
-                        <div class="course-1-content pb-4">
-                            <h2>@item.tieude</h2>
-                            <p><a href="/Home/Details/@item.idtb" class="btn btn-primary px-4 nhutbtn">Xem thêm</a></p>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="course-1-item">
+                            <figure class="thumnail">
+                                <div class="price">@item.taikhoan.matk</div>
+                                <div class="category"><h3>@item.tag</h3></div>
+                            </figure>
+                            <div class="course-1-content pb-4">
+                                <h2>@item.tieude</h2>
+                                <p><a href="/Home/Details/@item.idtb" class="btn btn-primary px-4 nhutbtn">Xem thêm</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 }
 
             </div>
         }
-        </div>
+    </div>
 </div>
 <div class="section-bg style-1" style="background-image: url('~/Assets/Home/images/hero_1.jpg');">
     <div class="container">

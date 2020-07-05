@@ -18,3 +18,24 @@
     margin-left:10px;
     margin-right:10px
 }
+.nhutsection{
+    padding:2em 0;
+}
+.nhutlabel{
+    padding-bottom:1em
+}
+.nhutcontainer{
+    margin: 2px 400px
+}
+.nhutnewcontent {
+    margin: 2px 325px
+}
+.nhuttable{
+    margin: 2px 155px
+}
+.nhutlink{
+    color:white;
+}
+.nhuttieude{
+    color:blue;
+}

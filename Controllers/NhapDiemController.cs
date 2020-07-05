@@ -33,7 +33,7 @@ namespace ProjectDAA1.Controllers
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             ViewBag.Message = "Thành công:";
             ViewData["Trangthai"] = ViewBag.Message;
-            TempData["Temp"] = "Những sinh viên nhập điểm thành công:";
+            TempData["Temp"] = "Những sinh viên nhập điểm thành công: ";
             try
             {
                 if (file.ContentLength > 0)

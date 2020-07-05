@@ -81,10 +81,16 @@
                 }
             </tbody>
         </table>
-        <div class="alert alert-success">
-            @ViewBag.thanhphan
-        </div>
-        
+        @{
+            if (@ViewBag.thanhphan != null)
+            {
+                @:<div class="alert alert-success">
+                    @ViewBag.thanhphan
+                @:</div>
+            }
+        }
+
+
     </div>
 </div>
 

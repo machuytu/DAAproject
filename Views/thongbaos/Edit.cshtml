@@ -10,19 +10,19 @@
 <br />
 <br />
 <h2>Edit</h2>
-
+<div class="nhutnewcontent">
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.idtk)
     <div class="form-horizontal">
-        <h4>thongbao</h4>
+        <h4>SỬA THÔNG BÁO</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.idtb)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tieude, htmlAttributes: new { @class = "control-label col-md-2" })
+            TIÊU ĐỀ
             <div class="col-md-10">
                 @Html.EditorFor(model => model.tieude, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.tieude, "", new { @class = "text-danger" })
@@ -30,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.noidung, htmlAttributes: new { @class = "control-label col-md-2" })
+           NỘI DUNG
             <div class="col-md-10">
                 @Html.EditorFor(model => model.noidung, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.noidung, "", new { @class = "text-danger" })
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tag, htmlAttributes: new { @class = "control-label col-md-2" })
+            TAG
             <div class="col-md-10">
                 @Html.EditorFor(model => model.tag, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.tag, "", new { @class = "text-danger" })
@@ -64,4 +64,5 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
+</div>
 </div>
