@@ -88,16 +88,16 @@ namespace ProjectDAA1.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            hoc hoc = await db.hocs.FindAsync(id);
+            var hoc = await db.hocs.FindAsync(id);
             if (hoc == null)
             {
                 return HttpNotFound();
             }
-            List<lop> dbc = db.lops.Include(h => h.mon).ToList();
-            SelectList ahihi = new SelectList(dbc, "malop", "mon.tenvama");
+            //List<lop> dbc = db.lops.Include(h => h.mon).ToList();
+            //SelectList ahihi = new SelectList(dbc, "malop", "mon.tenvama");
 
-            ViewBag.malop = ahihi;
-            ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
+            //ViewBag.malop = ahihi;
+            //ViewBag.masv = new SelectList(db.sinhviens, "masv", "hoten");
 
             return View(hoc);
         }
@@ -107,17 +107,36 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idhoc,idlop,idsv,diemqt,diemth,diemgk,diemck,diemtb")] hoc hoc)
+        public async Task<ActionResult> Edit(int idhoc, double? diemqt, double? diemth, double? diemgk, double? diemck)
         {
+            var hoc = await db.hocs.FindAsync(idhoc);
             if (ModelState.IsValid)
             {
-                db.Entry(hoc).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (diemck != null &&
+                    ((diemqt == null && hoc.lop.mon.hsqt != 0) ||
+                    (diemth == null && hoc.lop.mon.hsth != 0) ||
+                    (diemgk == null && hoc.lop.mon.hsgk != 0)))
+                {
+                    ViewBag.err = "Chưa nhập đủ điểm";
+                    return View(hoc);
+                }
+                else
+                {
+                    hoc.diemqt = diemqt;
+                    hoc.diemth = diemth;
+                    hoc.diemgk = diemgk;
+                    hoc.diemck = diemck;
+                    db.Entry(hoc).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
-            ViewBag.idlop = new SelectList(db.lops, "idlop", "malop", hoc.idlop);
-            ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", hoc.idsv);
-            return View(hoc);
+            else
+            {
+                //ViewBag.idlop = new SelectList(db.lops, "idlop", "malop", hoc.idlop);
+                //ViewBag.idsv = new SelectList(db.sinhviens, "idsv", "hoten", hoc.idsv);
+                return View(hoc);
+            }
         }
 
         // GET: Admin/hocs/Delete/5

@@ -23,45 +23,58 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label class=" form-control-label" for="namhoc">Mã lớp</label>
-
-                                            @Html.DropDownList("idlop", (IEnumerable<SelectListItem>)ViewBag.idlop, htmlAttributes: new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.idlop, "", new { @class = "text-danger" })
+                                            <label class=" form-control-label">Mã lớp</label> </br>
+                                            @Model.lop.malop
+                                            @*@Html.DropDownList("idlop", (IEnumerable<SelectListItem>)ViewBag.idlop, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idlop, "", new { @class = "text-danger" })*@
                                         </div>
                                         <div class="col-md-4">
-                                            <label class=" form-control-label" for="namhoc">Mã sinh viên</label>
-
-                                            @Html.DropDownList("idsv", (IEnumerable<SelectListItem>)ViewBag.idsv, htmlAttributes: new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.idsv, "", new { @class = "text-danger" })
+                                            <label class=" form-control-label">Mã sinh viên</label> </br>
+                                            @Model.sinhvien.masv
+                                            @*@Html.DropDownList("idsv", (IEnumerable<SelectListItem>)ViewBag.idsv, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idsv, "", new { @class = "text-danger" })*@
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label">Họ tên</label> </br>
+                                            @Model.sinhvien.hoten
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col-md-4">
-                                        <label class=" form-control-label" for="diemqt">Điểm quá trình</label>
-                                        <input type="text" id="diemqt" name="diemqt">
-                                        @Html.ValidationMessageFor(model => model.diemqt, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class=" form-control-label" for="diemth">Điểm thực hành</label>
-                                        <input type="text" id="diemth" name="diemth">
-                                        @Html.ValidationMessageFor(model => model.diemth, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class=" form-control-label" for="diemgk">Điểm giữa kỳ</label>
-                                        <input type="text" id="diemgk" name="diemgk">
-                                        @Html.ValidationMessageFor(model => model.diemgk, "", new { @class = "text-danger" })
-                                    </div>
+                                    @if (Model.lop.mon.hsqt != 0)
+                                    {
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="diemqt">Điểm quá trình</label>
+                                            <input type="number" max="10" min="0" step="0.05" name="diemqt" value="@Model.diemqt">
+                                            @Html.ValidationMessageFor(model => model.diemqt, "", new { @class = "text-danger" })
+                                        </div>
+                                    }
+                                    @if (Model.lop.mon.hsth != 0)
+                                    {
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="diemth">Điểm thực hành</label>
+                                            <input type="number" max="10" min="0" step="0.05" name="diemth" value="@Model.diemth">
+                                            @Html.ValidationMessageFor(model => model.diemth, "", new { @class = "text-danger" })
+                                        </div>
+                                    }
+                                    @if (Model.lop.mon.hsgk != 0)
+                                    {
+                                        <div class="col-md-4">
+                                            <label class=" form-control-label" for="diemgk">Điểm giữa kỳ</label>
+                                            <input type="number" max="10" min="0" step="0.05" name="diemgk" value="@Model.diemgk">
+                                            @Html.ValidationMessageFor(model => model.diemgk, "", new { @class = "text-danger" })
+                                        </div>
+                                    }
                                     <div class="col-md-4">
                                         <label class=" form-control-label" for="diemck">Điểm cuối kỳ</label>
-                                        <input type="text" id="diemck" name="diemck">
+                                        <input type="number" max="10" min="0" step="0.05" name="diemck" value="@Model.diemck">
                                         @Html.ValidationMessageFor(model => model.diemck, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-4">
-                                        <label class=" form-control-label" for="diemtb">Điểm trung bình</label>
-                                        <input type="text" id="diemtb" name="diemtb">
-                                        @Html.ValidationMessageFor(model => model.diemtb, "", new { @class = "text-danger" })
+                                        <label class=" form-control-label">Điểm trung bình</label>
+                                        @Model.diemtb
                                     </div>
+                                    <div class="text-danger">@ViewBag.err</div>
                                 </div>
                                 <div class="row p-3">
                                     <button class="btn btn-success">Submit</button>
