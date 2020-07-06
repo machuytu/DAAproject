@@ -11,7 +11,7 @@ using ProjectDAA1;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class lopcnsController : Controller
+    public class lopcnsController : AuthController
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 

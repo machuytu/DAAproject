@@ -9,10 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectDAA1;
 using System.IO;
+using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class giangviensController : Controller
+    public class giangviensController : AuthController
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 

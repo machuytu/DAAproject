@@ -11,7 +11,7 @@ using ProjectDAA1;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class khoasController : Controller
+    public class khoasController : AuthController
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 

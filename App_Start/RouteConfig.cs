@@ -49,38 +49,38 @@ namespace ProjectDAA1
              );
 
             routes.MapRoute(
-             name: "Đăng ký học phần",
-             url: "dkhp",
-             defaults: new { controller = "DKHP", action = "GetDKHP", id = UrlParameter.Optional },
-             namespaces: new[] { "ProjectDAA1.Controllers" }
+                 name: "Đăng ký học phần",
+                 url: "dkhp",
+                 defaults: new { controller = "DKHP", action = "GetDKHP", id = UrlParameter.Optional },
+                 namespaces: new[] { "ProjectDAA1.Controllers" }
             );
 
             routes.MapRoute(
-             name: "Thông tin giáo viên",
-             url: "giangvien/thongtincanhan",
-             defaults: new { controller = "Teacher", action = "thongtincanhan", id = UrlParameter.Optional },
-             namespaces: new[] { "ProjectDAA1.Controllers" }
+                 name: "Thông tin giáo viên",
+                 url: "giangvien/thongtincanhan",
+                 defaults: new { controller = "Teacher", action = "thongtincanhan", id = UrlParameter.Optional },
+                 namespaces: new[] { "ProjectDAA1.Controllers" }
             );
 
             routes.MapRoute(
-             name: "Thông tin sinh viên",
-             url: "sinhvien/thongtincanhan",
-             defaults: new { controller = "Student", action = "thongtincanhan", id = UrlParameter.Optional },
-             namespaces: new[] { "ProjectDAA1.Controllers" }
+                name: "Thông tin sinh viên",
+                url: "sinhvien/thongtincanhan",
+                defaults: new { controller = "Student", action = "thongtincanhan", id = UrlParameter.Optional },
+                namespaces: new[] { "ProjectDAA1.Controllers" }
             );
 
              routes.MapRoute(
-             name: "Chỉnh sửa thông tin giáo viên",
-             url: "giangvien/thongtincanhan/Edit/{id}",
-             defaults: new { controller = "Teacher", action = "suathongtin", id = UrlParameter.Optional },
-             namespaces: new[] { "ProjectDAA1.Controllers" }
+                 name: "Chỉnh sửa thông tin giáo viên",
+                 url: "giangvien/thongtincanhan/Edit/{id}",
+                 defaults: new { controller = "Teacher", action = "suathongtin", id = UrlParameter.Optional },
+                 namespaces: new[] { "ProjectDAA1.Controllers" }
             );
 
             routes.MapRoute(
-             name: "Chỉnh sửa thông tin sinh viên",
-             url: "sinhvien/thongtincanhan/Edit/{id}",
-             defaults: new { controller = "Student", action = "suathongtin", id = UrlParameter.Optional },
-             namespaces: new[] { "ProjectDAA1.Controllers" }
+                name: "Chỉnh sửa thông tin sinh viên",
+                url: "sinhvien/thongtincanhan/Edit/{id}",
+                defaults: new { controller = "Student", action = "suathongtin", id = UrlParameter.Optional },
+                namespaces: new[] { "ProjectDAA1.Controllers" }
             );
             
 
@@ -127,12 +127,12 @@ namespace ProjectDAA1
              );
             
             routes.MapRoute(
-              name: "Xuất file",
-              url: "Excel/Export/{id}",
-              defaults: new { controller = "Excel", action = "Export", id = UrlParameter.Optional },
-              namespaces: new[] { "ProjectDAA1.Controllers" }
+                name: "Xuất file",
+                url: "Excel/Export/{id}",
+                defaults: new { controller = "Excel", action = "Export", id = UrlParameter.Optional },
+                namespaces: new[] { "ProjectDAA1.Controllers" }
             );
-            
+
         }
     }
 }

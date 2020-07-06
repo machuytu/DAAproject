@@ -1335,6 +1335,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
     <Compile Include="Areas\Admin\Controllers\dangkyhocphansController.cs" />
     <Compile Include="Areas\Admin\Controllers\giangviensController.cs" />
     <Compile Include="Areas\Admin\Controllers\hocsController.cs" />
@@ -1473,7 +1474,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Auth\" />
     <Folder Include="Uploadfile\" />
+    <Folder Include="Views\Authentication\" />
     <Folder Include="Views\Excel\" />
     <Folder Include="Views\Export\" />
     <Folder Include="Views\NhapDiem\" />

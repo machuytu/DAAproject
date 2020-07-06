@@ -12,7 +12,7 @@ using System.IO;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class sinhviensController : Controller
+    public class sinhviensController : AuthController
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 

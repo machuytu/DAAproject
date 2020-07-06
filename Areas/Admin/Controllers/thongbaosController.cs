@@ -12,7 +12,7 @@ using System.IO;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class thongbaosController : Controller
+    public class thongbaosController : AuthController
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
