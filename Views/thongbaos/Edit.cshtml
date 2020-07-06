@@ -50,14 +50,22 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.file, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.file, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.file, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="col-md-4">
+            <label class=" form-control-label" for="file">Upload File</label>
+            @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
 
+            <div>
+                @Html.TextBox("file", "", new { type = "file" }) <br />
+                File cũ <br/>
+                @Html.EditorFor(model => model.file, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @ViewBag.Message
+
+            </div>
+
+
+            }
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -55,12 +55,13 @@
                                             @using (Html.BeginForm("UploadFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                             {
 
-                                            <div>
-                                                @Html.TextBox("file", "", new { type = "file",  }) <br />
+                                                <div>
+                                                    @Html.TextBox("file", "", new { type = "file" }) <br />
+                                                    File cũ <br />
+                                                    @Html.EditorFor(model => model.file, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                                    @ViewBag.Message
 
-                                                @ViewBag.Message
-
-                                            </div>
+                                                </div>
 
 
                                             }
