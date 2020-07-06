@@ -11,10 +11,10 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/dangkyhocphans">User List</a></strong>
-                    <small>> Create</small>
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/dangkyhocphans">ĐĂNG KÍ HỌC PHẦN</a></strong>
+                    <small>> Sửa thông tin đăng kí</small>
                 </div>
-                <div class="card-body card-block">
+                <div class="card-body card-block" style="font-family:arial">
                     <form method="post" action="/Admin/dangkyhocphans/Create" enctype="multipart/form-data">
                         @Html.AntiForgeryToken()
                         <div class="row">
@@ -32,12 +32,12 @@
                                 <div class="row form-group">
                                     <div class="col-md-4">
                                         <label class=" form-control-label" for="thoigianbd">Ngày bắt đầu</label>
-                                        <input type="date" id="thoigianbd" name="thoigianbd">
+                                        <input type="date" id="thoigianbd" name="thoigianbd" class="form-control">
                                         @Html.ValidationMessageFor(model => model.thoigianbd, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-md-4">
                                         <label class=" form-control-label" for="thoigiankt">Ngày kết thúc</label>
-                                        <input type="date" id="thoigiankt" name="thoigiankt">
+                                        <input type="date" id="thoigiankt" name="thoigiankt" class="form-control">
                                         @Html.ValidationMessageFor(model => model.thoigiankt, "", new { @class = "text-danger" })
                                     </div>
                                 </div>

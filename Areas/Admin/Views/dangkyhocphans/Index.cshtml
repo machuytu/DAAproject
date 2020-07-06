@@ -59,8 +59,8 @@
             <div class="user-data m-b-30">
                 <div class="row">
                     <div class="col-md-10">
-                        <h3 class="title-3 m-b-30">
-                            <i class="zmdi zmdi-account-calendar"></i>Đang ký học phần
+                        <h3 class="title-3 m-b-30 nhutcenter">
+                            <i class="zmdi zmdi-account-calendar"></i>ĐĂNG KÍ HỌC PHẦN
                         </h3>
                     </div>
                     <div class="col-md-2">
@@ -73,37 +73,39 @@
                 <div class="table-responsive table-data">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
-                                <th scope="col">
-                                    Năm học
+                            <tr class="nhutcenter" style="font-family:Arial !important; color:black">
+                                <th scope="col" style="text-align:center">
+                                    NĂM HỌC
                                 </th>
-                                <th scope="col">
-                                    Học kỳ
+                                <th scope="col" style="text-align:center">
+                                    HỌC KỲ
                                 </th>
-                                <th scope="col">
-                                    Thời gian bắt đầu
+                                <th scope="col" style="text-align:center">
+                                    THỜI GIAN BẮT ĐẦU
                                 </th>
-                                <th scope="col">
-                                    Thời gian kết thúc
+                                <th scope="col" style="text-align:center">
+                                    THỜI GIAN KẾT THÚC
                                 </th>
-                                <th scope="col">Action</th>
+                                <th scope="col" style="text-align:center">CHỨC NĂNG</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                             <tr>
-                                <td>
+                                <td style="text-align:center">
                                     @Html.DisplayFor(modelItem => item.namhoc)
                                 </td>
-                                <td>
+                                <td style="text-align:center">
                                     @Html.DisplayFor(modelItem => item.hocky)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.thoigianbd)
+                                <td style="text-align:center"> 
+                                    @*@Html.DisplayFor(modelItem => item.thoigianbd)*@
+                                    @item.thoigianbd.ToString("dd/MM/yyyy")
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.thoigiankt)
+                                <td style="text-align:center">
+                                    @*  @Html.DisplayFor(modelItem => item.thoigiankt)*@
+                                    @item.thoigianbd.ToString("dd/MM/yyyy")
                                 </td>
                                 <td scope="row">
                                     @*@Html.ActionLink("Edit", "Edit", new { id = item.idsv }) |
