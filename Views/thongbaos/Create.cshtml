@@ -26,18 +26,19 @@
                         @Html.AntiForgeryToken()
                         @Html.HiddenFor(model => model.idtk)
                         <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <div class="text-danger">@ViewBag.err</div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label class=" form-control-label" for="tieude">Tiêu đề</label>
                                             @Html.EditorFor(model => model.tieude, new { htmlAttributes = new { @class = "form-control", @required = true, @min = "0", @max = "1", @step = "0.1" } })
                                             @Html.ValidationMessageFor(model => model.tieude, "", new { @class = "text-danger" })
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <label class=" form-control-label" for="noidung">Nội dung</label>
-                                            @Html.EditorFor(model => model.noidung, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                            <br/>
+                                            @Html.TextAreaFor(model => model.noidung, new { htmlAttributes = new { @class = "form-control", @required = true, @rows = 3 } })
                                             @Html.ValidationMessageFor(model => model.noidung, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-6">
