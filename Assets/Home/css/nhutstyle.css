@@ -46,3 +46,7 @@
 .nhutbackground{
     background-image:url('~/Assets/Home/images/2754227.jpg')
 }
+.nhutchose{
+    padding: 1px !important;
+    height: 40px !important
+}

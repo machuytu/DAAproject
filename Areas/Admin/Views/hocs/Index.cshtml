@@ -9,10 +9,7 @@
 <br />
 <br />
 <br />
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<link href="~/Assets/Home/css/nhutstyle.css'" rel="stylesheet" />
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -62,7 +59,7 @@
                 <div class="row">
                     <div class="col-md-10">
                         <h3 class="title-3 m-b-30">
-                            <i class="zmdi zmdi-account-calendar"></i>Học
+                            <i class="zmdi zmdi-account-calendar"></i>QUẢN LÝ HỌC VỤ
                         </h3>
                     </div>
                     <div class="col-md-2">
@@ -76,16 +73,16 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">
+                                <th scope="col" style="text-align:center">
                                     Mã lớp
                                 </th>
-                                <th scope="col">
+                                <th scope="col" style="text-align:center">
                                     Mã sinh viên
                                 </th>
-                                <th scope="col">
+                                <th scope="col" style="text-align:center">
                                     Điểm trung bình
                                 </th>
-                                <th scope="col">Action</th>
+                                <th scope="col" style="text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,7 +90,7 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.lop.mon.tenvama)
+                                        @Html.DisplayFor(modelItem => item.lop.malop)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.sinhvien.tenvama)

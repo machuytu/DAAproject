@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idmontruoc">Mã và tên môn trước</label>
-                                            @Html.DropDownList("idmontruoc", (IEnumerable<SelectListItem>)ViewBag.idmontruoc, "", htmlAttributes: new { @class = "form-control" })
+                                            @Html.DropDownList("idmontruoc", (IEnumerable<SelectListItem>)ViewBag.idmontruoc, "", htmlAttributes: new { @class = "nhutchose form-control" })
                                             @Html.ValidationMessageFor(model => model.idmontruoc, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
@@ -59,17 +59,17 @@
                                             @Html.ValidationMessageFor(model => model.hsck, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
-                                            <label class=" form-control-label" for="sotc">Số tính chỉ</label>
+                                            <label class=" form-control-label" for="sotc">Số tín chỉ</label>
                                             @Html.EditorFor(model => model.sotc, new { htmlAttributes = new { @class = "form-control", @required = true, @min = "2", @max = "5" } })
                                             @Html.ValidationMessageFor(model => model.sotc, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
-                                            <label class=" form-control-label" for="tclt">Tính chỉ lý thuyết</label>
+                                            <label class=" form-control-label" for="tclt">Tín chỉ lý thuyết</label>
                                             @Html.EditorFor(model => model.tclt, new { htmlAttributes = new { @class = "form-control", @required = true, @min = "1", @max = "5" } })
                                             @Html.ValidationMessageFor(model => model.tclt, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
-                                            <label class=" form-control-label" for="tcth">Tính chỉ thực hành</label>
+                                            <label class=" form-control-label" for="tcth">Tín chỉ thực hành</label>
                                             @Html.EditorFor(model => model.tcth, new { htmlAttributes = new { @class = "form-control", @required = true, @min = "0", @max = "1" } })
                                             @Html.ValidationMessageFor(model => model.tcth, "", new { @class = "text-danger" })
                                         </div>

@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/lopcns">Lớp chủ nhiệm</a></strong>
-                    <small>> Create</small>
+                    <small>> Tạo lớp CN</small>
                 </div>
                 <div class="card-body card-block">
                     <form method="post" action="/Admin/lopcns/Create" enctype="multipart/form-data">
@@ -22,17 +22,17 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idkhoa">Mã khoa và tên</label>
-                                            @Html.DropDownList("idkhoa", (IEnumerable<SelectListItem>)ViewBag.idkhoa, "", htmlAttributes: new { @class = "form-control" , @id = "selectkhoa"})
+                                            @Html.DropDownList("idkhoa", (IEnumerable<SelectListItem>)ViewBag.idkhoa, "", htmlAttributes: new { @class = "nhutchose form-control" , @id = "selectkhoa"})
                                             @Html.ValidationMessageFor(model => model.idkhoa, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idgv">Mã giáo viên</label>
-                                            @Html.DropDownList("idgv", new SelectList(" "), htmlAttributes: new { @class = "form-control", @id = "selectgv" })
+                                            @Html.DropDownList("idgv", new SelectList(" "), htmlAttributes: new { @class = "nhutchose form-control", @id = "selectgv" })
                                             @Html.ValidationMessageFor(model => model.idgv, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="nienkhoa">Niên khóa</label>
-                                            @Html.EditorFor(model => model.nienkhoa, new { htmlAttributes = new { @class = "form-control", @required = true, @type = "number", @Value = "2020" } })
+                                            @Html.EditorFor(model => model.nienkhoa, new { htmlAttributes = new { @class = "nhutchose form-control", @required = true, @type = "number", @Value = "2020" } })
                                             @Html.ValidationMessageFor(model => model.nienkhoa, "", new { @class = "text-danger" })
                                         </div>
                                     </div>

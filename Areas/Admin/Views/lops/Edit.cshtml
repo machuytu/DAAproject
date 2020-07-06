@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/lops">Lớp</a></strong>
-                    <small>> Edit</small>
+                    <small>> Chỉnh sửa</small>
                 </div>
                 <div class="card-body card-block">
                     <form method="post" action="/Admin/lops/Edit" enctype="multipart/form-data">
@@ -26,17 +26,17 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idmon">Mã môn và tên</label>
-                                            @Html.DropDownList("idmon", null, "", htmlAttributes: new { @class = "form-control" })
+                                            @Html.DropDownList("idmon", null, "", htmlAttributes: new { @class = "nhutchose form-control" })
                                             @Html.ValidationMessageFor(model => model.idmon, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idkhoa">Mã khoa và tên</label>
-                                            @Html.DropDownList("idkhoa", null, "", htmlAttributes: new { @class = "form-control", @id = "selectkhoa" })
+                                            @Html.DropDownList("idkhoa", null, "", htmlAttributes: new { @class = "nhutchose form-control", @id = "selectkhoa" })
                                             @Html.ValidationMessageFor(model => model.idkhoa, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idgv">Mã giáo viên</label>
-                                            @Html.DropDownList("idgv", null, htmlAttributes: new { @class = "form-control", @id = "selectgv" })
+                                            @Html.DropDownList("idgv", null, htmlAttributes: new { @class = " nhutchose form-control", @id = "selectgv" })
                                             @Html.ValidationMessageFor(model => model.idgv, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">

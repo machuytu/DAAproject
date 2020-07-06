@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idgv">Mã giáo viên trưởng khoa</label>
-                                            @Html.DropDownList("idgv", (IEnumerable<SelectListItem>)ViewBag.idgv, "", htmlAttributes: new { @class = "form-control" })
+                                            @Html.DropDownList("idgv", (IEnumerable<SelectListItem>)ViewBag.idgv, "", htmlAttributes: new { @class = "nhutchose form-control" })
                                             @Html.ValidationMessageFor(model => model.idgv, "", new { @class = "text-danger" })
                                         </div>
                                     </div>

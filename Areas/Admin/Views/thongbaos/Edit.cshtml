@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idtk">Mã tài khoản</label>
-                                            @Html.DropDownList("idtk", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.DropDownList("idtk", null, htmlAttributes: new { @class = "nhutchose form-control", @disabled = "disabled" })
                                             @Html.ValidationMessageFor(model => model.idtk, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">

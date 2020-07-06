@@ -8,7 +8,7 @@
 <br/>
 <br/>
 <br/>
-<h2>Create</h2>
+
 
 <div class="main-content">
     <div class="section__content section__content--p30">
@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/lops">Lớp</a></strong>
-                    <small>> Create</small>
+                    <small>> Tạo lớp</small>
                 </div>
                 <div class="card-body card-block">
                     <form method="post" action="/Admin/lops/Create" enctype="multipart/form-data">
@@ -28,23 +28,23 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idmon">Mã môn và tên</label>
-                                            @Html.DropDownList("idmon", (IEnumerable<SelectListItem>)ViewBag.idmon, "", htmlAttributes: new { @class = "form-control" })
+                                            @Html.DropDownList("idmon", (IEnumerable<SelectListItem>)ViewBag.idmon, "", htmlAttributes: new { @class = "nhutchose form-control" })
                                             @Html.ValidationMessageFor(model => model.idmon, "", new { @class = "text-danger" })
                                         </div>
 
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idkhoa">Mã khoa và tên</label>
-                                            @Html.DropDownList("idkhoa", (IEnumerable<SelectListItem>)ViewBag.idkhoa, "", htmlAttributes: new { @class = "form-control", @id = "selectkhoa" })
+                                            @Html.DropDownList("idkhoa", (IEnumerable<SelectListItem>)ViewBag.idkhoa, "", htmlAttributes: new { @class = "nhutchose form-control", @id = "selectkhoa" })
                                             @Html.ValidationMessageFor(model => model.idkhoa, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="idgv">Mã giáo viên</label>
-                                            @Html.DropDownList("idgv", new SelectList(" "), htmlAttributes: new { @class = "form-control", @id = "selectgv" })
+                                            @Html.DropDownList("idgv", new SelectList(" "), htmlAttributes: new { @class = "nhutchose form-control", @id = "selectgv" })
                                             @Html.ValidationMessageFor(model => model.idgv, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">
                                             <label class=" form-control-label" for="iddkhp">Mã và tên dkhp</label>
-                                            @Html.DropDownList("iddkhp", (IEnumerable<SelectListItem>)ViewBag.iddkhp, "", htmlAttributes: new { @class = "form-control" })
+                                            @Html.DropDownList("iddkhp", (IEnumerable<SelectListItem>)ViewBag.iddkhp, "", htmlAttributes: new { @class = "nhutchose form-control" })
                                             @Html.ValidationMessageFor(model => model.iddkhp, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-md-4">

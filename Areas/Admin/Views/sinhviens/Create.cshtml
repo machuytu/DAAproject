@@ -6,13 +6,13 @@
 }
 
 <h2>Create</h2>
-<div class="main-content">
+<div class="main-content" style="font-family:Arial">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">User List</a></strong>
-                    <small>> Create</small>
+                    <strong><i class="zmdi zmdi-account-calendar p-2"></i><a href="/Admin/sinhviens">Sinh viên</a></strong>
+                    <small>> Thêm sinh viên</small>
                 </div>
                 <div class="card-body card-block">
                     <form method="post" action="/Admin/sinhviens/Create" enctype="multipart/form-data">
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class=" form-control-label" for="ngaysinh">Ngày sinh</label>
-                                        <input type="date" id="ngaysinh" name="ngaysinh">
+                                        <input type="date" id="ngaysinh" name="ngaysinh" class="form-control">
                                         @Html.ValidationMessageFor(model => model.ngaysinh, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
