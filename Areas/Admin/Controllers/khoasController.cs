@@ -41,6 +41,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         // GET: Admin/khoas/Create
         public ActionResult Create()
         {
+            khoa khoa;
             ViewBag.idgv = new SelectList(db.giangviens, "idgv", "tenvama");
             return View();
         }
@@ -91,7 +92,7 @@ namespace ProjectDAA1.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.idgv = new SelectList(db.giangviens, "idgv", "hoten", khoa.idgv);
+            ViewBag.idgv = new SelectList(db.giangviens.Where(x => x.idkhoa == khoa.idkhoa), "idgv", "hoten", khoa.idgv);
             return View(khoa);
         }
 
