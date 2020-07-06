@@ -7,9 +7,8 @@ using System.Web.Mvc;
 
 namespace ProjectDAA1.Controllers
 {
-    public class StudentController : Controller
+    public class StudentController : AuthSVController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
         // GET: Student
         public ActionResult Index()
         {
@@ -18,34 +17,16 @@ namespace ProjectDAA1.Controllers
 
         public async Task<ActionResult> thongtincanhan()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                var idsv = session.idsv;
-                var result = db.sinhviens.Where(x => x.idsv == idsv).SingleOrDefault();
-                sinhvien sinhvien = await db.sinhviens.FindAsync(idsv);
-                return View(sinhvien);
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+            var result = db.sinhviens.Where(x => x.idsv == idsv).SingleOrDefault();
+            sinhvien sinhvien = await db.sinhviens.FindAsync(idsv);
+            return View(sinhvien);
         }
         public async Task<ActionResult> suathongtin(int id)
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                var idsv = session.idsv;
-                var result = db.sinhviens.Where(x => x.idsv == idsv).SingleOrDefault();
-                sinhvien sinhvien = await db.sinhviens.FindAsync(idsv);
-                ViewBag.idlopcn = new SelectList(db.lopcns, "idlopcn", "malopcn");
-                return View(sinhvien);
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+            var result = db.sinhviens.Where(x => x.idsv == idsv).SingleOrDefault();
+            sinhvien sinhvien = await db.sinhviens.FindAsync(idsv);
+            ViewBag.idlopcn = new SelectList(db.lopcns, "idlopcn", "malopcn");
+            return View(sinhvien);
         }
 
         [HttpPost]
@@ -71,17 +52,8 @@ namespace ProjectDAA1.Controllers
 
         public async Task<ActionResult> doimatkhau()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                var idsv = session.idsv;
-                taikhoan taikhoan = db.taikhoans.Where(x => x.idsv == idsv).SingleOrDefault();
-                return View(taikhoan);
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+            taikhoan taikhoan = db.taikhoans.Where(x => x.idsv == idsv).SingleOrDefault();
+            return View(taikhoan);
         }
 
         [HttpPost]

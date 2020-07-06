@@ -12,9 +12,8 @@ using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class dangkyhocphansController : BaseController
+    public class dangkyhocphansController : AdminAuthController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
         // GET: Admin/dangkyhocphans
         public async Task<ActionResult> Index()
@@ -52,19 +51,22 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dangkytrung = db.dangkyhocphans.Where(x => x.namhoc == dangkyhocphan.namhoc && x.hocky == dangkyhocphan.hocky).Count();
-                var checknamtrong = db.dangkyhocphans.Where(x => x.namhoc == dangkyhocphan.namhoc && x.thoigiankt <= dangkyhocphan.thoigiankt).Count();
                 if (dangkyhocphan.thoigianbd > dangkyhocphan.thoigiankt)
                 {
                     ModelState.AddModelError("thoigianbd", "Ngày bắt đầu lớn hơn ngày kết thúc");
                     return View(dangkyhocphan);
                 }
-                else if (dangkytrung != 0)
+                else if (db.dangkyhocphans
+                        .Where(x => x.namhoc == dangkyhocphan.namhoc && x.hocky == dangkyhocphan.hocky)
+                        .Count() != 0)
                 {
-                    ViewBag.err = "Trùng lịch học phần";
-                } else if (checknamtrong != 0)
+                    ViewBag.err = "Đã tồn tại học phần";
+                }
+                else if (db.dangkyhocphans
+                        .Where(x => !(x.thoigiankt < dangkyhocphan.thoigianbd || x.thoigianbd > dangkyhocphan.thoigiankt))
+                        .Count() != 0)
                 {
-                    ViewBag.err = "Lịch đã có ngày kết thúc vượt qua lịch hiện tại";
+                    ViewBag.err = "Lịch đã trùng";
                 }
                 else
                 {

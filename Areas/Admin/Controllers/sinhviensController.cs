@@ -13,9 +13,8 @@ using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class sinhviensController : BaseController
+    public class sinhviensController : AdminAuthController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
         // GET: Admin/sinhviens
         public async Task<ActionResult> Index()

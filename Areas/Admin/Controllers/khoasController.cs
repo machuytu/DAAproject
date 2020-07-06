@@ -12,9 +12,8 @@ using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class khoasController : BaseController
+    public class khoasController : AdminAuthController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
         // GET: Admin/khoas
         public async Task<ActionResult> Index()

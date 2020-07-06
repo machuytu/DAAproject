@@ -12,9 +12,8 @@ using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class monsController : BaseController
+    public class monsController : AdminAuthController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
         // GET: Admin/mons
         public async Task<ActionResult> Index()

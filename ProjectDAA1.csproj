@@ -1336,6 +1336,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAuthController.cs" />
     <Compile Include="Areas\Admin\Controllers\dangkyhocphansController.cs" />
     <Compile Include="Areas\Admin\Controllers\giangviensController.cs" />
     <Compile Include="Areas\Admin\Controllers\hocsController.cs" />
@@ -1350,7 +1351,8 @@
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\HashPassword.cs" />
     <Compile Include="Common\userLogin.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\AuthGVController.cs" />
+    <Compile Include="Controllers\AuthSVController.cs" />
     <Compile Include="Controllers\DKHPController.cs" />
     <Compile Include="Controllers\ExcelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1475,12 +1477,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\AdminAuth\" />
     <Folder Include="Uploadfile\" />
+    <Folder Include="Views\AuthGV\" />
+    <Folder Include="Views\AuthSV\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Excel\" />
     <Folder Include="Views\Export\" />
     <Folder Include="Views\NhapDiem\" />
     <Folder Include="Views\share\" />
+    <Folder Include="Views\SVAuth\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

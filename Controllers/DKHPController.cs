@@ -16,69 +16,57 @@ using DocumentFormat.OpenXml.Drawing.ChartDrawing;
 
 namespace ProjectDAA1.Controllers
 {
-    public class DKHPController : Controller
+    public class DKHPController : AuthSVController
     {
-        MyDatabaseEntities9 db = new MyDatabaseEntities9();
-
         // GET: DKHP
         [HttpGet]
         public async Task<ActionResult> GetDKHP()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            ViewBag.id = idsv;
+            var iddkhp = db.dangkyhocphans
+                .Where(x => x.thoigianbd <= DateTime.Now && x.thoigiankt >= DateTime.Now)
+                .Select(x => x.iddkhp)
+                .FirstOrDefault();
 
-            if (session != null)
+            if (iddkhp != 0)
             {
-                var idsv = session.idsv;
-                ViewBag.id = idsv;
-                var iddkhp = db.dangkyhocphans
-                    .Where(x => x.thoigianbd <= DateTime.Now && x.thoigiankt >= DateTime.Now)
-                    .Select(x => x.iddkhp)
-                    .FirstOrDefault();
+                var dslop = await db.lops.Where(x => x.iddkhp == iddkhp).ToListAsync();
 
-                if (iddkhp != 0)
+                var dslopdadk = await db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp).Select(x => x.lop).ToListAsync();
+
+                var dslopchuadk = dslop.Except(dslopdadk).ToList();
+
+                var dslopdadkfull = new List<lop>();
+                foreach (var item in dslopdadk)
                 {
-                    var dslop = await db.lops.Where(x => x.iddkhp == iddkhp).ToListAsync();
-
-                    var dslopdadk = await db.hocs.Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp).Select(x => x.lop).ToListAsync();
-
-                    var dslopchuadk = dslop.Except(dslopdadk).ToList();
-
-                    var dslopdadkfull = new List<lop>();
-                    foreach (var item in dslopdadk)
+                    if (item.siso >= item.sisomax)
                     {
-                        if (item.siso >= item.sisomax)
-                        {
-                            dslopdadkfull.Add(item);
-                        }
+                        dslopdadkfull.Add(item);
                     }
-                    //var dslopdadkefull = dslopdadk.Except(dslopdadkfull).ToList();
-
-                    var dslopchuadkfull = new List<lop>();
-                    foreach (var item in dslopchuadk)
-                    {
-                        if (item.siso >= item.sisomax)
-                        {
-                            dslopchuadkfull.Add(item);
-                        }
-                    }
-                    //var dslopchuadkefull = dslopchuadk.Except(dslopchuadkfull).ToList();
-
-                    return View(new DBContext()
-                    {
-                        dslopdadk = dslopdadk.Except(dslopdadkfull).ToList(),
-                        dslopchuadk = dslopchuadk.Except(dslopchuadkfull).ToList(),
-                        dslopdadkfull = dslopdadkfull,
-                        dslopchuadkfull = dslopchuadkfull,
-                    });
                 }
-                else
+                //var dslopdadkefull = dslopdadk.Except(dslopdadkfull).ToList();
+
+                var dslopchuadkfull = new List<lop>();
+                foreach (var item in dslopchuadk)
                 {
-                    return Redirect("/");
+                    if (item.siso >= item.sisomax)
+                    {
+                        dslopchuadkfull.Add(item);
+                    }
                 }
+                //var dslopchuadkefull = dslopchuadk.Except(dslopchuadkfull).ToList();
+
+                return View(new DBContext()
+                {
+                    dslopdadk = dslopdadk.Except(dslopdadkfull).ToList(),
+                    dslopchuadk = dslopchuadk.Except(dslopchuadkfull).ToList(),
+                    dslopdadkfull = dslopdadkfull,
+                    dslopchuadkfull = dslopchuadkfull,
+                });
             }
             else
             {
-                return RedirectToRoute("login");
+                return Redirect("/");
             }
         }
 
@@ -144,33 +132,23 @@ namespace ProjectDAA1.Controllers
         // GET: HuyDKHP
         public async Task<ActionResult> GetHuyDKHP()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
+            ViewBag.id = idsv;
+            var iddkhp = await db.dangkyhocphans
+                .Where(x => x.thoigianbd <= DateTime.Now && x.thoigiankt >= DateTime.Now)
+                .Select(x => x.iddkhp)
+                .FirstOrDefaultAsync();
 
-            if (session != null)
+            if (iddkhp != 0)
             {
-                var idsv = session.idsv;
-                ViewBag.id = idsv;
-                var iddkhp = await db.dangkyhocphans
-                    .Where(x => x.thoigianbd <= DateTime.Now && x.thoigiankt >= DateTime.Now)
-                    .Select(x => x.iddkhp)
-                    .FirstOrDefaultAsync();
+                var dslopdadk = db.hocs
+                    .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
+                    .Select(x => x.lop);
 
-                if (iddkhp != 0)
-                {
-                    var dslopdadk = db.hocs
-                        .Where(x => x.idsv == idsv && x.lop.iddkhp == iddkhp)
-                        .Select(x => x.lop);
-
-                    return View(await dslopdadk.ToListAsync());
-                }
-                else
-                {
-                    return Redirect("/");
-                }
+                return View(await dslopdadk.ToListAsync());
             }
             else
             {
-                return RedirectToRoute("login");
+                return Redirect("/");
             }
         }
 
@@ -216,17 +194,9 @@ namespace ProjectDAA1.Controllers
         [HttpGet]
         public async Task<ActionResult> GetTKB()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                ViewBag.sv = db.sinhviens.Where(x => x.idsv == session.idsv).FirstOrDefault();
-                var dkhp = db.dangkyhocphans.OrderByDescending(x => x.iddkhp);
-                return View(await dkhp.ToListAsync());
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+            ViewBag.sv = db.sinhviens.Where(x => x.idsv == idsv).FirstOrDefault();
+            var dkhp = db.dangkyhocphans.OrderByDescending(x => x.iddkhp);
+            return View(await dkhp.ToListAsync());
         }
 
         [HttpGet]
@@ -252,35 +222,25 @@ namespace ProjectDAA1.Controllers
                 Data = tkb,
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
             };
-
         }
 
         [HttpGet]
         public async Task<ActionResult> GetKQHT()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
+            ViewBag.sv = await db.sinhviens.Where(x => x.idsv == idsv).FirstOrDefaultAsync();
+
+            var dsdkhp = (from h in db.hocs
+                          join dk in db.dangkyhocphans on h.lop.iddkhp equals dk.iddkhp
+                          where h.idsv == idsv
+                          select dk).Distinct();
+
+            var dskqht = db.hocs.Where(x => x.idsv == idsv);
+
+            return View(new DBContext()
             {
-                var idsv = session.idsv;
-                ViewBag.sv = await db.sinhviens.Where(x => x.idsv == idsv).FirstOrDefaultAsync();
-
-                var dsdkhp = (from h in db.hocs
-                              join dk in db.dangkyhocphans on h.lop.iddkhp equals dk.iddkhp
-                              where h.idsv == idsv
-                              select dk).Distinct();
-
-                var dskqht = db.hocs.Where(x => x.idsv == idsv);
-
-                return View(new DBContext()
-                {
-                    dsdkhp = await dsdkhp.ToListAsync(),
-                    dskqht = await dskqht.ToListAsync(),
-                });
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+                dsdkhp = await dsdkhp.ToListAsync(),
+                dskqht = await dskqht.ToListAsync(),
+            });
         }
     }
 }

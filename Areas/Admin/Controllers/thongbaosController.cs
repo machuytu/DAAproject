@@ -13,9 +13,8 @@ using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class thongbaosController : BaseController
+    public class thongbaosController : AdminAuthController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
         // GET: Admin/thongbaos
         public async Task<ActionResult> Index()
@@ -44,8 +43,6 @@ namespace ProjectDAA1.Areas.Admin.Controllers
         {
             ViewBag.idtk = new SelectList(db.taikhoans.Where(x => x.idsv == null), "idtk", "matk");
             return View();
-
-
         }
 
         // POST: Admin/thongbaos/Create

@@ -12,9 +12,8 @@ using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class taikhoansController : BaseController
+    public class taikhoansController : AdminAuthController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 
         // GET: Admin/taikhoans
         public async Task<ActionResult> Index()

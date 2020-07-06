@@ -13,14 +13,8 @@ using OfficeOpenXml.Style;
 
 namespace ProjectDAA1.Controllers
 {
-    public class ExcelController : Controller
+    public class ExcelController : AuthGVController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
-        public ExcelController()
-        {
-            
-        }
-        
         public ActionResult ExportCN(int id)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

@@ -13,10 +13,8 @@ using OfficeOpenXml.Style;
 
 namespace ProjectDAA1.Controllers
 {
-    public class NhapDiemController : Controller
+    public class NhapDiemController : AuthGVController
     {
-        private MyDatabaseEntities9 db = new MyDatabaseEntities9();
-        
         // GET: NhapDiem
         public ActionResult Index()
         {

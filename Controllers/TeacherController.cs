@@ -11,52 +11,31 @@ using System.Web.Mvc;
 
 namespace ProjectDAA1.Controllers
 {
-    public class TeacherController : Controller
+    public class TeacherController : AuthGVController
     {
         // GET: Teacher
-        MyDatabaseEntities9 db = new MyDatabaseEntities9();
        
         [HttpGet]
         public async Task<ActionResult> dsLop()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                var id = session.idgv;
-                var dsdkhp = db.lops
-                    .Where(x => x.idgv == id)
+            var dsdkhp = db.lops
+                    .Where(x => x.idgv == idgv)
                     .Select(x => x.dangkyhocphan)
                     .Distinct()
                     .OrderByDescending(x => x.iddkhp);
-                var result = db.lops.Where(x => x.idgv == id);
-                return View(new DBContext() {
-                    dsdkhp = await dsdkhp.ToListAsync(),
-                    dslop = await result.ToListAsync(),
-                });
-
-            }
-            else
+            var result = db.lops.Where(x => x.idgv == idgv);
+            return View(new DBContext()
             {
-                return RedirectToRoute("login");
-            }
+                dsdkhp = await dsdkhp.ToListAsync(),
+                dslop = await result.ToListAsync(),
+            });
         }
 
         [HttpGet]
         public async Task<ActionResult> dsLopCN()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                var id = session.idgv;
-
-                var result = db.lopcns.Where(x => x.idgv == id);
-                return View(await result.ToListAsync());
-
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+            var result = db.lopcns.Where(x => x.idgv == idgv);
+            return View(await result.ToListAsync());
         }
 
         [HttpGet]
@@ -76,17 +55,8 @@ namespace ProjectDAA1.Controllers
 
         public async Task<ActionResult> doimatkhau()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                var idgv = session.idgv;
-                taikhoan taikhoan = db.taikhoans.Where(x => x.idgv == idgv).SingleOrDefault();
-                return View(taikhoan);
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+            taikhoan taikhoan = db.taikhoans.Where(x => x.idgv == idgv).SingleOrDefault();
+            return View(taikhoan);
         }
 
         [HttpPost]
@@ -104,17 +74,8 @@ namespace ProjectDAA1.Controllers
 
         public async Task<ActionResult> thongtincanhan()
         {
-            var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-            if (session != null)
-            {
-                var idgv = session.idgv;
-                giangvien giangvien = await db.giangviens.FindAsync(idgv);
-                return View(giangvien);
-            }
-            else
-            {
-                return RedirectToRoute("login");
-            }
+            giangvien giangvien = await db.giangviens.FindAsync(idgv);
+            return View(giangvien);
         }
         public async Task<ActionResult> suathongtin(int id)
         {
