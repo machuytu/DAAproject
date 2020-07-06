@@ -1349,7 +1349,6 @@
     <Compile Include="Areas\Admin\Controllers\taikhoansController.cs" />
     <Compile Include="Areas\Admin\Controllers\thongbaosController.cs" />
     <Compile Include="Common\CommonConstants.cs" />
-    <Compile Include="Common\HashPassword.cs" />
     <Compile Include="Common\userLogin.cs" />
     <Compile Include="Controllers\AuthGVController.cs" />
     <Compile Include="Controllers\AuthSVController.cs" />
