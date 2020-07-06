@@ -8,10 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectDAA1;
+using ProjectDAA1.Controllers;
 
 namespace ProjectDAA1.Areas.Admin.Controllers
 {
-    public class lopsController : Controller
+    public class lopsController : BaseController
     {
         private MyDatabaseEntities9 db = new MyDatabaseEntities9();
 

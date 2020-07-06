@@ -1349,6 +1349,7 @@
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\HashPassword.cs" />
     <Compile Include="Common\userLogin.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DKHPController.cs" />
     <Compile Include="Controllers\ExcelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1474,6 +1475,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Uploadfile\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Excel\" />
     <Folder Include="Views\Export\" />
     <Folder Include="Views\NhapDiem\" />

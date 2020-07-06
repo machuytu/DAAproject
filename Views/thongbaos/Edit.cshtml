@@ -39,8 +39,13 @@
 
         <div class="form-group">
             TAG
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tag, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-6">
+                <label class=" form-control-label" for="tag">Tag thông báo</label>
+                <select class="form-control" id="tag" style="height:auto;" name="tag">
+                    <option value="THÔNG BÁO NGHỈ, BÙ">THÔNG BÁO NGHỈ, BÙ</option>
+                    <option value="THÔNG BÁO CHUNG">THÔNG BÁO CHUNG</option>
+                    <option value="THÔNG BÁO VỀ PHÒNG HỌC">THÔNG BÁO VỀ PHÒNG HỌC</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.tag, "", new { @class = "text-danger" })
             </div>
         </div>

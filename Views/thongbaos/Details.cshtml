@@ -14,6 +14,8 @@
     <h4>CHI TIẾT THÔNG BÁO</h4>
     <hr />
     <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.idtk)
+        @Html.HiddenFor(model => model.idtb)
         <dt>
             TIÊU ĐỀ THÔNG BÁO
         </dt>
@@ -32,7 +34,7 @@
 
 
         <dt>
-           FILE
+            FILE
         </dt>
 
         <dd>

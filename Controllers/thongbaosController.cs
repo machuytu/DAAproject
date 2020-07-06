@@ -144,8 +144,6 @@ namespace ProjectDAA1.Controllers
                     file.SaveAs(_path);
                 }
                 var session = (UserLogin)Session[ProjectDAA1.Common.CommonConstants.USER_SESSION];
-                var idgv = session.idgv;
-                thongbao.taikhoan.idgv = idgv;
                 db.Entry(thongbao).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
